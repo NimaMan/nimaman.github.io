@@ -1,0 +1,4 @@
+baseURL = 'https://nimaman.github.io/'
+languageCode = 'en-us'
+title = 'Test Run'
+theme = "anatole"
