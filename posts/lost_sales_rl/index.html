@@ -1,0 +1,360 @@
+<!doctype html><html dir=ltr lang=en data-theme=dark><head>
+<title>
+Nima Manaf
+|
+Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Inventory Management Problem
+</title>
+<meta charset=utf-8><meta name=generator content="Hugo 0.91.2"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=description content="
+      A brief guide to using evolution strategy for solving inventory management problems
+
+
+    ">
+<link rel=stylesheet href=/css/main.min.3cda3d57dee1a993222e4fa080ecf03e9e2e2d89063ee18dc70744f56961c8d9.css integrity="sha256-PNo9V97hqZMiLk+ggOzwPp4uLYkGPuGNxwdE9WlhyNk=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous>
+<link rel="shortcut icon" href=/favicon.ico type=image/x-icon>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=canonical href=https://nimaman.github.io/posts/lost_sales_rl/>
+<script type=text/javascript src=/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus=" crossorigin=anonymous></script>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Inventory Management Problem">
+<meta name=twitter:description content="A brief guide to using evolution strategy for solving inventory management problems">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Inventory Management Problem","headline":"Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Inventory Management Problem","alternativeHeadline":"","description":"
+      A brief guide to using evolution strategy for solving inventory management problems
+
+
+    ","inLanguage":"en","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nimaman.github.io\/posts\/lost_sales_rl\/"},"author":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"creator":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"accountablePerson":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"copyrightHolder":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"copyrightYear":"2021","dateCreated":"2021-12-14T00:00:00.00Z","datePublished":"2021-12-14T00:00:00.00Z","dateModified":"2021-12-14T00:00:00.00Z","publisher":{"@type":"Organization","name":"Nima Manafzadeh Dizbin","url":"https://nimaman.github.io","logo":{"@type":"ImageObject","url":"https:\/\/nimaman.github.iofavicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/nimaman.github.io\/posts\/lost_sales_rl\/","wordCount":"3024","genre":[],"keywords":[]}</script>
+</head>
+<body>
+<header><div class="page-top
+animated fadeInDown">
+<a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false>
+<span aria-hidden=true></span>
+<span aria-hidden=true></span>
+<span aria-hidden=true></span>
+</a>
+<nav>
+<ul class=nav__list id=navMenu>
+<div class=nav__links>
+<li>
+<a href=/ title>Home</a>
+</li>
+<li>
+<a href=/posts/ title>Posts</a>
+</li>
+<li>
+<a href=/cv/ title>CV</a>
+</li>
+<li>
+<a href=/about/ title>About</a>
+</li>
+</div>
+<ul>
+<li>
+<a class=theme-switch title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</ul>
+</nav>
+</div>
+</header>
+<div class=wrapper>
+<aside><div class="sidebar
+animated fadeInDown">
+<div class=sidebar__content>
+<div class=logo-title>
+<div class=title>
+<img src=/images/ben2_3.png alt="profile picture">
+<h3 title><a href=/>Nima man</a></h3>
+<div class=description>
+<p>Nima man</p>
+</div>
+</div>
+</div>
+<ul class=social-links>
+</ul>
+</div><footer class="footer footer--sidebar">
+<div class=by_farbox>
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Nima Manaf
+2021
+</li>
+</ul>
+</div>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I=" crossorigin=anonymous></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css integrity=sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js integrity=sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js integrity=sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v crossorigin=anonymous onload=renderMathInElement(document.body)></script></div>
+</aside>
+<main>
+<div class=autopagerize_page_element>
+<div class=content>
+<div class="post
+animated fadeInDown">
+<div class=post-content>
+<div class=post-title>
+<h1>Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Inventory Management Problem</h1>
+<div class=info>
+<em class="fas fa-calendar-day"></em>
+<span class=date>
+Tue, Dec 14, 2021
+</span>
+<em class="fas fa-stopwatch"></em>
+<span class=reading-time>15-minute read</span>
+</div>
+</div><p>Deep Reinforcement Learning (DRL) agents have recently demonstrated their potential for solving sequential decision-making problems in various domains, such as <a href=https://www.nature.com/articles/nature14236>playing Atari</a> and <a href=https://www.nature.com/articles/nature16961>Alpha Go</a> games. This suggests that DRL agents could also be used to solve sequential decision-making problems in inventory management. While exact algorithms solve small instances of these problems efficiently, they fail in solving bigger instances in a reasonable amount of time due to the curse of dimensionality. Hence, researchers have usually designed heuristics for solving bigger-scale problems using the structural properties of the problem. Designing heuristics requires significant specialized knowledge about the problem. In addition, researchers usually make simplifying assumptions about the problem to come up with these heuristics, which limits their application areas. Hence, learning heuristics for solving sequential decision-making problems in inventory management using DRL seems promising.</p>
+<p>DRL methodologies are subclass policy and value function approximation methods for solving sequential decision-making problems modeled as a Markov Decision Process (MDP). Value function approximation methodologies estimate the value of being in a certain state, which then can be used in choosing the right action in that state. On the other hand, policy approximation aims at predicting the best action directly from the state. While the practice of using approximate policy or value functions in solving sequential inventory management problems has been around for a while, recently it has been shown to scale. Hence, DRL methods are arising as a promising direction to learn heuristics for solving sequential decision-making problems. The main advantage of these algorithms is that they can solve different sequential decisions making problems without significant domain knowledge. However, this generality comes at the increased computational cost for learning the policy or value function approximators. In addition, the currently available DRL methods are sample inefficient, computationally intensive, and require lots of hyper-parameter optimization.</p>
+<p>Recently, it has been shown that it is possible to learn an RL agent for solving the lost sales problems with descent performance on small scale problems. However, the current applications of the DRL to inventory management problems are computationally inefficient and require significant hyper-parameter optimization. In this post, we show that one can overcome these limitations of the DRL by using Covariance Matrix Adaptation Evolution Strategies (CMA-ES) which is a subclass of Evolutions Strategies. Evolutionary methods have been shown to be a competitive alternative to the DRL methods in solving sequential decision-making problems. <a href=https://arxiv.org/abs/1703.03864>Salimans, et al. (2017)</a> shows that a simple variant of the Natural Evolution Strategies (NES) can achieve similar performance to the DRL methods on Atari and Mujoco environments. ES has several advantages over RL methodologies. It is highly parallelizable, invariant to action frequency, and delayed rewards. In addition, the gradient-free nature of the ES makes optimization on non-differentiable objective functions and neural network outputs possible. We show that one can use the objective function of the problem rather than defining policy, value, and entropy costs.</p>
+<p>In this post, we show how to use the Evolution Strategies(ES) as an alternative to the popular DRL techniques such as Q-learning and Policy Gradients and their variants for solving inventory management problems. In particular, we show how to train policy netwroks that decide on the number of products to order in each time-step of the lost sales problem without the need for hyper-parameter optimization.</p>
+<p>The rest of this post is structured as follows. We first give an overview of the lost sales problem. Then, we show how to use parallel processing in combination with <code>Pytorch</code> to train ES agents. Finally, we evaluate the performance of the trained models and conclude the post and give directions for future research directions.</p>
+<h2 id=notes-on-implementation>Notes on implementation</h2>
+<p>The code snippets given in this post can be found in <a href=https://github.com/NimaMan/invman_public>my Github repo</a>.</p>
+<h1 id=lost-sales-problem>Lost sales problem</h1>
+<p>Lost Sales is one of the fundamental problems in the inventory management literature. In this post, We consider the standard lost sales inventory management problem with discrete time-steps and single items. The demand and order quantities are assumed to be an integer. The objective of the problem is to minimize the long-run average cost of the system which consists of the lost sales and inventory holding costs. The inventory manager has to decide on order quantity \(q_t \) to be ordered at the beginning of the period \(t \) where \( t \in {1, 2, \dots, T } \) and \(T\) is the horizon of the environment. The ordered products will arrive in \( l > 0 \) periods from now (in period \(l+t \). Afterwards, the new set of products of size \(q_{t-l} \) ordered in period \(t-l\) arrive. The inventory level of the system is then updated as \(I_t = I_{t-1} + q_{t-l+1}\) where \(I_t\) is the inventory level of the system at period \(t\). An arriving demand of size \(d_t\) is satisfied if there is enough inventory on hand, otherwise \(d_t - I_t\) of the arriving demand will be lost. Let \(h\) and \(p\) denote the inventory holding and backlog costs of the system. In this tutorial, we assume that inventory procurement costs are zero without loss of generality. The cost function in period \(t\) can be written as:
+$$
+\begin{equation*}
+C_t(S_t) = h[I_t]^+ + p[d_t - I_{t-1} - q_{t-L}]^+,
+\end{equation*}
+$$ where \(S_t\) is the current state of the system consisting of the current on-hand inventory and order pipeline. The order pipeline at the end of period \(t-1\) consists of \(Q_{t-1} = \left( q_{t-l}, q_{t-l+1}, \dots, q_{t-1}, \right)\). \(S_t\) can be fully specified using the order pipeline and on-hand inventory as:
+$$\begin{equation*}
+S_{t} = \left( q_{t-l} + I_{t-1}, q_{t-l+1}, \dots, q_{t-1} \right).
+\end{equation*}
+$$
+We use \(S_t\) as an input of our policy network.</p>
+<h2 id=python-simulation-of-the-lost-sales-problem>Python Simulation of the lost sales problem</h2>
+<p>In this post, we use the python simulation of the lost sales problem for training the ES agents. The implementation of the environment can be found <a href=https://github.com/NimaMan/invman_public/blob/master/invman/env/lost_sales.py>here</a>. The lost sales environment can be initialized as follows using the arguments of the environment:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>env</span> <span class=o>=</span> <span class=n>LostSalesEnv</span><span class=p>(</span><span class=n>demand_rate</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>demand_rate</span><span class=p>,</span> <span class=n>lead_time</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>lead_time</span><span class=p>,</span> <span class=n>horizon</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>horizon</span><span class=p>,</span>
+                       <span class=n>max_order_size</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>max_order_size</span><span class=p>,</span> <span class=n>holding_cost</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>holding_cost</span><span class=p>,</span>
+                       <span class=n>shortage_cost</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>shortage_cost</span><span class=p>,</span> <span class=n>track_demand</span><span class=o>=</span><span class=n>track_demand</span><span class=p>)</span>
+</code></pre></div><p>You can set the arguments of the environment in the <code>config.py</code> file <a href=https://github.com/NimaMan/invman_public/blob/master/invman/config.py>here</a> with the following set of parameters:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s2>&#34;--demand_rate&#34;</span><span class=p>,</span> <span class=n>default</span><span class=o>=</span><span class=mi>5</span><span class=p>,</span> <span class=nb>type</span><span class=o>=</span><span class=nb>float</span><span class=p>,</span> <span class=n>help</span><span class=o>=</span><span class=s2>&#34;demand rate&#34;</span><span class=p>)</span>
+<span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s2>&#34;--max_order_size&#34;</span><span class=p>,</span> <span class=n>default</span><span class=o>=</span><span class=mi>25</span><span class=p>,</span> <span class=nb>type</span><span class=o>=</span><span class=nb>int</span><span class=p>,</span> <span class=n>help</span><span class=o>=</span><span class=s2>&#34;maximum order size&#34;</span><span class=p>)</span>
+<span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s2>&#34;--lead_time&#34;</span><span class=p>,</span> <span class=n>default</span><span class=o>=</span><span class=mi>2</span><span class=p>,</span> <span class=nb>type</span><span class=o>=</span><span class=nb>int</span><span class=p>,</span> <span class=n>help</span><span class=o>=</span><span class=s2>&#34;lead time&#34;</span><span class=p>)</span>
+<span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s2>&#34;--shortage_cost&#34;</span><span class=p>,</span> <span class=n>default</span><span class=o>=</span><span class=mi>4</span><span class=p>,</span> <span class=nb>type</span><span class=o>=</span><span class=nb>float</span><span class=p>,</span> <span class=n>help</span><span class=o>=</span><span class=s2>&#34;shortage cost of the system&#34;</span><span class=p>)</span>
+<span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s2>&#34;--holding_cost&#34;</span><span class=p>,</span> <span class=n>default</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span> <span class=nb>type</span><span class=o>=</span><span class=nb>float</span><span class=p>,</span> <span class=n>help</span><span class=o>=</span><span class=s2>&#34;holding cost of the system&#34;</span><span class=p>)</span>
+<span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s2>&#34;--horizon&#34;</span><span class=p>,</span> <span class=n>default</span><span class=o>=</span><span class=nb>int</span><span class=p>(</span><span class=mf>5e2</span><span class=p>),</span> <span class=nb>type</span><span class=o>=</span><span class=nb>int</span><span class=p>,</span> <span class=n>help</span><span class=o>=</span><span class=s2>&#34;number of simulation epochs&#34;</span><span class=p>)</span>
+</code></pre></div><h2 id=hueristic-methods-for-solving-lost-sales-problem>Hueristic methods for solving lost sales problem</h2>
+<p>Researchers have proposed several heuristics in the literature of inventory management for solving the lost sales problem. <a href=https://www.jstor.org/stable/25580880>Zipkin (2008)</a> gives an overview of the most recent heuristics and their performance in solving different sets of small-scale lost-sales problems. His results show that Myopic2 is one of the best performing heuristics for solving the lost sales problem. In this post, we use the Myopic2 policy as a benchmark for comparing the performance of the learned heuristics. We also investigate how using the upper bounds from the Standard Vector Base Stock policy on the number of ordered products can impact the performance of the learning algorithm. The implementation of these policies can be found <a href=https://github.com/NimaMan/invman_public/blob/master/invman/heuristics/lost_sales_heuristics.py>here</a>.</p>
+<h2 id=example-problems>Example problems</h2>
+<p>In order to show the performance of ES in training control agents for the lost sales problem we evaluate its performance in different settings.</p>
+<h3 id=lost-sales-problem-with-poisson-demand-distribution>Lost sales problem with Poisson demand distribution</h3>
+<p>We consider three different lost sales problems with Poisson demand distribution. The problems differ in their lead and are labeled as Eesy, Medium and hard.</p>
+<center>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th style=text-align:center>holding cost</th>
+<th style=text-align:center>shortage cost</th>
+<th style=text-align:center>lead time</th>
+<th style=text-align:center>demand rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Easy</td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>4</td>
+<td style=text-align:center>2</td>
+<td style=text-align:center>5</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>4</td>
+<td style=text-align:center>4</td>
+<td style=text-align:center>5</td>
+</tr>
+<tr>
+<td>Hard</td>
+<td style=text-align:center>1</td>
+<td style=text-align:center>4</td>
+<td style=text-align:center>16</td>
+<td style=text-align:center>5</td>
+</tr>
+</tbody>
+</table>
+</center>
+<h1 id=evolution-strategies-es>Evolution Strategies (ES)</h1>
+<p>Evolution Strategy is a population based stochastic continuous optmization methodology. It is related to the familiy of evolutionary population based algorithms such as the Genetic Algorithm. ES has been traditionally used for optimizing lower dimensional poroblems. However, recent works demonstrate that evolutionary algorithms can be scaled to optimize neural networks with several million parameters. In this tutorial, we will treat the ES as a black-box optimizer. For further details on how does the internals of the optimizer works, you can visit [my], <a href=https://blog.otoro.net/2017/10/29/visual-evolution-strategies/>David Ha</a> or <a href=https://lilianweng.github.io/lil-log/2019/09/05/evolution-strategies.html>lilian Wang</a> blog post. The application of evolutionary algorithms for solving RL problem is not <a href=https://arxiv.org/abs/1106.0221>new</a>. However, it was the work of <a href=https://arxiv.org/abs/1703.03864>Salimans</a> that showed ES as a scalable alternative to the DRL based algorithms.</p>
+<p>Training with ES consists of three main parts at each iteration of the training as shown in the following code snippet. First, we ask the ES optimizer for a new set of population parameters where the size of each individual in the population is equal to the number of parameters of the policy network. Then, we evaluate the performance of each individual (each policy network) in controlling the environment. Finally, we say the rewards or fitness back to the ES optimizer to update the internal parameters of the optimizer.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>    <span class=n>esopt</span> <span class=o>=</span> <span class=n>ES</span><span class=p>(</span><span class=n>num_params</span><span class=o>=</span><span class=n>num_params</span><span class=p>,</span> <span class=n>popsize</span><span class=o>=</span><span class=n>es_population_size</span><span class=p>)</span>
+    <span class=k>for</span> <span class=n>epoch</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>number_of_training_epochs</span> <span class=o>+</span> <span class=mi>1</span><span class=p>):</span>
+        <span class=n>solutions</span> <span class=o>=</span> <span class=n>esopt</span><span class=o>.</span><span class=n>ask</span><span class=p>()</span>
+        <span class=c1># Get the rewards of each es individual </span>
+        <span class=n>esopt</span><span class=o>.</span><span class=n>tell</span><span class=p>(</span><span class=n>rewards</span><span class=p>)</span>
+        
+</code></pre></div><p>We use the <code>ESModule</code> defined below which is inherited from the <code>torch.nn.Module</code> in setting the parameters of the neural network that are sampled from the ES optimizer.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>torch</span>
+
+
+<span class=k>class</span> <span class=nc>ESModule</span><span class=p>(</span><span class=n>torch</span><span class=o>.</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+
+    <span class=k>def</span> <span class=nf>get_model_shapes</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+        <span class=s2>&#34;&#34;&#34;
+</span><span class=s2>        returns the shapes of the model parameters
+</span><span class=s2>        &#34;&#34;&#34;</span>
+        <span class=n>model_shapes</span> <span class=o>=</span> <span class=p>[]</span>
+        <span class=k>for</span> <span class=n>param</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>parameters</span><span class=p>():</span>
+            <span class=n>p</span> <span class=o>=</span> <span class=n>param</span><span class=o>.</span><span class=n>data</span><span class=o>.</span><span class=n>cpu</span><span class=p>()</span><span class=o>.</span><span class=n>numpy</span><span class=p>()</span>
+            <span class=n>model_shapes</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>p</span><span class=o>.</span><span class=n>shape</span><span class=p>)</span>
+            <span class=n>param</span><span class=o>.</span><span class=n>requires_grad</span> <span class=o>=</span> <span class=kc>False</span>
+        <span class=k>return</span> <span class=n>model_shapes</span>
+
+    <span class=nd>@property</span>
+    <span class=k>def</span> <span class=nf>model_shapes</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=p>):</span>
+        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_model_shapes</span><span class=p>()</span>
+
+    <span class=k>def</span> <span class=nf>set_model_params</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>flat_params</span><span class=p>):</span>
+        <span class=s2>&#34;&#34;&#34;
+</span><span class=s2>        Sets the current parametrs of the  neural network to the flat_params based on the model shapes
+</span><span class=s2>        &#34;&#34;&#34;</span>
+        <span class=k>assert</span> 
+        <span class=n>model_shapes</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>model_shapes</span>
+        <span class=n>idx</span> <span class=o>=</span> <span class=mi>0</span>
+
+        <span class=k>for</span> <span class=n>i</span><span class=p>,</span> <span class=n>param</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>parameters</span><span class=p>()):</span>
+            <span class=n>delta</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>product</span><span class=p>(</span><span class=n>model_shapes</span><span class=p>[</span><span class=n>i</span><span class=p>])</span>
+            <span class=n>block</span> <span class=o>=</span> <span class=n>flat_params</span><span class=p>[</span><span class=n>idx</span><span class=p>:</span> <span class=n>idx</span> <span class=o>+</span> <span class=n>delta</span><span class=p>]</span>
+            <span class=n>block</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>reshape</span><span class=p>(</span><span class=n>block</span><span class=p>,</span> <span class=n>model_shapes</span><span class=p>[</span><span class=n>i</span><span class=p>])</span>
+            <span class=n>idx</span> <span class=o>+=</span> <span class=n>delta</span>
+            <span class=n>block_data</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>from_numpy</span><span class=p>(</span><span class=n>block</span><span class=p>)</span><span class=o>.</span><span class=n>float</span><span class=p>()</span>
+            <span class=n>param</span><span class=o>.</span><span class=n>data</span> <span class=o>=</span> <span class=n>block_data</span>
+
+        <span class=k>return</span> <span class=bp>self</span>
+</code></pre></div><h1 id=training-lost-sales-inventory-management-agents>Training lost sales inventory management agents</h1>
+<p>In this section, we show how to train a neural network that decides on how many products to order at the beginning of each period using ES. At each iteration of the training, we sample \(N\) different neural networks from the ES optimizer. We then evaluate the performance of each neural network using the <code>get_model_fitness</code> method defined below. This method sets the sampled parameters of the models from ES using the <code>set_model_params</code> method of the <code>ESModule</code> introduced above. Then, we create a new environment using the problem-specific arguments for evaluating the neural network&rsquo;s performance. At each epoch of the environment simulation, we use the model to decide on the number of new products to be ordered based on the current state of the system using <code>model(state)</code> for a pre-determined number of environment epochs. Finally, we return the negative of the total cost of the system since our ES optimizer is a maximizer.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>def</span> <span class=nf>get_model_fitness</span><span class=p>(</span><span class=n>model</span><span class=p>,</span> <span class=n>args</span><span class=p>,</span> <span class=n>model_params</span><span class=o>=</span><span class=kc>None</span><span class=p>,</span> <span class=n>indiv_idx</span><span class=o>=-</span><span class=mi>1</span><span class=p>,</span> <span class=n>return_env</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span> <span class=n>track_demand</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span> <span class=n>seed</span><span class=o>=</span><span class=mi>1234</span><span class=p>):</span>
+    <span class=s1>&#39;&#39;&#39;
+</span><span class=s1>    Returns the average total cost of the lost sales problem togather with an id for tracking the ES in parallel traning  
+</span><span class=s1>    &#39;&#39;&#39;</span>
+    <span class=k>if</span> <span class=n>model_params</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+        <span class=n>model</span><span class=o>.</span><span class=n>set_model_params</span><span class=p>(</span><span class=n>model_params</span><span class=p>)</span>
+
+    <span class=k>if</span> <span class=nb>hasattr</span><span class=p>(</span><span class=n>args</span><span class=p>,</span> <span class=s2>&#34;seed&#34;</span><span class=p>):</span>
+        <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>seed</span><span class=p>(</span><span class=n>args</span><span class=o>.</span><span class=n>seed</span><span class=p>)</span>
+    <span class=k>else</span><span class=p>:</span>
+        <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>seed</span><span class=p>(</span><span class=n>seed</span><span class=p>)</span>
+
+    <span class=n>env</span> <span class=o>=</span> <span class=n>LostSalesEnv</span><span class=p>(</span><span class=n>demand_rate</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>demand_rate</span><span class=p>,</span> <span class=n>lead_time</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>lead_time</span><span class=p>,</span> <span class=n>horizon</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>horizon</span><span class=p>,</span>
+                       <span class=n>max_order_size</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>max_order_size</span><span class=p>,</span> <span class=n>holding_cost</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>holding_cost</span><span class=p>,</span>
+                       <span class=n>shortage_cost</span><span class=o>=</span><span class=n>args</span><span class=o>.</span><span class=n>shortage_cost</span><span class=p>,</span> <span class=n>track_demand</span><span class=o>=</span><span class=n>track_demand</span><span class=p>)</span>
+    <span class=n>state</span> <span class=o>=</span> <span class=n>env</span><span class=o>.</span><span class=n>state</span>
+    <span class=n>done</span> <span class=o>=</span> <span class=kc>False</span>
+    <span class=k>while</span> <span class=ow>not</span> <span class=n>done</span><span class=p>:</span>
+        <span class=n>state</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>FloatTensor</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+        <span class=n>order_quantity</span> <span class=o>=</span> <span class=n>model</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+        <span class=n>state</span><span class=p>,</span> <span class=n>epoch_cost</span><span class=p>,</span> <span class=n>done</span> <span class=o>=</span> <span class=n>env</span><span class=o>.</span><span class=n>step</span><span class=p>(</span><span class=n>order_quantity</span><span class=o>=</span><span class=n>order_quantity</span><span class=p>)</span>
+    <span class=k>return</span> <span class=o>-</span><span class=n>env</span><span class=o>.</span><span class=n>avg_total_cost</span><span class=p>,</span> <span class=n>indiv_idx</span>
+</code></pre></div><h2 id=policy-netwrok-architechture>Policy netwrok architechture</h2>
+<p>We use a simple two-layer perceptron with 20 and 10 neurons with <a href=https://arxiv.org/abs/1606.08415>Gaussian Error Linear Units (GELU)</a> activation functions as a policy network. The size of the output layer of the neural network depends on the maximum number of orders that are allowed for the problem. <a href=https://www.jstor.org/stable/25580880>Zipkin (2008)</a> shows that the Standard-Vector-Base-Stock Policy can be used to obtain the upper bound of the action space. We can either use this threshold as a maximum order size or choose an arbitrary big enough maximum order size. Let \(d_o\) demonstrate the maximum order size or equivalently the size of the output layer. We can write the output of the neural network:
+$$\begin{equation*}
+l_t = W^{output}\sigma(W^2 \sigma( W^1 S_t + b^1) + b^2) + b^{out},
+\end{equation*}
+$$
+where \(\sigma \) is a <code>GELU</code> activation function and \( l_t \) is a vector of the output logits. Our objective is to find a set of parameters \( W^{output}, W^{1}, W^{2}\) such that the long run average cost of the system is minimized. Note that \(d_o\) represents a set of discrete actions in \({0, 1, \dots, d_o }\). We choose the lowest index (in case of equality) with the highest \(l_t\) values as the number of products to be ordered in period \(t\) of the environment. Mathematically speaking: <br>
+$$\begin{equation*}
+q = \min { q: x_q = \max(l_t) }.
+\end{equation*}
+$$
+The pytorch implementation of the policy network is as follows:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>PolicyNet</span><span class=p>(</span><span class=n>ESModule</span><span class=p>):</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>input_dim</span><span class=p>,</span> <span class=n>output_dim</span><span class=p>,</span> <span class=n>hidden_dims</span><span class=o>=</span><span class=p>[</span><span class=mi>20</span><span class=p>,</span> <span class=mi>10</span><span class=p>]):</span>
+        <span class=nb>super</span><span class=p>(</span><span class=n>PolicyNet</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>input_dim</span> <span class=o>=</span> <span class=n>input_dim</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>hidden_dims</span> <span class=o>=</span> <span class=n>hidden_dims</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>output_dim</span> <span class=o>=</span> <span class=n>output_dim</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>activation</span> <span class=o>=</span><span class=n>F</span><span class=o>.</span><span class=n>gelu</span>
+
+        <span class=bp>self</span><span class=o>.</span><span class=n>fc1</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>in_features</span><span class=o>=</span><span class=n>input_dim</span><span class=p>,</span> <span class=n>out_features</span><span class=o>=</span><span class=n>hidden_dims</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>fc2</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>in_features</span><span class=o>=</span><span class=n>hidden_dims</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span> <span class=n>out_features</span><span class=o>=</span><span class=n>hidden_dims</span><span class=p>[</span><span class=mi>1</span><span class=p>],</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>fc_out</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>in_features</span><span class=o>=</span><span class=n>hidden_dims</span><span class=p>[</span><span class=mi>1</span><span class=p>],</span> <span class=n>out_features</span><span class=o>=</span><span class=n>output_dim</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+         
+    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+        <span class=n>h</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>activation</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>fc1</span><span class=p>(</span><span class=n>state</span><span class=p>))</span>
+        <span class=n>h</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>activation</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>fc2</span><span class=p>(</span><span class=n>h</span><span class=p>))</span>
+        <span class=n>logits</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>fc_out</span><span class=p>(</span><span class=n>h</span><span class=p>)</span>
+        <span class=n>action</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>argmax</span><span class=p>(</span><span class=n>logits</span><span class=p>)</span>
+        
+        <span class=k>return</span> <span class=n>action</span><span class=o>.</span><span class=n>item</span><span class=p>()</span>
+</code></pre></div><p>where the <code>input_dim</code> of the policy network is equal to the lead times of the problem.</p>
+<h2 id=parallelization-using-python-multiprocessing>Parallelization using python multiprocessing</h2>
+<p>One of the main advantages of the ES over the reinforcement learning methodologies is their easy parallelization. In this tutorial, we use the python <code>multiprocessing (mp)</code> package to parallelize evaluating the performance of the ES individuals. To do so, we first create a pool of workers with a pre-specified number of processors using <code>mp.Pool()</code> class. We use the <code>apply_async</code> method of this class to calculate the performance of each candidate solution on the environment in parallel. Note that we need to track the index of each solution (using <code>indiv_id</code> variable in the following code) as <code>apply_async</code> method does not return the evaluated results in sequential order.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>    <span class=n>pool</span> <span class=o>=</span> <span class=n>mp</span><span class=o>.</span><span class=n>Pool</span><span class=p>(</span><span class=n>processes</span><span class=o>=</span><span class=n>mp_num_processors</span><span class=p>)</span>
+    <span class=k>for</span> <span class=n>episode</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>number_of_es_training_episodes</span><span class=o>+</span><span class=mi>1</span><span class=p>):</span>
+        <span class=n>solutions</span> <span class=o>=</span> <span class=n>es</span><span class=o>.</span><span class=n>ask</span><span class=p>()</span>
+        <span class=n>args</span><span class=o>.</span><span class=n>seed</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>randint</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>100000</span><span class=p>)</span>
+        <span class=n>results</span> <span class=o>=</span> <span class=p>[</span>
+            <span class=n>pool</span><span class=o>.</span><span class=n>apply_async</span><span class=p>(</span>
+                <span class=n>get_model_fitness</span><span class=p>,</span>
+                <span class=n>args</span><span class=o>=</span><span class=p>(</span><span class=n>model</span><span class=p>,</span> <span class=n>args</span><span class=p>,</span> <span class=n>solution</span><span class=p>,</span> <span class=n>indiv_id</span><span class=p>),</span>
+            <span class=p>)</span>
+            <span class=k>for</span> <span class=n>indiv_id</span><span class=p>,</span> <span class=n>solution</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=n>solutions</span><span class=p>)</span>
+        <span class=p>]</span>
+
+        <span class=n>population_fitness</span> <span class=o>=</span> <span class=p>[</span><span class=n>result</span><span class=o>.</span><span class=n>get</span><span class=p>()</span> <span class=k>for</span> <span class=n>result</span> <span class=ow>in</span> <span class=n>results</span><span class=p>]</span>  <span class=c1># Get process results from the output queue</span>
+        <span class=n>pop_fitness</span> <span class=o>=</span> <span class=nb>sorted</span><span class=p>(</span><span class=n>population_fitness</span><span class=p>,</span> <span class=n>key</span><span class=o>=</span><span class=k>lambda</span> <span class=n>x</span><span class=p>:</span> <span class=n>x</span><span class=p>[</span><span class=mi>1</span><span class=p>])</span> <span class=c1># sort the fitnesses based on th id of the individuals</span>
+        <span class=n>es_fitness</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>array</span><span class=p>([</span><span class=n>f</span> <span class=k>for</span> <span class=n>f</span><span class=p>,</span> <span class=n>idx</span> <span class=ow>in</span> <span class=n>population_fitness</span><span class=p>])</span>
+         
+        <span class=n>es</span><span class=o>.</span><span class=n>tell</span><span class=p>(</span><span class=n>es_fitness</span><span class=p>)</span> <span class=c1># update the parameters of the ES optimizers</span>
+</code></pre></div><p>The above code constitutes the main body of our training loop. The duration of the training depends on four major variables: the number of training episodes determined by the <code>number_of_es_training_episodes</code> variable, the horizon of each environment determined by the <code>horizon</code> variable in initializing the environments, the number of parallel workers specified by the <code>mp_num_processors</code>, and the population size of the ES determined by the <code>es_population_size</code>. The training may take between 30-60 minutes on a regular Laptop with <code>mp_num_processors=3, horizon=1000, number_of_es_training_episodes=1000, es_population_size=50</code>. Increasing the number of parallel processors to 50 or 100 on a High-Performance Computing Cluster can result in obtaining near-optimal solutions in a couple of minutes.</p>
+<h1 id=performacne-evaluation-of-the-trained-models>Performacne evaluation of the trained models</h1>
+<p>In this section, we evaluate the performance of trained models on 100 different environments generated using 100 different seeds. We set the horizon of the evaluation environment to be one million periods and report the average cost per period of the system. We compare the performance of the trained models with that of the optimal solution and Myopic2 policy for the Easy and Medium problems, and only the Myopic2 for the Hard problem.</p>
+<p>We consider the impact of three different variables on the performance of trained ES agents:</p>
+<ul>
+<li>Number of training epochs</li>
+<li>Duration of the environment horizon: the environment horizon determines the accuracy of the performance of an ES individual. The lower horizon lenght may result in a noisy estimate of the individual&rsquo;s performance. While, longer horizon length result in more accurate estimates of the individuals performance at the cost of increased comutational time.</li>
+<li>Size of the output space of the neural network: The output dimensions of our policy architechtures are calculated using the upper bound introduced in <a href=https://www.jstor.org/stable/25580880>Zipkin (2008)</a> obtained using the Standard-Vector-Base-Stock policy (\(d^{svbs}\)). We set the output dimension of the neural networks to be \(d^{svbs}\), \(2 d^{svbs}\), and \(3d^{svbs}\).</li>
+</ul>
+<h2 id=lost-sales-problems-with-poisson-demand-distribution>Lost sales problems with Poisson demand distribution</h2>
+<h3 id=medium-difficulty-problem>Medium difficulty problem</h3>
+<p>The medium difficulty problem that we consider here is presented in <a href=https://www.jstor.org/stable/25580880>Zipkin (2008)</a>. The Myopic2 policy reaches 1.9% of the optimal average reward per episode which is the highest percentage gap for the problems considered there for the Myopic2. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3302881">Gijsbrechts (2019)</a> reports that Asynchronous Advantage Actor Critic (A3C) algorithm can train policies that are 6.7% away from optimal solution. A3C performance is also the worst for this problem amongst the problems considered in <a href=https://www.jstor.org/stable/25580880>Zipkin (2008)</a>.</p>
+<center>
+<img class=special-img-class style=width:60% src=/images/Lost_sales_p_4_l_4.jpg label=lead_time_4>
+</center>
+<h1 id=conclusions>Conclusions</h1>
+<p>In this post, we show how to train neural networks that order new products for the lost sales problem based on the current state of the system using ES. We demonstrate that ES has several advantages over the Reinforcement Learning methods in learning agents for solving the lost sales problem. We summeize these advantages as follows:</p>
+<ul>
+<li>ES can train agents that perform near-optimal with a significantly lower computational budget in compariosn to the model-free DRL methods.</li>
+<li>ES can achieve these results without the need for hyper-parameter optimization.</li>
+<li>The gradient-free nature of the ES enbales us to optmize the obejctive function of the problem directly. Hence, there is no need for reward-shaping and defining different loss functions using ES.</li>
+<li>ES can achieve near optimal solutions with significantly smaller neural networks in comparison to the neural network achitechtures reported in the literature.</li>
+</ul>
+<p>Note that our objective in this study is not to achieve the best performing trained models, rather to show that ES is able to reach near-optimal solutions in a efficient way without need for hyper-parameter optimization. One may increase the population size of the ES (which is quite low in our experiments) or increase the horizon of the environments during the training phase to obtain better policies. Alteratively, one may use the neural network parameters found by the ES as an starting point for the classical RL methods such as Q-Learning to further tune the parameters of the neural nets to obtain better results with significantly lower computtion time.</p>
+<h1 id=citation>Citation</h1>
+<p>If you find this work useful, please cite it as:</p>
+<p>@article{Manaf2021LostSales,
+title = &ldquo;Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Problem&rdquo;,
+author = &ldquo;Manafzadeh Dizbin, Nima, Basten, Rob&rdquo;,
+journal = &ldquo;nimaman.github.io&rdquo;,
+year = &ldquo;2021&rdquo;,
+url = ""
+}</p>
+</div>
+<div class=post-footer>
+<div class=info>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div><footer class="footer footer--base">
+<div class=by_farbox>
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Nima Manaf
+2021
+</li>
+</ul>
+</div>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I=" crossorigin=anonymous></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css integrity=sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js integrity=sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js integrity=sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v crossorigin=anonymous onload=renderMathInElement(document.body)></script></body>
+</html>
