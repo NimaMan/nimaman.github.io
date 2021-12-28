@@ -1,4 +1,73 @@
-baseURL = 'https://nimaman.github.io/'
-languageCode = 'en-us'
-title = 'Test Run'
+baseURL = "https://nimaman.github.io"
+languageCode = "en"
+DefaultContentLanguage = "en"
+title = "Personel Webpage of Nima Manafzadeh Dizbin"
 theme = "anatole"
+
+summarylength = 10
+enableEmoji = true
+enableRobotsTXT = true
+
+# Enable Disqus
+#disqusShortname = ""
+
+# Google Analytics
+#googleAnalytics = "UA-123-45"
+
+# Syntax highlighting
+pygmentsUseClasses = true   
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+        unsafe=true
+
+[taxonomies]
+    category = "categories"
+    series = "series"
+    tag = "tags"
+
+
+[params]
+title = "I am Nima Manaf"
+author = "Nima Manaf"
+description = "Nima man"
+profilePicture = "images/ben2_3.png"
+displayMode = "dark"
+contentratio = 0.8
+readMore = true
+
+postSectionName = "posts"
+mainSections = []
+
+[menu]
+
+  [[menu.main]]
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "Posts"
+  weight = 200
+  identifier = "posts"
+  url = "/posts/"
+  
+  [[menu.main]]
+  name = "CV"
+  weight = 300
+  identifier = "cv"
+  url = "/cv/"
+  
+  [[menu.main]]
+  name = "About"
+  weight = 400
+  identifier = "about"
+  url = "/about/"
+
+[math]
+enable = false  # options: true, false. Enable math support globally, default: false. You can always enable math on per page.
+use = "mathjax"  # options: "katex", "mathjax". default is "katex".
