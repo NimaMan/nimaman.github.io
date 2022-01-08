@@ -4,10 +4,11 @@ title: Evolution Strategies as an alternative to Reinforcement Learning for Solv
 date: 2021-12-14
 description: A brief guide to using evolution strategy for solving inventory management problems
 math: true
+
 ---
 # Summary
-- We show how to use Evolution Strategies to train neural networks for managing inventory in lost sales problem. 
-- 
+- We show how to use Evolution Strategies (ES) to train neural networks for managing inventory in lost sales problem. 
+- ES can learn significantly smaller neural network architechtures in comparison to RL methods without much need for hyper-parameter optimization. 
 
 # Introduction
 Deep Reinforcement Learning (DRL) agents have recently demonstrated their potential for solving sequential decision-making problems in various domains, such as [playing Atari](https://www.nature.com/articles/nature14236) and [Alpha Go](https://www.nature.com/articles/nature16961) games. This suggests that DRL agents could also be used to solve sequential decision-making problems in inventory management. While exact algorithms solve small instances of these problems efficiently, they fail in solving bigger instances in a reasonable amount of time due to the curse of dimensionality. Hence, researchers have usually designed heuristics for solving bigger-scale problems using the structural properties of the problem. Designing heuristics requires significant specialized knowledge about the problem. In addition, researchers usually make simplifying assumptions about the problem to come up with these heuristics, which limits their application areas. Hence, learning heuristics for solving sequential decision-making problems in inventory management using DRL seems promising.   
