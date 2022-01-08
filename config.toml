@@ -4,7 +4,7 @@ DefaultContentLanguage = "en"
 title = "Personel Webpage of Nima Manafzadeh Dizbin"
 theme = "anatole"
 
-summarylength = 10
+summarylength = 100
 enableEmoji = true
 enableRobotsTXT = true
 
@@ -31,19 +31,33 @@ pygmentsCodefencesGuessSyntax = true
 
 
 [params]
-title = "Nima man"
-author = "Nima Manaf"
-description = ""
+title = "I'm Nima"
+author = "Nima Manafzadeh Dizbin"
+description = "  "
 profilePicture = "images/ben2_3.png"
 contentratio = 0.85
 readMore = true
 googleSiteVerify = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
-postSectionName = "posts"
-mainSections = ["post"]
+
+
+[[socialIcons]]
+icon = "fab fa-linkedin"
+title = "Linkedin"
+url = "https://www.linkedin.com/in/nima-manafzadeh-dizbin-02174b74/"
+
+[[socialIcons]]
+icon = "fab fa-github"
+title = "GitHub"
+url = "https://github.com/nimaman"
+
+[[socialIcons]]
+icon = "fas fa-envelope"
+title = "e-mail"
+url = "mailto:nima.manaf8@gmail.com"
+
 
 [menu]
-
   [[menu.main]]
   name = "Home"
   identifier = "home"
@@ -67,24 +81,3 @@ mainSections = ["post"]
 [math]
 enable = false  # options: true, false. Enable math support globally, default: false. You can always enable math on per page.
 use = "mathjax"  # options: "katex", "mathjax". default is "katex".
-
-
-[[socialIcons]]
-icon = "fab fa-linkedin"
-title = "Linkedin"
-url = "https://www.linkedin.com/in/nima-manafzadeh-dizbin-02174b74/"
-
-[[socialIcons]]
-icon = "fab fa-github"
-title = "GitHub"
-url = "https://github.com/nimaman"
-
-[[socialIcons]]
-icon = "fab fa-instagram"
-title = "instagram"
-url = "https://www.instagram.com/nima_manaf/"
-
-[[socialIcons]]
-icon = "fas fa-envelope"
-title = "e-mail"
-url = "mailto:nima.manaf8@gmail.com"
