@@ -4,7 +4,7 @@ title: Mean Absorbing Time of a Two dimensional Random Walk
 date: 2021-12-03
 description: Mean Absorbing Time of a Two dimensional Random Walk
 math: true
-draft: true
+draft: false
 ---
 
 # Question
@@ -79,14 +79,22 @@ $$
 $$
 where \\(|i|, |j| \geq 1\\). I cluster the states into the following sets:
 
+
 $$
 \begin{aligned}
-    Z^{0} &=  \{(0, 0)\}, \\\\\\ 
-    Z^{-1} &=  \{(1, 0), (-1, 0), (0, 1), (0, -1)\}, \\\\\\
-    Z^{-2} &=  \{(1, 1), (1, -1), (-1, 1), (-1, -1)\},  \\\\\\
-    Z^{d} &=  \{(i, j): |i - i^N| + |j - j^N| = d \},  d\geq 1.
+ AR(p): Y_i &= c + \epsilon_i + \phi_i Y_{i-1} \dots \\
+ Y_{i} &= c + \phi_i Y_{i-1} \dots
 \end{aligned}
 $$
+
+
+\begin{align*}
+    Z^{0} &=  \{(0, 0)\}, \\ 
+    Z^{-1} &=  \{(1, 0), (-1, 0), (0, 1), (0, -1)\}, \\
+    Z^{-2} &=  \{(1, 1), (1, -1), (-1, 1), (-1, -1)\}, \\
+    Z^{d} &=  \{(i, j): |i - i^N| + |j - j^N| = d \},  d\geq 1.
+\end{align*}
+
 
 $$
 \begin{aligned}
