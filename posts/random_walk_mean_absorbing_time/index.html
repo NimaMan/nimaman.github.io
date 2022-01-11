@@ -1,0 +1,463 @@
+<!doctype html><html dir=ltr lang=en data-theme><head>
+<title>
+Nima Manafzadeh Dizbin
+|
+Mean Absorbing Time of a Two dimensional Random Walk
+</title>
+<meta charset=utf-8><meta name=generator content="Hugo 0.91.2"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=description content="
+      Mean Absorbing Time of a Two dimensional Random Walk
+
+
+    ">
+<meta name=google-site-verification content="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789">
+<link rel=stylesheet href=/css/main.min.2ab7b06ebbf5efe8e3c4bcc83ff9b2c00b8a1b8caa4b3457311f64b4516d163a.css integrity="sha256-Krewbrv17+jjxLzIP/mywAuKG4yqSzRXMR9ktFFtFjo=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/css/markupHighlight.min.058b31f17db60602cc415fd63b0427e7932fbf35c70d8e341a4c39385f5f6f3e.css integrity="sha256-BYsx8X22BgLMQV/WOwQn55MvvzXHDY40Gkw5OF9fbz4=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous>
+<link rel="shortcut icon" href=/favicon.ico type=image/x-icon>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=canonical href=https://nimaman.github.io/posts/random_walk_mean_absorbing_time/>
+<script type=text/javascript src=/js/anatole-header.min.2a2cd9614b7d007dfbb75e8da19e3a0fa872ceab53c6d000c00b7a0c89b85bfc.js integrity="sha256-KizZYUt9AH37t16NoZ46D6hyzqtTxtAAwAt6DIm4W/w=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.7fd87181cdd7e8413aa64b6867bb32f3a8dc242e684fc7d5bbb9f600dbc2b6eb.js integrity="sha256-f9hxgc3X6EE6pktoZ7sy86jcJC5oT8fVu7n2ANvCtus=" crossorigin=anonymous></script>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Mean Absorbing Time of a Two dimensional Random Walk">
+<meta name=twitter:description content="Mean Absorbing Time of a Two dimensional Random Walk">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Mean Absorbing Time of a Two dimensional Random Walk","headline":"Mean Absorbing Time of a Two dimensional Random Walk","alternativeHeadline":"","description":"
+      Mean Absorbing Time of a Two dimensional Random Walk
+
+
+    ","inLanguage":"en","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nimaman.github.io\/posts\/random_walk_mean_absorbing_time\/"},"author":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"creator":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"accountablePerson":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"copyrightHolder":{"@type":"Person","name":"Nima Manafzadeh Dizbin"},"copyrightYear":"2021","dateCreated":"2021-12-03T00:00:00.00Z","datePublished":"2021-12-03T00:00:00.00Z","dateModified":"2021-12-03T00:00:00.00Z","publisher":{"@type":"Organization","name":"Nima Manafzadeh Dizbin","url":"https://nimaman.github.io","logo":{"@type":"ImageObject","url":"https:\/\/nimaman.github.iofavicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/nimaman.github.io\/posts\/random_walk_mean_absorbing_time\/","wordCount":"1836","genre":[],"keywords":[]}</script>
+</head>
+<body>
+<header><div class="page-top
+animated fadeInDown">
+<a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false>
+<span aria-hidden=true></span>
+<span aria-hidden=true></span>
+<span aria-hidden=true></span>
+</a>
+<nav>
+<ul class=nav__list id=navMenu>
+<div class=nav__links>
+<li>
+<a href=/ title>Home</a>
+</li>
+<li>
+<a href=/posts/ title>Posts</a>
+</li>
+<li>
+<a href=/cv/ title>CV</a>
+</li>
+</div>
+<ul>
+<li>
+<a class=theme-switch title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</ul>
+</nav>
+</div>
+</header>
+<div class=wrapper>
+<aside><div class="sidebar
+animated fadeInDown">
+<div class=sidebar__content>
+<div class=logo-title>
+<div class=title>
+<img src=/images/ben2_3.png alt="profile picture">
+<h3 title><a href=/>I'm Nima</a></h3>
+<div class=description>
+<p> </p>
+</div>
+</div>
+</div>
+<ul class=social-links>
+</ul>
+</div><footer class="footer footer--sidebar">
+<div class=by_farbox>
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Nima Manafzadeh Dizbin
+2022
+</li>
+</ul>
+</div>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I=" crossorigin=anonymous></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css integrity=sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js integrity=sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js integrity=sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-123-45','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+</div>
+</aside>
+<main>
+<div class=autopagerize_page_element>
+<div class=content>
+<div class="post
+animated fadeInDown">
+<div class=post-content>
+<div class=post-title>
+<h1>Mean Absorbing Time of a Two dimensional Random Walk</h1>
+</div><h1 id=question>Question</h1>
+<p>An ant leaves its anthill in order to forage for food. It moves with the
+speed of 1 unit per time step, but it doesn’t know where to go, therefore
+every time step it moves randomly 1 unit directly north, south, east or west
+with equal probability.</p>
+<ol>
+<li>
+<p>If the food is located on east-west lines 2 units to the north and 2 units to
+the south, as well as on north-south lines 2 units to the east and 2 units to
+the west from the anthill, how long will it take the ant to reach it on
+average?</p>
+</li>
+<li>
+<p>What is the average time the ant will reach food if it is located
+only on a diagonal line passing through (1, 0) and (0, 1) points?</p>
+</li>
+<li>
+<p>Can you write a program that comes up with an estimate of average
+time to find food for any closed boundary around the anthill?</p>
+</li>
+</ol>
+<h1 id=solution>Solution</h1>
+<p>I am not sure whether the food is located on the set of points in \({(0, 2), (0, -2), (2, 0), (-2, 0)}\) or horizontal and vertical lines
+passing through these points. If the question is asking for the mean time
+to reach the lines passing through these points the answer is pretty straightforward.
+It can be found using the code for solving question number three which
+solves a set of linear equations for the mean time to get absorbed into
+states outside a given boundary. Otherwise, I solve this question in the following way.</p>
+<p>Let \(s_t = (i_t, j_t)\) denote the distance of the ant on the
+east-west and south-north directions at time t where
+\(t \in {0, 1, 2, 3, \dots} \) denotes the number of time steps passed
+since the ant has started moving. Notice that the movement of the ant
+has a Markovian property as the position of the ant only depends on its
+latest position. Mathematically speaking:</p>
+<p>$$
+P \left(s_{t+1}=(i_{t+1}, j_{t+1}) | s_{t}, s_{t-1}, s_{0}\right) = P \left(s_{t+1}=(i_{t+1}, j_{t+1}) | s_{t}\right).
+$$
+Markovian property states that regardless of the history of the
+movements of the ant the mean number of steps to enter a given state is
+only dependent on the current state or position of the ant. I will use
+this property in calculating the time it takes for the ant to reach the
+food on average starting from a given position.</p>
+<h2 id=question-1>Question 1</h2>
+<p>Let \( Z^{A} = {(0, 2), (0, -2), (2, 0), (-2, 0) } \) be the set of
+coordinates where the food is located and
+\( V(s) = \mathop{\mathrm{\mathbb{E}}}\left[\min{n: s_n \in Z^{A}|s_0=s} \right], \)
+be the firs time that the ant enters a state in \((Z^{A}) \) (the time that
+the ant reaches the food) starting from the state \( s = (i, j)\). In
+order to find the mean number of steps to reach the food, I condition on
+the current state of the ant. Assume that the ant is currently in state
+\((i, j) \notin Z^{A}\). The mean number of steps for the ant to enter a
+state in \(Z^{A} \) is equal to taking one step in a random direction
+plus the mean number of steps to enter \(Z^{A}\) from the new
+state. Since we move in each direction randomly with probability
+\(\frac{1}{4}\) we can write:
+$$
+V((i, j)) = 1 + \frac{1}{4} V((i+1, j)) + \frac{1}{4} V((i-1, j)) + \frac{1}{4} + V((i, j+1)) + \frac{1}{4}V((i, j-1)).
+$$
+We are interested in finding \(V((0, 0))\) to calculate the mean number
+of steps for the ant to reach a food. We need to solve the two-dimensional recursive equations given in the above Equation
+for \(i, j \in { -\infty, \dots, +\infty}\) to calculate \(V((0, 0))\).
+Solving these equations maybe cumbersome. Hence, I will partition the state
+space into a set of points that have the same distance to the closest
+point in \(Z^A\) to simplify the problem. Define \((i^N, j^N)\) as the
+nearest point in \(Z^A\ \) to position \((i, j)\)
+$$
+(i^N, j^N) = \mathop{\mathrm{arg,min}}_{(u, v) \in Z^{A}} |u - i| + |v - j|,
+$$
+where \(|i|, |j| \geq 1\). I cluster the states into the following sets:</p>
+<p>$$
+\begin{aligned}
+AR(p): Y_i &= c + \epsilon_i + \phi_i Y_{i-1} \dots \
+Y_{i} &= c + \phi_i Y_{i-1} \dots
+\end{aligned}
+$$</p>
+<p>\begin{align*}
+Z^{0} &= {(0, 0)}, \
+Z^{-1} &= {(1, 0), (-1, 0), (0, 1), (0, -1)}, \
+Z^{-2} &= {(1, 1), (1, -1), (-1, 1), (-1, -1)}, \
+Z^{d} &= {(i, j): |i - i^N| + |j - j^N| = d }, d\geq 1.
+\end{align*}</p>
+<p>$$
+\begin{aligned}
+2x+3 &= 7 & 2x+3-3 &= 7-3 \\\
+2x &= 4 & \frac{2x}2 &= \frac{4}{2}\\\
+x &= 2
+\end{aligned}
+$$</p>
+<p>One-step transition from each of these sets results in moving to the
+neighboring sets. Following the Markovian property and symmetric nature
+of the problem \(V^\gamma = V((i, j)), \ \forall (i, j) \in Z^\gamma\)
+where \(\gamma \in {-2, -1, 0, 1, 2, \dots }\). The mean number of steps
+to enter \(Z^A\) starting from a point in \(Z^\gamma\) can be written as</p>
+<p>$$
+\begin{align}\label{r1}
+V^{-2} &= 1 + \frac{1}{2}V^{-1} + \frac{1}{2}V^{1}, \nonumber \
+V^{-1} &= 1 + \frac{1}{2}V^{-2} + \frac{1}{4}V^{0}, \nonumber \
+V^{0} &= 1 + V^{-1}, \nonumber \
+V^{1} &= 1 + \frac{1}{2}V^{-2} + \frac{1}{2}V^{2},\nonumber \
+V^{d} &= 1 + \frac{1}{2}V^{d-1} + \frac{1}{2}V^{d+1}, \ \forall \in {2, 3, \dots}.
+\end{align}
+$$
+After some algebra these equations can be re-written in the following
+form:
+$$
+\begin{align}
+\label{r12}
+V^{-1} &= \frac{2}{3}V^{-2} + \frac{5}{3}, \nonumber\
+V^{-2} &= \frac{3}{4}V^{1} + \frac{5+6}{4}, \nonumber\
+V^{1} &= \frac{4}{5}V^{2} + \frac{5+6+8}{5}, \nonumber\
+V^{n} &= \frac{n+3}{n+4}V^{n+1} + \frac{5+\sum\limits_{j=0}^{n} (6+2(n-j))} {n+4}.
+\end{align}
+$$
+The summation term in the above equation can be further simplified as</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>\[\alpha (n) = 5+\sum\limits_{j=0}^{n} (6+2(n-j)) = n^2 +7n + 11.\]
+</code></pre></div><p>Re-writing <code>\(V^1\)</code> as a function of <code>\(V^n\)</code> we get</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>\[\label{oneton}
+    V^1 = \frac{4}{n+3} V^n + 4\sum\limits_{j=1}^{n-1} \frac{\alpha(j)}{(j+3)(j+4)} =  \frac{4}{n+3} V^n + 4\sum\limits_{j=1}^{n-1} \frac{\alpha(j)}{\alpha(j)+1}.\]
+</code></pre></div><p>The summation <code>\(\sum\limits_{j=1}^{n-1} \frac{\alpha(j)}{\alpha(j)+1}\)</code>
+in Equation (<a href=#oneton>[oneton]</a>) diverges to <code>\(\infty\)</code> as we let
+<code>\(n\to\infty\)</code>. That is to say that the average number of steps to enter
+an absorbing state in <code>\(Z^A\)</code> starting from a point in <code>\(Z^1\)</code>, is the
+summation of infinity and the average number of steps to enter (Z^A)
+starting from a point in <code>\(Z^\infty\)</code> divided by <code>\((n+3)\)</code>. The result
+of this summation is equal to infinity. Using Equation (<a href=#r1>[r1]</a>)
+<code>\(V^0\)</code> will be equal to infinity as well. Hence, starting from the
+anthill the mean number of steps to find a food is infinity.</p>
+<h2 id=question-2>Question 2</h2>
+<p>I take a similar approach to the question one to find the mean number of
+steps to reach the food located on the line (i+j = 1) starting from
+((0, 0)). I cluster the states below the line into the parallel line
+that are distance (d) away from (i+j = 1).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>\[\begin{aligned}
+    Z^{d} &amp;=  \{(i, j): i + j = 1 - d \}, \ for \ d \in \{1, 2, 3, \dots\} \end{aligned}\]
+</code></pre></div><p>Starting from a state in (Z^d) with probability (\frac{1}{2}) we
+move to a state in (Z^{d+1}) and with probability (\frac{1}{2}) to a
+state in (Z^{d-1}). Similar to the previous question, letting (V^d)
+be the mean number of steps to reach a food starting from a point in</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>\(Z^d\), we can write \[\begin{aligned}
+\label{r21}
+    V^{1} &amp;=  1 + \frac{1}{2}V^{2}, \nonumber\\
+    V^{d} &amp;=  1 + \frac{1}{2}V^{d-1} + \frac{1}{2}V^{d+1}, \ \forall \in \{2, 3, \dots\}.\end{aligned}\]
+</code></pre></div><p>Re-writing (V^{1}) as a function of (V^n) we get the
+[\label{one2n2}
+V^1 = n-1 + \frac{1}{n} V^n.] Equation (<a href=#one2n2>[one2n2]</a>)
+means that the average number of steps to enter any point on line
+(i+j = 1) starting from a point on set (Z^1) is the sum of infinity
+and mean number of time to hit the line starting from a point in
+(Z^\infty) divided by (n). Hence, the mean number of points to reach
+the food starting from ((0, 0)) is infinity.</p>
+<h2 id=question-3>Question 3</h2>
+<p>The mean number of steps to reach the food outside the boundary given in
+question number three is 14. The code below can be used to find the
+number of steps to reach the food using simulation and analytic methods.
+The number of steps to reach the food can be generated either serially
+or in parallel using the simulation.</p>
+<p>It is also possible to find the exact solution by extracting the states
+((i, j)) inside the boundary, generating the probability transition
+matrix of the transient states, and solving the set of equations in the
+form of Equation (<a href=#twodmean>[twodmean]</a>).</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>
+
+
+<span class=k>class</span> <span class=nc>RandomWalK2D</span><span class=p>():</span>
+    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=p>):</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>p</span> <span class=o>=</span> <span class=mi>1</span><span class=o>/</span><span class=mi>4</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>max_number_steps</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=mf>1e8</span><span class=p>)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>init_state</span> <span class=o>=</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>  <span class=c1># (x, y)</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>states_trajectory</span> <span class=o>=</span> <span class=p>[</span><span class=bp>self</span><span class=o>.</span><span class=n>init_state</span><span class=p>]</span>
+        <span class=bp>self</span><span class=o>.</span><span class=n>absorbing_states</span> <span class=o>=</span> <span class=p>{(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=p>),</span> <span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=o>-</span><span class=mi>2</span><span class=p>),</span> <span class=p>(</span><span class=o>-</span><span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=p>),</span> <span class=p>(</span><span class=o>-</span><span class=mi>2</span><span class=p>,</span> <span class=o>-</span><span class=mi>2</span><span class=p>)}</span>
+    
+    <span class=nd>@staticmethod</span>
+    <span class=k>def</span> <span class=nf>puzzle_1_boundry_func</span><span class=p>(</span><span class=n>state</span><span class=p>):</span>
+        
+        <span class=k>return</span> <span class=p>((</span><span class=nb>abs</span><span class=p>(</span><span class=n>state</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span> <span class=o>&lt;</span> <span class=mi>2</span><span class=p>)</span> <span class=ow>and</span> <span class=p>(</span><span class=nb>abs</span><span class=p>(</span><span class=n>state</span><span class=p>[</span><span class=mi>1</span><span class=p>])</span> <span class=o>&lt;</span> <span class=mi>2</span><span class=p>))</span>
+    
+    <span class=nd>@staticmethod</span>
+    <span class=k>def</span> <span class=nf>puzzle_3_boundry_func</span><span class=p>(</span><span class=n>state</span><span class=p>):</span>
+        
+        <span class=k>return</span> <span class=p>((</span><span class=n>state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>-</span><span class=mf>0.25</span><span class=p>)</span><span class=o>/</span><span class=mi>3</span><span class=p>)</span><span class=o>**</span><span class=mi>2</span> <span class=o>+</span> <span class=p>((</span><span class=n>state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=o>-</span><span class=mf>0.25</span><span class=p>)</span><span class=o>/</span><span class=mi>4</span><span class=p>)</span><span class=o>**</span><span class=mi>2</span> <span class=o>&lt;</span> <span class=mi>1</span>
+    
+    <span class=k>def</span> <span class=nf>one_step_transition</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>current_state</span><span class=p>):</span>
+        <span class=n>rnd</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>random</span><span class=o>.</span><span class=n>random</span><span class=p>()</span>
+        <span class=n>new_state</span> <span class=o>=</span> <span class=p>[</span><span class=kc>None</span><span class=p>,</span> <span class=kc>None</span><span class=p>]</span>
+        <span class=k>if</span> <span class=n>rnd</span> <span class=o>&lt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>p</span><span class=p>:</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>+</span> <span class=mi>1</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span>
+        <span class=k>elif</span> <span class=p>(</span><span class=n>rnd</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>p</span><span class=p>)</span> <span class=o>&amp;</span> <span class=p>(</span><span class=n>rnd</span> <span class=o>&lt;</span> <span class=mi>2</span><span class=o>*</span><span class=bp>self</span><span class=o>.</span><span class=n>p</span><span class=p>):</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>-</span> <span class=mi>1</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span>
+        <span class=k>elif</span> <span class=p>(</span><span class=n>rnd</span> <span class=o>&gt;=</span> <span class=mi>2</span><span class=o>*</span><span class=bp>self</span><span class=o>.</span><span class=n>p</span><span class=p>)</span> <span class=o>&amp;</span> <span class=p>(</span><span class=n>rnd</span> <span class=o>&lt;</span> <span class=mi>3</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>p</span><span class=p>):</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=mi>1</span>
+        <span class=k>else</span><span class=p>:</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+            <span class=n>new_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>-</span> <span class=mi>1</span>
+
+        <span class=k>return</span> <span class=nb>tuple</span><span class=p>(</span><span class=n>new_state</span><span class=p>)</span>
+
+    <span class=k>def</span> <span class=nf>get_num_steps_to_absorbing_states_in_set</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>track_states</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span>
+                                                 <span class=n>init_state</span><span class=o>=</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)):</span>
+        <span class=n>num_steps</span> <span class=o>=</span> <span class=mi>0</span>
+        <span class=n>current_state</span> <span class=o>=</span> <span class=n>init_state</span>
+        <span class=k>while</span> <span class=n>current_state</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>absorbing_states</span><span class=p>:</span>
+            <span class=n>current_state</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>one_step_transition</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>if</span> <span class=n>track_states</span><span class=p>:</span>
+                <span class=bp>self</span><span class=o>.</span><span class=n>states_trajectory</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>if</span> <span class=n>num_steps</span> <span class=o>&gt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>max_number_steps</span><span class=p>:</span>
+                <span class=k>return</span> <span class=n>num_steps</span>
+            <span class=n>num_steps</span> <span class=o>+=</span> <span class=mi>1</span>
+            
+        <span class=k>return</span> <span class=n>num_steps</span>
+
+    
+    <span class=k>def</span> <span class=nf>get_num_steps_to_absorbing_states_on_linear_line</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>p1</span><span class=o>=</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>),</span>
+                                                         <span class=n>p2</span><span class=o>=</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> 
+                                                         <span class=n>track_states</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span>
+                                                         <span class=n>init_state</span><span class=o>=</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)):</span>
+        <span class=n>line_slope</span> <span class=o>=</span> <span class=p>(</span><span class=n>p1</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=o>-</span> <span class=n>p2</span><span class=p>[</span><span class=mi>1</span><span class=p>])</span><span class=o>/</span><span class=p>(</span><span class=n>p1</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>-</span> <span class=n>p2</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
+        <span class=n>line_intercept</span> <span class=o>=</span> <span class=n>p1</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>-</span> <span class=n>p1</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>*</span> <span class=n>line_slope</span>
+        
+        <span class=n>num_steps</span> <span class=o>=</span> <span class=mi>0</span>
+        <span class=n>current_state</span> <span class=o>=</span> <span class=n>init_state</span>
+        <span class=k>while</span> <span class=p>(</span><span class=n>current_state</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>-</span> <span class=n>current_state</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>*</span><span class=n>line_slope</span><span class=p>)</span> <span class=o>!=</span> <span class=n>line_intercept</span><span class=p>:</span>
+            <span class=n>current_state</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>one_step_transition</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>if</span> <span class=n>track_states</span><span class=p>:</span>
+                <span class=bp>self</span><span class=o>.</span><span class=n>states_trajectory</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>if</span> <span class=n>num_steps</span> <span class=o>&gt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>max_number_steps</span><span class=p>:</span>
+                <span class=k>return</span> <span class=n>num_steps</span>
+            <span class=n>num_steps</span> <span class=o>+=</span> <span class=mi>1</span>
+        <span class=k>return</span> <span class=n>num_steps</span>     
+
+    <span class=k>def</span> <span class=nf>get_num_steps_to_absorbing_states_outside_boiundry</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> 
+                                                            <span class=n>track_states</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span>
+                                                            <span class=n>init_state</span><span class=o>=</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)):</span>
+        
+        <span class=n>num_steps</span> <span class=o>=</span> <span class=mi>0</span>
+        <span class=n>current_state</span> <span class=o>=</span> <span class=n>init_state</span>
+        <span class=k>while</span> <span class=bp>self</span><span class=o>.</span><span class=n>puzzle_3_boundry_func</span><span class=p>(</span><span class=n>current_state</span><span class=p>):</span>
+            <span class=n>current_state</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>one_step_transition</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>if</span> <span class=n>track_states</span><span class=p>:</span>
+                <span class=bp>self</span><span class=o>.</span><span class=n>states_trajectory</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>if</span> <span class=n>num_steps</span> <span class=o>&gt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>max_number_steps</span><span class=p>:</span>
+                <span class=k>return</span> <span class=n>num_steps</span>
+            <span class=n>num_steps</span> <span class=o>+=</span> <span class=mi>1</span>
+            
+        <span class=k>return</span> <span class=n>num_steps</span>
+    
+     <span class=k>def</span> <span class=nf>get_neighboring_states</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>current_state</span><span class=p>):</span>
+        <span class=n>i</span><span class=p>,</span> <span class=n>j</span> <span class=o>=</span> <span class=n>current_state</span>
+        
+        <span class=k>return</span> <span class=p>((</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=n>j</span><span class=p>),</span> <span class=p>(</span><span class=n>i</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span> <span class=n>j</span><span class=p>),</span> <span class=p>(</span><span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=o>-</span><span class=mi>1</span><span class=p>),</span> <span class=p>(</span><span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=o>+</span><span class=mi>1</span><span class=p>))</span>
+        
+    <span class=k>def</span> <span class=nf>get_states_inside_baoundry</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>boundry_func</span><span class=p>):</span>
+        <span class=n>current_state</span> <span class=o>=</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>
+        <span class=n>is_explored</span> <span class=o>=</span> <span class=p>[]</span>
+        <span class=n>to_explore</span> <span class=o>=</span> <span class=p>[</span><span class=n>current_state</span><span class=p>]</span>
+        <span class=n>states_in_boundry</span> <span class=o>=</span> <span class=p>{(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)}</span>
+        <span class=k>while</span> <span class=kc>True</span><span class=p>:</span>
+            <span class=n>new_states</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_neighboring_states</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>for</span> <span class=n>state</span> <span class=ow>in</span> <span class=n>new_states</span><span class=p>:</span>
+                <span class=k>if</span> <span class=n>boundry_func</span><span class=p>(</span><span class=n>state</span><span class=p>):</span>
+                    <span class=n>states_in_boundry</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+                    <span class=k>if</span> <span class=n>state</span> <span class=ow>not</span> <span class=ow>in</span> <span class=n>is_explored</span><span class=p>:</span>
+                        <span class=n>to_explore</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+                        
+            <span class=n>to_explore</span><span class=o>.</span><span class=n>remove</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=n>is_explored</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>current_state</span><span class=p>)</span>
+            <span class=k>if</span> <span class=nb>len</span><span class=p>(</span><span class=n>to_explore</span><span class=p>)</span><span class=o>&gt;=</span><span class=mi>1</span><span class=p>:</span>
+                <span class=n>current_state</span> <span class=o>=</span> <span class=n>to_explore</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span>
+            <span class=k>else</span><span class=p>:</span>
+                <span class=k>break</span> 
+            
+        <span class=k>return</span> <span class=n>states_in_boundry</span>
+    
+    <span class=k>def</span> <span class=nf>get_states_in_boundry_transition_matrix</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>boundry_func</span><span class=p>):</span>
+        <span class=n>states_in_boundry</span> <span class=o>=</span> <span class=nb>list</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>get_states_inside_baoundry</span><span class=p>(</span><span class=n>boundry_func</span><span class=p>))</span>
+        
+        <span class=n>probability_transition</span> <span class=o>=</span> <span class=n>np</span><span class=o>.</span><span class=n>zeros</span><span class=p>((</span><span class=nb>len</span><span class=p>(</span><span class=n>states_in_boundry</span><span class=p>),</span> 
+                                           <span class=nb>len</span><span class=p>(</span><span class=n>states_in_boundry</span><span class=p>)))</span>
+        
+        <span class=k>for</span> <span class=n>state_idx</span><span class=p>,</span> <span class=n>state</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=n>states_in_boundry</span><span class=p>):</span>
+            <span class=n>neighbor_states</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_neighboring_states</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+            <span class=n>p</span> <span class=o>=</span> <span class=mi>0</span>
+            <span class=k>for</span> <span class=n>ns</span> <span class=ow>in</span> <span class=n>neighbor_states</span><span class=p>:</span>
+                <span class=k>if</span> <span class=n>ns</span> <span class=ow>in</span> <span class=n>states_in_boundry</span><span class=p>:</span>
+                    <span class=n>ns_idx</span> <span class=o>=</span> <span class=n>states_in_boundry</span><span class=o>.</span><span class=n>index</span><span class=p>(</span><span class=n>ns</span><span class=p>)</span>
+                    <span class=n>probability_transition</span><span class=p>[</span><span class=n>state_idx</span><span class=p>,</span> <span class=n>ns_idx</span><span class=p>]</span> <span class=o>=</span> <span class=mf>0.25</span>
+                    
+        <span class=k>return</span> <span class=n>probability_transition</span><span class=p>,</span> <span class=n>states_in_boundry</span>
+    
+    <span class=k>def</span> <span class=nf>get_mean_time_to_boundry_func_analytic</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>boundry_func</span><span class=p>):</span>
+        <span class=n>p</span><span class=p>,</span> <span class=n>s</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_states_in_boundry_transition_matrix</span><span class=p>(</span><span class=n>boundry_func</span><span class=p>)</span>
+        <span class=n>n</span> <span class=o>=</span> <span class=n>p</span><span class=o>.</span><span class=n>shape</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+        <span class=n>origin_idx</span> <span class=o>=</span> <span class=n>s</span><span class=o>.</span><span class=n>index</span><span class=p>((</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>))</span>
+        <span class=k>return</span> <span class=n>np</span><span class=o>.</span><span class=n>linalg</span><span class=o>.</span><span class=n>inv</span><span class=p>(</span><span class=n>np</span><span class=o>.</span><span class=n>eye</span><span class=p>(</span><span class=n>n</span><span class=p>)</span> <span class=o>-</span> <span class=n>p</span><span class=p>)[</span><span class=n>origin_idx</span><span class=p>]</span><span class=o>.</span><span class=n>sum</span><span class=p>()</span>
+    
+    <span class=k>def</span> <span class=nf>run_experiments_parallel</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>experiment_func</span><span class=p>,</span> <span class=n>num_samples</span><span class=p>,</span> 
+                                 <span class=n>mp_num_processors</span><span class=o>=</span><span class=mi>4</span><span class=p>):</span>
+        <span class=kn>import</span> <span class=nn>multiprocessing</span> <span class=k>as</span> <span class=nn>mp</span> 
+        <span class=n>pool</span> <span class=o>=</span> <span class=n>mp</span><span class=o>.</span><span class=n>Pool</span><span class=p>(</span><span class=n>processes</span><span class=o>=</span><span class=n>mp_num_processors</span><span class=p>)</span>
+        <span class=n>num_steps_samples</span> <span class=o>=</span> <span class=p>[</span>
+            <span class=n>pool</span><span class=o>.</span><span class=n>apply_async</span><span class=p>(</span><span class=n>experiment_func</span><span class=p>)</span>
+            <span class=k>for</span> <span class=n>idx</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>num_samples</span><span class=p>)</span>
+            <span class=p>]</span>
+        
+        <span class=n>num_steps_samples</span> <span class=o>=</span> <span class=p>[</span><span class=n>result</span><span class=o>.</span><span class=n>get</span><span class=p>()</span> <span class=k>for</span> <span class=n>result</span> <span class=ow>in</span> <span class=n>num_steps_samples</span><span class=p>]</span>
+            
+        <span class=k>return</span> <span class=n>num_steps_samples</span>
+    
+    <span class=k>def</span> <span class=nf>run_experiments_serial</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>experiment_func</span><span class=p>,</span> <span class=n>num_samples</span><span class=p>):</span>
+        <span class=n>num_steps_samples</span> <span class=o>=</span> <span class=p>[]</span>
+        <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>num_samples</span><span class=p>):</span>
+            <span class=n>num_steps</span> <span class=o>=</span> <span class=n>experiment_func</span><span class=p>()</span>
+            <span class=n>num_steps_samples</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>num_steps</span><span class=p>)</span>
+        
+        <span class=k>return</span> <span class=n>num_steps_samples</span>
+    
+
+<span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+    
+    <span class=n>rw</span> <span class=o>=</span> <span class=n>RandomWalK2D</span><span class=p>()</span>
+    <span class=n>boundry_func_1</span> <span class=o>=</span> <span class=n>rw</span><span class=o>.</span><span class=n>puzzle_1_boundry_func</span>
+    <span class=n>puzzle_1_mean_time</span> <span class=o>=</span> <span class=n>rw</span><span class=o>.</span><span class=n>get_mean_time_to_boundry_func_analytic</span><span class=p>(</span><span class=n>boundry_func</span><span class=p>)</span>
+    
+    <span class=s2>&#34;&#34;&#34;
+</span><span class=s2>    experiment_func = rw.get_num_steps_to_absorbing_states_outside_boundry
+</span><span class=s2>    num_samples = int(1e6)
+</span><span class=s2>    
+</span><span class=s2>    samples = rw.run_experiments_parallel(experiment_func, num_samples, mp_num_processors=4)
+</span><span class=s2>    mean_number_of_steps = np.mean(samples)
+</span><span class=s2>    boundry_func_3 = rw.puzzle_3_boundry_func
+</span><span class=s2>    puzzle_3_mean_time = rw.get_mean_time_to_boundry_func_analytic(boundry_func_3)
+</span><span class=s2>    assert  np.isclose(mean_number_of_steps, puzzle_3_mean_time, rtol=1e-3)
+</span><span class=s2>    &#34;&#34;&#34;</span>
+</code></pre></div></div>
+<div class=post-footer>
+<div class=info>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div><footer class="footer footer--base">
+<div class=by_farbox>
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Nima Manafzadeh Dizbin
+2022
+</li>
+</ul>
+</div>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.71100d84fab0ad794b8399a66ac810700cc78d703f715dc10af4d7ba7b761362.js integrity="sha256-cRANhPqwrXlLg5mmasgQcAzHjXA/cV3BCvTXunt2E2I=" crossorigin=anonymous></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css integrity=sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js integrity=sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js integrity=sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-123-45','auto'),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+</body>
+</html>
