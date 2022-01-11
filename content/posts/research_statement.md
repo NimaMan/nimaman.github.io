@@ -1,13 +1,12 @@
 
-
 ---
 author: Nima Manafzadeh Dizbin
-title: A Sumamry and Future Directions of My Research  
-date: 2021-12-12
+title: Summary and Future Directions of My Research  
+date: 2021-12-13
 description: A Sumamry and Future Directions of My Research 
 ---
 
-My primary and future research interests focus on the methodological areas of reinforcement learning and stochastic optimization with applications in inventory management, production planning, resource allocation, robotics, and healthcare operations.
+My primary and future research interests focus on the ***methodological areas of reinforcement learning and stochastic optimization with applications in inventory management, production planning, resource allocation, robotics, and healthcare operations***.
 
 With the advances in data collection methods, decision-makers gather a massive amount of data describing the environment of the operations. The objective of data collection is to transform it into useful information for improved decision-making. However, translation of the swell of data into actionable information is challenging in operational problems. The recent advances in Machine Learning (ML) introduce the possibility for improving the decision-making in these problems. However, current ML algorithms are not directly applicable to these problems. My research bridges this gap by focusing on two different threads. First, developing intelligent data-driven decision-making algorithms. Second, applying the ML and optimization methods in solving challenging real-world problems.   
 
