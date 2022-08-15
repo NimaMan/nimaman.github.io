@@ -3,9 +3,9 @@
 author: Nima Manafzadeh Dizbin
 title: Overview of My Ph.D. Thesis
 date: 2021-11-21
-description: Overview of My Ph.D. Thesis
+description: Overview of My Ph.D. Thesis 
 ---
-### *** You can find the whole thesis in [this link](https://tez.yok.gov.tr/UlusalTezMerkezi/TezGoster?key=fl0Kw4p1rmMDotyKRdYv1CSrp7SvlWFT-LfeLIU-b2WRY9VnHPnwXuKKEPgreXIM) ***
+### Title: [Modelling and Control of Production Systems based on Observed Inter-event Times: An Analytical and Empirical Investigation](https://arxiv.org/abs/2204.01079)
 
 Technological advances allow manufacturers to collect and access data from a production system more easily and effectively. The objective of data collection is deploying the collected data in developing decision support systems for performance evaluation, problem identification, and production control. As a result, data-driven modeling and control methods are now considered as enabling technologies to address the technology challenges for implementing [factory of the future](https://www.iec.ch/basecamp/factory-future). 
 
