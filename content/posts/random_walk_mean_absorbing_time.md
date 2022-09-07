@@ -1,7 +1,7 @@
 ---
 author: Nima Manafzadeh Dizbin
-title: Mean Absorbing Time of a Two dimensional Random Walk
-date: 2021-12-03
+title: Optiver Quantitative Researcher Question - Mean Absorbing Time of a Two dimensional Random Walk
+date: 2022-09-03
 description: Mean Absorbing Time of a Two dimensional Random Walk
 math: true
 draft: false
