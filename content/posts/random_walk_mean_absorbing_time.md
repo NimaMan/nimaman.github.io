@@ -50,7 +50,7 @@ only dependent on the current state or position of the ant. I will use
 this property in calculating the time it takes for the ant to reach the
 food on average starting from a given position.
 
-## Question 1
+## Q1
 
 Let \\( Z^{A} = \{(0, 2), (0, -2), (2, 0), (-2, 0) \} \\) be the set of
 coordinates where the food is located and

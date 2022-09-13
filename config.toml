@@ -31,11 +31,11 @@ pygmentsCodefencesGuessSyntax = true
 
 
 [params]
-title = "I'm Nima"
+title = "Nima Man"
 author = "Nima Manafzadeh Dizbin"
 description = "  "
 profilePicture = "images/man.jpg"
-contentratio = 0.85
+contentratio = 0.8
 readMore = true
 googleSiteVerify = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
