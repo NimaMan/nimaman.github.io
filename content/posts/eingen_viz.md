@@ -1,6 +1,19 @@
-# Visualizing Eigenvalue Distributions through Matrix Evolution
+---
+author: Nima Manafzadeh Dizbin
+title: Visualizing Eigenvalue Distributions through Matrix Evolution
+date: 2023-10-06
+description: Visualizing Eigenvalue Distributions through Matrix Evolution
+math: true
+draft: false
+---
+
+
 
 In a delightful dive into the visual world of matrices and eigenvalues, I stumbled upon a [Twitter post](https://twitter.com/S_Conradi/status/1710009859649806438) showcasing a fascinating visualization of eigenvalue distributions evolving over a parameter space. Intrigued by the aesthetics and the mathematical underpinnings, I decided to recreate and explore this visual journey using Python.
+
+
+- ![Animation 1](/gif/eigen_dist_1.gif)
+
 
 ## Unveiling the Mathematics
 
@@ -26,12 +39,16 @@ We define a matrix generation function. In this example, a 3x3 matrix is generat
 ```python
 import numpy as np
 
-def trigonometric_normal_matrix(t1, t2, x):
-    random_numbers = np.random.normal(loc=0, scale=1, size=(3, 3))
+def harmonic_matrix(t1, t2, x):
+    # Defining harmonic relationships
+    harmonics_t1 = np.array([t1, 2*t1, 3*t1])
+    harmonics_t2 = np.array([t2, 2*t2, 3*t2])
+    
+    # Creating a matrix using harmonic relationships
     matrix = np.array([
-        [np.sin(t1 + x) + random_numbers[0, 0], np.cos(t2 - x) + random_numbers[0, 1], np.sin(t2) + random_numbers[0, 2]],
-        [np.cos(t1 + x) + random_numbers[1, 0], np.sin(t2 - x) + random_numbers[1, 1], np.cos(t2) + random_numbers[1, 2]],
-        [np.sin(t1 - x) + random_numbers[2, 0], np.cos(t2 + x) + random_numbers[2, 1], np.sin(t2) + random_numbers[2, 2]]
+        [np.sin(harmonics_t1 * x), np.cos(harmonics_t2 * x), np.sin((harmonics_t1 + harmonics_t2) * x)],
+        [np.cos(harmonics_t1 * x), np.sin(harmonics_t2 * x), np.cos((harmonics_t1 + harmonics_t2) * x)],
+        [np.sin((harmonics_t1 - harmonics_t2) * x), np.cos((harmonics_t1 - harmonics_t2) * x), np.sin((harmonics_t1 + harmonics_t2) * x)]
     ])
     return matrix
 ```
@@ -45,14 +62,35 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from IPython.display import HTML
 
-def animate_eigens(matrix_func, x_range=np.arange(-10, 10.1, 0.1), sample_size=10000, filename='animation.gif'):
+def animate_eigens(matrix_func, x_range=np.arange(-np.pi, np.pi, np.pi/10), sample_size=10000,
+                   xylim=[-2, 2], filename=None):
     fig, ax = plt.subplots(figsize=(10,10))
-    scat = ax.scatter([], [], s=1, c=[], cmap=plt.cm.viridis, edgecolors=None, linewidth=0)
-    # ... rest of the function ...
+    scat = ax.scatter([], [], s=1, c=[], cmap=plt.cm.viridis, edgecolors=None, linewidth=0)  # Changed colormap here
 
-    ani.save(filename, writer='imagemagick', fps=15)
-    plt.close(fig)
-    return filename
+    def init():
+        ax.set_xlim(xylim)
+        ax.set_ylim(xylim)
+        ax.set_xlabel('Real')
+        ax.set_ylabel('Imaginary')
+        ax.set_title('Eigenvalue Distributions')
+        return scat,
+
+    def update(frame):
+        x = x_range[frame]
+        eigenvalues = np.empty((0,))
+        for _ in range(sample_size):
+            t1, t2 = np.random.uniform(-np.pi, np.pi, 2)
+            matrix = matrix_func(t1, t2, x)
+            eigenvalues = np.append(eigenvalues, np.linalg.eigvals(matrix))
+        scat.set_offsets(np.c_[eigenvalues.real, eigenvalues.imag])
+        scat.set_array(np.angle(eigenvalues))  # Color by phase
+        return scat,
+
+    ani = animation.FuncAnimation(fig, update, frames=len(x_range), init_func=init, blit=True, repeat=False)
+    if filename is not None:
+        ani.save(filename, writer='imagemagick', fps=15)
+    plt.close(fig)  # Close the figure to prevent displaying it inline
+    return HTML(ani.to_html5_video())
 
 # Generate and save the animation
 animate_eigens(trigonometric_normal_matrix)
