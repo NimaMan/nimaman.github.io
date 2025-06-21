@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Research - Nima Manaf, Ph.D.</title>
+    <meta name="description" content="Blockchain investigations and technical analysis of suspicious patterns on Ethereum">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+            padding: 8rem 0 4rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--warning) 0%, #f97316 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .alert-banner i {
+            margin-right: 0.5rem;
+        }
+
+        /* Investigations */
+        .investigations {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .investigation-card {
+            background: #ffffff;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .investigation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .investigation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .investigation-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .investigation-date {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        .investigation-status {
+            background: var(--warning);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .investigation-finding {
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.375rem;
+        }
+
+        .investigation-finding strong {
+            color: var(--gray-900);
+        }
+
+        .investigation-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--gray-700);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-300);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: var(--gray-50);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--gray-200);
+        }
+
+        .info-card h3 {
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            padding: 0.5rem 0;
+            color: var(--gray-600);
+        }
+
+        .info-card li:before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--gray-600);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .investigation-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .investigation-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Nima Manaf, Ph.D.</a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/posts/" class="nav-link">Articles</a></li>
+                <li><a href="/ethereum/" class="nav-link">Ethereum Research</a></li>
+                <li><a href="/cv/" class="nav-link">CV</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Ethereum Blockchain Investigations</h1>
+        <p>Technical analysis and investigations of suspicious patterns on the Ethereum blockchain</p>
+    </section>
+
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        Active Investigation: COLON Token Launch - Awaiting response from BuilderNet
+    </div>
+
+    <!-- Investigations -->
+    <section class="investigations">
+        <div class="investigation-card">
+            <div class="investigation-header">
+                <div>
+                    <h2 class="investigation-title">COLON Token Launch - Trading Pattern Investigation</h2>
+                    <p class="investigation-date">June 21, 2025 | Block 22750445</p>
+                </div>
+                <span class="investigation-status">Awaiting Response</span>
+            </div>
+            
+            <p>Investigation into how 68 coordinated wallets captured initial liquidity after a privately submitted transaction.</p>
+            
+            <div class="investigation-finding">
+                <strong>Key Finding:</strong> 68 brand-new wallets somehow knew exactly when to submit transactions after a privately-submitted "open trading" transaction, capturing the vast majority of initial liquidity. Etherscan shows no mempool confirmation time for the trigger transaction, proving it was submitted privately.
+            </div>
+            
+            <div class="investigation-actions">
+                <a href="/ethereum/investigations/colon-token-investigation/" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    View Full Investigation
+                </a>
+                <a href="https://etherscan.io/block/22750445" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-external-link-alt"></i>
+                    View on Etherscan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Investigation Methodology</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-database"></i> Data Source</h3>
+                    <ul>
+                        <li>Direct from Ethereum blockchain via local Reth node</li>
+                        <li>All claims backed by on-chain transaction hashes</li>
+                        <li>Independently verifiable data</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-chart-bar"></i> Analysis Methods</h3>
+                    <ul>
+                        <li>Statistical analysis of trading patterns</li>
+                        <li>Probability calculations for coordination</li>
+                        <li>Transaction timing and gas analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-bullseye"></i> Our Focus</h3>
+                    <ul>
+                        <li>Technical questions, not accusations</li>
+                        <li>Transparency in blockchain mechanics</li>
+                        <li>Fair markets for all participants</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Nima Manaf, Ph.D. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="mailto:nima.manaf8@gmail.com" style="color: var(--primary); text-decoration: none;">
+                Contact for blockchain investigations
+            </a>
+        </p>
+    </footer>
+</body>
+</html>

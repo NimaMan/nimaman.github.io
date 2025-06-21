@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLON Token Launch Investigation - Nima Manaf, Ph.D.</title>
+    <meta name="description" content="Technical investigation into how 68 coordinated wallets captured initial liquidity after a privately submitted transaction">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        /* Article */
+        .article {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .article-meta {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .article-description {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        /* Status Banner */
+        .status-banner {
+            background: linear-gradient(135deg, var(--warning) 0%, #f97316 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Content */
+        .article-content h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin: 2.5rem 0 1rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin: 2rem 0 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            color: var(--gray-700);
+            line-height: 1.8;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.5rem 2rem;
+            color: var(--gray-700);
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: var(--gray-900);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Key Finding Box */
+        .key-finding {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .key-finding h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .key-finding p {
+            color: white;
+            opacity: 0.95;
+            margin-bottom: 0;
+        }
+
+        /* Evidence Cards */
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .evidence-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .evidence-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .evidence-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        /* Transaction Table */
+        .tx-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.875rem;
+        }
+
+        .tx-table th {
+            background: var(--gray-50);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gray-700);
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .tx-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .tx-table tr:hover {
+            background: var(--gray-50);
+        }
+
+        /* Links */
+        .link-external {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .link-external:hover {
+            text-decoration: underline;
+        }
+
+        /* Questions Section */
+        .questions {
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .questions h3 {
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .questions ol {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .questions li {
+            margin-bottom: 1rem;
+            color: var(--gray-700);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+            padding: 3rem;
+            border-radius: 0.75rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--gray-600);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .evidence-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tx-table {
+                font-size: 0.75rem;
+            }
+            
+            .tx-table th, .tx-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Nima Manaf, Ph.D.</a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/posts/" class="nav-link">Articles</a></li>
+                <li><a href="/ethereum/" class="nav-link">Ethereum Research</a></li>
+                <li><a href="/cv/" class="nav-link">CV</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="article">
+        <header class="article-header">
+            <div class="article-meta">June 21, 2025 | Block 22750445</div>
+            <h1 class="article-title">COLON Token Launch: Investigation of Coordinated Trading Patterns</h1>
+            <p class="article-description">Technical investigation into how 68 coordinated wallets captured initial liquidity after a privately submitted transaction</p>
+        </header>
+
+        <div class="status-banner">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <strong>Investigation Status:</strong> Awaiting response from BuilderNet regarding transaction ordering mechanics
+            </div>
+        </div>
+
+        <div class="article-content">
+            <h2>Executive Summary</h2>
+            <p>On June 18, 2025, during the launch of COLON token, we observed a highly unusual pattern: 68 brand-new wallets somehow knew exactly when to submit transactions after a privately-submitted "open trading" transaction. This investigation reveals evidence of coordinated activity that raises important questions about transaction ordering fairness.</p>
+
+            <div class="key-finding">
+                <h3>🔍 Key Finding</h3>
+                <p>Etherscan shows no "Confirmed within X secs" for the open trading transaction, proving it was submitted privately (via Flashbots or direct to builder). Yet 68 Banana Gun wallets placed transactions with perfect timing, capturing positions 1-68 in the block immediately after.</p>
+            </div>
+
+            <h2>The Evidence</h2>
+
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <div class="evidence-number">100%</div>
+                    <div class="evidence-label">Banana Gun wallets were brand new (nonce 0)</div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-number">33hrs</div>
+                    <div class="evidence-label">All wallets funded before trading opened</div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-number">0.22</div>
+                    <div class="evidence-label">Gwei - Identical priority fees to 9 decimals</div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-number">68/70</div>
+                    <div class="evidence-label">Block positions captured by Banana Gun</div>
+                </div>
+            </div>
+
+            <h2>Transaction Analysis</h2>
+
+            <h3>The Open Trading Transaction</h3>
+            <p>Transaction <a href="https://etherscan.io/tx/0x6468b5e2cf0387b2fe01a01b48f7e31bd3a0a9d5ed7c82f87bb89fc604bb6e2b" target="_blank" class="link-external">0x6468b5e...</a> called <code>openTrading()</code> on the COLON contract. Critical observations:</p>
+            
+            <ul>
+                <li><strong>No mempool confirmation time</strong> shown on Etherscan (proves private submission)</li>
+                <li>Priority fee: 0.30 Gwei</li>
+                <li>Position: #0 in block 22750445</li>
+                <li>From: EOA address <code>0xC1b2...65c8</code></li>
+            </ul>
+
+            <h3>The Banana Gun Swarm</h3>
+            <p>Immediately following the open trading transaction, 68 Banana Gun transactions occupied positions 1-68:</p>
+
+            <table class="tx-table">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Protocol</th>
+                        <th>Priority Fee</th>
+                        <th>Wallet Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#0</td>
+                        <td>Open Trading</td>
+                        <td>0.30 Gwei</td>
+                        <td>Existing wallet</td>
+                    </tr>
+                    <tr>
+                        <td>#1-68</td>
+                        <td>Banana Gun</td>
+                        <td>0.22 Gwei (all identical)</td>
+                        <td>All brand new (nonce 0)</td>
+                    </tr>
+                    <tr>
+                        <td>#69-70</td>
+                        <td>Failed swaps</td>
+                        <td>Various</td>
+                        <td>Regular traders</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Statistical Analysis</h2>
+
+            <div class="code-block">WALLET ANALYSIS RESULTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total Banana Gun transactions analyzed: 68
+
+Nonce Statistics:
+  Average nonce: 0.00
+  Min nonce: 0
+  Max nonce: 0
+  
+✅ ALL 68 wallets were brand new (nonce = 0)
+   This is their FIRST EVER transaction!
+
+Funding Analysis:
+  All wallets funded at block: 22740446
+  Hours before trading: 33.3 hours
+  Funding amount: 0.0222 ETH each
+
+Priority Fee Analysis:
+  Standard deviation: 0.000000000 Gwei
+  All fees identical to 9 decimal places!</div>
+
+            <p>The probability of 68 independent actors all:</p>
+            <ul>
+                <li>Using brand new wallets</li>
+                <li>Funded at the exact same block</li>
+                <li>Setting identical priority fees to 9 decimal places</li>
+                <li>Knowing when to submit after a private transaction</li>
+            </ul>
+            <p>...is effectively <strong>zero</strong>. This is clear evidence of coordination.</p>
+
+            <h2>How Did They Know?</h2>
+
+            <p>This is the critical question. When a transaction is submitted privately (Flashbots/direct to builder), it's invisible to the public mempool. The evidence clearly shows the open trading transaction was private:</p>
+
+            <div class="questions">
+                <h3>Our Questions for BuilderNet</h3>
+                <ol>
+                    <li>How did 68 wallets know the exact moment to submit transactions after a privately-submitted transaction?</li>
+                    <li>Is there a private communication channel between certain actors and builders?</li>
+                    <li>Why were these 68 transactions ordered before others with higher priority fees?</li>
+                    <li>What measures exist to ensure fair transaction ordering?</li>
+                </ol>
+            </div>
+
+            <h2>Technical Details</h2>
+
+            <h3>Block Builder Analysis</h3>
+            <p>Block 22750445 was built by <strong>BuilderNet (Beaver)</strong>. This builder has been involved in several similar patterns we're investigating.</p>
+
+            <h3>Gas Strategy</h3>
+            <p>The Banana Gun transactions used a sophisticated gas strategy:</p>
+            <ul>
+                <li>Priority fee: 0.220000000 Gwei (9 decimal precision)</li>
+                <li>Max fee: 20.000004077 Gwei</li>
+                <li>This precision suggests automated coordination</li>
+            </ul>
+
+            <h3>Timeline</h3>
+            <div class="code-block">Block 22740446: All 68 wallets funded with 0.0222 ETH
+    ↓ (33.3 hours)
+Block 22750445: Open trading + 68 Banana Gun swaps
+    - 0: openTrading() [PRIVATE - no mempool]
+    - 1-68: Banana Gun swaps [perfect timing]
+    - 69-70: Failed regular trader attempts</div>
+
+            <h2>Implications</h2>
+
+            <p>This pattern raises serious questions about:</p>
+            <ul>
+                <li><strong>Transaction fairness:</strong> Are some actors getting privileged information?</li>
+                <li><strong>MEV extraction:</strong> Is this a new form of MEV that bypasses normal protections?</li>
+                <li><strong>Market integrity:</strong> Can regular traders compete when coordinated groups have special advantages?</li>
+            </ul>
+
+            <h2>Similar Patterns</h2>
+            <p>We've identified similar patterns in other token launches. This appears to be a systematic approach rather than an isolated incident. Further investigation is ongoing.</p>
+
+            <div class="cta-section">
+                <h2>Help Us Get Answers</h2>
+                <p>We believe in transparency and fair markets. If you have information about these patterns or similar observations, please reach out.</p>
+                <a href="mailto:nima.manaf8@gmail.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    Contact Investigator
+                </a>
+            </div>
+
+            <h2>Methodology</h2>
+            <p>This investigation used:</p>
+            <ul>
+                <li>Direct blockchain data from local Reth node</li>
+                <li>Statistical analysis of wallet patterns</li>
+                <li>Gas fee analysis to 9 decimal places</li>
+                <li>Mempool visibility verification via Etherscan</li>
+            </ul>
+
+            <h2>Disclaimer</h2>
+            <p>This investigation presents factual observations from public blockchain data. We make no accusations of wrongdoing but seek transparency about transaction ordering mechanics. All transaction hashes and data are independently verifiable on-chain.</p>
+
+            <h2>References</h2>
+            <ul>
+                <li><a href="https://etherscan.io/tx/0x6468b5e2cf0387b2fe01a01b48f7e31bd3a0a9d5ed7c82f87bb89fc604bb6e2b" target="_blank" class="link-external">Open Trading Transaction <i class="fas fa-external-link-alt"></i></a></li>
+                <li><a href="https://etherscan.io/block/22750445" target="_blank" class="link-external">Block 22750445 <i class="fas fa-external-link-alt"></i></a></li>
+                <li><a href="https://dexscreener.com/ethereum/0x88584894cb5f88d31905f4640a4c3440707ea73f?maker=0xEF1c6E67703c7BD7107eed8303Fbe6EC2554BF6B" target="_blank" class="link-external">DexScreener (Banana Gun trades only) <i class="fas fa-external-link-alt"></i></a></li>
+            </ul>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Nima Manaf, Ph.D. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="mailto:nima.manaf8@gmail.com" style="color: var(--primary); text-decoration: none;">
+                Contact for blockchain investigations
+            </a>
+        </p>
+    </footer>
+</body>
+</html>
