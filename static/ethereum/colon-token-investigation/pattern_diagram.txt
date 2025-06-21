@@ -1,0 +1,18 @@
+COLON Token Launch - Transaction Pattern Analysis
+================================================
+
+Block 22750445 - BuilderNet (Beaver)
+------------------------------------
+
+Position | Transaction Type        | From                                       | Gas Priority
+---------|------------------------|--------------------------------------------|--------------
+   0     | openTrading()          | 0xA9c03B81...                             | 0.30 Gwei ❌
+         | (PRIVATE - No mempool) |                                            |
+   1     | Banana Gun Buy #1      | 0xD9c44555... (nonce 0, funded 33h ago)  | 5.00 Gwei ✅
+   2     | Banana Gun Buy #2      | 0x0e453430... (nonce 0, funded 33h ago)  | 5.00 Gwei ✅
+   3     | Banana Gun Buy #3      | 0x526a5b4C... (nonce 0, funded 33h ago)  | 5.00 Gwei ✅
+   ...   | ...                    | ...                                        | ...
+   68    | Banana Gun Buy #68     | [All new wallets, all same gas]          | 5.00 Gwei ✅
+   69    | First organic buyer    | Regular user                              | Variable
+
+KEY QUESTION: How did 68 wallets know WHEN to submit if position 0 was PRIVATE?
