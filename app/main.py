@@ -156,3 +156,14 @@ async def dashboard(request: Request):
             "python_version": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
         },
     )
+
+
+@app.get("/terminal", response_class=HTMLResponse)
+async def terminal_page(request: Request):
+    """
+    Terminal page with xterm.js client.
+
+    Requires valid session (checked by middleware).
+    Frontend connects to WebSocket at /ws/terminal.
+    """
+    return templates.TemplateResponse("terminal.html", {"request": request})
