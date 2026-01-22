@@ -34,6 +34,7 @@ from app.auth import (
     verify_password,
 )
 from app.config import get_settings
+from app.middleware import SessionMiddleware
 
 # App metadata
 APP_DIR = Path(__file__).parent
@@ -48,6 +49,9 @@ app = FastAPI(
     docs_url=None,  # Disable Swagger UI in production
     redoc_url=None,  # Disable ReDoc in production
 )
+
+# Add session validation middleware for protected routes
+app.add_middleware(SessionMiddleware)
 
 # Mount static files
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
@@ -130,3 +134,14 @@ async def logout():
     response = RedirectResponse(url="/", status_code=303)
     response.delete_cookie(key=SESSION_COOKIE_NAME)
     return response
+
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard(request: Request):
+    """
+    Dashboard navigation hub.
+
+    Requires valid session (checked by middleware).
+    Will be expanded in NIMA-005.
+    """
+    return templates.TemplateResponse("dashboard.html", {"request": request})
