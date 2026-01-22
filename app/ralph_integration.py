@@ -15,8 +15,6 @@ Note: We use module swapping to avoid conflicts between nimamanafcom's
 main package name.
 """
 
-import importlib
-import importlib.util
 import sys
 from pathlib import Path
 
@@ -139,20 +137,17 @@ async def ralph_dashboard(request: Request):
 @ralph_router.get("/test", response_class=HTMLResponse)
 async def ralph_test():
     """Test page to verify Ralph integration works."""
-    error_msg = RALPH_IMPORT_ERROR if RALPH_IMPORT_ERROR else "None"
-    return f"""
-    <!DOCTYPE html>
-    <html>
-    <head><title>Ralph Test</title></head>
-    <body style="background: #111; color: #fff; font-family: sans-serif; padding: 2rem;">
-        <h1>Ralph Integration Test</h1>
-        <p>Import success: {RALPH_IMPORT_SUCCESS}</p>
-        <p>Error: <pre>{error_msg}</pre></p>
-        <p><a href="/ralph/" style="color: #3b82f6;">Go to Ralph Dashboard</a></p>
-        <p><a href="/dashboard" style="color: #3b82f6;">Back to Main Dashboard</a></p>
-    </body>
-    </html>
-    """
+    return f"""<!DOCTYPE html>
+<html>
+<head><title>Ralph Test</title></head>
+<body style="background: #111; color: #fff; font-family: sans-serif; padding: 2rem;">
+    <h1>Ralph Integration Test</h1>
+    <p>Import success: {RALPH_IMPORT_SUCCESS}</p>
+    <p>Error: <pre>{RALPH_IMPORT_ERROR or 'None'}</pre></p>
+    <p><a href="/ralph/" style="color: #3b82f6;">Go to Ralph Dashboard</a></p>
+    <p><a href="/dashboard" style="color: #3b82f6;">Back to Main Dashboard</a></p>
+</body>
+</html>"""
 
 
 @ralph_router.get("/js/app.js")

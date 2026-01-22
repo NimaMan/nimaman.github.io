@@ -32,10 +32,7 @@ PROTECTED_PREFIXES = ["/dashboard", "/terminal", "/ralph"]
 
 def is_protected_path(path: str) -> bool:
     """Check if a path requires authentication."""
-    for prefix in PROTECTED_PREFIXES:
-        if path == prefix or path.startswith(prefix + "/"):
-            return True
-    return False
+    return any(path == prefix or path.startswith(prefix + "/") for prefix in PROTECTED_PREFIXES)
 
 
 class SessionMiddleware(BaseHTTPMiddleware):

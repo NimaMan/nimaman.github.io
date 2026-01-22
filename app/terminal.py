@@ -72,32 +72,25 @@ async def terminal_websocket(websocket: WebSocket):
         loop = asyncio.get_event_loop()
 
         def read_with_timeout():
-            """Non-blocking read using select."""
+            """Non-blocking read using select. Returns bytes, None if closed, empty if no data."""
             readable, _, _ = select.select([pty.fd], [], [], 0.1)
-            if readable:
-                try:
-                    return os.read(pty.fd, 4096)
-                except OSError:
-                    return None
-            return b""
+            if not readable:
+                return b""
+            try:
+                return os.read(pty.fd, 4096)
+            except OSError:
+                return None
 
         try:
             while pty.isalive():
-                # Read from PTY in executor (uses select for non-blocking)
                 data = await loop.run_in_executor(None, read_with_timeout)
                 if data is None:
-                    # PTY closed
                     break
                 if data:
                     await websocket.send_text(data.decode("utf-8", errors="replace"))
                 else:
-                    # Small yield to prevent busy loop
                     await asyncio.sleep(0.01)
-        except (OSError, EOFError):
-            # PTY closed
-            pass
-        except Exception:
-            # Connection lost or other error
+        except (OSError, EOFError, Exception):
             pass
 
     async def write_pty():
@@ -106,24 +99,18 @@ async def terminal_websocket(websocket: WebSocket):
             while True:
                 data = await websocket.receive_text()
 
-                # Check for resize message
+                # Check for resize message (JSON starting with {)
                 if data.startswith("{"):
                     try:
                         msg = json.loads(data)
                         if msg.get("type") == "resize":
-                            cols = msg.get("cols", 80)
-                            rows = msg.get("rows", 24)
-                            pty.setwinsize(rows, cols)
+                            pty.setwinsize(msg.get("rows", 24), msg.get("cols", 80))
                             continue
                     except json.JSONDecodeError:
                         pass
 
-                # Regular input - write to PTY (encode to bytes)
                 pty.write(data.encode("utf-8"))
-
-        except WebSocketDisconnect:
-            pass
-        except Exception:
+        except (WebSocketDisconnect, Exception):
             pass
 
     # Run both tasks concurrently
