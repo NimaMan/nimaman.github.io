@@ -22,11 +22,17 @@ Run with: uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 from pathlib import Path
 
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Form, Request
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from app.auth import (
+    SESSION_COOKIE_CONFIG,
+    SESSION_COOKIE_NAME,
+    create_session_token,
+    verify_password,
+)
 from app.config import get_settings
 
 # App metadata
@@ -74,3 +80,53 @@ async def landing_page(request: Request):
     Displays name, brief bio, and link to dashboard.
     """
     return templates.TemplateResponse("landing.html", {"request": request})
+
+
+@app.get("/login", response_class=HTMLResponse)
+async def login_page(request: Request):
+    """
+    Login page with password form.
+
+    GET shows the login form. No error message on initial load.
+    """
+    return templates.TemplateResponse("login.html", {"request": request, "error": None})
+
+
+@app.post("/login")
+async def login_submit(request: Request, password: str = Form(...)):
+    """
+    Process login form submission.
+
+    POST validates password against bcrypt hash from .env.
+    Success: Creates session cookie, redirects to /dashboard.
+    Failure: Shows login form again with generic error message.
+    """
+    if verify_password(password):
+        # Create session and redirect to dashboard
+        token = create_session_token()
+        response = RedirectResponse(url="/dashboard", status_code=303)
+        response.set_cookie(
+            key=SESSION_COOKIE_NAME,
+            value=token,
+            **SESSION_COOKIE_CONFIG,
+        )
+        return response
+    else:
+        # Show error, no info leakage about what's wrong
+        return templates.TemplateResponse(
+            "login.html",
+            {"request": request, "error": "Invalid password"},
+            status_code=401,
+        )
+
+
+@app.get("/logout")
+async def logout():
+    """
+    Clear session and redirect to landing page.
+
+    Deletes the session cookie regardless of whether it exists.
+    """
+    response = RedirectResponse(url="/", status_code=303)
+    response.delete_cookie(key=SESSION_COOKIE_NAME)
+    return response

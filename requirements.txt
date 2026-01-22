@@ -11,6 +11,7 @@ python-dotenv>=1.0.0
 # Authentication
 bcrypt>=4.1.0
 itsdangerous>=2.1.0
+python-multipart>=0.0.6
 
 # WebSocket terminal
 ptyprocess>=0.7.0
