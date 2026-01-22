@@ -38,6 +38,7 @@ from app.auth import (
 )
 from app.config import get_settings
 from app.middleware import SessionMiddleware
+from app.ralph_integration import get_ralph_static_dir, ralph_router
 from app.terminal import terminal_websocket
 
 # App metadata
@@ -59,6 +60,12 @@ app.add_middleware(SessionMiddleware)
 
 # Mount static files
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+# Mount Ralph's static files at /ralph/static (for Ralph dashboard)
+app.mount("/ralph/static", StaticFiles(directory=get_ralph_static_dir()), name="ralph-static")
+
+# Include Ralph router (protected by session middleware since /ralph/* is protected)
+app.include_router(ralph_router)
 
 # Configure templates
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
