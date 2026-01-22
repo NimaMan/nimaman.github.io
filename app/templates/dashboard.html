@@ -3,13 +3,44 @@
 {% block title %}Dashboard - Nima Manaf{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Dashboard</h1>
-    <p>Protected area - session validated.</p>
-    <nav>
-        <a href="/terminal">Terminal</a>
-        <a href="/ralph">Ralph</a>
-    </nav>
-    <p><a href="/logout">Logout</a></p>
+<div class="container dashboard-page">
+    <header class="dashboard-header">
+        <h1>Dashboard</h1>
+        <a href="/logout" class="btn btn-secondary btn-small">Logout</a>
+    </header>
+
+    <section class="system-info">
+        <h2>System</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">Hostname</span>
+                <span class="info-value">{{ hostname }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Platform</span>
+                <span class="info-value">{{ platform }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Python</span>
+                <span class="info-value">{{ python_version }}</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="nav-section">
+        <h2>Navigation</h2>
+        <nav class="nav-grid">
+            <a href="/terminal" class="nav-card">
+                <span class="nav-icon">&#62;_</span>
+                <span class="nav-title">Terminal</span>
+                <span class="nav-desc">Web-based shell access</span>
+            </a>
+            <a href="/ralph" class="nav-card">
+                <span class="nav-icon">&#9881;</span>
+                <span class="nav-title">Ralph</span>
+                <span class="nav-desc">AI project management</span>
+            </a>
+        </nav>
+    </section>
 </div>
 {% endblock %}

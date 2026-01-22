@@ -20,6 +20,9 @@ Security Model:
 Run with: uvicorn app.main:app --host 127.0.0.1 --port 8000
 """
 
+import platform
+import socket
+import sys
 from pathlib import Path
 
 from fastapi import FastAPI, Form, Request
@@ -142,6 +145,14 @@ async def dashboard(request: Request):
     Dashboard navigation hub.
 
     Requires valid session (checked by middleware).
-    Will be expanded in NIMA-005.
+    Shows system info and navigation to Terminal and Ralph.
     """
-    return templates.TemplateResponse("dashboard.html", {"request": request})
+    return templates.TemplateResponse(
+        "dashboard.html",
+        {
+            "request": request,
+            "hostname": socket.gethostname(),
+            "platform": platform.system() + " " + platform.release(),
+            "python_version": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
+        },
+    )
