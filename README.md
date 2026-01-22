@@ -29,13 +29,81 @@ This application is designed for private use on a Tailscale network. It is **nev
 
 ## Prerequisites
 
-- Python 3.10+
+- Docker and Docker Compose (recommended) OR Python 3.10+
 - Tailscale installed and configured on the server
 - The server must be part of your Tailscale network
 
-## Quick Start
+---
 
-### 1. Clone and Setup
+## Docker Deployment (Recommended)
+
+### 1. Create .env file
+
+```bash
+cd /home/nima/code/web/personal/nimamanafcom
+cp .env.example .env
+```
+
+### 2. Generate password hash
+
+```bash
+docker run --rm python:3.11-slim python -c "import subprocess; subprocess.run(['pip', 'install', '-q', 'bcrypt']); import bcrypt; print(bcrypt.hashpw(b'YOUR_PASSWORD_HERE', bcrypt.gensalt()).decode())"
+```
+
+Or if you have Python locally:
+```bash
+python -c "import bcrypt; print(bcrypt.hashpw(b'YOUR_PASSWORD_HERE', bcrypt.gensalt()).decode())"
+```
+
+### 3. Edit .env
+
+```bash
+nano .env
+```
+
+Set your values:
+```
+SECRET_KEY=generate-a-random-string-here-make-it-long
+PASSWORD_HASH=<paste the bcrypt hash from step 2>
+```
+
+### 4. Build and run
+
+```bash
+docker compose up -d --build
+```
+
+### 5. Enable Tailscale serve
+
+```bash
+tailscale serve --bg 8000
+```
+
+### Docker Commands
+
+```bash
+# View logs
+docker compose logs -f
+
+# Restart
+docker compose restart
+
+# Stop
+docker compose down
+
+# Rebuild after code changes
+docker compose up -d --build
+```
+
+### Terminal Note
+
+The Docker terminal runs inside the container with `/home/nima` mounted. You have access to your home directory files but the shell environment is the container's (Python 3.11-slim based).
+
+---
+
+## Manual Deployment (Without Docker)
+
+### 1. Setup Python Environment
 
 ```bash
 cd /home/nima/code/web/personal/nimamanafcom
@@ -183,7 +251,10 @@ nimamanafcom/
 │   ├── templates/           # Jinja2 HTML templates
 │   └── static/              # CSS files
 ├── deploy/
-│   └── nimamanafcom.service # systemd service file
+│   └── nimamanafcom.service # systemd service file (manual deployment)
+├── Dockerfile               # Docker image definition
+├── docker-compose.yml       # Docker Compose configuration
+├── .dockerignore            # Files excluded from Docker build
 ├── .env                     # Configuration (create from .env.example)
 ├── .env.example             # Example configuration
 ├── requirements.txt         # Python dependencies

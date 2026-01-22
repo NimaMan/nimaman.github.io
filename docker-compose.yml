@@ -1,0 +1,57 @@
+# nimamanafcom Docker Compose
+#
+# SECURITY: This container provides terminal access to the HOST system.
+# It is designed to run ONLY on Tailscale network, never exposed publicly.
+#
+# The terminal feature requires:
+# - Mounting host filesystem
+# - Running as host user (for proper permissions)
+# - PTY allocation capabilities
+
+services:
+  nimamanafcom:
+    build: .
+    container_name: nimamanafcom
+    restart: unless-stopped
+
+    # Run as host user for terminal access with proper permissions
+    user: "${UID:-1000}:${GID:-1000}"
+
+    # Bind to localhost only - Tailscale serve proxies to this
+    ports:
+      - "127.0.0.1:8000:8000"
+
+    # Environment from .env file
+    env_file:
+      - .env
+
+    volumes:
+      # Mount Ralph directory for Ralph integration
+      - /home/nima/code/ralph:/home/nima/code/ralph:ro
+
+      # Mount home directory for terminal access
+      # WARNING: This gives terminal access to your home directory
+      - /home/nima:/home/nima
+
+      # Mount app templates and static (for development hot reload)
+      - ./app/templates:/app/app/templates:ro
+      - ./app/static:/app/app/static:ro
+
+    # Required for PTY (terminal) functionality
+    tty: true
+    stdin_open: true
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://127.0.0.1:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
