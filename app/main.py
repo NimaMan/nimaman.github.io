@@ -22,7 +22,8 @@ Run with: uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -64,8 +65,12 @@ async def health_check():
     }
 
 
-# Placeholder root route - will be replaced in NIMA-002
-@app.get("/")
-async def root():
-    """Placeholder for landing page."""
-    return {"message": "nimamanafcom - coming soon"}
+@app.get("/", response_class=HTMLResponse)
+async def landing_page(request: Request):
+    """
+    Landing page with personal info.
+
+    No authentication required - user is already on Tailscale network.
+    Displays name, brief bio, and link to dashboard.
+    """
+    return templates.TemplateResponse("landing.html", {"request": request})
