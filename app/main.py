@@ -25,7 +25,7 @@ import socket
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, Form, Request
+from fastapi import FastAPI, Form, Request, WebSocket
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -38,6 +38,7 @@ from app.auth import (
 )
 from app.config import get_settings
 from app.middleware import SessionMiddleware
+from app.terminal import terminal_websocket
 
 # App metadata
 APP_DIR = Path(__file__).parent
@@ -167,3 +168,14 @@ async def terminal_page(request: Request):
     Frontend connects to WebSocket at /ws/terminal.
     """
     return templates.TemplateResponse("terminal.html", {"request": request})
+
+
+@app.websocket("/ws/terminal")
+async def websocket_terminal(websocket: WebSocket):
+    """
+    WebSocket endpoint for terminal access.
+
+    Validates session cookie, spawns PTY, bridges to xterm.js.
+    Session validation happens inside the handler (not middleware).
+    """
+    await terminal_websocket(websocket)
