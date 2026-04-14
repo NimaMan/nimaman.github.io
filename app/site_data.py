@@ -65,14 +65,25 @@ HOME_PAGE = {
     "description": (
         "Applied machine learning, optimization, and analytics across finance, operations research, and decision systems."
     ),
+    "current_kicker": "Now",
+    "current_city": "Utrecht",
     "current_location": "Utrecht, Netherlands",
-    "current_role": "Data Analytics Lead in Value Chain Finance Portfolio",
+    "current_role": "Data Analytics Lead",
     "current_org": "Rabobank",
+    "current_team": "Value Chain Finance Portfolio",
     "snapshot_summary": (
-        "Working across credit risk, portfolio analytics, machine learning, and decision systems, "
-        "after a route through operations research, industrial AI, and academia."
+        "Building analytics for credit risk, portfolio performance, and decision systems "
+        "that have to work under real constraints."
     ),
-    "hero_image": "/static/images/rabo-photo.jpg",
+    "hero_portrait": "/static/images/rabo-photo.jpg",
+    "hero_portrait_alt": "Portrait of Nima Manaf",
+    "hq_label": "Rabobank Headquarters",
+    "hq_address": "Croeselaan 18",
+    "hq_city": "3521 CB Utrecht, Netherlands",
+    "hq_coordinates": "52.0859° N, 5.1089° E",
+    "hq_photo": "/static/images/rabobank-hq.jpg",
+    "hq_photo_alt": "Rabobank office buildings on Croeselaan in Utrecht",
+    "hq_map_url": "https://www.openstreetmap.org/?mlat=52.0859114&mlon=5.1089334#map=19/52.0859114/5.1089334",
     "journey_heading": "A route across cities, degrees, labs, and industries.",
     "journey_intro": (
         "Scroll through the route. The stage follows the active stop as the journey moves."
