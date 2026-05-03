@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import siteData from "../../data/site-data.json";
+import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../../lib/posts";
+
+const { homePage } = siteData;
+const posts = await getPublicPosts();
+---
+
+<BaseLayout title={`Articles | ${homePage.short_name}`} description={`Research articles and notes by ${homePage.name}.`} bodyClass="public-page">
+  <SiteNav activePage="posts" />
+
+  <main class="listing-page">
+    <section class="page-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Articles</p>
+        <h1>Notes on optimization, machine learning, finance, and mathematical curiosities.</h1>
+        <p class="page-intro">
+          Essays, research notes, and visual experiments collected over the years, from inventory control to mathematical side paths.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="site-shell article-grid article-grid--full">
+        {
+          posts.map((post) => (
+            <article class="article-card article-card--full">
+              <p class="article-card__date">{formatPostDate(post.data.date)}</p>
+              <h2><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h2>
+              <p>{postExcerpt(post)}</p>
+              <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

@@ -1,0 +1,262 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import siteData from "../data/site-data.json";
+import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../lib/posts";
+
+const { homePage, expertise, lifeTimeline, selectedWork, socialLinks } = siteData;
+const featuredPosts = (await getPublicPosts()).slice(0, 3);
+const routeItems = [...lifeTimeline];
+const routeTotal = routeItems.length;
+const firstRouteItem = routeItems[0];
+---
+
+<BaseLayout title={`${homePage.short_name} | ${homePage.role}`} description={homePage.description} bodyClass="public-page">
+  <SiteNav activePage="home" />
+
+  <main>
+    <section class="hero-section hero-section--snapshot">
+      <div class="site-shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">{homePage.current_kicker}</p>
+          <h1>{homePage.current_city}</h1>
+          <p class="hero-identity">{homePage.short_name}</p>
+          <p class="snapshot-role">{homePage.current_role}</p>
+          <p class="snapshot-org">{homePage.current_org} / {homePage.current_team}</p>
+          <p class="hero-description">{homePage.snapshot_summary}</p>
+          <div class="hero-actions">
+            <a href="#journey" class="button button-primary">Walk the route</a>
+            <a href="/cv" class="button button-secondary">Open CV</a>
+          </div>
+          <p class="hero-note">{homePage.tagline}</p>
+        </div>
+
+        <div class="hero-portrait-panel">
+          <div class="hero-portrait-frame">
+            <img src={homePage.hero_portrait} alt={homePage.hero_portrait_alt} />
+          </div>
+          <div class="hero-portrait-caption">
+            <span>{homePage.current_location}</span>
+            <span>{homePage.current_org}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="section-block story-journey" data-story-journey data-active-scene={firstRouteItem.scene}>
+      <div class="site-shell">
+        <div class="story-journey__header">
+          <div>
+            <p class="eyebrow">Life Route</p>
+            <h2 class="section-title">{homePage.journey_heading}</h2>
+          </div>
+          <p class="story-journey__intro">{homePage.journey_intro}</p>
+        </div>
+
+        <div class="story-journey__shell">
+          <aside class="story-journey__rail" aria-label="Journey route">
+            <div class="story-route-console">
+              <p class="story-route-console__label">Active stop</p>
+              <div class="story-route-console__meta">
+                <span data-story-console-count>01 / {String(routeTotal).padStart(2, "0")}</span>
+                <span data-story-console-period>{firstRouteItem.period}</span>
+              </div>
+              <h3 data-story-console-place>{firstRouteItem.place_short}</h3>
+              <p class="story-route-console__country" data-story-console-country>{firstRouteItem.place}</p>
+              <p class="story-route-console__context" data-story-console-context>{firstRouteItem.context}</p>
+              <p class="story-route-console__body" data-story-console-body>{firstRouteItem.body}</p>
+              <div class="story-route-console__meter" aria-hidden="true">
+                <span data-story-console-meter></span>
+              </div>
+            </div>
+
+            <div class="story-journey__rail-body">
+              <span class="story-journey__line" aria-hidden="true">
+                <span class="story-journey__line-fill" data-story-progress></span>
+              </span>
+              <div class="story-journey__stops">
+                {
+                  routeItems.map((item, index) => (
+                    <a
+                      href={`#story-stop-${index + 1}`}
+                      class:list={["story-stop-indicator", { "is-active": index === 0 }]}
+                      data-story-indicator
+                      data-story-target={index}
+                      data-story-place={item.place_short}
+                      data-story-country={item.place}
+                      data-story-period={item.period}
+                      data-story-context={item.context}
+                      data-story-body={item.body}
+                      data-story-scene={item.scene}
+                      aria-current={index === 0 ? "step" : undefined}
+                    >
+                      <span class="story-stop-indicator__index">{String(index + 1).padStart(2, "0")}</span>
+                      <span class="story-stop-indicator__dot" aria-hidden="true"></span>
+                      <span class="story-stop-indicator__text">
+                        <span class="story-stop-indicator__name">{item.place_short}</span>
+                        <span class="story-stop-indicator__period">{item.period}</span>
+                      </span>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </aside>
+
+          <div class="story-journey__chapters">
+            {
+              routeItems.map((item, index) => (
+                <article
+                  id={`story-stop-${index + 1}`}
+                  class:list={["story-chapter", `story-chapter--${item.scene}`, { "is-active": index === 0 }]}
+                  data-story-chapter
+                  data-story-index={index}
+                  data-story-count={`${String(index + 1).padStart(2, "0")} / ${String(routeTotal).padStart(2, "0")}`}
+                  data-story-place={item.place_short}
+                  data-story-country={item.place}
+                  data-story-period={item.period}
+                  data-story-context={item.context}
+                  data-story-body={item.body}
+                  data-story-scene={item.scene}
+                  tabindex="0"
+                >
+                  <div class="story-chapter__map" aria-hidden="true">
+                    <span class="story-chapter__path"></span>
+                    <span class="story-chapter__beacon"></span>
+                    <span class="story-chapter__watermark">{item.place_short}</span>
+                    <span class="story-chapter__year">{item.period}</span>
+                  </div>
+                  <div class="story-chapter__content">
+                    <div class="story-chapter__lead">
+                      <p class="story-chapter__count">Stop {String(index + 1).padStart(2, "0")} / {String(routeTotal).padStart(2, "0")}</p>
+                      <h2 class="story-chapter__title">{item.place_short}</h2>
+                      <div class="story-chapter__meta">
+                        <span>{item.period}</span>
+                        <span>{item.place}</span>
+                      </div>
+                      <p class="story-chapter__context">{item.context}</p>
+                      <p class="story-chapter__summary">{item.body}</p>
+                    </div>
+
+                    <div class="story-chapter__note">
+                      <p class="story-chapter__note-label">What stayed</p>
+                      <p>{item.summary}</p>
+                    </div>
+
+                    {
+                      item.scene === "utrecht" && (
+                        <div class="story-chapter__current">
+                          <div class="story-chapter__current-copy">
+                            <p class="story-chapter__note-label">Current chapter</p>
+                            <h3>{homePage.current_role}</h3>
+                            <p>{homePage.current_org} / {homePage.current_team}</p>
+                          </div>
+                          <figure class="story-chapter__photo">
+                            <img src={homePage.hq_photo} alt={homePage.hq_photo_alt} />
+                            <figcaption>{homePage.hq_label} / {homePage.hq_address}, {homePage.hq_city}</figcaption>
+                          </figure>
+                        </div>
+                      )
+                    }
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="site-shell">
+        <div class="section-heading">
+          <p class="eyebrow">Current Practice</p>
+          <h2 class="section-title">{homePage.current_heading}</h2>
+        </div>
+        <p class="section-intro">{homePage.current_summary}</p>
+        <div class="card-grid">
+          {
+            expertise.map((item) => (
+              <article class="info-card">
+                <h3>{item.title}</h3>
+                <p>{item.summary}</p>
+                <div class="tag-row">
+                  {item.tags.map((tag) => <span>{tag}</span>)}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section-block section-light">
+      <div class="site-shell">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Work</p>
+          <h2 class="section-title">A few threads that stayed with me.</h2>
+        </div>
+        <div class="work-grid">
+          {
+            selectedWork.map((item) => (
+              <a href={item.href} class="work-card">
+                <p class="work-meta">{item.meta}</p>
+                <h3>{item.title}</h3>
+                <p>{item.summary}</p>
+                <span class="work-link">Open</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="site-shell">
+        <div class="section-heading section-heading--tight">
+          <div>
+            <p class="eyebrow">Writing</p>
+            <h2 class="section-title">{homePage.writing_heading}</h2>
+            <p class="section-intro section-intro--tight">{homePage.writing_intro}</p>
+          </div>
+          <a href="/posts" class="text-link">Browse archive</a>
+        </div>
+        <div class="article-grid">
+          {
+            featuredPosts.map((post) => (
+              <article class="article-card">
+                <p class="article-card__date">{formatPostDate(post.data.date)}</p>
+                <h3><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h3>
+                <p>{postExcerpt(post)}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-block section-dark">
+      <div class="site-shell contact-panel">
+        <div>
+          <p class="eyebrow eyebrow-inverse">Contact</p>
+          <h2 class="section-title section-title-inverse">{homePage.contact_heading}</h2>
+          <p class="contact-copy">{homePage.contact_summary}</p>
+        </div>
+        <div class="contact-links">
+          {
+            socialLinks.map((link) => (
+              <a href={link.href} class="contact-link" target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>
+                <span>{link.label}</span>
+                <small>{link.note}</small>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+  <script slot="scripts" src="/static/js/home.js"></script>
+</BaseLayout>

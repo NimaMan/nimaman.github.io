@@ -1,0 +1,340 @@
+{
+  "cvEducation": [
+    {
+      "date_range": "September 2016 - September 2020",
+      "degree": "PhD in Business Administration",
+      "details": [
+        "Thesis: Modelling and Control of Production Systems Based on Observed Inter-event Times.",
+        "PhD Academic Excellence Award recipient.",
+        "Supervisor: Prof. Dr. Baris Tan."
+      ],
+      "institution": "Koc University",
+      "location": "Istanbul, Turkey"
+    },
+    {
+      "date_range": "September 2014 - September 2016",
+      "degree": "MSc in Operations and Information Systems",
+      "details": [
+        "Full scholarship recipient.",
+        "Focused on operations research and data analytics."
+      ],
+      "institution": "Koc University",
+      "location": "Istanbul, Turkey"
+    },
+    {
+      "date_range": "September 2010 - September 2014",
+      "degree": "BSc in Industrial Engineering",
+      "details": [
+        "Ranked among the top 0.1% of students in the national university entrance exam."
+      ],
+      "institution": "Sharif University of Technology",
+      "location": "Tehran, Iran"
+    }
+  ],
+  "cvExperience": [
+    {
+      "date_range": "August 2024 - Present",
+      "location": "Utrecht, Netherlands",
+      "organization": "Rabobank",
+      "points": [
+        "Leading data analytics initiatives for the Value Chain Finance portfolio.",
+        "Developing advanced analytics solutions to improve portfolio performance and decision quality.",
+        "Applying machine learning models to risk assessment and operational prioritization.",
+        "Working across business and technical teams to move analytics into day-to-day use."
+      ],
+      "title": "Data Analytics Lead in Value Chain Finance Portfolio"
+    },
+    {
+      "date_range": "May 2022 - August 2024",
+      "location": "Utrecht, Netherlands",
+      "organization": "Rabobank",
+      "points": [
+        "Worked on EU AI Act interpretation and model governance questions.",
+        "Evaluated machine learning models for ECB-facing reporting processes.",
+        "Addressed methodological questions in the rural portfolio using advanced statistical techniques.",
+        "Adapted EBA guideline logic in Python to streamline regulatory work.",
+        "Built monitoring frameworks for risk-adjusted performance measurement.",
+        "Designed challenger models in support of IFRS9 processes."
+      ],
+      "title": "Data Scientist"
+    },
+    {
+      "date_range": "September 2020 - April 2022",
+      "location": "Eindhoven, Netherlands",
+      "organization": "Eindhoven University of Technology",
+      "points": [
+        "Researched evolutionary training of deep neural networks.",
+        "Applied reinforcement learning and evolution strategies to inventory management problems.",
+        "Supervised Bachelor's and Master's theses.",
+        "Published research in optimization and machine learning for decision systems."
+      ],
+      "title": "Postdoctoral Research Associate"
+    },
+    {
+      "date_range": "February 2019 - January 2020",
+      "location": "Stuttgart, Germany",
+      "organization": "Bosch Center for Artificial Intelligence",
+      "points": [
+        "Studied Q-learning and Monte Carlo Tree Search for scheduling problems.",
+        "Developed the reinforced genetic algorithm for optimization problems.",
+        "Analyzed semiconductor manufacturing network data at scale.",
+        "Co-invented the Learn Offline, Search Online methodology."
+      ],
+      "title": "PhD Industrial Sabbatical"
+    }
+  ],
+  "cvHighlights": [
+    {
+      "items": [
+        "PhD Academic Excellence Award, Koc University (2020)",
+        "Exceptional Talent Student distinction in the national exam (2010)",
+        "Top 1% in the National Chemistry Olympiad, Iran (2009)"
+      ],
+      "title": "Awards and Recognition"
+    },
+    {
+      "items": [
+        "Learn Offline, Search Online hybrid scheduling methodology.",
+        "NWO 1,000,000 hours computing time grant.",
+        "NWO 500,000 hours computing time grant.",
+        "Productive 4.0 project scholarship (2017)."
+      ],
+      "title": "Patents and Grants"
+    },
+    {
+      "items": [
+        "English, Turkish, Persian, and basic Dutch.",
+        "Optimization algorithms, financial analytics, teaching, and mentoring."
+      ],
+      "title": "Languages and Interests"
+    }
+  ],
+  "cvProfile": {
+    "location": "Rabobank, Utrecht, Netherlands",
+    "name": "Nima Manafzadeh Dizbin, PhD",
+    "summary": "Applied researcher and analytics leader working across finance, machine learning, and optimization. Experienced in translating technical models into decisions used by teams with operational and regulatory constraints.",
+    "title": "Data Analytics Lead in Value Chain Finance Portfolio"
+  },
+  "cvSkills": [
+    {
+      "items": [
+        "Reinforcement learning",
+        "Deep learning and neural networks",
+        "Graph neural networks",
+        "Supervised and unsupervised learning",
+        "Statistical learning",
+        "Evolution strategies"
+      ],
+      "title": "Machine Learning and AI"
+    },
+    {
+      "items": [
+        "Combinatorial and stochastic optimization",
+        "Genetic algorithms",
+        "Monte Carlo Tree Search",
+        "Markov decision processes",
+        "Dynamic programming",
+        "Mathematical programming"
+      ],
+      "title": "Optimization Methods"
+    },
+    {
+      "items": [
+        "Python, C++, SQL",
+        "PyTorch, scikit-learn, XGBoost, LightGBM",
+        "Pandas, NumPy, SciPy, cuDF",
+        "Matplotlib, Seaborn, Plotly",
+        "Gurobi, CPLEX, OR-Tools",
+        "Ray, MPI, multiprocessing, Git"
+      ],
+      "title": "Programming and Tools"
+    },
+    {
+      "items": [
+        "Supply chain management",
+        "Inventory control",
+        "Production planning and scheduling",
+        "Healthcare operations",
+        "Semiconductor manufacturing",
+        "Financial risk analytics"
+      ],
+      "title": "Application Domains"
+    }
+  ],
+  "expertise": [
+    {
+      "summary": "Portfolio monitoring, challenger modeling, regulation-facing analysis, and decision support for value chain finance and credit risk workflows.",
+      "tags": [
+        "Credit risk",
+        "Value chain finance",
+        "Monitoring",
+        "Model governance"
+      ],
+      "title": "Financial Risk and Portfolio Analytics"
+    },
+    {
+      "summary": "Reinforcement learning, evolution strategies, graph-based modeling, and optimization methods for environments with delayed feedback and hard constraints.",
+      "tags": [
+        "Reinforcement learning",
+        "Evolution strategies",
+        "GNNs",
+        "Stochastic optimization"
+      ],
+      "title": "Learning and Optimization"
+    },
+    {
+      "summary": "Production planning, inventory control, scheduling, and data-driven performance analysis for industrial systems that have to work outside the lab.",
+      "tags": [
+        "Manufacturing",
+        "Scheduling",
+        "Inventory",
+        "Operations research"
+      ],
+      "title": "Operational Systems"
+    }
+  ],
+  "homePage": {
+    "contact_heading": "If the problem is real and difficult, I am interested.",
+    "contact_summary": "I am especially drawn to work that combines data, uncertainty, and operational constraints.",
+    "current_city": "Utrecht",
+    "current_heading": "Current Work",
+    "current_kicker": "Now",
+    "current_location": "Utrecht, Netherlands",
+    "current_org": "Rabobank",
+    "current_role": "Data Analytics Lead",
+    "current_summary": "The current chapter sits at the intersection of financial risk, optimization, machine learning, and decision systems used in practice.",
+    "current_team": "Value Chain Finance Portfolio",
+    "description": "Applied machine learning, optimization, and analytics across finance, operations research, and decision systems.",
+    "hero_portrait": "/static/images/rabo-photo.jpg",
+    "hero_portrait_alt": "Portrait of Nima Manaf",
+    "hq_address": "Croeselaan 18",
+    "hq_city": "3521 CB Utrecht, Netherlands",
+    "hq_label": "Rabobank Headquarters",
+    "hq_photo": "/static/images/rabobank-hq.jpg",
+    "hq_photo_alt": "Rabobank office buildings on Croeselaan in Utrecht",
+    "journey_heading": "From Qaradag to Utrecht, the route that shaped how I work.",
+    "journey_intro": "Start at the beginning and move city by city. Each stop shows the place, the work, and the part of the story I carried forward.",
+    "name": "Nima Manafzadeh Dizbin",
+    "role": "Data Analytics Lead",
+    "short_name": "Nima Manaf",
+    "snapshot_summary": "Building analytics for credit risk, portfolio performance, and decision systems that have to work under real constraints.",
+    "tagline": "Applied machine learning, optimization, and analytics.",
+    "writing_heading": "Selected Writing",
+    "writing_intro": "Research notes, visual experiments, and technical essays collected across different phases of the journey."
+  },
+  "lifeTimeline": [
+    {
+      "body": "The starting point: Qaradag, in the Azerbaijan region of Iran.",
+      "context": "Origin",
+      "period": "Beginning",
+      "place": "East Azerbaijan, Iran",
+      "place_short": "Qaradag",
+      "scene": "qaradag",
+      "summary": "Born in Qaradag, in northwestern Iran."
+    },
+    {
+      "body": "Tehran meant four formative years at Sharif University of Technology.",
+      "context": "Sharif University of Technology",
+      "period": "2010 - 2014",
+      "place": "Iran",
+      "place_short": "Tehran",
+      "scene": "tehran",
+      "summary": "Four undergraduate years in the capital."
+    },
+    {
+      "body": "Istanbul became the long academic chapter: first the MSc, then the PhD at Koc University.",
+      "context": "Koc University, MSc to PhD",
+      "period": "2014 - 2019",
+      "place": "Turkey",
+      "place_short": "Istanbul",
+      "scene": "istanbul",
+      "summary": "Master's study turned into a doctoral chapter."
+    },
+    {
+      "body": "A year at Bosch AI working on scheduling, reinforcement learning, search, and industrial data.",
+      "context": "Bosch Center for Artificial Intelligence",
+      "period": "2019 - 2020",
+      "place": "Germany",
+      "place_short": "Stuttgart",
+      "scene": "stuttgart",
+      "summary": "One year inside industrial AI."
+    },
+    {
+      "body": "I returned to Istanbul to write, defend, and close the PhD.",
+      "context": "Final PhD stretch",
+      "period": "2020",
+      "place": "Turkey",
+      "place_short": "Istanbul",
+      "scene": "istanbul-return",
+      "summary": "Back to close the doctorate."
+    },
+    {
+      "body": "Eindhoven brought the postdoc years, and by the second year the first master's student I supervised had graduated.",
+      "context": "Postdoc at TU/e",
+      "period": "2020 - 2022",
+      "place": "Netherlands",
+      "place_short": "Eindhoven",
+      "scene": "eindhoven",
+      "summary": "Postdoc years, supervision, and the first master's student graduating."
+    },
+    {
+      "body": "Utrecht is the current chapter: Rabobank, value chain finance, and research habits translated into production decisions.",
+      "context": "Rabobank",
+      "period": "2022 - Present",
+      "place": "Netherlands",
+      "place_short": "Utrecht",
+      "scene": "utrecht",
+      "summary": "Research moved into finance, risk, and portfolio analytics."
+    }
+  ],
+  "selectedWork": [
+    {
+      "href": "/cv",
+      "meta": "Current work",
+      "summary": "Leading analytics initiatives at Rabobank with a focus on portfolio performance, risk, and decision quality.",
+      "title": "Value Chain Finance Analytics"
+    },
+    {
+      "href": "/posts/lost_sales_rl",
+      "meta": "Research thread",
+      "summary": "Using gradient-free optimization and compact neural policies to solve lost-sales inventory problems.",
+      "title": "Evolution Strategies for Inventory Control"
+    },
+    {
+      "href": "/posts/phd_thesis",
+      "meta": "PhD work",
+      "summary": "Doctoral work on modeling production systems from observed inter-event times and using those models for better control.",
+      "title": "Production Systems from Event Data"
+    }
+  ],
+  "socialLinks": [
+    {
+      "external": false,
+      "href": "mailto:nima.manaf8@gmail.com",
+      "label": "Email",
+      "note": "nima.manaf8@gmail.com",
+      "symbol": "@"
+    },
+    {
+      "external": true,
+      "href": "https://www.linkedin.com/in/nima-manaf-phd-02174b74/",
+      "label": "LinkedIn",
+      "note": "Professional profile",
+      "symbol": "in"
+    },
+    {
+      "external": true,
+      "href": "https://github.com/nimaman",
+      "label": "GitHub",
+      "note": "Code and experiments",
+      "symbol": "</>"
+    },
+    {
+      "external": true,
+      "href": "https://scholar.google.com/citations?user=oE_9bDkAAAAJ&hl=en",
+      "label": "Scholar",
+      "note": "Publications and citations",
+      "symbol": "\u2726"
+    }
+  ]
+}

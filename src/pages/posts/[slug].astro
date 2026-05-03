@@ -1,0 +1,69 @@
+---
+import { render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import siteData from "../../data/site-data.json";
+import { formatPostDate, getPublicPosts, postExcerpt, postSlug, type PostEntry } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPublicPosts();
+  return posts.map((post) => ({
+    params: { slug: postSlug(post) },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: PostEntry;
+}
+
+const { homePage } = siteData;
+const { post } = Astro.props;
+const { Content } = await render(post);
+const description = post.data.description || postExcerpt(post);
+---
+
+<BaseLayout title={`${post.data.title} | ${homePage.short_name}`} description={description} bodyClass="public-page article-page">
+  {
+    post.data.math && (
+      <Fragment slot="head">
+        <script is:inline>
+          window.MathJax = {
+            tex: {
+              inlineMath: [["$", "$"], ["\\(", "\\)"]],
+              displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+            },
+            svg: {
+              fontCache: "global"
+            }
+          };
+        </script>
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+      </Fragment>
+    )
+  }
+
+  <SiteNav activePage="posts" />
+
+  <main class="article-layout">
+    <div class="site-shell article-layout__inner">
+      <a href="/posts" class="text-link article-back">Back to all articles</a>
+      <header class="article-header">
+        <p class="eyebrow">Article</p>
+        <h1>{post.data.title}</h1>
+        <div class="article-meta">
+          <span>{formatPostDate(post.data.date)}</span>
+          <span>{post.data.author || homePage.name}</span>
+        </div>
+        {post.data.description && <p class="article-dek">{post.data.description}</p>}
+      </header>
+
+      <article class="article-prose">
+        <Content />
+      </article>
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
