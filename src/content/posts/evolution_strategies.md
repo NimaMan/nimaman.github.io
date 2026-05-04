@@ -1,5 +1,5 @@
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: Evolution Strategies for Solving Reinforcement Learning Problems
 date: 2021-11-20
 description: A brief guide to using evolution strategy for solving reinforcement learning problems

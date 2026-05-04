@@ -111,7 +111,7 @@
   ],
   "cvProfile": {
     "location": "Rabobank, Utrecht, Netherlands",
-    "name": "Nima Manafzadeh Dizbin, PhD",
+    "name": "Nima Manaf, PhD",
     "summary": "Applied researcher and analytics leader working across finance, machine learning, and optimization. Experienced in translating technical models into decisions used by teams with operational and regulatory constraints.",
     "title": "Data Analytics Lead in Value Chain Finance Portfolio"
   },
@@ -205,20 +205,22 @@
     "current_summary": "The current chapter sits at the intersection of financial risk, optimization, machine learning, and decision systems used in practice.",
     "current_team": "Value Chain Finance Portfolio",
     "description": "Applied machine learning, optimization, and analytics across finance, operations research, and decision systems.",
+    "hero_intro": "My work sits between machine learning, optimization, finance, and operations research. I care about models that survive contact with constraints, teams, and real decisions.",
     "hero_portrait": "/static/images/rabo-photo.jpg",
     "hero_portrait_alt": "Portrait of Nima Manaf",
+    "hero_statement": "I build decision systems for messy, high-stakes problems.",
     "hq_address": "Croeselaan 18",
     "hq_city": "3521 CB Utrecht, Netherlands",
     "hq_label": "Rabobank Headquarters",
     "hq_photo": "/static/images/rabobank-hq.jpg",
     "hq_photo_alt": "Rabobank office buildings on Croeselaan in Utrecht",
-    "journey_heading": "From Qaradag to Utrecht, the route that shaped how I work.",
-    "journey_intro": "Start at the beginning and move city by city. Each stop shows the place, the work, and the part of the story I carried forward.",
-    "name": "Nima Manafzadeh Dizbin",
+    "journey_heading": "Current first, then back through the route that shaped how I work.",
+    "journey_intro": "Start in Utrecht and scroll backward through the cities, labs, and universities that led here.",
+    "name": "Nima Manaf, PhD",
     "role": "Data Analytics Lead",
     "short_name": "Nima Manaf",
     "snapshot_summary": "Building analytics for credit risk, portfolio performance, and decision systems that have to work under real constraints.",
-    "tagline": "Applied machine learning, optimization, and analytics.",
+    "tagline": "Applied machine learning, optimization, and analytics for real decision systems.",
     "writing_heading": "Selected Writing",
     "writing_intro": "Research notes, visual experiments, and technical essays collected across different phases of the journey."
   },
@@ -226,6 +228,14 @@
     {
       "body": "The starting point: Qaradag, in the Azerbaijan region of Iran.",
       "context": "Origin",
+      "image": "/static/images/qaradag-babak-castle.jpg",
+      "image_alt": "Babak Castle in the Qaradag mountains",
+      "image_credit": "Image: Wikimedia Commons",
+      "image_label": "Babak Castle, Qaradag",
+      "details": [
+        "The origin point is not a credential; it is the place that gives the route its first texture.",
+        "It keeps the story grounded before universities, labs, and companies enter the picture."
+      ],
       "period": "Beginning",
       "place": "East Azerbaijan, Iran",
       "place_short": "Qaradag",
@@ -235,6 +245,10 @@
     {
       "body": "Tehran meant four formative years at Sharif University of Technology.",
       "context": "Sharif University of Technology",
+      "details": [
+        "Industrial engineering gave me the language of systems, constraints, queues, and trade-offs.",
+        "It was the first formal step toward the blend of analytics, optimization, and applied decision work I still use."
+      ],
       "period": "2010 - 2014",
       "place": "Iran",
       "place_short": "Tehran",
@@ -244,6 +258,14 @@
     {
       "body": "Istanbul became the long academic chapter: first the MSc, then the PhD at Koc University.",
       "context": "Koc University, MSc to PhD",
+      "image": "/static/images/koc-university-campus.jpg",
+      "image_alt": "Koc University Rumelifeneri campus overlooking the Black Sea",
+      "image_credit": "Image: apply.ku.edu.tr",
+      "image_label": "Koc University, Rumelifeneri Campus",
+      "details": [
+        "The master's work turned into a doctoral route through operations research, production systems, and data-driven modeling.",
+        "This is where I started treating uncertainty as something to model carefully, not smooth away."
+      ],
       "period": "2014 - 2019",
       "place": "Turkey",
       "place_short": "Istanbul",
@@ -253,6 +275,14 @@
     {
       "body": "A year at Bosch AI working on scheduling, reinforcement learning, search, and industrial data.",
       "context": "Bosch Center for Artificial Intelligence",
+      "image": "/static/images/bosch-renningen.jpg",
+      "image_alt": "Bosch research campus building in Renningen",
+      "image_credit": "Image: Wikimedia Commons",
+      "image_label": "Bosch Renningen Campus",
+      "details": [
+        "Bosch put the research inside industrial constraints: scheduling, search, reinforcement learning, and semiconductor data.",
+        "It made the work more concrete, because the algorithms had to meet factory-scale messiness."
+      ],
       "period": "2019 - 2020",
       "place": "Germany",
       "place_short": "Stuttgart",
@@ -262,6 +292,14 @@
     {
       "body": "I returned to Istanbul to write, defend, and close the PhD.",
       "context": "Final PhD stretch",
+      "image": "/static/images/koc-university-campus.jpg",
+      "image_alt": "Koc University Rumelifeneri campus overlooking the Black Sea",
+      "image_credit": "Image: apply.ku.edu.tr",
+      "image_label": "Koc University, Rumelifeneri Campus",
+      "details": [
+        "The return to Istanbul was about closing the loop: writing, defending, and turning years of work into a finished thesis.",
+        "It was the transition point from doctoral research into the next applied chapter."
+      ],
       "period": "2020",
       "place": "Turkey",
       "place_short": "Istanbul",
@@ -271,6 +309,14 @@
     {
       "body": "Eindhoven brought the postdoc years, and by the second year the first master's student I supervised had graduated.",
       "context": "Postdoc at TU/e",
+      "image": "/static/images/tue-atlas-building.jpg",
+      "image_alt": "Atlas Building at Eindhoven University of Technology",
+      "image_credit": "Image: Honeywell",
+      "image_label": "TU/e Atlas Building",
+      "details": [
+        "The postdoc years expanded the toolkit into evolutionary training, neural networks, inventory systems, and supervision.",
+        "By the end of this chapter, research also meant helping students carry their own work across the finish line."
+      ],
       "period": "2020 - 2022",
       "place": "Netherlands",
       "place_short": "Eindhoven",
@@ -280,6 +326,10 @@
     {
       "body": "Utrecht is the current chapter: Rabobank, value chain finance, and research habits translated into production decisions.",
       "context": "Rabobank",
+      "details": [
+        "The work now sits closer to decisions: portfolio monitoring, credit risk, model governance, and analytics that teams actually use.",
+        "The academic habits are still there, but the output has to survive operational, regulatory, and business constraints."
+      ],
       "period": "2022 - Present",
       "place": "Netherlands",
       "place_short": "Utrecht",

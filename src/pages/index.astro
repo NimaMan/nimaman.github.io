@@ -7,7 +7,7 @@ import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../lib/po
 
 const { homePage, expertise, lifeTimeline, selectedWork, socialLinks } = siteData;
 const featuredPosts = (await getPublicPosts()).slice(0, 3);
-const routeItems = [...lifeTimeline];
+const routeItems = [...lifeTimeline].reverse();
 const routeTotal = routeItems.length;
 const firstRouteItem = routeItems[0];
 ---
@@ -19,12 +19,24 @@ const firstRouteItem = routeItems[0];
     <section class="hero-section hero-section--snapshot">
       <div class="site-shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">{homePage.current_kicker}</p>
-          <h1>{homePage.current_city}</h1>
-          <p class="hero-identity">{homePage.short_name}</p>
-          <p class="snapshot-role">{homePage.current_role}</p>
-          <p class="snapshot-org">{homePage.current_org} / {homePage.current_team}</p>
-          <p class="hero-description">{homePage.snapshot_summary}</p>
+          <p class="eyebrow">About me</p>
+          <h1>{homePage.name}</h1>
+          <p class="hero-identity">{homePage.hero_statement}</p>
+          <p class="hero-description">{homePage.hero_intro}</p>
+          <div class="hero-context" aria-label="Current context">
+            <div>
+              <span>Current work</span>
+              <strong>{homePage.current_role}</strong>
+            </div>
+            <div>
+              <span>Current base</span>
+              <strong>{homePage.current_location}</strong>
+            </div>
+            <div>
+              <span>Current team</span>
+              <strong>{homePage.current_org} / {homePage.current_team}</strong>
+            </div>
+          </div>
           <div class="hero-actions">
             <a href="#journey" class="button button-primary">Walk the route</a>
             <a href="/cv" class="button button-secondary">Open CV</a>
@@ -37,8 +49,8 @@ const firstRouteItem = routeItems[0];
             <img src={homePage.hero_portrait} alt={homePage.hero_portrait_alt} />
           </div>
           <div class="hero-portrait-caption">
+            <span>{homePage.name}</span>
             <span>{homePage.current_location}</span>
-            <span>{homePage.current_org}</span>
           </div>
         </div>
       </div>
@@ -128,37 +140,58 @@ const firstRouteItem = routeItems[0];
                     <span class="story-chapter__year">{item.period}</span>
                   </div>
                   <div class="story-chapter__content">
-                    <div class="story-chapter__lead">
-                      <p class="story-chapter__count">Stop {String(index + 1).padStart(2, "0")} / {String(routeTotal).padStart(2, "0")}</p>
-                      <h2 class="story-chapter__title">{item.place_short}</h2>
+                    <div class="story-chapter__main">
                       <div class="story-chapter__meta">
                         <span>{item.period}</span>
                         <span>{item.place}</span>
                       </div>
                       <p class="story-chapter__context">{item.context}</p>
                       <p class="story-chapter__summary">{item.body}</p>
+                      {
+                        item.details && (
+                          <ul class="story-chapter__details">
+                            {item.details.map((detail) => <li>{detail}</li>)}
+                          </ul>
+                        )
+                      }
                     </div>
 
-                    <div class="story-chapter__note">
-                      <p class="story-chapter__note-label">What stayed</p>
-                      <p>{item.summary}</p>
-                    </div>
-
-                    {
-                      item.scene === "utrecht" && (
-                        <div class="story-chapter__current">
-                          <div class="story-chapter__current-copy">
-                            <p class="story-chapter__note-label">Current chapter</p>
-                            <h3>{homePage.current_role}</h3>
-                            <p>{homePage.current_org} / {homePage.current_team}</p>
-                          </div>
-                          <figure class="story-chapter__photo">
-                            <img src={homePage.hq_photo} alt={homePage.hq_photo_alt} />
-                            <figcaption>{homePage.hq_label} / {homePage.hq_address}, {homePage.hq_city}</figcaption>
+                    <div class="story-chapter__aside">
+                      {
+                        item.image && (
+                          <figure class="story-chapter__scene-photo">
+                            <img src={item.image} alt={item.image_alt} />
+                            <figcaption>
+                              <span>{item.image_label}</span>
+                              {item.image_credit && <small>{item.image_credit}</small>}
+                            </figcaption>
                           </figure>
-                        </div>
-                      )
-                    }
+                        )
+                      }
+
+                      <div class="story-chapter__note">
+                        <p class="story-chapter__note-label">What stayed</p>
+                        <p>{item.summary}</p>
+                      </div>
+
+                      {
+                        item.scene === "utrecht" && (
+                          <div class="story-chapter__current">
+                            <div class="story-chapter__current-copy">
+                              <p class="story-chapter__note-label">Current chapter</p>
+                              <h3>{homePage.current_role}</h3>
+                              <p>{homePage.current_org} / {homePage.current_team}</p>
+                            </div>
+                            <figure class="story-chapter__photo">
+                              <img src={homePage.hq_photo} alt={homePage.hq_photo_alt} />
+                              <figcaption>{homePage.hq_label} / {homePage.hq_address}, {homePage.hq_city}</figcaption>
+                            </figure>
+                          </div>
+                        )
+                      }
+                    </div>
+
+                    <h2 class="story-chapter__place-title">{item.place_short}</h2>
                   </div>
                 </article>
               ))

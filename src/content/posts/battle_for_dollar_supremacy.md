@@ -1,5 +1,5 @@
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: "The Battle for Dollar Supremacy: The Beginning of the End of Financial Terror"
 date: 2026-04-14
 description: "How reserve currencies evolve, why dollar power has really been payment power, and why early decentralized finance may have made its first major breach into traditional finance."

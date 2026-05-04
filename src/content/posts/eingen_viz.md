@@ -1,5 +1,5 @@
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: Visualizing Eigenvalue Distributions through Matrix Evolution
 date: 2023-10-06
 description: Visualizing Eigenvalue Distributions through Matrix Evolution

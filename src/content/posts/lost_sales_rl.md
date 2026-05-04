@@ -1,5 +1,5 @@
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Inventory Management Problem
 date: 2021-12-14
 description: A brief guide to using evolution strategy for solving inventory management problems
@@ -242,7 +242,7 @@ If you find this work useful, please cite it as:
 
 @article{Manaf2021LostSales,
   title   = "Evolution Strategies as an alternative to Reinforcement Learning for Solving the Lost Sales Problem",
-  author  = "Manafzadeh Dizbin, Nima, Basten, Rob",
+  author  = "Manaf, Nima and Basten, Rob",
   journal = "nimaman.github.io",
   year    = "2021",
   url     = ""

@@ -1,6 +1,6 @@
 
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: Summary and Future Directions of My Research  
 date: 2021-12-13
 description: A Sumamry and Future Directions of My Research 

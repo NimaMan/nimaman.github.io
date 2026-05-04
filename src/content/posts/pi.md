@@ -1,6 +1,6 @@
 
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: Exploring the Irrationality of π through Animated Visualizations
 date: 2023-10-06
 description: Exploring the Irrationality of π through Animated Visualizations

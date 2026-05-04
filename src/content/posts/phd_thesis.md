@@ -1,6 +1,6 @@
 
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: Overview of My Ph.D. Thesis
 date: 2021-11-21
 description: Overview of My Ph.D. Thesis 

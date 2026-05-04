@@ -1,6 +1,6 @@
 
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: My Teaching Philosophy 
 date: 2021-12-12
 description: Learning and Teaching Philosophy 

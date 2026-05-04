@@ -1,5 +1,5 @@
 ---
-author: Nima Manafzadeh Dizbin
+author: Nima Manaf, PhD
 title: Mean Absorbing Time of a Two dimensional Random Walk
 date: 2022-09-03
 description: Mean Absorbing Time of a Two dimensional Random Walk
