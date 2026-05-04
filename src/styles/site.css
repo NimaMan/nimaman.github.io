@@ -1724,7 +1724,7 @@ select {
     --story-accent: #e0a05a;
     --story-accent-rgb: 224, 160, 90;
     position: relative;
-    min-height: min(82vh, 780px);
+    min-height: min(76vh, 720px);
     display: grid;
     align-items: stretch;
     overflow: hidden;
@@ -1808,13 +1808,11 @@ select {
     z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 0.84fr) minmax(19rem, 0.74fr);
-    grid-template-rows: minmax(0, 1fr) auto;
     column-gap: clamp(1.2rem, 3vw, 2.4rem);
     row-gap: clamp(1.2rem, 2vw, 1.8rem);
     align-items: center;
     width: 100%;
     min-height: 100%;
-    padding-bottom: clamp(3.8rem, 7vw, 6.2rem);
 }
 
 .story-chapter__main {
@@ -1822,18 +1820,6 @@ select {
     grid-row: 1;
     align-self: center;
     max-width: 35rem;
-}
-
-.story-chapter__place-title {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    align-self: end;
-    margin: 0;
-    color: rgba(255, 248, 239, 0.92);
-    font-family: var(--font-display);
-    font-size: clamp(3.4rem, 10vw, 8.4rem);
-    line-height: 0.76;
-    letter-spacing: -0.065em;
 }
 
 .story-chapter__meta {
@@ -1859,7 +1845,7 @@ select {
 }
 
 .story-chapter__context {
-    margin: 1.35rem 0 0;
+    margin: 1.25rem 0 0;
     color: rgb(var(--story-accent-rgb));
     font-family: var(--font-display);
     font-size: clamp(1.45rem, 2.4vw, 2rem);
@@ -1941,6 +1927,7 @@ select {
 
 .story-chapter__scene-photo,
 .story-chapter__photo {
+    position: relative;
     margin: 0;
     overflow: hidden;
     border-radius: 8px;
@@ -1956,11 +1943,11 @@ select {
 }
 
 .story-chapter__scene-photo img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
 }
 
 .story-chapter__photo img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
 }
 
 .story-chapter.is-active .story-chapter__scene-photo img,
@@ -1970,11 +1957,14 @@ select {
 
 .story-chapter__scene-photo figcaption,
 .story-chapter__photo figcaption {
+    position: absolute;
+    inset: auto 0 0;
     display: grid;
     gap: 0.2rem;
     margin: 0;
-    padding: 0.72rem 0.82rem 0.82rem;
-    color: rgba(255, 248, 239, 0.74);
+    padding: 1.45rem 0.82rem 0.82rem;
+    color: rgba(255, 248, 239, 0.82);
+    background: linear-gradient(180deg, transparent, rgba(5, 14, 20, 0.78));
     font-family: var(--font-mono);
     font-size: 0.68rem;
     letter-spacing: 0.08em;
@@ -2198,12 +2188,6 @@ select {
         max-width: 100%;
     }
 
-    .story-chapter__place-title {
-        grid-column: auto;
-        grid-row: auto;
-        margin-top: 0.4rem;
-    }
-
     .story-chapter__current {
         grid-column: auto;
         grid-row: auto;
@@ -2380,11 +2364,6 @@ select {
     .story-chapter__content {
         min-height: auto;
         gap: 1rem;
-    }
-
-    .story-chapter__place-title {
-        font-size: clamp(2.4rem, 14vw, 3.4rem);
-        line-height: 0.9;
     }
 
     .story-chapter__context {
