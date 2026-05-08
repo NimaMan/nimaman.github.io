@@ -262,10 +262,10 @@
   "homePage": {
     "contact_heading": "If the problem is real and difficult, I am interested.",
     "contact_summary": "I am especially drawn to work that combines data, uncertainty, and operational constraints.",
-    "current_city": "Utrecht",
+    "current_city": "Netherlands",
     "current_heading": "Current Work",
     "current_kicker": "Now",
-    "current_location": "Utrecht, Netherlands",
+    "current_location": "Netherlands",
     "current_org": "Rabobank",
     "current_role": "Data Analytics Lead",
     "current_summary": "The current chapter sits at the intersection of financial risk, optimization, machine learning, and decision systems used in practice.",
@@ -280,15 +280,15 @@
     "hq_label": "Rabobank Headquarters",
     "hq_photo": "/static/images/rabobank-hq.jpg",
     "hq_photo_alt": "Rabobank office buildings on Croeselaan in Utrecht",
-    "journey_heading": "Current first, then back through the route that shaped how I work.",
-    "journey_intro": "Start in Utrecht and scroll backward through the cities, labs, and universities that led here.",
+    "journey_heading": "",
+    "journey_intro": "",
     "name": "Nima Manaf, PhD",
     "role": "Data Analytics Lead",
     "short_name": "Nima Manaf",
     "snapshot_summary": "Building analytics for credit risk, portfolio performance, and decision systems that have to work under real constraints.",
     "tagline": "Applied machine learning, optimization, and analytics for real decision systems.",
     "writing_heading": "Selected Writing",
-    "writing_intro": "Research notes, visual experiments, and technical essays collected across different phases of the journey."
+    "writing_intro": "Research notes, visual experiments, and technical essays."
   },
   "lifeTimeline": [
     {
@@ -373,7 +373,7 @@
       "summary": "Back to close the doctorate."
     },
     {
-      "body": "Eindhoven brought the postdoc years, and by the second year the first master's student I supervised had graduated.",
+      "body": "The postdoc years expanded the research toolkit, and by the second year the first master's student I supervised had graduated.",
       "context": "Postdoc at TU/e",
       "image": "/static/images/tue-atlas-building.jpg",
       "image_alt": "Atlas Building at Eindhoven University of Technology",
@@ -390,7 +390,7 @@
       "summary": "Postdoc years, supervision, and the first master's student graduating."
     },
     {
-      "body": "Utrecht is the current chapter: Rabobank, value chain finance, and research habits translated into production decisions.",
+      "body": "The current chapter is Rabobank, value chain finance, and research habits translated into production decisions.",
       "context": "Rabobank",
       "details": [
         "The work now sits closer to decisions: portfolio monitoring, credit risk, model governance, and analytics that teams actually use.",

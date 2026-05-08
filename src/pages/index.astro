@@ -7,7 +7,12 @@ import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../lib/po
 
 const { homePage, expertise, lifeTimeline, selectedWork, socialLinks } = siteData;
 const featuredPosts = (await getPublicPosts()).slice(0, 3);
-const routeItems = [...lifeTimeline].reverse();
+const routeItems = [...lifeTimeline].reverse().map((item) => {
+  const placeLabel = item.place === "Netherlands" ? "Netherlands" : item.place_short;
+  const countryLabel = placeLabel === item.place ? "" : item.place;
+
+  return { ...item, placeLabel, countryLabel };
+});
 const routeTotal = routeItems.length;
 const firstRouteItem = routeItems[0];
 ---
@@ -38,7 +43,7 @@ const firstRouteItem = routeItems[0];
             </div>
           </div>
           <div class="hero-actions">
-            <a href="#journey" class="button button-primary">Walk the route</a>
+            <a href="#journey" class="button button-primary">See timeline</a>
             <a href="/cv" class="button button-secondary">Open CV</a>
           </div>
           <p class="hero-note">{homePage.tagline}</p>
@@ -58,24 +63,16 @@ const firstRouteItem = routeItems[0];
 
     <section id="journey" class="section-block story-journey" data-story-journey data-active-scene={firstRouteItem.scene}>
       <div class="site-shell">
-        <div class="story-journey__header">
-          <div>
-            <p class="eyebrow">Life Route</p>
-            <h2 class="section-title">{homePage.journey_heading}</h2>
-          </div>
-          <p class="story-journey__intro">{homePage.journey_intro}</p>
-        </div>
-
         <div class="story-journey__shell">
-          <aside class="story-journey__rail" aria-label="Journey route">
+          <aside class="story-journey__rail" aria-label="Timeline">
             <div class="story-route-console">
-              <p class="story-route-console__label">Active stop</p>
+              <p class="story-route-console__label">Timeline</p>
               <div class="story-route-console__meta">
                 <span data-story-console-count>01 / {String(routeTotal).padStart(2, "0")}</span>
                 <span data-story-console-period>{firstRouteItem.period}</span>
               </div>
-              <h3 data-story-console-place>{firstRouteItem.place_short}</h3>
-              <p class="story-route-console__country" data-story-console-country>{firstRouteItem.place}</p>
+              <h3 data-story-console-place>{firstRouteItem.placeLabel}</h3>
+              <p class="story-route-console__country" data-story-console-country>{firstRouteItem.countryLabel}</p>
               <p class="story-route-console__context" data-story-console-context>{firstRouteItem.context}</p>
               <p class="story-route-console__body" data-story-console-body>{firstRouteItem.body}</p>
               <div class="story-route-console__meter" aria-hidden="true">
@@ -95,8 +92,8 @@ const firstRouteItem = routeItems[0];
                       class:list={["story-stop-indicator", { "is-active": index === 0 }]}
                       data-story-indicator
                       data-story-target={index}
-                      data-story-place={item.place_short}
-                      data-story-country={item.place}
+                      data-story-place={item.placeLabel}
+                      data-story-country={item.countryLabel}
                       data-story-period={item.period}
                       data-story-context={item.context}
                       data-story-body={item.body}
@@ -106,7 +103,7 @@ const firstRouteItem = routeItems[0];
                       <span class="story-stop-indicator__index">{String(index + 1).padStart(2, "0")}</span>
                       <span class="story-stop-indicator__dot" aria-hidden="true"></span>
                       <span class="story-stop-indicator__text">
-                        <span class="story-stop-indicator__name">{item.place_short}</span>
+                        <span class="story-stop-indicator__name">{item.placeLabel}</span>
                         <span class="story-stop-indicator__period">{item.period}</span>
                       </span>
                     </a>
@@ -125,8 +122,8 @@ const firstRouteItem = routeItems[0];
                   data-story-chapter
                   data-story-index={index}
                   data-story-count={`${String(index + 1).padStart(2, "0")} / ${String(routeTotal).padStart(2, "0")}`}
-                  data-story-place={item.place_short}
-                  data-story-country={item.place}
+                  data-story-place={item.placeLabel}
+                  data-story-country={item.countryLabel}
                   data-story-period={item.period}
                   data-story-context={item.context}
                   data-story-body={item.body}
@@ -136,7 +133,7 @@ const firstRouteItem = routeItems[0];
                   <div class="story-chapter__map" aria-hidden="true">
                     <span class="story-chapter__path"></span>
                     <span class="story-chapter__beacon"></span>
-                    <span class="story-chapter__watermark">{item.place_short}</span>
+                    <span class="story-chapter__watermark">{item.placeLabel}</span>
                     <span class="story-chapter__year">{item.period}</span>
                   </div>
                   <div class="story-chapter__content">

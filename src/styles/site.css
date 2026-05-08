@@ -1537,25 +1537,10 @@ select {
 
 .story-journey {
     --story-route-progress: 0%;
-    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-top: clamp(2.4rem, 5vw, 4.5rem);
     padding-bottom: clamp(4rem, 7vw, 6rem);
     background:
         linear-gradient(180deg, rgba(255, 253, 248, 0), rgba(255, 253, 248, 0.58) 18%, rgba(236, 226, 211, 0.46) 100%);
-}
-
-.story-journey__header {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.58fr);
-    gap: clamp(1.4rem, 4vw, 4rem);
-    align-items: end;
-    margin-bottom: clamp(1.8rem, 4vw, 3rem);
-}
-
-.story-journey__intro {
-    margin: 0;
-    color: var(--muted);
-    font-size: clamp(1.05rem, 1.5vw, 1.22rem);
-    line-height: 1.7;
 }
 
 .story-journey__shell {
@@ -2197,7 +2182,6 @@ select {
         margin-left: 0;
     }
 
-    .story-journey__header,
     .story-journey__shell {
         grid-template-columns: 1fr;
     }
