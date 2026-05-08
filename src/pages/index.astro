@@ -8,7 +8,7 @@ import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../lib/po
 const { homePage, expertise, lifeTimeline, selectedWork, socialLinks } = siteData;
 const featuredPosts = (await getPublicPosts()).slice(0, 3);
 const routeItems = [...lifeTimeline].reverse().map((item) => {
-  const placeLabel = item.place === "Netherlands" ? "Netherlands" : item.place_short;
+  const placeLabel = item.place_short;
   const countryLabel = placeLabel === item.place ? "" : item.place;
 
   return { ...item, placeLabel, countryLabel };
