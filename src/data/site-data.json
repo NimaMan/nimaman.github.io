@@ -5,8 +5,20 @@
       "degree": "PhD in Business Administration",
       "details": [
         "Thesis: Modelling and Control of Production Systems Based on Observed Inter-event Times.",
+        "Analyzed extensive event data from semiconductor wafer fabrication.",
+        "Developed machine learning and statistical methods for production time prediction.",
         "PhD Academic Excellence Award recipient.",
         "Supervisor: Prof. Dr. Baris Tan."
+      ],
+      "links": [
+        {
+          "href": "https://arxiv.org/abs/2204.01079",
+          "label": "Full thesis on arXiv"
+        },
+        {
+          "href": "https://en.wikipedia.org/wiki/Bar%C4%B1%C5%9F_Tan",
+          "label": "Supervisor profile"
+        }
       ],
       "institution": "Koc University",
       "location": "Istanbul, Turkey"
@@ -53,7 +65,7 @@
         "Evaluated machine learning models for ECB-facing reporting processes.",
         "Addressed methodological questions in the rural portfolio using advanced statistical techniques.",
         "Adapted EBA guideline logic in Python to streamline regulatory work.",
-        "Built monitoring frameworks for risk-adjusted performance measurement.",
+        "Built monitoring frameworks for risk-adjusted performance measurement, including RAROC-oriented analysis.",
         "Designed challenger models in support of IFRS9 processes."
       ],
       "title": "Data Scientist"
@@ -65,7 +77,7 @@
       "points": [
         "Researched evolutionary training of deep neural networks.",
         "Applied reinforcement learning and evolution strategies to inventory management problems.",
-        "Supervised Bachelor's and Master's theses.",
+        "Supervised Bachelor's and Master's thesis projects, including a master's student who graduated during the TU/e chapter.",
         "Published research in optimization and machine learning for decision systems."
       ],
       "title": "Postdoctoral Research Associate"
@@ -78,7 +90,7 @@
         "Studied Q-learning and Monte Carlo Tree Search for scheduling problems.",
         "Developed the reinforced genetic algorithm for optimization problems.",
         "Analyzed semiconductor manufacturing network data at scale.",
-        "Co-invented the Learn Offline, Search Online methodology."
+        "Co-invented the Learn Offline, Search Online methodology for hybrid scheduling."
       ],
       "title": "PhD Industrial Sabbatical"
     }
@@ -94,20 +106,71 @@
     },
     {
       "items": [
-        "Learn Offline, Search Online hybrid scheduling methodology.",
+        "Learn Offline, Search Online: a hybrid approach to solving scheduling problems.",
+        "Patent reference: US20210312280A1 / Patent No. 389829.",
         "NWO 1,000,000 hours computing time grant.",
         "NWO 500,000 hours computing time grant.",
         "Productive 4.0 project scholarship (2017)."
+      ],
+      "links": [
+        {
+          "href": "https://patents.justia.com/patent/20210312280",
+          "label": "Patent record"
+        }
       ],
       "title": "Patents and Grants"
     },
     {
       "items": [
-        "English, Turkish, Persian, and basic Dutch.",
-        "Optimization algorithms, financial analytics, teaching, and mentoring."
+        "Full PhD scholarship, Koc University (2016 - 2020).",
+        "Full MSc scholarship, Koc University (2014 - 2016)."
       ],
-      "title": "Languages and Interests"
+      "title": "Scholarships"
     }
+  ],
+  "cvLeadership": [
+    {
+      "items": [
+        "Supervised multiple master's thesis projects.",
+        "Supervised bachelor's thesis projects.",
+        "Supervised a master's student through graduation during the TU/e postdoc chapter."
+      ],
+      "title": "Supervision and Mentoring"
+    },
+    {
+      "items": [
+        "Coordinated academia-industry research work across university and industrial settings.",
+        "Managed applied research threads from open technical questions to publishable or usable outputs.",
+        "Work across business, technical, and governance stakeholders to move analytics into practice."
+      ],
+      "title": "Leadership and Coordination"
+    }
+  ],
+  "cvLanguages": [
+    {
+      "language": "Persian",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "Fluent"
+    },
+    {
+      "language": "Turkish",
+      "level": "Fluent"
+    },
+    {
+      "language": "Dutch",
+      "level": "Basic"
+    }
+  ],
+  "cvInterests": [
+    "Data science and AI research",
+    "Optimization algorithms",
+    "Financial analytics",
+    "Teaching and mentoring",
+    "Electronic music",
+    "Wandering in nature"
   ],
   "cvProfile": {
     "location": "Rabobank, Utrecht, Netherlands",
@@ -123,6 +186,7 @@
         "Graph neural networks",
         "Supervised and unsupervised learning",
         "Statistical learning",
+        "Gradient-free learning",
         "Evolution strategies"
       ],
       "title": "Machine Learning and AI"
@@ -134,7 +198,8 @@
         "Monte Carlo Tree Search",
         "Markov decision processes",
         "Dynamic programming",
-        "Mathematical programming"
+        "Mathematical programming",
+        "Constraint programming"
       ],
       "title": "Optimization Methods"
     },
@@ -154,6 +219,7 @@
         "Supply chain management",
         "Inventory control",
         "Production planning and scheduling",
+        "Resource allocation and routing",
         "Healthcare operations",
         "Semiconductor manufacturing",
         "Financial risk analytics"

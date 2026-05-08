@@ -1430,6 +1430,33 @@ select {
     font-size: 1.02rem;
 }
 
+.cv-link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+.cv-link-row a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.38rem 0.72rem;
+    border-radius: 999px;
+    color: var(--brand-strong);
+    background: rgba(11, 92, 135, 0.08);
+    border: 1px solid rgba(11, 92, 135, 0.12);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.cv-link-row a:hover {
+    background: rgba(11, 92, 135, 0.13);
+}
+
 .cv-section {
     display: flex;
     flex-direction: column;
@@ -1463,6 +1490,47 @@ select {
 
 .detail-list li + li {
     margin-top: 0.4rem;
+}
+
+.cv-context-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+    gap: 1.35rem;
+}
+
+.cv-language-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+.cv-language-list p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid rgba(16, 31, 43, 0.1);
+}
+
+.cv-language-list p:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.cv-language-list span {
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 700;
+}
+
+.cv-language-list strong {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 /* Story Journey */
@@ -2204,7 +2272,8 @@ select {
     .stack-grid--compact,
     .work-grid,
     .info-grid,
-    .nav-grid {
+    .nav-grid,
+    .cv-context-grid {
         grid-template-columns: 1fr;
     }
 

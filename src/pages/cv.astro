@@ -4,7 +4,19 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
 import siteData from "../data/site-data.json";
 
-const { homePage, cvProfile, cvExperience, cvEducation, cvSkills, cvHighlights } = siteData;
+const {
+  homePage,
+  cvProfile,
+  cvExperience,
+  cvEducation,
+  cvLeadership,
+  cvSkills,
+  cvHighlights,
+  cvLanguages,
+  cvInterests,
+  socialLinks,
+} = siteData;
+const cvLinks = socialLinks.filter((link) => ["Email", "LinkedIn", "GitHub", "Scholar"].includes(link.label));
 ---
 
 <BaseLayout title={`CV | ${homePage.short_name}`} description={`Curriculum vitae of ${homePage.name}.`} bodyClass="public-page">
@@ -25,6 +37,15 @@ const { homePage, cvProfile, cvExperience, cvEducation, cvSkills, cvHighlights }
             <span>Finance</span>
             <span>Optimization</span>
             <span>Machine learning</span>
+          </div>
+          <div class="cv-link-row" aria-label="CV contact and profile links">
+            {
+              cvLinks.map((link) => (
+                <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>
+                  {link.label}
+                </a>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -69,6 +90,17 @@ const { homePage, cvProfile, cvExperience, cvEducation, cvSkills, cvHighlights }
                 <ul class="detail-list">
                   {item.details.map((point) => <li>{point}</li>)}
                 </ul>
+                {
+                  item.links && (
+                    <div class="cv-link-row">
+                      {item.links.map((link) => (
+                        <a href={link.href} target="_blank" rel="noreferrer">
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )
+                }
               </article>
             ))
           }
@@ -77,6 +109,27 @@ const { homePage, cvProfile, cvExperience, cvEducation, cvSkills, cvHighlights }
     </section>
 
     <section class="section-block">
+      <div class="site-shell cv-section">
+        <div class="section-heading">
+          <p class="eyebrow">Supervision</p>
+          <h2 class="section-title">Students, mentoring, and project leadership.</h2>
+        </div>
+        <div class="stack-grid stack-grid--compact">
+          {
+            cvLeadership.map((item) => (
+              <article class="stack-card">
+                <h3>{item.title}</h3>
+                <ul class="detail-list">
+                  {item.items.map((point) => <li>{point}</li>)}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block section-light">
       <div class="site-shell cv-section">
         <div class="section-heading">
           <p class="eyebrow">Skills</p>
@@ -97,11 +150,11 @@ const { homePage, cvProfile, cvExperience, cvEducation, cvSkills, cvHighlights }
       </div>
     </section>
 
-    <section class="section-block section-light">
+    <section class="section-block">
       <div class="site-shell cv-section">
         <div class="section-heading">
           <p class="eyebrow">Highlights</p>
-          <h2 class="section-title">Awards, grants, and broader context.</h2>
+          <h2 class="section-title">Awards, patents, grants, and scholarships.</h2>
         </div>
         <div class="stack-grid stack-grid--compact">
           {
@@ -111,9 +164,50 @@ const { homePage, cvProfile, cvExperience, cvEducation, cvSkills, cvHighlights }
                 <ul class="detail-list">
                   {item.items.map((point) => <li>{point}</li>)}
                 </ul>
+                {
+                  item.links && (
+                    <div class="cv-link-row">
+                      {item.links.map((link) => (
+                        <a href={link.href} target="_blank" rel="noreferrer">
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )
+                }
               </article>
             ))
           }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block section-light">
+      <div class="site-shell cv-section">
+        <div class="section-heading">
+          <p class="eyebrow">Languages and Interests</p>
+          <h2 class="section-title">The human context around the work.</h2>
+        </div>
+        <div class="cv-context-grid">
+          <article class="stack-card">
+            <h3>Languages</h3>
+            <div class="cv-language-list">
+              {
+                cvLanguages.map((item) => (
+                  <p>
+                    <span>{item.language}</span>
+                    <strong>{item.level}</strong>
+                  </p>
+                ))
+              }
+            </div>
+          </article>
+          <article class="stack-card">
+            <h3>Interests</h3>
+            <div class="tag-row">
+              {cvInterests.map((item) => <span>{item}</span>)}
+            </div>
+          </article>
         </div>
       </div>
     </section>
