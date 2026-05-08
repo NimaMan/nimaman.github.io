@@ -1942,6 +1942,33 @@ select {
     background: rgb(var(--story-accent-rgb));
 }
 
+.story-chapter__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+.story-chapter__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    color: rgb(var(--story-accent-rgb));
+    background: rgba(255, 248, 239, 0.08);
+    border: 1px solid rgba(255, 248, 239, 0.14);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.story-chapter__links a:hover {
+    background: rgba(255, 248, 239, 0.14);
+}
+
 .story-chapter__aside {
     grid-column: 2;
     grid-row: 1;

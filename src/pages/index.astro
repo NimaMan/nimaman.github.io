@@ -44,7 +44,6 @@ const firstRouteItem = routeItems[0];
           </div>
           <div class="hero-actions">
             <a href="#journey" class="button button-primary">See timeline</a>
-            <a href="/cv" class="button button-secondary">Open CV</a>
           </div>
           <p class="hero-note">{homePage.tagline}</p>
         </div>
@@ -149,6 +148,17 @@ const firstRouteItem = routeItems[0];
                           <ul class="story-chapter__details">
                             {item.details.map((detail) => <li>{detail}</li>)}
                           </ul>
+                        )
+                      }
+                      {
+                        item.links && (
+                          <div class="story-chapter__links">
+                            {item.links.map((link) => (
+                              <a href={link.href} target="_blank" rel="noreferrer">
+                                {link.label}
+                              </a>
+                            ))}
+                          </div>
                         )
                       }
                     </div>

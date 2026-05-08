@@ -309,34 +309,36 @@
       "summary": "Born in Qaradag, in northwestern Iran."
     },
     {
-      "body": "Tehran meant four formative years at Sharif University of Technology.",
-      "context": "Sharif University of Technology",
+      "body": "Tehran meant a full-scholarship BSc in Industrial Engineering at Sharif University of Technology, often described as Iran's MIT.",
+      "context": "BSc at Sharif University of Technology",
       "details": [
-        "Industrial engineering gave me the language of systems, constraints, queues, and trade-offs.",
-        "It was the first formal step toward the blend of analytics, optimization, and applied decision work I still use."
+        "BSc in Industrial Engineering, 2010 - 2014, on full scholarship.",
+        "Exceptional Talent Student distinction: top 0.1% in the National University Entrance Exam.",
+        "Industrial engineering gave me the language of systems, constraints, queues, and trade-offs."
       ],
       "period": "2010 - 2014",
       "place": "Iran",
       "place_short": "Tehran",
       "scene": "tehran",
-      "summary": "Four undergraduate years in the capital."
+      "summary": "Full-scholarship BSc at Sharif, exceptional talent distinction, and the first formal step into systems thinking."
     },
     {
-      "body": "Istanbul became the long academic chapter: first the MSc, then the PhD at Koc University.",
+      "body": "Istanbul became the long academic chapter: a full-scholarship MSc and then a full-scholarship PhD at Koc University.",
       "context": "Koc University, MSc to PhD",
       "image": "/static/images/koc-university-campus.jpg",
       "image_alt": "Koc University Rumelifeneri campus overlooking the Black Sea",
       "image_credit": "Image: apply.ku.edu.tr",
       "image_label": "Koc University, Rumelifeneri Campus",
       "details": [
-        "The master's work turned into a doctoral route through operations research, production systems, and data-driven modeling.",
+        "MSc in Operations and Information Systems, 2014 - 2016, on full scholarship.",
+        "The master's work turned into a full-scholarship doctoral route through operations research, production systems, and data-driven modeling.",
         "This is where I started treating uncertainty as something to model carefully, not smooth away."
       ],
       "period": "2014 - 2019",
       "place": "Turkey",
       "place_short": "Istanbul",
       "scene": "istanbul",
-      "summary": "Master's study turned into a doctoral chapter."
+      "summary": "Full-scholarship MSc and PhD years that turned operations research into a doctoral path."
     },
     {
       "body": "A year at Bosch AI working on scheduling, reinforcement learning, search, and industrial data.",
@@ -356,7 +358,7 @@
       "summary": "One year inside industrial AI."
     },
     {
-      "body": "I returned to Istanbul to write, defend, and close the PhD.",
+      "body": "I returned to Istanbul to write and defend the dissertation: Modelling and Control of Production Systems Based on Observed Inter-event Times: An Analytical and Empirical Investigation.",
       "context": "Final PhD stretch",
       "image": "/static/images/koc-university-campus.jpg",
       "image_alt": "Koc University Rumelifeneri campus overlooking the Black Sea",
@@ -364,13 +366,20 @@
       "image_label": "Koc University, Rumelifeneri Campus",
       "details": [
         "The return to Istanbul was about closing the loop: writing, defending, and turning years of work into a finished thesis.",
-        "It was the transition point from doctoral research into the next applied chapter."
+        "The dissertation studied how observed inter-event times can be used to model and control production systems.",
+        "PhD Academic Excellence Award recipient."
+      ],
+      "links": [
+        {
+          "href": "https://arxiv.org/abs/2204.01079",
+          "label": "Dissertation on arXiv"
+        }
       ],
       "period": "2020",
       "place": "Turkey",
       "place_short": "Istanbul",
       "scene": "istanbul-return",
-      "summary": "Back to close the doctorate."
+      "summary": "Dissertation defended, PhD Academic Excellence Award, and the research bridge into applied decision systems."
     },
     {
       "body": "The postdoc years were a proud way to give back to academia: helping bachelor's and master's students graduate, building lasting friendships and a wider research network, and joining Ivo Adan's group, a funny coincidence because his name appeared first in the references of my PhD thesis.",
@@ -406,7 +415,7 @@
   ],
   "selectedWork": [
     {
-      "href": "/cv",
+      "href": "#journey",
       "meta": "Current work",
       "summary": "Leading analytics initiatives at Rabobank with a focus on portfolio performance, risk, and decision quality.",
       "title": "Value Chain Finance Analytics"

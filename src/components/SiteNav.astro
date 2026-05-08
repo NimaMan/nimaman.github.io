@@ -2,7 +2,7 @@
 import siteData from "../data/site-data.json";
 
 interface Props {
-  activePage: "home" | "posts" | "cv";
+  activePage: "home" | "posts";
 }
 
 const { activePage } = Astro.props;
@@ -15,7 +15,6 @@ const { homePage, socialLinks } = siteData;
     <nav class="site-nav" aria-label="Primary">
       <a href="/" class={activePage === "home" ? "is-active" : ""}>Home</a>
       <a href="/posts" class={activePage === "posts" ? "is-active" : ""}>Articles</a>
-      <a href="/cv" class={activePage === "cv" ? "is-active" : ""}>CV</a>
       <a href="/#contact">Contact</a>
     </nav>
     <div class="site-meta-links" aria-label="Profile links">
