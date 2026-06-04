@@ -14,8 +14,24 @@ export function formatPostDate(date: Date): string {
   }).format(date);
 }
 
+// Normalize for "is this just the title again?" comparison: trim, collapse
+// whitespace, lowercase, and drop a leading article so a description that only
+// echoes the headline is treated as empty (it adds no information).
+function normalizeForCompare(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .replace(/^(a|an|the)\s+/, "");
+}
+
 export function postExcerpt(post: PostEntry): string {
-  return post.data.description || "";
+  const description = (post.data.description || "").trim();
+  if (!description) return "";
+  if (normalizeForCompare(description) === normalizeForCompare(post.data.title)) {
+    return "";
+  }
+  return description;
 }
 
 export async function getPublicPosts(): Promise<PostEntry[]> {

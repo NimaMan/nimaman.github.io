@@ -1,9 +1,9 @@
 
 ---
 author: Nima Manaf, PhD
-title: Summary and Future Directions of My Research  
+title: Summary and Future Directions of My Research
 date: 2021-12-13
-description: A Sumamry and Future Directions of My Research 
+description: Where my research has been and where it is heading — optimization, learning, and decision systems under real-world constraints.
 ---
 
 My primary and future research interests focus on the ***methodological areas of reinforcement learning and stochastic optimization with applications in inventory management, production planning, resource allocation, robotics, and healthcare operations***.

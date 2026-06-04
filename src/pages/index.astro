@@ -7,11 +7,26 @@ import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../lib/po
 
 const { homePage, expertise, lifeTimeline, selectedWork, socialLinks } = siteData;
 const featuredPosts = (await getPublicPosts()).slice(0, 3);
-const routeItems = [...lifeTimeline].reverse().map((item) => {
+
+// Real geographic coordinates per life-chapter scene, used as cartographic
+// placards across the journey (the site's "survey atlas" signature device).
+const sceneCoords: Record<string, string> = {
+  qaradag: "38.70° N, 46.55° E",
+  tehran: "35.69° N, 51.39° E",
+  istanbul: "41.01° N, 28.98° E",
+  stuttgart: "48.78° N, 9.18° E",
+  "istanbul-return": "41.01° N, 28.98° E",
+  eindhoven: "51.44° N, 5.48° E",
+  utrecht: "52.09° N, 5.12° E",
+};
+
+const routeItems = [...lifeTimeline].reverse().map((item, index) => {
   const placeLabel = item.place_short;
   const countryLabel = placeLabel === item.place ? "" : item.place;
+  const coords = sceneCoords[item.scene] || "";
+  const plate = String(index + 1).padStart(2, "0");
 
-  return { ...item, placeLabel, countryLabel };
+  return { ...item, placeLabel, countryLabel, coords, plate };
 });
 const routeTotal = routeItems.length;
 const firstRouteItem = routeItems[0];
@@ -24,8 +39,8 @@ const firstRouteItem = routeItems[0];
     <section class="hero-section hero-section--snapshot">
       <div class="site-shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">About me</p>
-          <h1>{homePage.name}</h1>
+          <p class="eyebrow">Gazetteer · 38.70&deg; N → 52.09&deg; N</p>
+          <h1>{homePage.short_name}<span class="hero-credential" aria-label="PhD">PhD</span></h1>
           <p class="hero-identity">{homePage.hero_statement}</p>
           <p class="hero-description">{homePage.hero_intro}</p>
           <div class="hero-context" aria-label="Current context">
@@ -55,6 +70,7 @@ const firstRouteItem = routeItems[0];
           <div class="hero-portrait-caption">
             <span>{homePage.name}</span>
             <span>{homePage.current_location}</span>
+            <span>52.09&deg; N, 5.12&deg; E</span>
           </div>
         </div>
       </div>
@@ -65,13 +81,14 @@ const firstRouteItem = routeItems[0];
         <div class="story-journey__shell">
           <aside class="story-journey__rail" aria-label="Timeline">
             <div class="story-route-console">
-              <p class="story-route-console__label">Timeline</p>
+              <p class="story-route-console__label">Route Log</p>
               <div class="story-route-console__meta">
                 <span data-story-console-count>01 / {String(routeTotal).padStart(2, "0")}</span>
                 <span data-story-console-period>{firstRouteItem.period}</span>
               </div>
               <h3 data-story-console-place>{firstRouteItem.placeLabel}</h3>
               <p class="story-route-console__country" data-story-console-country>{firstRouteItem.countryLabel}</p>
+              <p class="story-route-console__coord" data-story-console-coord>{firstRouteItem.coords}</p>
               <p class="story-route-console__context" data-story-console-context>{firstRouteItem.context}</p>
               <p class="story-route-console__body" data-story-console-body>{firstRouteItem.body}</p>
               <div class="story-route-console__meter" aria-hidden="true">
@@ -126,6 +143,7 @@ const firstRouteItem = routeItems[0];
                   data-story-period={item.period}
                   data-story-context={item.context}
                   data-story-body={item.body}
+                  data-story-coord={item.coords}
                   data-story-scene={item.scene}
                   tabindex="0"
                 >
@@ -138,8 +156,10 @@ const firstRouteItem = routeItems[0];
                   <div class="story-chapter__content">
                     <div class="story-chapter__main">
                       <div class="story-chapter__meta">
+                        <span class="story-chapter__plate">Plate {item.plate}</span>
                         <span>{item.period}</span>
                         <span>{item.place}</span>
+                        {item.coords && <span class="story-chapter__coord">{item.coords}</span>}
                       </div>
                       <h2 class="story-chapter__context">{item.context}</h2>
                       <p class="story-chapter__summary">{item.body}</p>
@@ -169,7 +189,7 @@ const firstRouteItem = routeItems[0];
                           <figure class="story-chapter__scene-photo">
                             <img src={item.image} alt={item.image_alt} />
                             <figcaption>
-                              <span>{item.image_label}</span>
+                              <span>Fig. {item.plate} · {item.image_label}</span>
                               {item.image_credit && <small>{item.image_credit}</small>}
                             </figcaption>
                           </figure>
@@ -177,7 +197,7 @@ const firstRouteItem = routeItems[0];
                       }
 
                       <div class="story-chapter__note">
-                        <p class="story-chapter__note-label">What stayed</p>
+                        <p class="story-chapter__note-label">Bearings carried forward</p>
                         <p>{item.summary}</p>
                       </div>
 
@@ -210,8 +230,10 @@ const firstRouteItem = routeItems[0];
     <section class="section-block">
       <div class="site-shell">
         <div class="section-heading">
-          <p class="eyebrow">Current Practice</p>
-          <h2 class="section-title">{homePage.current_heading}</h2>
+          <div>
+            <p class="eyebrow">Current Practice</p>
+            <h2 class="section-title">{homePage.current_heading}</h2>
+          </div>
         </div>
         <p class="section-intro">{homePage.current_summary}</p>
         <div class="card-grid">
@@ -233,14 +255,16 @@ const firstRouteItem = routeItems[0];
     <section id="work" class="section-block section-light">
       <div class="site-shell">
         <div class="section-heading">
-          <p class="eyebrow">Selected Work</p>
-          <h2 class="section-title">A few threads that stayed with me.</h2>
+          <div>
+            <p class="eyebrow">Selected Work</p>
+            <h2 class="section-title">A few threads that stayed with me.</h2>
+          </div>
         </div>
         <div class="work-grid">
           {
-            selectedWork.map((item) => (
+            selectedWork.map((item, index) => (
               <a href={item.href} class="work-card">
-                <p class="work-meta">{item.meta}</p>
+                <p class="work-meta">Plate {String(index + 1).padStart(2, "0")} · {item.meta}</p>
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
                 <span class="work-link">Open</span>
@@ -267,7 +291,7 @@ const firstRouteItem = routeItems[0];
               <article class="article-card">
                 <p class="article-card__date">{formatPostDate(post.data.date)}</p>
                 <h3><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h3>
-                <p>{postExcerpt(post)}</p>
+                {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
               </article>
             ))
           }
@@ -276,6 +300,13 @@ const firstRouteItem = routeItems[0];
     </section>
 
     <section id="contact" class="section-block section-dark">
+      <div class="site-shell">
+        <p class="contact-terminus" aria-hidden="true">
+          <span class="contact-terminus__line"></span>
+          <span class="contact-terminus__mark"></span>
+          <span class="contact-terminus__label">Present position · 52.09&deg; N, 5.12&deg; E</span>
+        </p>
+      </div>
       <div class="site-shell contact-panel">
         <div>
           <p class="eyebrow eyebrow-inverse">Contact</p>

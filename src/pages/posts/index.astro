@@ -30,7 +30,7 @@ const posts = await getPublicPosts();
             <article class="article-card article-card--full">
               <p class="article-card__date">{formatPostDate(post.data.date)}</p>
               <h2><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h2>
-              <p>{postExcerpt(post)}</p>
+              {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
               <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
             </article>
           ))

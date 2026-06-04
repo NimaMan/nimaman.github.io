@@ -12,6 +12,8 @@
   const consoleCountry = journey.querySelector("[data-story-console-country]");
   const consoleContext = journey.querySelector("[data-story-console-context]");
   const consoleBody = journey.querySelector("[data-story-console-body]");
+  const consoleCoord = journey.querySelector("[data-story-console-coord]");
+  const plateFolio = document.querySelector("[data-plate]");
 
   if (!chapters.length) return;
 
@@ -50,8 +52,13 @@
     setText(consolePeriod, activeChapter.dataset.storyPeriod);
     setText(consolePlace, activeChapter.dataset.storyPlace);
     setText(consoleCountry, activeChapter.dataset.storyCountry);
+    setText(consoleCoord, activeChapter.dataset.storyCoord);
     setText(consoleContext, activeChapter.dataset.storyContext);
     setText(consoleBody, activeChapter.dataset.storyBody);
+
+    if (plateFolio) {
+      plateFolio.textContent = `Plate ${String(safeIndex + 1).padStart(2, "0")}`;
+    }
   };
 
   const observer = new IntersectionObserver(

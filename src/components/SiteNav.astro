@@ -11,27 +11,39 @@ const { homePage, socialLinks } = siteData;
 
 <header class="site-header">
   <div class="site-shell site-header__inner">
-    <a class="site-brand" href="/">{homePage.short_name}</a>
+    <a class="site-brand" href="/">
+      <span class="site-brand__name">{homePage.short_name}</span>
+      <span class="site-brand__sub" aria-hidden="true">Gazetteer</span>
+    </a>
     <nav class="site-nav" aria-label="Primary">
       <a href="/" class={activePage === "home" ? "is-active" : ""}>Home</a>
       <a href="/posts" class={activePage === "posts" ? "is-active" : ""}>Articles</a>
       <a href="/#contact">Contact</a>
     </nav>
-    <div class="site-meta-links" aria-label="Profile links">
+    <div class="site-header__end">
       {
-        socialLinks.map((link) => (
-          <a
-            href={link.href}
-            class="site-meta-link"
-            aria-label={link.label}
-            title={link.label}
-            target={link.external ? "_blank" : undefined}
-            rel={link.external ? "noreferrer" : undefined}
-          >
-            <span aria-hidden="true">{link.symbol}</span>
-          </a>
-        ))
+        activePage === "home" ? (
+          <span class="site-plate" data-plate aria-hidden="true">Plate 01</span>
+        ) : (
+          <span class="site-plate" aria-hidden="true">52.09&deg; N, 5.12&deg; E</span>
+        )
       }
+      <div class="site-meta-links" aria-label="Profile links">
+        {
+          socialLinks.map((link) => (
+            <a
+              href={link.href}
+              class="site-meta-link"
+              aria-label={link.label}
+              title={link.label}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noreferrer" : undefined}
+            >
+              <span aria-hidden="true">{link.symbol}</span>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </header>
