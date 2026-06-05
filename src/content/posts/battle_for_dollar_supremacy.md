@@ -117,7 +117,7 @@ This may be the first major geopolitical moment in which crypto ceased to be mer
 
 That is a very different claim from the lazy slogan that "Bitcoin replaces the dollar." It is also a much more serious one.
 
-Reserve systems can remain intact while payment monopolies begin to fracture. A superpower can still command the dominant reserve currency while losing some ability to police every edge of settlement. The old order does not end the day an alternative becomes larger. It begins to weaken the day an alternative becomes viable.
+Reserve systems can remain intact while payment monopolies begin to fracture. A superpower can still command the dominant reserve currency while losing some ability to police every edge of settlement. **The old order does not end the day an alternative becomes larger. It begins to weaken the day an alternative becomes viable.**
 
 This is the point many observers miss. They look at crypto and ask whether it is large enough to replace central banks, sovereign bonds, or reserve management. That is the wrong first question. The first historical role of a new monetary technology is usually not to replace the old order outright. It is to reveal where the old order is vulnerable.
 
@@ -131,18 +131,22 @@ Central bank reserve portfolios move slowly. Legal trust moves slowly. Sovereign
 
 The magnitudes make the asymmetry concrete. The dollar's share of allocated reserves has drifted from about [**71%**](https://www.federalreserve.gov/econres/notes/feds-notes/the-international-role-of-the-u-s-dollar-2025-edition-20250718.html) around the year 2000 to **56.77%** at the end of 2025 — a decline of roughly fifteen points spread across a quarter-century. Stablecoin settlement, by contrast, went from negligible to tens of trillions of dollars a year in well under a decade. Reserves grind; rails sprint.
 
-That means the sequence of change may not be:
+That inverts the sequence most observers expect. The intuitive order of change is:
 
 1. first a new reserve currency,
 2. then a new payment order.
 
-It may be the reverse:
+The real order appears to be the reverse:
 
 1. first a fragmented settlement order,
 2. then a gradual erosion of monetary monopoly,
 3. and only later, if at all, a change in reserve hierarchy.
 
+This is not a forecast. It is already what the present is showing. Settlement is the part that is fragmenting now: **yuan** changing hands for passage through the Strait of Hormuz outside SWIFT, demands to be paid in digital currency, sanctions workarounds, and alternative rails carrying value that the old channels can no longer fully gatekeep. The reserve hierarchy, meanwhile, has barely moved — the dollar still sits at **56.77%** of allocated reserves, almost exactly where it was. We are watching the first step happen while the third has scarcely begun. The order of erosion is not a prediction about the future; it is a description of the sequence already underway.
+
 In that sense, the battle for dollar supremacy is entering a new phase. The dollar still dominates reserves, trade, and formal finance. But the infrastructure through which power was exercised over payment is beginning to lose its exclusivity. What is being challenged first is not the dollar's reserve share. It is the monopoly power once attached to the channels of transfer.
+
+And that exclusivity is eroding from two directions at once. From below, alternative rails carry value the old channels can no longer fully gatekeep. But from above, the dominant power has been loosening its own grip whenever it proved costly to hold. Even while fighting Iran, Washington reached into its own sanctions architecture to keep oil flowing: on **March 20, 2026**, mid-war, OFAC issued [General License U](https://www.cnbc.com/2026/03/20/us-issues-30-day-sanctions-waiver-for-sale-of-iranian-oil-at-sea.html), authorizing the sale of roughly **140 million barrels** of sanctioned Iranian crude already at sea, days after [issuing comparable waivers](https://www.cfr.org/articles/trump-gambled-by-easing-oil-sanctions-on-iran-and-russia-will-it-pay-off) on Russian oil to calm prices. A monopoly that the monopolist itself relaxes at will is, by definition, no longer absolute. Its exclusivity has become discretionary and porous — exercised when convenient, suspended when not.
 
 The old order is still alive. But the first versions of its successor have entered the arena.
 
