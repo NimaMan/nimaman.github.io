@@ -1,8 +1,8 @@
 ---
 author: Nima Manaf, PhD
-title: "The Hidden Toll: How the Cost of Moving Money Came Out of Hiding"
+title: "The Price You Cannot See: The Hidden Cost of Money, and the Fight to Keep It Hidden"
 date: 2026-06-05
-description: "The transaction cost of holding and moving money never vanished — banks buried it in the yield you forgo on a zero-rate deposit. How on-chain rails are dragging that hidden rent into the open, why the banks are fighting, and what happens when holding money no longer costs you anything."
+description: "The transaction cost of money never disappeared — banks hid it in the yield you forgo on a zero-rate deposit, brokers in the order flow they sell, payments in the float. How on-chain rails are dragging that hidden rent into the open, and why the incumbents are fighting to keep it buried."
 draft: true
 ---
 
@@ -16,9 +16,9 @@ A bank pays the national average interest-bearing checking account [**0.07%**](h
 
 This is the fact almost no depositor ever sees. "Free" checking is not free. You pay for it in the yield you never receive — the difference between what your money earns in the bank's hands and the nothing you are handed for leaving it there. The transaction cost of keeping money somewhere did not disappear. It was moved out of the line item and into the spread, where it cannot be read.
 
-The same trick is worked on money in motion. Moving money is a [**$2.5 trillion**](https://www.mckinsey.com/industries/financial-services/our-insights/global-payments-report) global business, and its most profitable tolls are the ones you cannot see: interchange folded into the price of everything you buy, currency markups folded into the exchange rate, interest earned on your money during the days a payment takes to clear. The cleanest proof is in remittances, where the World Bank measures every channel. The global average cost of sending money home is [**6.36%**](https://remittanceprices.worldbank.org/); sent through a bank, it is [**14.99%**](https://remittanceprices.worldbank.org/), five times the development target. The incumbent does not move money cheaply. It moves money expensively, and hides the bill.
+The same trick is worked on money in motion. Moving money is a [**$2.5 trillion**](https://www.mckinsey.com/industries/financial-services/our-insights/global-payments-report) global business, and its most profitable tolls are the ones you cannot see: interchange folded into the price of everything you buy, currency markups folded into the exchange rate, interest earned on your money during the days a payment takes to clear. The incumbent does not move money cheaply. It moves money expensively, and hides the bill.
 
-[Part I of this essay](https://nimamanaf.com/posts/battle_for_dollar_supremacy/) argued that the dollar's deepest power is settlement power — control over how value moves — and that crypto rails are breaching that monopoly abroad even as almost every stablecoin extends the dollar's reach. This part is about what the same rails do to a second, more intimate monopoly: not the dollar's grip on the world's payments, but the bank's grip on your yield. The argument is simple. The cost of money never went away. The banks hid it. And a technology is now arriving that does one quietly disarming thing — it makes the cost visible. Once a price can be seen, it can be competed toward zero.
+This essay is about that move — the hiding of a cost, and what undoes it. A [companion essay](https://nimamanaf.com/posts/battle_for_dollar_supremacy/) traces the same struggle one level up, in the dollar's grip on the world's payments; this one stays closer to home, with the bank's grip on your yield. The argument is simple. The cost of money never went away. The banks hid it. And a technology is now arriving that does one quietly disarming thing — it makes the cost visible. Once a price can be seen, it can be competed toward zero.
 
 ## The spread you cannot see
 
@@ -38,6 +38,8 @@ Moving money is a [**$2.5 trillion**](https://www.mckinsey.com/industries/financ
 
 Consider the card in your pocket. Every swipe carries an interchange fee, typically one and a half to three and a half percent, paid by the merchant and folded silently into the price of the goods. In 2024 American merchants paid a record [**$187.2 billion**](https://nilsonreport.com/articles/merchant-processing-fees-in-the-united-states-2024/) in processing fees, the largest slice of which flows to the banks that issue the cards. You do not see it because it is priced into everything; the cash customer pays it too.
 
+Consider buying a stock. For years, retail brokers advertised "commission-free" trading and meant it in the narrowest sense: no fee appeared on the ticket. The cost was simply moved out of view. The broker sells your order to a market maker, which pays for the right to stand on the other side of your trade — Robinhood earned more than [**$600 million**](https://www.globaltrading.net/citadel-securities-paid-us943m-for-retail-us-equity-options-order-flow-in-nine-months/) in 2025 from selling that order flow while charging nothing per trade, part of [**$4.8 billion**](https://www.globaltrading.net/citadel-securities-paid-us943m-for-retail-us-equity-options-order-flow-in-nine-months/) across the industry. You paid in slightly worse prices, and in the value of letting someone see what you were about to do. "Free" was not free. It was unpriced.
+
 Consider sending money across a border. The headline wire fee is the small part. The real toll hides in the exchange rate — banks quote retail customers a markup that institutions never pay — and in the days the money spends in transit, earning interest for whoever is holding it. The World Bank's remittance data exposes the gap precisely: a global average of [**6.36%**](https://remittanceprices.worldbank.org/) across all channels, but [**14.99%**](https://remittanceprices.worldbank.org/) when a bank does the sending, against a development target of three percent and digital-only rails that already cost less than half the bank rate. Same transfer, same dollars; the price depends almost entirely on how well the toll is hidden.
 
 ## The float is the whole game
@@ -46,7 +48,7 @@ Step back from the individual tolls and one mechanism sits beneath all of them. 
 
 This reframes something usually treated as a technical nuisance: settlement lag. A card payment takes days to clear; an ACH transfer takes days; a cross-border payment can take longer. We are told this is the unavoidable friction of legacy infrastructure. It is more honest to say it is convenient. Every day a payment is "clearing," the money is sitting in an account earning interest for an intermediary, not for you. Slow settlement is not only a bug to be tolerated. It is, for the institution holding the float, a feature to be preserved.
 
-Name the float and the whole structure becomes legible. The zero-rate deposit, the interchange fee, the FX markup, the multi-day clearing window — these are not separate businesses. They are four faces of one rent: the yield on your money, captured by whoever stands between you and the moment of payment. The cost of moving and holding money was never abolished. It was made invisible, and an invisible price cannot be shopped.
+Name the float and the whole structure becomes legible. The zero-rate deposit, the interchange fee, the sold order flow, the currency markup, the multi-day clearing window — these are not separate businesses. They are faces of one rent: the yield on your money, captured by whoever stands between you and the moment of payment. The cost of moving and holding money was never abolished. It was made invisible, and an invisible price cannot be shopped.
 
 ## On-chain prices the invisible
 
@@ -76,38 +78,10 @@ The same logic runs one layer down, in a quieter dispute. In 2025 JPMorgan moved
 
 The decisive testimony comes from the government's own economists. A White House Council of Economic Advisers [**analysis**](https://www.whitehouse.gov/wp-content/uploads/2026/04/Effects-of-Stablecoin-Yield-Prohibition-on-Bank-Lending.pdf) examined the yield ban — whose stated purpose is to stop depositors from leaving banks for higher-paying stablecoins — and found it would add a mere [**$2.1 billion**](https://www.coindesk.com/policy/2026/04/08/white-house-study-bolsters-crypto-s-stance-in-stablecoin-yield-fight-against-bankers), or 0.02%, to bank lending, at a net welfare cost to consumers of around $800 million. In other words: the rule protects the spread without meaningfully protecting the lending the spread is supposed to fund. It defends the rent for its own sake. That is the confession, scored by the referee.
 
-## Just-in-time money and the agent that spends it
+## The price that can be argued over
 
-If the story stopped at cheaper transfers, it would be an efficiency footnote. It does not stop there, because the same rails are becoming legible to software.
+The cost of money was always there. The banks did not invent it and did not hide it out of malice; it is simply how the system was built, in an age when moving and holding value was hard. The depositor paid in foregone yield, the spender in spreads and float, the trader in sold order flow — each in a currency that never appeared on a statement.
 
-A program can now hold a balance, watch a price, and pay for something without a human clicking through a bank's interface. Early machine-payment standards are already live: Coinbase's x402 protocol crossed [**100 million**](https://www.chainalysis.com/blog/x402-agentic-payments-adoption/) agent-initiated transactions on one network within nine months of launch. The transaction count is real; the dollar value is small and much of the early traffic was token-minting rather than commerce, so it is a leading indicator, not a verdict. Beneath it, "intent" systems let an agent state what it wants and have competing solvers find the cheapest route automatically — machinery built to drive conversion toward its marginal cost.
+What is new is only this: the cost has become visible. On a network that settles in seconds, a spread is a quoted number a machine can read and compare, and the float has nowhere to hide when there is no delay to hide in. That is why the incumbents are fighting, and why the law reached for the one feature — paying the holder — that would drag the rent into daylight. A levee can hold a river back for a long time, and none of this is fated to move quickly. But the water is now on the wrong side of the wall, and everyone can see it.
 
-Follow that to its conclusion. If an agent can convert a yield-bearing asset into spendable money the instant a payment is due, at a cost near zero, then there is no longer a reason to hold a zero-yield balance in advance. You hold the asset that pays you, and let software mint the medium of exchange just in time. The rational quantity of idle, non-earning cash falls toward nothing.
-
-This is a direction, not a finished fact, and it imports real costs of its own — on these rails a payment is final, with none of the reversibility or recourse a card network provides, and autonomous agents make irreversible mistakes at machine speed. But the trajectory is clear enough, and it points at the one thing the entire incumbent structure depends on: the willingness to hold money that earns you nothing.
-
-## The three functions of money come apart
-
-Economists say money does three jobs: it is a store of value, a unit of account, and a medium of exchange. For most of history these were fused into a single instrument for a simple reason — converting between assets was slow and costly, so you held your spending money in the spending form, and accepted that it earned little.
-
-Take the conversion cost to near zero and the bundle comes apart. You can store value in whatever pays best and summon the medium of exchange only at the moment you spend. The store of value and the means of payment no longer have to be the same thing.
-
-The early evidence is consistent with exactly this pull, even before agents do the converting. American money-market funds — the simplest yield-bearing substitute for a bank balance — hold a record [**$7.89 trillion**](https://www.ici.org/research/stats/mmf) as of early June 2026. Tokenized Treasury funds, the on-chain version of the same idea, grew past [**$15 billion**](https://app.rwa.xyz/treasuries) by mid-2026 from almost nothing two years earlier. An honest reading requires a caveat: much of this is a high-rates story, money fleeing zero-yield deposits because rates are high, not yet proof that agents are doing the fleeing. But the behavior is the same one the technology is built to accelerate — refusing to hold the medium of exchange when holding it is a tax.
-
-## Currencies that compete on yield and trust
-
-Push the logic to its end and you arrive at the deepest consequence, the one that connects this domestic fight back to the global one.
-
-A currency's oldest moat is acceptance. You hold dollars because everyone takes dollars; the network is the advantage, and the network lets the issuer — a bank, a government — pay you little for the privilege of holding them. But if any asset can be converted to any other at the moment of payment, at a cost near zero, then acceptance stops being scarce. You no longer need to hold the accepted thing in advance; you hold the best thing and convert on the way out the door.
-
-When that happens, money is forced to compete on the two attributes the network effect used to excuse it from: the yield it pays, and the trust it commands. The free ride — holding the public's money for nothing because it had nowhere else to go — is what erodes. This is, in a sense, the realization of an old idea, the competition among monies, arriving not through some grand reform but through the mundane collapse of conversion cost. It is also why incumbents will fight it with every available tool, and why the GENIUS Act's yield ban and the OCC's proposed rule should be read for what they are: not safety regulation, but a levee built to slow the competition for as long as the law can hold it back. None of this is inevitable. A rent defended by statute can persist for a long time.
-
-## What this means for the dollar
-
-The two halves of this essay are the same disruption seen from opposite ends.
-
-Part I traced the dollar's external battle — its settlement monopoly breaching at the edges of war and sanctions, even as nearly every stablecoin remains a claim on a dollar and so extends the dollar's reach. This part has traced the internal one — the bank's monopoly over the yield on the dollars you personally hold, breaching under the same near-free conversion. The technology that lets value move outside the dollar's correspondent system abroad is the very technology that prices the bank's hidden float at home. The dollar can win the first contest while the bank loses the second, because the instrument doing the work is, overwhelmingly, still a dollar.
-
-So the order of change rhymes across both parts. Abroad, settlement fragments before reserves. At home, yield comes for deposits before it comes for anything else. In each case the thing that moves first is not the headline — not the reserve currency, not the banking system — but the hidden price underneath it, dragged into the light and competed toward zero.
-
-The cost of money was always there. The banks did not invent it and they did not hide it out of malice; it is simply how the system was built, in an age when moving value was hard. What is new is only this: the cost has become visible. And a price that can be seen is a price that can, at last, be argued over.
+A hidden price is one you simply pay. A visible price is one you can, at last, argue over.
