@@ -19,7 +19,7 @@ This post started life as a tutorial on the lost-sales problem alone. Since then
 Inventory management is a textbook sequential decision problem. Each period a controller decides how much to order, balancing the cost of holding stock against the cost of shortages. These problems are naturally Markov decision processes (MDPs), but exact dynamic programming is only tractable for small instances — the state space grows with the lead time and the number of stocking locations (the curse of dimensionality). So the field leans on two things:
 
 - **Problem-specific heuristics** — base-stock, $(s,S)$, $(s,nQ)$, dual-index, capped dual-index. These are strong, but each one takes specialized analysis and simplifying assumptions that limit where it applies.
-- **Deep reinforcement learning (DRL)** — represent the policy as a neural network and tune it from simulated experience. This is generic, but it demands a lot of compute and hyperparameter tuning, and the networks (thousands to millions of parameters) are hard to interpret.
+- **Deep reinforcement learning (DRL)** — represent the policy as a neural network and tune it from simulated experience (the line opened up for inventory by Boute et al.'s 2022 roadmap and Gijsbrechts et al.'s 2022 cross-problem study). This is generic, but it demands a lot of compute and hyperparameter tuning, and the networks (thousands to millions of parameters) are hard to interpret. *I come back to where this literature is heading [below](#where-this-fits-and-where-the-field-is-going).*
 
 The question I want to ask here is different from "what is the best method for problem X". It is: *can one lightweight, portable recipe stand in for bespoke heuristics across many different inventory problems, while staying small enough to interpret and cheap enough to retrain?*
 
@@ -57,6 +57,10 @@ Where a structured heuristic exists, the decoder lives in *that heuristic's coor
 - **capped-dual-index coordinates** for dual sourcing,
 - **direct echelon order-up-to levels** for multi-echelon.
 
+<center>
+<img class="special-img-class" style="width:100%" src="/static/images/es_inventory_action_geometry.png" label="action_geometry"/>
+</center>
+
 The payoff is that the decoder, not the network width, drives several of the results. The clearest example is multi-echelon (below): with the same tree, optimizer and horizon, changing only the decoder's reachable action set swings the policy from ~14% *better* than the best base-stock to more than 200% *worse*.
 
 # Lost sales (the original problem)
@@ -74,10 +78,6 @@ The action here is a single integer order, so this is where the decoder family l
 We benchmark on a surface, not a single instance: holding cost 1, mean demand 5, lead times $L\in\{4,6,8,10\}$, lost-sales penalties $p\in\{4,19\}$, and three mean-preserving demand families (Poisson, Geometric, and a positively-correlated Markov-modulated Poisson). That is **24 vanilla instances**. The comparators are the strong classical heuristics: Myopic-1, Myopic-2, and standard vector base-stock.
 
 **Result.** Across the 24-instance vanilla surface, the learned policies are **instance-best in 22 of 24 cases**. The soft tree is the most frequent winner. The two cases still won by a classical baseline are the high-penalty, autocorrelated MMPP instances at the longest lead times ($L=8,10$) — a regime-switching, deep-pipeline combination that is the hardest setting for a single stationary compact policy.
-
-<center>
-<img class="special-img-class" style="width:60%" src="/static/images/Lost_sales_p_4_l_4.jpg" label="lead_time_4"/>
-</center>
 
 ## Fixed-cost lost sales
 
@@ -100,6 +100,10 @@ By putting the learned soft tree in **capped-dual-index coordinates** and warm-s
 One warehouse, $R$ retailers, with a special-delivery option. The action is a warehouse order plus a shared retailer order-up-to level. This is the sharpest test of the action-geometry principle, because the wrong geometry is fatal: the cost-minimizing warehouse base-stock is roughly 300–525, while the reduced action grid used in prior work caps the warehouse level at 100 — so the grid *physically cannot reach the operating region*.
 
 **Result.** A **direct-level** soft tree (leaves estimate the order-up-to levels directly, bounded only by physical caps) improves on the **best in-environment constant base-stock by ≈14.4%** on both reported settings. The grid-action policy — same tree, same optimizer, only the reachable level set changed — stays ~230% *above* the benchmark. That contrast is the whole point.
+
+<center>
+<img class="special-img-class" style="width:78%" src="/static/images/es_inventory_action_space_trap.png" label="action_space_trap"/>
+</center>
 
 One honesty caveat I keep explicit: the ~14.4% figure is measured against the **best in-environment constant base-stock** under one cost convention, whereas the published A3C improvements (8.95%, 12.09%) are against a different baseline under a different cost convention. So the A3C comparison is **indicative of the direct design's strength, not a strictly like-for-like ranking**.
 
@@ -137,7 +141,13 @@ I frame this honestly as a **research result on a faithful-but-not-literature-an
 
 # What ties it together
 
-The same gradient-free loop, run with one fixed configuration and no per-problem tuning, produces:
+The same gradient-free loop, run with one fixed configuration and no per-problem tuning, produces the picture below. The improvements span wildly different scales and three different *kinds* of comparator, so a single bar chart of "% improvement" would be misleading. Instead each problem is read by its **honest verdict** — *match* a proven optimum, *beat* a heuristic, report a *gap* to an upper bound, or a *research result* on a faithful environment:
+
+<center>
+<img class="special-img-class" style="width:100%" src="/static/images/es_inventory_results_overview.png" label="results_overview"/>
+</center>
+
+The same data, with the comparator made fully explicit:
 
 | Problem | Comparator | Honest verdict |
 |---|---|---|
@@ -155,6 +165,29 @@ The same gradient-free loop, run with one fixed configuration and no per-problem
 The policies that produce this carry **tens to a few hundred parameters** — orders of magnitude fewer than published DRL networks — and the reported single-state actions are validated against an independent rollout, so they are not just compact but checkable.
 
 Two limitations are worth stating plainly. The high-penalty, autocorrelated MMPP lost-sales instances at the longest lead times stay won by classical heuristics — a real gap for stationary compact policies under regime-switching demand. And CMA-ES, while far more sample-efficient than A3C here, is still data-hungry relative to limited-data settings, and its population evaluation cost grows with the covariance dimension, so very large parameterizations would need restricted or separable covariance structures.
+
+# Where this fits, and where the field is going
+
+It helps to place this work on the map of how inventory control has been learned over the last few years, because the throughline of that map is exactly the lever this post leans on.
+
+**Two starting points.** Classical inventory theory gives us *structured heuristics* — base-stock, $(s,S)$, dual-index, capped dual-index — each derived from a structural property of the optimal policy, each strong but narrow. The deep-RL line, opened up for inventory by the roadmap of Boute et al. (2022) and the cross-problem A3C study of Gijsbrechts et al. (2022), went the other way: hand a large neural network the raw problem and let it discover structure from simulated experience. That generality is real, and later work pushed it onto harder systems — PPO for one-warehouse multi-retailer (Kaynov et al., 2024) and multi-echelon (Geevers et al., 2024). But it came at a price the roadmap itself names: heavy tuning, large and opaque networks, and results that are hard to reproduce and compare across papers.
+
+**The turn the field is taking: structure goes back *into* the policy.** The most striking thing in the recent literature is that the strongest learners have stopped trying to *free* a big network to discover structure and have started *injecting* structure into the learner. Maggiar et al. (2025) build **structure-informed policy networks** that bake monotonicity and other analytically known properties of optimal policies directly into the architecture. Temizoz et al. (2025) report that their model-based **deep controlled learning** scheme reaches optimality gaps of at most **0.2%** on lost-sales and perishable problems — far inside the gaps earlier A3C reached — using a single fixed hyperparameter set. And a growing set of agents simply make *the parameters of a classical control the action space itself*. These are independent groups, with different machinery, all converging on the same idea: **structure in the policy beats capacity in the network.**
+
+That is precisely the lever in this post, reached from the gradient-free side. The "action parameterization *is* the policy" idea — putting the search directly in the heuristic's coordinate system and letting a tiny model modulate it — is the same principle expressed as a *design choice* rather than a regularizer baked into a network. The multi-echelon action-space trap is the cleanest evidence I have for why it matters: hold the learner fixed and only the coordinate system the decoder lives in decides whether you land 14% better than the best base-stock or 200% worse. Seen this way, evolution strategies are not a competitor to the structure-informed DRL line so much as a different point on the cost–complexity frontier that reaches the same conclusion — and the black-box-search tradition it comes from (Salimans et al., 2017; Mania et al.'s 2018 finding that even *linear* policies from simple random search are competitive on hard control benchmarks) suggests the conclusion is robust to how you do the optimizing.
+
+**The field's second worry: reproducibility and comparability.** A recurring complaint in this literature is that DRL inventory "wins" are hard to trust because cost conventions, demand processes, and baselines differ from paper to paper, and there is no ImageNet-style standard benchmark (Boute et al., 2022; Alvo et al., 2023). Alvo et al.'s HDPO work makes the constructive point that inventory is actually *unusually* well-suited to reliable evaluation, because in several problem classes you can compare a learned policy **to the optimum itself**, not merely to another learner. The discipline in this post is a small contribution in that spirit: every environment is anchored to a published number before it carries any learned claim, and every result is reported under one of three honest verdicts — *match* a proven optimum (dual sourcing, serial Clark–Scarf; never "beat"), *beat* a heuristic (where the margin clears the held-out standard error under common random numbers), or report a *gap to an upper bound* without ever calling it beaten (ameliorating inventory's perfect-information LP). Where the comparator is published deep RL we sit *below* it (one-warehouse multi-retailer, the general-backorder cross-protocol figure) and say so. The aim is not to top a leaderboard but to state exactly what kind of claim each number supports.
+
+**There is also a theory reason to prefer small.** Xie et al. (2024) bring VC theory to inventory policies and show that structured classes *generalize from limited data*: the generalization error of a base-stock class is essentially independent of the horizon, and only logarithmic for $(s,S)$ — "learning less is more." A policy with a few hundred parameters living in a heuristic's coordinate system is squarely the kind of low-complexity class those guarantees cover, which is reassuring when your training signal is a finite simulation rather than an asymptotic average.
+
+**Where it's heading, and the open directions.** Three currents seem to me to define the near future, and they suggest the natural next steps for this line of work:
+
+- **Reproducible, optimum-anchored benchmarks.** The field wants open environments compared to known or bounded optima rather than to other learners (Alvo et al., 2023; Temizoz et al., 2025). Contributing a suite of literature-validated environments with the three-verdict accounting baked in is the obvious next move.
+- **Interpretable, compact policies as a first-class goal.** Auditability and deployability are now stated objectives, not afterthoughts — and the VC-theory result says compactness is a statistical asset, not just an engineering convenience.
+- **Hybridizing action geometry with sample-efficient learners.** The cleanest synthesis is to hand a gradient-based learner the *same* policy-owned decoders, using a heuristic warm-start (as done here for dual sourcing, serial multi-echelon, and general-network backorder) or CMA-ES to seed, and a sample-efficient learner to refine. That directly targets the two places this recipe still loses: the long-lead autocorrelated MMPP lost-sales instances, and the below-PPO gap on one-warehouse multi-retailer.
+- **Generalist and limited-data settings.** The frontier is turning toward generally-capable agents trained for **zero-shot transfer** across instances and then paired with estimate-then-decide adaptation at deployment (Temizoz et al., 2024). The favorable sample complexity of structured policy classes suggests these compact decoders are exactly the right hypothesis class for the data-scarce regime — amortize one decoder across an instance family rather than retraining per instance.
+
+The through-line, in one sentence: **in inventory control the representation of the *action* is at least as consequential as the choice of *learner*** — and a compact, honest, reproducible policy is often enough.
 
 # Takeaways
 

@@ -1,0 +1,1203 @@
+---
+const flowScenarios = [
+  {
+    id: "lost-sales",
+    label: "Lost sales",
+    eyebrow: "single buffer",
+    title: "A request stream hits one stock buffer",
+    thesis:
+      "The manager controls the replenishment arc. Demand either exits as served flow or leaks into a lost-sales sink.",
+    conservation: "on hand next = on hand + arrivals - served demand",
+    policy: "state: on hand plus pipeline; action: integer order quantity",
+    baseDemand: 52,
+    buffer: "one stock point",
+    verdict: "22 / 24 instance-best",
+    nodes: [
+      { id: "supplier", label: "supplier", kind: "source", x: 105, y: 132 },
+      { id: "pipeline", label: "lead-time pipeline", kind: "buffer", x: 292, y: 132 },
+      { id: "stock", label: "on-hand stock", kind: "buffer", x: 482, y: 226 },
+      { id: "demand", label: "customer requests", kind: "demand", x: 748, y: 154 },
+      { id: "lost", label: "lost demand", kind: "sink", x: 748, y: 342 },
+      { id: "policy", label: "order policy", kind: "control", x: 292, y: 342 },
+    ],
+    edges: [
+      {
+        source: "policy",
+        target: "supplier",
+        kind: "control",
+        label: "order q_t",
+        detail: "The learned decoder maps the observed buffer and pipeline state to a valid order.",
+        weight: 1.2,
+        curve: -52,
+      },
+      {
+        source: "supplier",
+        target: "pipeline",
+        kind: "supply",
+        label: "supply",
+        detail: "Orders enter the network as a delayed supply flow.",
+        weight: 1.0,
+        curve: 0,
+      },
+      {
+        source: "pipeline",
+        target: "stock",
+        kind: "supply",
+        label: "arrivals after L",
+        detail: "Lead time turns the action into a pipeline vector rather than an immediate stock change.",
+        weight: 1.05,
+        curve: 46,
+      },
+      {
+        source: "stock",
+        target: "demand",
+        kind: "served",
+        label: "served",
+        detail: "Inventory is consumed by realized demand until the buffer is exhausted.",
+        weight: 1.3,
+        curve: -36,
+      },
+      {
+        source: "demand",
+        target: "lost",
+        kind: "loss",
+        label: "unmet requests",
+        detail: "Shortage is a leakage arc: unmet demand leaves the system instead of becoming backlog.",
+        weight: 0.82,
+        curve: 0,
+      },
+      {
+        source: "demand",
+        target: "policy",
+        kind: "request",
+        label: "observed pressure",
+        detail: "Demand pressure is the signal the compact policy must absorb through the state.",
+        weight: 0.72,
+        curve: 74,
+      },
+    ],
+  },
+  {
+    id: "dual-sourcing",
+    label: "Dual sourcing",
+    eyebrow: "two supply arcs",
+    title: "The same buffer has a slow cheap arc and a fast expensive arc",
+    thesis:
+      "Capped dual-index coordinates are a flow-net language: split replenishment across regular and expedite arcs while serving the same request stream.",
+    conservation: "inventory position = on hand + regular pipeline + expedite pipeline - backlog",
+    policy: "state: two pipelines; action: regular and expedite orders",
+    baseDemand: 64,
+    buffer: "shared service buffer",
+    verdict: "matches CDI optimum",
+    nodes: [
+      { id: "regular", label: "regular source", kind: "source", x: 110, y: 110 },
+      { id: "expedite", label: "expedite source", kind: "source", x: 110, y: 330 },
+      { id: "regpipe", label: "slow pipeline", kind: "buffer", x: 310, y: 120 },
+      { id: "stock", label: "shared stock", kind: "buffer", x: 500, y: 226 },
+      { id: "demand", label: "demand", kind: "demand", x: 748, y: 170 },
+      { id: "backlog", label: "shortage cost", kind: "sink", x: 748, y: 334 },
+      { id: "policy", label: "CDI decoder", kind: "control", x: 310, y: 336 },
+    ],
+    edges: [
+      {
+        source: "policy",
+        target: "regular",
+        kind: "control",
+        label: "regular order",
+        detail: "The cheap arc moves slowly, so the policy keeps a regular inventory position target.",
+        weight: 1.0,
+        curve: -44,
+      },
+      {
+        source: "policy",
+        target: "expedite",
+        kind: "control",
+        label: "expedite order",
+        detail: "The fast arc corrects local shortage pressure at a higher unit cost.",
+        weight: 0.72,
+        curve: 20,
+      },
+      {
+        source: "regular",
+        target: "regpipe",
+        kind: "supply",
+        label: "cheap slow flow",
+        detail: "Regular supply enters a long pipeline before it can serve demand.",
+        weight: 0.95,
+        curve: 0,
+      },
+      {
+        source: "regpipe",
+        target: "stock",
+        kind: "supply",
+        label: "delayed arrival",
+        detail: "The regular pipeline is part of the inventory state.",
+        weight: 0.95,
+        curve: 38,
+      },
+      {
+        source: "expedite",
+        target: "stock",
+        kind: "supply",
+        label: "fast expensive flow",
+        detail: "Expedited orders bypass most of the delay and stabilize the same service buffer.",
+        weight: 0.82,
+        curve: -40,
+      },
+      {
+        source: "stock",
+        target: "demand",
+        kind: "served",
+        label: "served demand",
+        detail: "Both replenishment arcs ultimately feed one demand-facing buffer.",
+        weight: 1.3,
+        curve: -26,
+      },
+      {
+        source: "demand",
+        target: "backlog",
+        kind: "loss",
+        label: "penalty flow",
+        detail: "The shortage sink prices service failures and determines when the expensive arc is worth using.",
+        weight: 0.65,
+        curve: 0,
+      },
+    ],
+  },
+  {
+    id: "multi-echelon",
+    label: "Multi-echelon",
+    eyebrow: "stock across levels",
+    title: "A warehouse buffer fans out to retailer buffers",
+    thesis:
+      "The action is not a raw grid cell. It is a set of reachable stock targets on arcs from upstream stock to downstream demand.",
+    conservation: "echelon stock = local stock + downstream stock + pipeline",
+    policy: "state: echelon positions; action: warehouse and retailer order-up-to levels",
+    baseDemand: 88,
+    buffer: "warehouse plus retailers",
+    verdict: "about 14.4% better",
+    nodes: [
+      { id: "supplier", label: "supplier", kind: "source", x: 92, y: 218 },
+      { id: "warehouse", label: "warehouse", kind: "buffer", x: 276, y: 218 },
+      { id: "retailA", label: "retailer A", kind: "buffer", x: 514, y: 116 },
+      { id: "retailB", label: "retailer B", kind: "buffer", x: 514, y: 218 },
+      { id: "retailC", label: "retailer C", kind: "buffer", x: 514, y: 320 },
+      { id: "market", label: "markets", kind: "demand", x: 756, y: 218 },
+      { id: "special", label: "special delivery", kind: "source", x: 276, y: 382 },
+      { id: "policy", label: "level decoder", kind: "control", x: 276, y: 70 },
+    ],
+    edges: [
+      {
+        source: "policy",
+        target: "warehouse",
+        kind: "control",
+        label: "warehouse level",
+        detail: "Direct-level leaves keep the action space large enough to reach the operating region.",
+        weight: 1.0,
+        curve: 0,
+      },
+      {
+        source: "supplier",
+        target: "warehouse",
+        kind: "supply",
+        label: "upstream supply",
+        detail: "The upstream replenishment arc fills the warehouse buffer.",
+        weight: 1.12,
+        curve: 0,
+      },
+      {
+        source: "warehouse",
+        target: "retailA",
+        kind: "supply",
+        label: "allocation",
+        detail: "Allocation is a controlled split of warehouse stock into retailer buffers.",
+        weight: 0.82,
+        curve: -30,
+      },
+      {
+        source: "warehouse",
+        target: "retailB",
+        kind: "supply",
+        label: "allocation",
+        detail: "The same echelon target language covers each retailer arc.",
+        weight: 1.12,
+        curve: 0,
+      },
+      {
+        source: "warehouse",
+        target: "retailC",
+        kind: "supply",
+        label: "allocation",
+        detail: "A grid that clips these levels can make the best region unreachable.",
+        weight: 0.78,
+        curve: 30,
+      },
+      {
+        source: "special",
+        target: "retailC",
+        kind: "supply",
+        label: "emergency flow",
+        detail: "Special delivery is another supply arc, used when downstream service pressure is high.",
+        weight: 0.62,
+        curve: -18,
+      },
+      {
+        source: "retailA",
+        target: "market",
+        kind: "served",
+        label: "served",
+        detail: "Local demand consumes the retailer buffer.",
+        weight: 0.78,
+        curve: 28,
+      },
+      {
+        source: "retailB",
+        target: "market",
+        kind: "served",
+        label: "served",
+        detail: "All retailers connect to the same market pressure in the abstract graph.",
+        weight: 1.08,
+        curve: 0,
+      },
+      {
+        source: "retailC",
+        target: "market",
+        kind: "served",
+        label: "served",
+        detail: "The policy allocates stock across these downstream demand arcs.",
+        weight: 0.72,
+        curve: -28,
+      },
+    ],
+  },
+  {
+    id: "age-structured",
+    label: "Age-structured",
+    eyebrow: "time inside stock",
+    title: "Inventory flows through age buckets before it exits",
+    thesis:
+      "Perishable and ameliorating systems differ in the valuation of the age arc. The graph is the same: buy, age, issue, waste, or harvest value.",
+    conservation: "age bucket next = previous younger bucket - issued - expired",
+    policy: "state: stock by age and price; action: purchase or issue volume",
+    baseDemand: 46,
+    buffer: "age buckets",
+    verdict: "beats static gates",
+    nodes: [
+      { id: "supplier", label: "supplier", kind: "source", x: 96, y: 214 },
+      { id: "fresh", label: "age 0 stock", kind: "buffer", x: 278, y: 154 },
+      { id: "mature", label: "age 1 stock", kind: "buffer", x: 480, y: 154 },
+      { id: "aged", label: "older stock", kind: "buffer", x: 480, y: 306 },
+      { id: "demand", label: "demand", kind: "demand", x: 746, y: 156 },
+      { id: "waste", label: "waste / value", kind: "sink", x: 746, y: 306 },
+      { id: "policy", label: "age-aware tree", kind: "control", x: 278, y: 340 },
+    ],
+    edges: [
+      {
+        source: "policy",
+        target: "supplier",
+        kind: "control",
+        label: "buy amount",
+        detail: "The policy can buy more when price is low or when old stock is insufficient.",
+        weight: 0.92,
+        curve: 40,
+      },
+      {
+        source: "supplier",
+        target: "fresh",
+        kind: "supply",
+        label: "new stock",
+        detail: "Purchase flow enters the youngest bucket.",
+        weight: 1.0,
+        curve: -18,
+      },
+      {
+        source: "fresh",
+        target: "mature",
+        kind: "transform",
+        label: "age transition",
+        detail: "Time is an internal arc: stock moves between age buckets even without demand.",
+        weight: 0.86,
+        curve: 0,
+      },
+      {
+        source: "mature",
+        target: "aged",
+        kind: "transform",
+        label: "age transition",
+        detail: "Perishability and amelioration are different costs on the same age-flow skeleton.",
+        weight: 0.74,
+        curve: 38,
+      },
+      {
+        source: "fresh",
+        target: "demand",
+        kind: "served",
+        label: "issue FIFO / LIFO",
+        detail: "The issuing rule chooses which age bucket feeds demand first.",
+        weight: 0.88,
+        curve: -44,
+      },
+      {
+        source: "mature",
+        target: "demand",
+        kind: "served",
+        label: "issue",
+        detail: "An age-dependent policy can reduce orders when older stock is already available.",
+        weight: 1.1,
+        curve: 0,
+      },
+      {
+        source: "aged",
+        target: "waste",
+        kind: "loss",
+        label: "expire or harvest",
+        detail: "The terminal age arc is a waste sink for perishables or a value sink for ameliorating stock.",
+        weight: 0.76,
+        curve: 0,
+      },
+    ],
+  },
+  {
+    id: "general-network",
+    label: "General network",
+    eyebrow: "many-to-many flow",
+    title: "Suppliers, warehouses, and retailers form one controllable graph",
+    thesis:
+      "A general inventory network is still a flow net: routing, allocation, backlog, and service are just different edge families.",
+    conservation: "node inventory next = incoming shipments - outgoing shipments - local demand",
+    policy: "state: node stocks and backlog; action: node base-stock targets",
+    baseDemand: 104,
+    buffer: "many node buffers",
+    verdict: "over 20% better",
+    nodes: [
+      { id: "suppliers", label: "suppliers", kind: "source", x: 92, y: 206 },
+      { id: "wh1", label: "warehouse 1", kind: "buffer", x: 300, y: 136 },
+      { id: "wh2", label: "warehouse 2", kind: "buffer", x: 300, y: 292 },
+      { id: "ret1", label: "retailer group", kind: "buffer", x: 532, y: 150 },
+      { id: "ret2", label: "retailer group", kind: "buffer", x: 532, y: 286 },
+      { id: "demand", label: "demand field", kind: "demand", x: 758, y: 218 },
+      { id: "backlog", label: "backlog", kind: "sink", x: 758, y: 366 },
+      { id: "policy", label: "node targets", kind: "control", x: 300, y: 404 },
+    ],
+    edges: [
+      {
+        source: "policy",
+        target: "suppliers",
+        kind: "control",
+        label: "target vector",
+        detail: "The action is a vector of node targets, not a single scalar order.",
+        weight: 0.9,
+        curve: 52,
+      },
+      {
+        source: "suppliers",
+        target: "wh1",
+        kind: "supply",
+        label: "ship",
+        detail: "Upstream supply is allocated into warehouse buffers.",
+        weight: 1.0,
+        curve: -28,
+      },
+      {
+        source: "suppliers",
+        target: "wh2",
+        kind: "supply",
+        label: "ship",
+        detail: "The same target rule controls parallel replenishment arcs.",
+        weight: 0.95,
+        curve: 28,
+      },
+      {
+        source: "wh1",
+        target: "ret1",
+        kind: "supply",
+        label: "route",
+        detail: "Routing edges turn upstream stock into downstream service capacity.",
+        weight: 0.9,
+        curve: -16,
+      },
+      {
+        source: "wh1",
+        target: "ret2",
+        kind: "supply",
+        label: "cross route",
+        detail: "Many-to-many networks are still node balances plus controlled arcs.",
+        weight: 0.65,
+        curve: 44,
+      },
+      {
+        source: "wh2",
+        target: "ret1",
+        kind: "supply",
+        label: "cross route",
+        detail: "Cross-routing gives the policy another way to absorb local demand shocks.",
+        weight: 0.62,
+        curve: -44,
+      },
+      {
+        source: "wh2",
+        target: "ret2",
+        kind: "supply",
+        label: "route",
+        detail: "The graph view keeps the dimensionality visible without changing the learning loop.",
+        weight: 0.92,
+        curve: 16,
+      },
+      {
+        source: "ret1",
+        target: "demand",
+        kind: "served",
+        label: "service",
+        detail: "Demand exits through retailer service arcs.",
+        weight: 0.95,
+        curve: -24,
+      },
+      {
+        source: "ret2",
+        target: "demand",
+        kind: "served",
+        label: "service",
+        detail: "The compact policy modulates node targets rather than memorizing every state.",
+        weight: 0.88,
+        curve: 24,
+      },
+      {
+        source: "demand",
+        target: "backlog",
+        kind: "loss",
+        label: "unfilled requests",
+        detail: "Backlog is a sink with memory: unmet requests remain in the network until cleared.",
+        weight: 0.76,
+        curve: 0,
+      },
+    ],
+  },
+];
+
+const activeScenario = flowScenarios[0];
+const nodesById = Object.fromEntries(activeScenario.nodes.map((node) => [node.id, node]));
+const edgePath = (edge, nodes) => {
+  const source = nodes[edge.source];
+  const target = nodes[edge.target];
+  const curve = edge.curve || 0;
+  const midX = (source.x + target.x) / 2;
+  const midY = (source.y + target.y) / 2 + curve;
+  return `M ${source.x} ${source.y} Q ${midX} ${midY} ${target.x} ${target.y}`;
+};
+const edgeLabelPoint = (edge, nodes) => {
+  const source = nodes[edge.source];
+  const target = nodes[edge.target];
+  return {
+    x: (source.x + target.x) / 2,
+    y: (source.y + target.y) / 2 + (edge.curve || 0) * 0.45 - 8,
+  };
+};
+---
+
+<figure class="inventory-flow-net" data-inventory-flow data-flow-scenarios={JSON.stringify(flowScenarios)}>
+  <div class="inventory-flow-net__header">
+    <div>
+      <p class="inventory-flow-net__eyebrow">Interactive figure</p>
+      <h2 id="inventory-flow-title">Inventory problems as flow nets</h2>
+      <p>
+        Requests, supply, lead-time pipelines, allocation, waste, and backlog can be drawn as one graph language.
+        The learning recipe changes the controlled arcs, not the abstraction.
+      </p>
+    </div>
+    <div class="inventory-flow-net__meter" aria-label="Current flow-net readings">
+      <span><strong data-flow-demand>{activeScenario.baseDemand}</strong> request pressure</span>
+      <span><strong data-flow-buffer>{activeScenario.buffer}</strong> buffer shape</span>
+      <span><strong data-flow-verdict>{activeScenario.verdict}</strong> result claim</span>
+    </div>
+  </div>
+
+  <div class="inventory-flow-net__tabs" role="tablist" aria-label="Inventory flow-net cases">
+    {
+      flowScenarios.map((scenario, index) => (
+        <button
+          type="button"
+          class:list={["inventory-flow-net__tab", { "is-active": index === 0 }]}
+          data-flow-tab={scenario.id}
+          aria-pressed={index === 0 ? "true" : "false"}
+        >
+          <span>{scenario.eyebrow}</span>
+          {scenario.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="inventory-flow-net__workspace">
+    <div class="inventory-flow-net__canvas" data-flow-canvas>
+      <svg viewBox="20 42 824 402" role="img" aria-labelledby="inventory-flow-title inventory-flow-caption">
+        <defs>
+          <marker id="inventory-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+          </marker>
+        </defs>
+        <g class="inventory-flow-net__grid" aria-hidden="true">
+          {Array.from({ length: 9 }, (_, index) => <path d={`M ${80 + index * 90} 54 V 420`}></path>)}
+          {Array.from({ length: 5 }, (_, index) => <path d={`M 54 ${78 + index * 78} H 826`}></path>)}
+        </g>
+        <g data-flow-edges>
+          {
+            activeScenario.edges.map((edge) => {
+              const labelPoint = edgeLabelPoint(edge, nodesById);
+              const d = edgePath(edge, nodesById);
+              return (
+                <g class:list={["inventory-flow-net__edge", `is-${edge.kind}`]}>
+                  <path class="inventory-flow-net__edge-base" d={d}></path>
+                  <path
+                    class="inventory-flow-net__edge-stream"
+                    d={d}
+                    style={`--edge-width:${(edge.weight * 4.2).toFixed(2)}; --flow-speed:${(4.5 - Math.min(edge.weight, 1.5)).toFixed(2)}s;`}
+                    marker-end="url(#inventory-flow-arrow)"
+                  ></path>
+                  <text x={labelPoint.x} y={labelPoint.y}>{edge.label}</text>
+                </g>
+              );
+            })
+          }
+        </g>
+        <g data-flow-nodes>
+          {
+            activeScenario.nodes.map((node) => (
+              <g class:list={["inventory-flow-net__node", `is-${node.kind}`]} transform={`translate(${node.x} ${node.y})`}>
+                <rect x="-66" y="-24" width="132" height="48" rx="5"></rect>
+                <text>{node.label}</text>
+              </g>
+            ))
+          }
+        </g>
+      </svg>
+    </div>
+
+    <aside class="inventory-flow-net__panel" aria-live="polite">
+      <p class="inventory-flow-net__panel-kicker" data-flow-kicker>{activeScenario.eyebrow}</p>
+      <h3 data-flow-panel-title>{activeScenario.title}</h3>
+      <p data-flow-panel-copy>{activeScenario.thesis}</p>
+      <dl>
+        <div>
+          <dt>Balance</dt>
+          <dd data-flow-conservation>{activeScenario.conservation}</dd>
+        </div>
+        <div>
+          <dt>Controlled action</dt>
+          <dd data-flow-policy>{activeScenario.policy}</dd>
+        </div>
+      </dl>
+      <label class="inventory-flow-net__range">
+        <span>Demand pressure</span>
+        <input data-flow-pressure type="range" min="60" max="140" value="100" />
+      </label>
+    </aside>
+  </div>
+
+  <div class="inventory-flow-net__grammar" id="inventory-flow-caption">
+    <div>
+      <strong>Buffers</strong>
+      <span>on-hand stock, pipeline, warehouse, retailer, age bucket, backlog</span>
+    </div>
+    <div>
+      <strong>Flows</strong>
+      <span>supply, demand, allocation, aging, production, emergency delivery</span>
+    </div>
+    <div>
+      <strong>Leaks</strong>
+      <span>lost sales, waste, penalty, unmet request pressure</span>
+    </div>
+    <div>
+      <strong>Policy arcs</strong>
+      <span>the decoder chooses valid order, split, route, or target flows</span>
+    </div>
+  </div>
+</figure>
+
+<script>
+  const roots = document.querySelectorAll("[data-inventory-flow]");
+  const svgNS = "http://www.w3.org/2000/svg";
+
+  roots.forEach((root) => {
+    const scenarios = JSON.parse(root.getAttribute("data-flow-scenarios") || "[]");
+    const edgeLayer = root.querySelector("[data-flow-edges]");
+    const nodeLayer = root.querySelector("[data-flow-nodes]");
+    const tabs = Array.from(root.querySelectorAll("[data-flow-tab]"));
+    const pressureInput = root.querySelector("[data-flow-pressure]");
+    const demandNode = root.querySelector("[data-flow-demand]");
+    const bufferNode = root.querySelector("[data-flow-buffer]");
+    const verdictNode = root.querySelector("[data-flow-verdict]");
+    const kickerNode = root.querySelector("[data-flow-kicker]");
+    const panelTitle = root.querySelector("[data-flow-panel-title]");
+    const panelCopy = root.querySelector("[data-flow-panel-copy]");
+    const conservationNode = root.querySelector("[data-flow-conservation]");
+    const policyNode = root.querySelector("[data-flow-policy]");
+
+    if (!scenarios.length || !edgeLayer || !nodeLayer) return;
+
+    let active = scenarios[0];
+    let pressure = 1;
+
+    const make = (name, attributes = {}) => {
+      const element = document.createElementNS(svgNS, name);
+      Object.entries(attributes).forEach(([key, value]) => {
+        element.setAttribute(key, String(value));
+      });
+      return element;
+    };
+
+    const nodeMap = (scenario) => Object.fromEntries(scenario.nodes.map((node) => [node.id, node]));
+
+    const pathFor = (edge, nodes) => {
+      const source = nodes[edge.source];
+      const target = nodes[edge.target];
+      const curve = edge.curve || 0;
+      const midX = (source.x + target.x) / 2;
+      const midY = (source.y + target.y) / 2 + curve;
+      return `M ${source.x} ${source.y} Q ${midX} ${midY} ${target.x} ${target.y}`;
+    };
+
+    const labelPointFor = (edge, nodes) => {
+      const source = nodes[edge.source];
+      const target = nodes[edge.target];
+      return {
+        x: (source.x + target.x) / 2,
+        y: (source.y + target.y) / 2 + (edge.curve || 0) * 0.45 - 8,
+      };
+    };
+
+    const edgeWidth = (edge) => {
+      const stressed = ["served", "loss", "request"].includes(edge.kind) ? pressure : 0.86 + pressure * 0.14;
+      return Math.max(2.2, edge.weight * 4.2 * stressed);
+    };
+
+    const writePanel = (scenario, edge) => {
+      if (kickerNode) kickerNode.textContent = scenario.eyebrow;
+      if (panelTitle) panelTitle.textContent = edge ? edge.label : scenario.title;
+      if (panelCopy) panelCopy.textContent = edge ? edge.detail : scenario.thesis;
+      if (conservationNode) conservationNode.textContent = scenario.conservation;
+      if (policyNode) policyNode.textContent = scenario.policy;
+    };
+
+    const renderMetrics = () => {
+      if (demandNode) demandNode.textContent = String(Math.round(active.baseDemand * pressure));
+      if (bufferNode) bufferNode.textContent = active.buffer;
+      if (verdictNode) verdictNode.textContent = active.verdict;
+    };
+
+    const renderEdges = () => {
+      const nodes = nodeMap(active);
+      edgeLayer.replaceChildren();
+
+      active.edges.forEach((edge) => {
+        const d = pathFor(edge, nodes);
+        const labelPoint = labelPointFor(edge, nodes);
+        const group = make("g", { class: `inventory-flow-net__edge is-${edge.kind}` });
+        const base = make("path", { class: "inventory-flow-net__edge-base", d });
+        const stream = make("path", {
+          class: "inventory-flow-net__edge-stream",
+          d,
+          "marker-end": "url(#inventory-flow-arrow)",
+          tabindex: "0",
+          role: "button",
+          "aria-label": `${edge.label}: ${edge.detail}`,
+        });
+        const hit = make("path", {
+          class: "inventory-flow-net__edge-hit",
+          d,
+          tabindex: "0",
+          role: "button",
+          "aria-label": `${edge.label}: ${edge.detail}`,
+        });
+        const label = make("text", { x: labelPoint.x, y: labelPoint.y });
+
+        stream.style.setProperty("--edge-width", edgeWidth(edge).toFixed(2));
+        stream.style.setProperty("--flow-speed", `${Math.max(1.25, 4.8 - edge.weight * pressure).toFixed(2)}s`);
+        label.textContent = edge.label;
+
+        const activate = () => writePanel(active, edge);
+        const deactivate = () => writePanel(active);
+        [stream, hit].forEach((element) => {
+          element.addEventListener("mouseenter", activate);
+          element.addEventListener("focus", activate);
+          element.addEventListener("mouseleave", deactivate);
+          element.addEventListener("blur", deactivate);
+          element.addEventListener("click", activate);
+          element.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              activate();
+            }
+          });
+        });
+
+        group.append(base, stream, hit, label);
+        edgeLayer.append(group);
+      });
+    };
+
+    const renderNodes = () => {
+      nodeLayer.replaceChildren();
+      active.nodes.forEach((node) => {
+        const group = make("g", {
+          class: `inventory-flow-net__node is-${node.kind}`,
+          transform: `translate(${node.x} ${node.y})`,
+        });
+        const rect = make("rect", { x: -66, y: -24, width: 132, height: 48, rx: 5 });
+        const text = make("text");
+        text.textContent = node.label;
+        group.append(rect, text);
+        nodeLayer.append(group);
+      });
+    };
+
+    const setScenario = (id) => {
+      active = scenarios.find((scenario) => scenario.id === id) || scenarios[0];
+      tabs.forEach((tab) => {
+        const isActive = tab.getAttribute("data-flow-tab") === active.id;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-pressed", String(isActive));
+      });
+      renderMetrics();
+      writePanel(active);
+      renderEdges();
+      renderNodes();
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => setScenario(tab.getAttribute("data-flow-tab")));
+    });
+
+    pressureInput?.addEventListener("input", () => {
+      pressure = Number(pressureInput.value) / 100;
+      renderMetrics();
+      renderEdges();
+    });
+
+    setScenario(active.id);
+  });
+</script>
+
+<style is:inline>
+  .inventory-article-page .article-layout__inner--inventory {
+    width: min(1120px, calc(100% - 2.5rem));
+  }
+
+  .inventory-article-page .article-prose--inventory {
+    max-width: none;
+  }
+
+  .inventory-article-page .article-prose--inventory > :not(.inventory-flow-net):not(center):not(table):not(pre):not(blockquote):not(figure):not(mjx-container) {
+    max-width: 66ch;
+  }
+
+  .inventory-article-page .article-prose--inventory > center,
+  .inventory-article-page .article-prose--inventory > table,
+  .inventory-article-page .article-prose--inventory > pre,
+  .inventory-article-page .article-prose--inventory > mjx-container {
+    max-width: 100%;
+  }
+
+  .inventory-article-page .article-prose--inventory > center {
+    margin: 1.9rem 0;
+  }
+
+  .inventory-flow-net {
+    margin: 0 0 2.4rem;
+    padding: clamp(1rem, 2.8vw, 1.45rem);
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(rgba(251, 246, 236, 0.92), rgba(251, 246, 236, 0.92)),
+      repeating-linear-gradient(0deg, rgba(22, 32, 43, 0.06) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgba(22, 32, 43, 0.05) 0 1px, transparent 1px 28px);
+    box-shadow: 0 18px 42px rgba(22, 32, 43, 0.1);
+  }
+
+  .inventory-flow-net__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.38fr);
+    gap: clamp(1rem, 2.6vw, 1.6rem);
+    align-items: start;
+    margin-bottom: 1rem;
+  }
+
+  .inventory-flow-net__eyebrow,
+  .inventory-flow-net__panel-kicker {
+    margin: 0 0 0.55rem;
+    color: var(--brass-ink);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3.4vw, 2.75rem);
+    line-height: 1.04;
+  }
+
+  .inventory-flow-net h2::before {
+    content: none;
+  }
+
+  .inventory-flow-net__header p:not(.inventory-flow-net__eyebrow) {
+    margin: 0.8rem 0 0;
+    max-width: 63ch;
+    color: var(--graphite);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .inventory-flow-net__meter {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--hairline);
+    background: rgba(251, 246, 236, 0.74);
+  }
+
+  .inventory-flow-net__meter span {
+    display: grid;
+    gap: 0.22rem;
+    min-width: 0;
+    padding: 0.72rem 0.8rem;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .inventory-flow-net__meter span:last-child {
+    border-bottom: 0;
+  }
+
+  .inventory-flow-net__meter strong {
+    color: var(--navy-strong);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .inventory-flow-net__tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .inventory-flow-net__tab {
+    display: grid;
+    min-height: 3.65rem;
+    align-content: center;
+    gap: 0.18rem;
+    padding: 0.55rem 0.65rem;
+    color: var(--ink);
+    text-align: left;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    background: rgba(251, 246, 236, 0.72);
+    cursor: pointer;
+    transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
+  }
+
+  .inventory-flow-net__tab span {
+    min-width: 0;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__tab {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.08;
+  }
+
+  .inventory-flow-net__tab:hover,
+  .inventory-flow-net__tab:focus-visible,
+  .inventory-flow-net__tab.is-active {
+    border-color: var(--brass);
+    background: rgba(181, 97, 31, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .inventory-flow-net__tab:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+  }
+
+  .inventory-flow-net__workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 0.33fr);
+    gap: 0.8rem;
+    align-items: stretch;
+  }
+
+  .inventory-flow-net__canvas {
+    min-width: 0;
+    border: 1px solid var(--hairline);
+    background:
+      radial-gradient(circle at 42% 48%, rgba(62, 126, 115, 0.12), transparent 31%),
+      linear-gradient(135deg, #f8f2e6 0%, #f3ead8 100%);
+  }
+
+  .inventory-flow-net__canvas svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 824 / 402;
+  }
+
+  .inventory-flow-net__grid path {
+    fill: none;
+    stroke: rgba(22, 32, 43, 0.07);
+    stroke-width: 1;
+  }
+
+  .inventory-flow-net__edge-base,
+  .inventory-flow-net__edge-stream,
+  .inventory-flow-net__edge-hit {
+    fill: none;
+  }
+
+  .inventory-flow-net__edge-base {
+    stroke: rgba(22, 32, 43, 0.18);
+    stroke-width: 7;
+    stroke-linecap: round;
+  }
+
+  .inventory-flow-net__edge-stream {
+    stroke: var(--edge-color);
+    stroke-width: calc(var(--edge-width) * 1px);
+    stroke-linecap: round;
+    stroke-dasharray: 10 16;
+    filter: drop-shadow(0 0 7px color-mix(in srgb, var(--edge-color) 38%, transparent));
+    animation: inventory-flow-stream var(--flow-speed) linear infinite;
+  }
+
+  .inventory-flow-net__edge-hit {
+    stroke: transparent;
+    stroke-width: 18;
+    cursor: pointer;
+  }
+
+  .inventory-flow-net__edge-hit:focus-visible,
+  .inventory-flow-net__edge-stream:focus-visible {
+    outline: none;
+    stroke: var(--brass);
+  }
+
+  .inventory-flow-net__edge text {
+    fill: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-anchor: middle;
+    paint-order: stroke;
+    stroke: rgba(251, 246, 236, 0.9);
+    stroke-width: 5px;
+  }
+
+  .inventory-flow-net__edge.is-supply { --edge-color: var(--verdigris); }
+  .inventory-flow-net__edge.is-served { --edge-color: var(--navy); }
+  .inventory-flow-net__edge.is-demand,
+  .inventory-flow-net__edge.is-request { --edge-color: var(--brass); }
+  .inventory-flow-net__edge.is-loss { --edge-color: #9a4f38; }
+  .inventory-flow-net__edge.is-control { --edge-color: #1f5d78; }
+  .inventory-flow-net__edge.is-transform { --edge-color: #7a5195; }
+
+  .inventory-flow-net marker path {
+    fill: currentColor;
+  }
+
+  .inventory-flow-net__node rect {
+    fill: rgba(251, 246, 236, 0.94);
+    stroke: var(--node-color);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 8px 16px rgba(22, 32, 43, 0.12));
+  }
+
+  .inventory-flow-net__node text {
+    fill: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
+
+  .inventory-flow-net__node.is-source { --node-color: var(--verdigris); }
+  .inventory-flow-net__node.is-buffer { --node-color: var(--navy); }
+  .inventory-flow-net__node.is-demand { --node-color: var(--brass); }
+  .inventory-flow-net__node.is-sink { --node-color: #9a4f38; }
+  .inventory-flow-net__node.is-control { --node-color: #7a5195; }
+
+  .inventory-flow-net__panel {
+    display: grid;
+    align-content: start;
+    gap: 0.9rem;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--hairline);
+    background: var(--abyssal);
+    color: var(--cream);
+  }
+
+  .inventory-flow-net__panel h3 {
+    margin: 0;
+    color: var(--paper-high);
+    font-family: var(--font-display);
+    font-size: 1.38rem;
+    font-style: normal;
+    line-height: 1.08;
+  }
+
+  .inventory-flow-net__panel p:not(.inventory-flow-net__panel-kicker) {
+    margin: 0;
+    color: rgba(236, 227, 210, 0.84);
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .inventory-flow-net__panel dl {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+  }
+
+  .inventory-flow-net__panel dl div {
+    padding-top: 0.55rem;
+    border-top: 1px solid rgba(236, 227, 210, 0.18);
+  }
+
+  .inventory-flow-net__panel dt {
+    margin: 0 0 0.24rem;
+    color: var(--brass-on-dark);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__panel dd {
+    margin: 0;
+    color: rgba(236, 227, 210, 0.9);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+
+  .inventory-flow-net__range {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 0.1rem;
+    color: var(--brass-on-dark);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__range input {
+    width: 100%;
+    accent-color: var(--brass);
+  }
+
+  .inventory-flow-net__grammar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 0.8rem;
+    border: 1px solid var(--hairline);
+    background: rgba(251, 246, 236, 0.74);
+  }
+
+  .inventory-flow-net__grammar div {
+    min-width: 0;
+    padding: 0.82rem;
+    border-right: 1px solid var(--hairline);
+  }
+
+  .inventory-flow-net__grammar div:last-child {
+    border-right: 0;
+  }
+
+  .inventory-flow-net__grammar strong {
+    display: block;
+    margin-bottom: 0.22rem;
+    color: var(--navy-strong);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__grammar span {
+    display: block;
+    color: var(--graphite);
+    font-size: 0.88rem;
+    line-height: 1.42;
+  }
+
+  @keyframes inventory-flow-stream {
+    to {
+      stroke-dashoffset: -52;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .inventory-flow-net__header,
+    .inventory-flow-net__workspace,
+    .inventory-flow-net__grammar {
+      grid-template-columns: 1fr;
+    }
+
+    .inventory-flow-net__tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .inventory-flow-net__grammar div {
+      border-right: 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .inventory-flow-net__grammar div:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .inventory-article-page .article-layout__inner--inventory {
+      width: min(calc(100% - 1rem), 1120px);
+      padding-inline: 1rem;
+    }
+
+    .inventory-flow-net {
+      padding: 0.75rem;
+    }
+
+    .inventory-flow-net__tabs {
+      grid-template-columns: 1fr;
+    }
+
+    .inventory-flow-net__canvas svg {
+      min-width: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .inventory-flow-net__edge-stream {
+      animation: none;
+    }
+  }
+</style>
