@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>One Recipe for Ten Inventory Problems: Evolution Strategies for Inventory Control | Nima Manaf</title><meta name="description" content="A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns competitive inventory-control policies across ten classical problems."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet"> <script>
+          window.MathJax = {
+            tex: {
+              inlineMath: [["$", "$"], ["\\(", "\\)"]],
+              displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+            },
+            svg: {
+              fontCache: "global"
+            }
+          };
+        </script> <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> <link rel="stylesheet" href="/_astro/posts.CLnL3s5Y.css"></head> <body class="public-page article-page"> <header class="site-header"> <div class="site-shell site-header__inner"> <a class="site-brand" href="/"> <span class="site-brand__name">Nima Manaf</span> <span class="site-brand__sub" aria-hidden="true">Gazetteer</span> </a> <nav class="site-nav" aria-label="Primary"> <a href="/" class>Home</a> <a href="/posts" class="is-active">Articles</a> <a href="/value_chains" class>Value Chains</a> <a href="/#contact">Contact</a> </nav> <div class="site-header__end"> <span class="site-plate" aria-hidden="true">52.09&deg; N, 5.12&deg; E</span> <div class="site-meta-links" aria-label="Profile links"> <a href="mailto:nima.manaf8@gmail.com" class="site-meta-link" aria-label="Email" title="Email"> <span aria-hidden="true">@</span> </a><a href="https://www.linkedin.com/in/nima-manaf-phd-02174b74/" class="site-meta-link" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noreferrer"> <span aria-hidden="true">in</span> </a><a href="https://github.com/nimaman" class="site-meta-link" aria-label="GitHub" title="GitHub" target="_blank" rel="noreferrer"> <span aria-hidden="true">&lt;/&gt;</span> </a><a href="https://scholar.google.com/citations?user=oE_9bDkAAAAJ&#38;hl=en" class="site-meta-link" aria-label="Scholar" title="Scholar" target="_blank" rel="noreferrer"> <span aria-hidden="true">✦</span> </a> </div> </div> </div> </header> <main class="article-layout"> <div class="site-shell article-layout__inner"> <a href="/posts" class="text-link article-back">Back to all articles</a> <header class="article-header"> <p class="eyebrow">Article</p> <h1>One Recipe for Ten Inventory Problems: Evolution Strategies for Inventory Control</h1> <div class="article-meta"> <span>Dec 14, 2021</span> <span>Nima Manaf, PhD</span> </div> <p class="article-dek">A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns competitive inventory-control policies across ten classical problems.</p> </header> <article class="article-prose"> <h1 id="summary">Summary</h1>
+<ul>
+<li>One generic recipe — <strong>Covariance Matrix Adaptation Evolution Strategies (CMA-ES)</strong> optimizing small, interpretable policies — learns competitive inventory-control policies across <strong>ten classical problems</strong>, with little tuning.</li>
+<li>The learned policies are tiny: <strong>tens to a few hundred parameters</strong>, orders of magnitude smaller than the deep networks usually reported, and small enough to read.</li>
+<li>The recurring trick is that the <strong>action parameterization is part of the policy</strong>: the decoder is shaped like the relevant heuristic’s coordinate system, which is what lets such a small policy reach the good operating region.</li>
+</ul>
+<p>This post started life as a tutorial on the lost-sales problem alone. Since then the study has broadened: the same loop now runs, essentially unchanged, across ten structurally different inventory problems. I lead with lost sales — still the most developed example — and then widen out.</p>
+<h1 id="the-setup-a-sequential-decision-under-uncertainty">The setup: a sequential decision under uncertainty</h1>
+<p>Inventory management is a textbook sequential decision problem. Each period a controller decides how much to order, balancing the cost of holding stock against the cost of shortages. These problems are naturally Markov decision processes (MDPs), but exact dynamic programming is only tractable for small instances — the state space grows with the lead time and the number of stocking locations (the curse of dimensionality). So the field leans on two things:</p>
+<ul>
+<li><strong>Problem-specific heuristics</strong> — base-stock, $(s,S)$, $(s,nQ)$, dual-index, capped dual-index. These are strong, but each one takes specialized analysis and simplifying assumptions that limit where it applies.</li>
+<li><strong>Deep reinforcement learning (DRL)</strong> — represent the policy as a neural network and tune it from simulated experience. This is generic, but it demands a lot of compute and hyperparameter tuning, and the networks (thousands to millions of parameters) are hard to interpret.</li>
+</ul>
+<p>The question I want to ask here is different from “what is the best method for problem X”. It is: <em>can one lightweight, portable recipe stand in for bespoke heuristics across many different inventory problems, while staying small enough to interpret and cheap enough to retrain?</em></p>
+<p>The recipe is to optimize the parameters of a compact policy with <strong>CMA-ES</strong>, a gradient-free, population-based optimizer. Three things make it a good fit, and they hold across all ten problems:</p>
+<ol>
+<li>It optimizes the <strong>realized objective</strong> — the simulated long-run average cost — directly. No value-function bootstrapping, no reward shaping, no credit assignment to individual actions. The same loop applies whether the action is a scalar order, a regular/expedite pair, or a pair of echelon order-up-to levels.</li>
+<li>Its built-in <strong>covariance adaptation supplies exploration automatically</strong>, so there is no exploration strategy to design.</li>
+<li>Because it never differentiates the policy, it happily handles the <strong>non-smooth, discretized, clipped action maps</strong> that are awkward for backpropagation but completely natural for inventory controls.</li>
+</ol>
+<blockquote>
+<p>A note on continuity from the original post: the earlier version pitched ES against RL specifically for lost sales. The thesis here is the same in spirit but bigger in scope — it is the <em>portability</em> of one recipe across ten problems that is the point, not a single head-to-head on one problem.</p>
+</blockquote>
+<h2 id="the-training-loop">The training loop</h2>
+<p>CMA-ES is treated as a black-box optimizer. Each generation does three things: it samples a <strong>population</strong> of policy-parameter vectors from a Gaussian search distribution; it <strong>evaluates</strong> each one by short rollouts in the simulator (the only step that touches the environment), giving a simulated long-run cost; and it <strong>ranks and updates</strong> the search distribution from the best members. We use a single fixed configuration throughout (population 64, a short 2000-period training horizon) and do <em>not</em> tune it per problem.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E1E4E8">es </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> CMAES(</span><span style="color:#FFAB70">num_params</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">num_params, </span><span style="color:#FFAB70">popsize</span><span style="color:#F97583">=</span><span style="color:#79B8FF">64</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> generation </span><span style="color:#F97583">in</span><span style="color:#79B8FF"> range</span><span style="color:#E1E4E8">(num_generations):</span></span>
+<span class="line"><span style="color:#E1E4E8">    candidates </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> es.ask()                      </span><span style="color:#6A737D"># sample a population of policies</span></span>
+<span class="line"><span style="color:#E1E4E8">    costs </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [rollout_cost(decode(c)) </span><span style="color:#F97583">for</span><span style="color:#E1E4E8"> c </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> candidates]  </span><span style="color:#6A737D"># evaluate each (parallelizable)</span></span>
+<span class="line"><span style="color:#E1E4E8">    es.tell(costs)                             </span><span style="color:#6A737D"># update mean, step size, covariance</span></span></code></pre>
+<p>The evaluation step is embarrassingly parallel — one of ES’s structural advantages over RL — so it scales cleanly across cores or a cluster.</p>
+<h1 id="the-key-idea-the-action-parameterization-is-the-policy">The key idea: the action parameterization <em>is</em> the policy</h1>
+<p>This is the one idea worth taking away, and it runs through every problem.</p>
+<p>A learner that can only emit a raw scalar order is implicitly restricted to whatever that scalar can express. A learner whose <strong>decoder is shaped like the relevant structured heuristic</strong> searches a far more useful action geometry. So I treat each policy as a single map from the problem’s <strong>state</strong> to a <strong>valid action</strong>, and everything in between — a divide-by-scale normalization, a small backbone (a linear map, a one-hidden-layer network, or a soft decision tree), and crucially a <strong>decoder / action geometry</strong> — is owned by the policy and learned by CMA-ES.</p>
+<p>Where a structured heuristic exists, the decoder lives in <em>that heuristic’s coordinate system</em>:</p>
+<ul>
+<li>an <strong>ordinal “one more unit” quantity</strong> for lost sales,</li>
+<li><strong>capped-dual-index coordinates</strong> for dual sourcing,</li>
+<li><strong>direct echelon order-up-to levels</strong> for multi-echelon.</li>
+</ul>
+<p>The payoff is that the decoder, not the network width, drives several of the results. The clearest example is multi-echelon (below): with the same tree, optimizer and horizon, changing only the decoder’s reachable action set swings the policy from ~14% <em>better</em> than the best base-stock to more than 200% <em>worse</em>.</p>
+<h1 id="lost-sales-the-original-problem">Lost sales (the original problem)</h1>
+<p>The lost-sales problem is one of the fundamental problems in inventory theory. Single item, periodic review, integer demand and orders. Each period: an order placed $L$ periods ago arrives and joins on-hand stock; the controller places a new integer order $q_t$ that will arrive after lead time $L$; demand $D_t$ is realized and served from stock, and any <strong>unmet demand is lost</strong> rather than backordered. A holding cost $h$ is charged per leftover unit and a penalty $p$ per lost unit:</p>
+<p>$$
+c_t = h,(I_t - D_t)^{+} + p,(D_t - I_t)^{+}.
+$$</p>
+<p>The state is the on-hand inventory plus the pipeline of outstanding orders, an $L$-dimensional vector — and the state space grows exponentially in the lead time, which is exactly why exact solution is intractable and the problem is famously hard.</p>
+<p>The action here is a single integer order, so this is where the decoder family lives. We use three policy-owned decoders: a <strong>soft-gated direct quantity</strong> (a logistic gate decides <em>whether</em> to order, a softplus head decides <em>how much</em>), a <strong>soft-gated ordinal quantity</strong> (a sum of soft “one more unit” indicators), and <strong>soft decision trees</strong> with linear leaves.</p>
+<p>We benchmark on a surface, not a single instance: holding cost 1, mean demand 5, lead times $L\in{4,6,8,10}$, lost-sales penalties $p\in{4,19}$, and three mean-preserving demand families (Poisson, Geometric, and a positively-correlated Markov-modulated Poisson). That is <strong>24 vanilla instances</strong>. The comparators are the strong classical heuristics: Myopic-1, Myopic-2, and standard vector base-stock.</p>
+<p><strong>Result.</strong> Across the 24-instance vanilla surface, the learned policies are <strong>instance-best in 22 of 24 cases</strong>. The soft tree is the most frequent winner. The two cases still won by a classical baseline are the high-penalty, autocorrelated MMPP instances at the longest lead times ($L=8,10$) — a regime-switching, deep-pipeline combination that is the hardest setting for a single stationary compact policy.</p>
+<center>
+<img class="special-img-class" style="width:60%" src="/static/images/Lost_sales_p_4_l_4.jpg" label="lead_time_4">
+</center>
+<h2 id="fixed-cost-lost-sales">Fixed-cost lost sales</h2>
+<p>Add a fixed setup cost $K$ charged whenever a strictly positive order is placed, and the <em>order/no-order</em> decision becomes an explicit part of the problem — it is no longer optimal to order every period. The comparators become the $(s,S)$, $(s,nQ)$, and modified $(s,S,q)$ policies; the surface grows to <strong>48 instances</strong> with $K\in{5,25}$.</p>
+<p><strong>Result.</strong> Learned policies are <strong>instance-best in 47 of 48 instances</strong>. And the architecture story sharpens: once a setup charge makes the order/no-order boundary dominant, the <strong>gated</strong> decoders — which factor the decision into an explicit gate (<em>whether</em>) and a quantity head (<em>how much</em>) — win most instances, inverting the vanilla preference. There is an honest failure mode visible right in the table: at high setup cost a couple of the decoders collapse onto a degenerate “never order” policy; the gated ordinal decoder is the one that consistently escapes it. The decoder, not the optimizer, governs that boundary.</p>
+<h1 id="broadening-out-the-other-eight-problems">Broadening out: the other eight problems</h1>
+<p>The same loop, the same optimizer configuration, the same idea — only the decoder and the action geometry change.</p>
+<h2 id="dual-sourcing--matches-the-proven-optimum">Dual sourcing — <em>matches</em> the proven optimum</h2>
+<p>Two supply modes (a cheap slow regular source and an expensive fast expedited one). On the six small benchmark instances of Gijsbrechts et al. (2022), the strongest structured policy is the <strong>capped dual-index (CDI)</strong> heuristic, whose published optimality gap is $\le 0.11%$ — so it is effectively an optimal proxy.</p>
+<p>By putting the learned soft tree in <strong>capped-dual-index coordinates</strong> and warm-starting CMA-ES at the CDI solution, the learned policy <strong>matches CDI on all six instances</strong> (four at the discrete-grid rounding floor, two negligibly below by 0.009% and 0.041%, well inside CDI’s own optimality band). I report these as <strong>matches, not improvements</strong> — you cannot meaningfully beat a near-optimal proxy by hundredths of a percent. As an <em>indicative</em> reference, the published A3C learner sits at a 0.51–1.85% gap, i.e. outside the band the learned policy lands in. The lever here is the action geometry: a raw direct-order decoder cannot express CDI and does not reach this level.</p>
+<h2 id="divergent-multi-echelon-with-special-delivery--144-over-the-best-base-stock">Divergent multi-echelon with special delivery — ~14.4% over the best base-stock</h2>
+<p>One warehouse, $R$ retailers, with a special-delivery option. The action is a warehouse order plus a shared retailer order-up-to level. This is the sharpest test of the action-geometry principle, because the wrong geometry is fatal: the cost-minimizing warehouse base-stock is roughly 300–525, while the reduced action grid used in prior work caps the warehouse level at 100 — so the grid <em>physically cannot reach the operating region</em>.</p>
+<p><strong>Result.</strong> A <strong>direct-level</strong> soft tree (leaves estimate the order-up-to levels directly, bounded only by physical caps) improves on the <strong>best in-environment constant base-stock by ≈14.4%</strong> on both reported settings. The grid-action policy — same tree, same optimizer, only the reachable level set changed — stays ~230% <em>above</em> the benchmark. That contrast is the whole point.</p>
+<p>One honesty caveat I keep explicit: the ~14.4% figure is measured against the <strong>best in-environment constant base-stock</strong> under one cost convention, whereas the published A3C improvements (8.95%, 12.09%) are against a different baseline under a different cost convention. So the A3C comparison is <strong>indicative of the direct design’s strength, not a strictly like-for-like ranking</strong>.</p>
+<h2 id="perishable-inventory--beats-the-best-base-stock-gate">Perishable inventory — beats the best base-stock gate</h2>
+<p>Stock ages and expires; a waste cost is charged on outdated units. The benchmark instances issue either FIFO or LIFO. A 21-parameter age-dependent soft tree <strong>beats the best base-stock gate</strong> under a shared common-random-number estimator: <strong>+1.16%</strong> under FIFO and <strong>+0.82%</strong> under LIFO, both several times their paired standard error. The tree exploits the age structure a single base-stock cannot — ordering less when older stock is already on hand. (Both learned returns happen to sit essentially <em>on</em> the analytic value-iteration optimum, but that comparison mixes two estimators, so I treat it as corroborating context, not a second win.)</p>
+<h2 id="general-network-backorder--beats-the-published-benchmark-by-over-20">General-network backorder — beats the published benchmark by over 20%</h2>
+<p>A four-supplier, four-warehouse, five-retailer network with backordered (not lost) demand. Put the policy in the <strong>node-base-stock-targets</strong> coordinate system and let a state-dependent tree modulate the targets, and it reduces long-run average cost by <strong>22.4%</strong> (and 26.7% on a second seed) over the <strong>reproduced constant node-base-stock benchmark</strong>, on the same environment under a paired comparison.</p>
+<p>Two honest caveats. First, despite the family name, this verified environment charges holding and backorder cost only — no fixed ordering cost. Second, the paper’s PPO best (8,714) is a <strong>cross-protocol</strong> figure produced by a different learner under its own protocol. Our learned policy lands below it, but that is <strong>not a head-to-head PPO beat and I do not claim one</strong> — the defensible claim is the paired, same-environment improvement over the published constant base-stock benchmark.</p>
+<h2 id="serial-multi-echelon-clarkscarf--matches-the-proven-optimum">Serial multi-echelon (Clark–Scarf) — <em>matches</em> the proven optimum</h2>
+<p>A 3-stage serial system whose optimal policy is known exactly (Clark–Scarf echelon base-stock). Because the decoder lives in the optimum’s own coordinate system, the warm-started direct-level soft tree <strong>reproduces the proven optimum</strong> to within +0.011% — inside the environment’s own ~0.06% reproduction band, statistically indistinguishable from optimal. This is a <strong>match, not a win</strong>: one cannot improve on a true optimum, and I do not claim to. What it shows is that the same generic recipe <em>recovers the optimal policy</em> on a serial system.</p>
+<h2 id="one-warehouse-multi-retailer--beats-the-tuned-gate-but-below-published-ppo">One-warehouse multi-retailer — beats the tuned gate, but below published PPO</h2>
+<p>Asymmetric, high-variability OWMR instances from Kaynov et al. (2024). The like-for-like comparator is a strong in-repo tuned base-stock-plus-allocation gate (itself already stronger than the published Kaynov base-stock). The learned per-retailer soft tree <strong>beats the tuned gate beyond sampling error on two of the three instances</strong> (+1.33% and +6.44%) and ties on the hardest one (a search-limited tie, not a representation limit).</p>
+<p>To be clear about the ceiling: the learned policy does <strong>not</strong> beat the published PPO, which remains the strongest <em>learned</em> reference on every row (we sit 3.14–17.77% below it). The win is over the tuned heuristic gate, not over published deep RL.</p>
+<h2 id="ameliorating-inventory--beats-the-order-up-to-gate-the-lp-value-is-an-upper-bound">Ameliorating inventory — beats the order-up-to gate; the LP value is an upper bound</h2>
+<p>Here stock <em>improves</em> with age (think spirits, port wine) and the objective is long-run average <strong>profit</strong> with a stochastic purchase price. A price-reactive linear-leaf soft tree — buy more when the realized price is low, which a fixed order-up-to level cannot do — <strong>beats the best tuned order-up-to gate by a wide margin</strong> (+450% and +278% of the gate’s profit, with overwhelming statistical significance).</p>
+<p>The other reference point is a <strong>perfect-information LP upper bound</strong>, and I treat it as exactly that. The remaining gap to it is large (94.2% and 79.3%) and <em>structural</em>: the bound assumes hindsight and a full three-part decision (purchase, production, per-age issuance solved jointly), while our policy controls only the scalar purchase volume. So the bound is <strong>reported as a gap, never “beaten”</strong>, and it is not comparable to the ~3.5% gap a full-action-space deep-RL agent reaches.</p>
+<h2 id="production--assembly--distribution-network--a-research-result-on-a-faithful-environment">Production / assembly / distribution network — a research result on a faithful environment</h2>
+<p>A 3-node serial production chain. The honesty status matters: this environment faithfully reproduces the one <em>published</em> single-node quantity (certifying its dynamics), but there is <strong>no published optimum for the multi-node MDP</strong>, so the comparator is the <strong>environment’s own best heuristic</strong> (a grid-searched pairwise base-stock), not a literature number. Against that gate, the learned linear-leaf soft tree improves per-period cost by <strong>~4–9%</strong> across two seeds and two depths, robustly outside the standard error.</p>
+<p>I frame this honestly as a <strong>research result on a faithful-but-not-literature-anchored environment</strong> — the policy beats the environment’s own best heuristic, not any published cost. It is evidence for the same thesis as everywhere else: action design (here, the leaf class) governs whether a black-box search recovers structured-control performance.</p>
+<h1 id="what-ties-it-together">What ties it together</h1>
+<p>The same gradient-free loop, run with one fixed configuration and no per-problem tuning, produces:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Problem</th><th>Comparator</th><th>Honest verdict</th></tr></thead><tbody><tr><td>Lost sales</td><td>classical heuristics</td><td>instance-best in <strong>22/24</strong></td></tr><tr><td>Fixed-cost lost sales</td><td>$(s,S)$, $(s,nQ)$, $(s,S,q)$</td><td>instance-best in <strong>47/48</strong></td></tr><tr><td>Dual sourcing</td><td>capped dual-index (optimal proxy)</td><td><strong>matches</strong> the proven optimum</td></tr><tr><td>Divergent multi-echelon</td><td>best in-env. base-stock</td><td><strong>≈14.4%</strong> better (A3C comparison indicative)</td></tr><tr><td>Perishable</td><td>best base-stock gate</td><td><strong>beats</strong> the gate (+1.16% / +0.82%)</td></tr><tr><td>General-network backorder</td><td>published constant base-stock</td><td><strong>beats</strong> by >20% (below PPO, not a PPO beat)</td></tr><tr><td>Serial (Clark–Scarf)</td><td>proven optimum</td><td><strong>matches</strong> the proven optimum</td></tr><tr><td>One-warehouse multi-retailer</td><td>tuned base-stock gate</td><td><strong>beats</strong> the gate on 2/3 (below PPO)</td></tr><tr><td>Ameliorating</td><td>order-up-to gate; LP bound</td><td><strong>beats</strong> the gate; LP value is an upper bound</td></tr><tr><td>Production network</td><td>env.’s own best heuristic</td><td><strong>beats</strong> it by ~4–9% (research result)</td></tr></tbody></table>
+<p>The policies that produce this carry <strong>tens to a few hundred parameters</strong> — orders of magnitude fewer than published DRL networks — and the reported single-state actions are validated against an independent rollout, so they are not just compact but checkable.</p>
+<p>Two limitations are worth stating plainly. The high-penalty, autocorrelated MMPP lost-sales instances at the longest lead times stay won by classical heuristics — a real gap for stationary compact policies under regime-switching demand. And CMA-ES, while far more sample-efficient than A3C here, is still data-hungry relative to limited-data settings, and its population evaluation cost grows with the covariance dimension, so very large parameterizations would need restricted or separable covariance structures.</p>
+<h1 id="takeaways">Takeaways</h1>
+<ul>
+<li>A single, generic recipe — <strong>CMA-ES over small, interpretable policies</strong> — is competitive across ten classical inventory problems, with little tuning.</li>
+<li>The consequential design choice is the <strong>decoder and its action geometry</strong>, not the network size: shape the decoder like the relevant heuristic’s coordinate system and a tiny policy reaches the good operating region.</li>
+<li>Read the verdicts honestly: <strong>match</strong> where the comparator is a proven optimum (dual sourcing, serial Clark–Scarf), <strong>beat</strong> where the comparator is a heuristic, and <strong>below</strong> published deep RL where one exists. Understatement is the right default.</li>
+</ul>
+<h1 id="citation">Citation</h1>
+<p>If you find this work useful, please cite it as:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@article{ManafInventoryES,</span></span>
+<span class="line"><span>  title   = "Learning Inventory Control Policies with Evolution Strategies across Lost-Sales, Dual-Sourcing, and Multi-Echelon Problems",</span></span>
+<span class="line"><span>  author  = "Manaf, Nima and van Jaarsveld, Willem and Basten, Rob",</span></span>
+<span class="line"><span>  journal = "nimamanaf.com",</span></span>
+<span class="line"><span>  year    = "2021",</span></span>
+<span class="line"><span>  url     = "https://nimamanaf.com/posts/evolution-strategies-for-inventory-control"</span></span>
+<span class="line"><span>}</span></span></code></pre> </article>  </div> </main> <footer class="site-footer"> <div class="site-shell site-footer__inner"> <div> <p class="site-footer__title">Nima Manaf</p> <p class="site-footer__text">Applied machine learning, optimization, and analytics for real decision systems.</p> </div> <div class="site-footer__links"> <a href="mailto:nima.manaf8@gmail.com"> Email </a><a href="https://www.linkedin.com/in/nima-manaf-phd-02174b74/" target="_blank" rel="noreferrer"> LinkedIn </a><a href="https://github.com/nimaman" target="_blank" rel="noreferrer"> GitHub </a><a href="https://scholar.google.com/citations?user=oE_9bDkAAAAJ&#38;hl=en" target="_blank" rel="noreferrer"> Scholar </a> </div> </div> </footer>   </body></html>
