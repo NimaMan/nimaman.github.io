@@ -2,7 +2,7 @@
 author: Nima Manaf, PhD
 title: "The Spendable Form: What Happens to Money When Turning Wealth Into It Is Nearly Free"
 date: 2026-06-05
-description: "For all of history we held money because turning what we own into what we can spend was slow and costly. Tokenization and on-chain settlement are making that conversion nearly free — and machines are starting to do it for us. This essay does not predict where that ends. It asks what changes when the act that defined money stops costing anything."
+description: "For all of history we held money because turning what we own into what we can spend was slow and costly. Tokenization and on-chain settlement are making that conversion nearly free — and machines are starting to do it for us. What happens to money when the act that defined it stops costing anything?"
 draft: false
 series: value_chains
 series_order: 3
@@ -13,7 +13,7 @@ On June 3, 2026, Ray Dalio went on television to explain how the AI bubble ends.
 
 That distinction is older than any bubble, and it is the quiet hinge of this essay. For all of history, what you own and what you can spend have been two different things, separated by an act of conversion that was slow, costly, and occasionally — at the worst possible moment — impossible. We bridged the gap by holding money: keeping part of our wealth in the spendable form at all times, as insurance, and paying for the privilege in the yield we gave up to hold it.
 
-That bridge is now becoming nearly free to cross. This essay is not a prediction about where that ends. It is an attempt to ask the right question, because the change underneath is real and the consequences are not yet written.
+That bridge is now becoming nearly free to cross.
 
 A [companion essay](https://nimamanaf.com/posts/battle_for_dollar_supremacy/) argued that the dollar's deepest power is settlement power, and that its grip on how the world pays is loosening. This one looks at a stranger possibility one level down: not which money the world uses, but whether we will go on holding a dedicated spending money at all.
 

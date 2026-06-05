@@ -25,10 +25,19 @@ Sections, in order:
 "Index of entries": Fraunces editorial headline + standfirst, then all
 non-draft posts as ruled log-entry plates (`getPublicPosts()`).
 
+## `value_chains/index.astro` — `/value_chains`
+Landing page for the **Value Chains** essay series. Lists every post whose
+frontmatter sets `series: value_chains`, ordered by `series_order` via
+`getSeriesPosts()`, each labelled by `series_label` (Part I · Companion · Part
+II). Same ruled-plate listing styling as `/posts`. Linked from the primary nav,
+from each series article's breadcrumb eyebrow, and from its `SeriesNav` footer.
+
 ## `posts/[slug].astro` — `/posts/<slug>`
 The reading view. Static-generated per post. Map chrome retreats to the
 margins; prose renders in an opaque reading column. Loads MathJax (tex-svg)
-only when a post's frontmatter sets `math: true`.
+only when a post's frontmatter sets `math: true`. Posts in a `series` also get a
+breadcrumb eyebrow linking to the series hub and a `SeriesNav` footer that hands
+the reader to the other parts.
 
 Coordinates used in the journey are real and are kept accurate (the owner is a
 data lead): Qaradag 38.70 N, Tehran 35.69 N, Istanbul 41.01 N, Stuttgart

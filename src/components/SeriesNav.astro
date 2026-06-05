@@ -1,0 +1,43 @@
+---
+import { postExcerpt, postSlug, type PostEntry } from "../lib/posts";
+
+interface Props {
+  current: PostEntry;
+  siblings: PostEntry[];
+  hubHref?: string;
+  hubLabel?: string;
+}
+
+const {
+  current,
+  siblings,
+  hubHref = "/value_chains",
+  hubLabel = "Value Chains",
+} = Astro.props;
+
+const others = siblings.filter((post) => postSlug(post) !== postSlug(current));
+---
+
+{
+  others.length > 0 && (
+    <nav class="series-nav" aria-label={`More in the ${hubLabel} series`}>
+      <p class="series-nav__lead">
+        Continue the <a href={hubHref}>{hubLabel}</a> series
+      </p>
+      <div class="series-nav__grid">
+        {others.map((post) => (
+          <a class="series-nav__card" href={`/posts/${postSlug(post)}`}>
+            {post.data.series_label && (
+              <span class="series-nav__label">{post.data.series_label}</span>
+            )}
+            <span class="series-nav__title">{post.data.title}</span>
+            {postExcerpt(post) && (
+              <span class="series-nav__dek">{postExcerpt(post)}</span>
+            )}
+            <span class="series-nav__cta">Read</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+  )
+}

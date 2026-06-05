@@ -421,9 +421,9 @@
       "title": "Value Chain Finance Analytics"
     },
     {
-      "href": "/posts/lost_sales_rl",
+      "href": "/posts/evolution-strategies-for-inventory-control",
       "meta": "Research thread",
-      "summary": "Using gradient-free optimization and compact neural policies to solve lost-sales inventory problems.",
+      "summary": "One gradient-free recipe — CMA-ES over small, interpretable policies — learns competitive policies across ten classical inventory-control problems.",
       "title": "Evolution Strategies for Inventory Control"
     },
     {

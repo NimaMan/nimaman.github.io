@@ -1354,6 +1354,22 @@ button, input, textarea, select { font: inherit; }
 .article-back::before { content: "←"; margin-right: 0.45rem; transition: transform 220ms var(--ease); display: inline-block; }
 .article-back:hover::before { transform: translateX(-4px); }
 
+/* Series footer — "continue the series" links at the foot of a series article */
+.series-nav { max-width: 66ch; margin: 3.2rem 0 0; padding-top: 1.7rem; border-top: 1px solid var(--hairline-strong); }
+.series-nav__lead { margin: 0 0 1.1rem; color: var(--graphite); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.series-nav__lead a { color: var(--brass-ink); text-decoration: none; border-bottom: 1px solid var(--brass-soft); }
+.series-nav__lead a:hover { border-bottom-color: var(--brass-ink); }
+.series-nav__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.series-nav__card { display: grid; align-content: start; gap: 0.5rem; padding: 1.2rem 1.3rem 1.3rem; background: var(--paper-high); border: 1px solid var(--hairline-strong); border-radius: var(--radius); text-decoration: none; transition: border-color 220ms var(--ease), transform 220ms var(--ease); }
+.series-nav__card:hover { border-color: var(--navy); transform: translateY(-2px); }
+.series-nav__label { display: inline-flex; align-items: center; gap: 0.45em; color: var(--graphite); font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.series-nav__label::before { content: ""; width: 6px; height: 6px; background: var(--brass); transform: rotate(45deg); }
+.series-nav__title { font-family: var(--font-display); font-variation-settings: "opsz" 60; font-weight: 600; font-size: 1.22rem; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
+.series-nav__dek { color: var(--graphite); font-size: 0.95rem; line-height: 1.5; }
+.series-nav__cta { margin-top: 0.15rem; color: var(--brass-ink); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.series-nav__cta::after { content: " →"; }
+@media (max-width: 640px) { .series-nav__grid { grid-template-columns: 1fr; } }
+
 .article-header { padding: 1rem 0 2.4rem; border-bottom: 1px solid var(--hairline-strong); margin-bottom: 2.4rem; }
 .article-header h1 {
     margin: 0.4rem 0 0;
