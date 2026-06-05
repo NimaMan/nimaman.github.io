@@ -22,11 +22,14 @@ interface Props {
 const { homePage } = siteData;
 const { post } = Astro.props;
 const { Content } = await render(post);
+const slug = postSlug(post);
+const isPiPost = slug === "pi";
+const PiVisual = isPiPost ? (await import("../../components/PiVisual.astro")).default : undefined;
 const description = post.data.description || postExcerpt(post);
 const seriesSiblings = post.data.series ? await getSeriesPosts(post.data.series) : [];
 ---
 
-<BaseLayout title={`${post.data.title} | ${homePage.short_name}`} description={description} bodyClass="public-page article-page">
+<BaseLayout title={`${post.data.title} | ${homePage.short_name}`} description={description} bodyClass={`public-page article-page${isPiPost ? " pi-article-page" : ""}`}>
   {
     post.data.math && (
       <Fragment slot="head">
@@ -49,7 +52,7 @@ const seriesSiblings = post.data.series ? await getSeriesPosts(post.data.series)
   <SiteNav activePage="posts" />
 
   <main class="article-layout">
-    <div class="site-shell article-layout__inner">
+    <div class:list={["site-shell", "article-layout__inner", { "article-layout__inner--pi": isPiPost }]}>
       <a href="/posts" class="text-link article-back">Back to all articles</a>
       <header class="article-header">
         {post.data.series === "value_chains" ? (
@@ -65,8 +68,8 @@ const seriesSiblings = post.data.series ? await getSeriesPosts(post.data.series)
         {postExcerpt(post) && <p class="article-dek">{postExcerpt(post)}</p>}
       </header>
 
-      <article class="article-prose">
-        <Content />
+      <article class:list={["article-prose", { "article-prose--pi": isPiPost }]}>
+        {isPiPost && <PiVisual />}<Content />
       </article>
 
       {post.data.series && <SeriesNav current={post} siblings={seriesSiblings} />}
