@@ -8,7 +8,433 @@
               fontCache: "global"
             }
           };
-        </script> <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> <link rel="stylesheet" href="/_astro/posts.CLnL3s5Y.css"></head> <body class="public-page article-page"> <header class="site-header"> <div class="site-shell site-header__inner"> <a class="site-brand" href="/"> <span class="site-brand__name">Nima Manaf</span> <span class="site-brand__sub" aria-hidden="true">Gazetteer</span> </a> <nav class="site-nav" aria-label="Primary"> <a href="/" class>Home</a> <a href="/posts" class="is-active">Articles</a> <a href="/#contact">Contact</a> </nav> <div class="site-header__end"> <span class="site-plate" aria-hidden="true">52.09&deg; N, 5.12&deg; E</span> <div class="site-meta-links" aria-label="Profile links"> <a href="mailto:nima.manaf8@gmail.com" class="site-meta-link" aria-label="Email" title="Email"> <span aria-hidden="true">@</span> </a><a href="https://www.linkedin.com/in/nima-manaf-phd-02174b74/" class="site-meta-link" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noreferrer"> <span aria-hidden="true">in</span> </a><a href="https://github.com/nimaman" class="site-meta-link" aria-label="GitHub" title="GitHub" target="_blank" rel="noreferrer"> <span aria-hidden="true">&lt;/&gt;</span> </a><a href="https://scholar.google.com/citations?user=oE_9bDkAAAAJ&#38;hl=en" class="site-meta-link" aria-label="Scholar" title="Scholar" target="_blank" rel="noreferrer"> <span aria-hidden="true">✦</span> </a> </div> </div> </div> </header> <main class="article-layout"> <div class="site-shell article-layout__inner"> <a href="/posts" class="text-link article-back">Back to all articles</a> <header class="article-header"> <p class="eyebrow">Article</p> <h1>One Recipe for Ten Inventory Problems: Evolution Strategies for Inventory Control</h1> <div class="article-meta"> <span>Jun 05, 2026</span> <span>Nima Manaf, PhD</span> </div> <p class="article-dek">A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns competitive inventory-control policies across ten classical problems.</p> </header> <article class="article-prose"> <h1 id="summary">Summary</h1>
+        </script> <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> <link rel="stylesheet" href="/_astro/posts.CLnL3s5Y.css"></head> <body class="public-page article-page inventory-article-page"> <header class="site-header"> <div class="site-shell site-header__inner"> <a class="site-brand" href="/"> <span class="site-brand__name">Nima Manaf</span> <span class="site-brand__sub" aria-hidden="true">Gazetteer</span> </a> <nav class="site-nav" aria-label="Primary"> <a href="/" class>Home</a> <a href="/posts" class="is-active">Articles</a> <a href="/#contact">Contact</a> </nav> <div class="site-header__end"> <span class="site-plate" aria-hidden="true">52.09&deg; N, 5.12&deg; E</span> <div class="site-meta-links" aria-label="Profile links"> <a href="mailto:nima.manaf8@gmail.com" class="site-meta-link" aria-label="Email" title="Email"> <span aria-hidden="true">@</span> </a><a href="https://www.linkedin.com/in/nima-manaf-phd-02174b74/" class="site-meta-link" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noreferrer"> <span aria-hidden="true">in</span> </a><a href="https://github.com/nimaman" class="site-meta-link" aria-label="GitHub" title="GitHub" target="_blank" rel="noreferrer"> <span aria-hidden="true">&lt;/&gt;</span> </a><a href="https://scholar.google.com/citations?user=oE_9bDkAAAAJ&#38;hl=en" class="site-meta-link" aria-label="Scholar" title="Scholar" target="_blank" rel="noreferrer"> <span aria-hidden="true">✦</span> </a> </div> </div> </div> </header> <main class="article-layout"> <div class="site-shell article-layout__inner article-layout__inner--inventory"> <a href="/posts" class="text-link article-back">Back to all articles</a> <header class="article-header"> <p class="eyebrow">Article</p> <h1>One Recipe for Ten Inventory Problems: Evolution Strategies for Inventory Control</h1> <div class="article-meta"> <span>Jun 05, 2026</span> <span>Nima Manaf, PhD</span> </div> <p class="article-dek">A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns competitive inventory-control policies across ten classical problems.</p> </header> <article class="article-prose article-prose--inventory"> <figure class="inventory-flow-net" data-inventory-flow data-flow-scenarios="[{&#34;id&#34;:&#34;lost-sales&#34;,&#34;label&#34;:&#34;Lost sales&#34;,&#34;eyebrow&#34;:&#34;single buffer&#34;,&#34;title&#34;:&#34;A request stream hits one stock buffer&#34;,&#34;thesis&#34;:&#34;The manager controls the replenishment arc. Demand either exits as served flow or leaks into a lost-sales sink.&#34;,&#34;conservation&#34;:&#34;on hand next = on hand + arrivals - served demand&#34;,&#34;policy&#34;:&#34;state: on hand plus pipeline; action: integer order quantity&#34;,&#34;baseDemand&#34;:52,&#34;buffer&#34;:&#34;one stock point&#34;,&#34;verdict&#34;:&#34;22 / 24 instance-best&#34;,&#34;nodes&#34;:[{&#34;id&#34;:&#34;supplier&#34;,&#34;label&#34;:&#34;supplier&#34;,&#34;kind&#34;:&#34;source&#34;,&#34;x&#34;:105,&#34;y&#34;:132},{&#34;id&#34;:&#34;pipeline&#34;,&#34;label&#34;:&#34;lead-time pipeline&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:292,&#34;y&#34;:132},{&#34;id&#34;:&#34;stock&#34;,&#34;label&#34;:&#34;on-hand stock&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:482,&#34;y&#34;:226},{&#34;id&#34;:&#34;demand&#34;,&#34;label&#34;:&#34;customer requests&#34;,&#34;kind&#34;:&#34;demand&#34;,&#34;x&#34;:748,&#34;y&#34;:154},{&#34;id&#34;:&#34;lost&#34;,&#34;label&#34;:&#34;lost demand&#34;,&#34;kind&#34;:&#34;sink&#34;,&#34;x&#34;:748,&#34;y&#34;:342},{&#34;id&#34;:&#34;policy&#34;,&#34;label&#34;:&#34;order policy&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;x&#34;:292,&#34;y&#34;:342}],&#34;edges&#34;:[{&#34;source&#34;:&#34;policy&#34;,&#34;target&#34;:&#34;supplier&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;label&#34;:&#34;order q_t&#34;,&#34;detail&#34;:&#34;The learned decoder maps the observed buffer and pipeline state to a valid order.&#34;,&#34;weight&#34;:1.2,&#34;curve&#34;:-52},{&#34;source&#34;:&#34;supplier&#34;,&#34;target&#34;:&#34;pipeline&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;supply&#34;,&#34;detail&#34;:&#34;Orders enter the network as a delayed supply flow.&#34;,&#34;weight&#34;:1,&#34;curve&#34;:0},{&#34;source&#34;:&#34;pipeline&#34;,&#34;target&#34;:&#34;stock&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;arrivals after L&#34;,&#34;detail&#34;:&#34;Lead time turns the action into a pipeline vector rather than an immediate stock change.&#34;,&#34;weight&#34;:1.05,&#34;curve&#34;:46},{&#34;source&#34;:&#34;stock&#34;,&#34;target&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;served&#34;,&#34;detail&#34;:&#34;Inventory is consumed by realized demand until the buffer is exhausted.&#34;,&#34;weight&#34;:1.3,&#34;curve&#34;:-36},{&#34;source&#34;:&#34;demand&#34;,&#34;target&#34;:&#34;lost&#34;,&#34;kind&#34;:&#34;loss&#34;,&#34;label&#34;:&#34;unmet requests&#34;,&#34;detail&#34;:&#34;Shortage is a leakage arc: unmet demand leaves the system instead of becoming backlog.&#34;,&#34;weight&#34;:0.82,&#34;curve&#34;:0},{&#34;source&#34;:&#34;demand&#34;,&#34;target&#34;:&#34;policy&#34;,&#34;kind&#34;:&#34;request&#34;,&#34;label&#34;:&#34;observed pressure&#34;,&#34;detail&#34;:&#34;Demand pressure is the signal the compact policy must absorb through the state.&#34;,&#34;weight&#34;:0.72,&#34;curve&#34;:74}]},{&#34;id&#34;:&#34;dual-sourcing&#34;,&#34;label&#34;:&#34;Dual sourcing&#34;,&#34;eyebrow&#34;:&#34;two supply arcs&#34;,&#34;title&#34;:&#34;The same buffer has a slow cheap arc and a fast expensive arc&#34;,&#34;thesis&#34;:&#34;Capped dual-index coordinates are a flow-net language: split replenishment across regular and expedite arcs while serving the same request stream.&#34;,&#34;conservation&#34;:&#34;inventory position = on hand + regular pipeline + expedite pipeline - backlog&#34;,&#34;policy&#34;:&#34;state: two pipelines; action: regular and expedite orders&#34;,&#34;baseDemand&#34;:64,&#34;buffer&#34;:&#34;shared service buffer&#34;,&#34;verdict&#34;:&#34;matches CDI optimum&#34;,&#34;nodes&#34;:[{&#34;id&#34;:&#34;regular&#34;,&#34;label&#34;:&#34;regular source&#34;,&#34;kind&#34;:&#34;source&#34;,&#34;x&#34;:110,&#34;y&#34;:110},{&#34;id&#34;:&#34;expedite&#34;,&#34;label&#34;:&#34;expedite source&#34;,&#34;kind&#34;:&#34;source&#34;,&#34;x&#34;:110,&#34;y&#34;:330},{&#34;id&#34;:&#34;regpipe&#34;,&#34;label&#34;:&#34;slow pipeline&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:310,&#34;y&#34;:120},{&#34;id&#34;:&#34;stock&#34;,&#34;label&#34;:&#34;shared stock&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:500,&#34;y&#34;:226},{&#34;id&#34;:&#34;demand&#34;,&#34;label&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;demand&#34;,&#34;x&#34;:748,&#34;y&#34;:170},{&#34;id&#34;:&#34;backlog&#34;,&#34;label&#34;:&#34;shortage cost&#34;,&#34;kind&#34;:&#34;sink&#34;,&#34;x&#34;:748,&#34;y&#34;:334},{&#34;id&#34;:&#34;policy&#34;,&#34;label&#34;:&#34;CDI decoder&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;x&#34;:310,&#34;y&#34;:336}],&#34;edges&#34;:[{&#34;source&#34;:&#34;policy&#34;,&#34;target&#34;:&#34;regular&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;label&#34;:&#34;regular order&#34;,&#34;detail&#34;:&#34;The cheap arc moves slowly, so the policy keeps a regular inventory position target.&#34;,&#34;weight&#34;:1,&#34;curve&#34;:-44},{&#34;source&#34;:&#34;policy&#34;,&#34;target&#34;:&#34;expedite&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;label&#34;:&#34;expedite order&#34;,&#34;detail&#34;:&#34;The fast arc corrects local shortage pressure at a higher unit cost.&#34;,&#34;weight&#34;:0.72,&#34;curve&#34;:20},{&#34;source&#34;:&#34;regular&#34;,&#34;target&#34;:&#34;regpipe&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;cheap slow flow&#34;,&#34;detail&#34;:&#34;Regular supply enters a long pipeline before it can serve demand.&#34;,&#34;weight&#34;:0.95,&#34;curve&#34;:0},{&#34;source&#34;:&#34;regpipe&#34;,&#34;target&#34;:&#34;stock&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;delayed arrival&#34;,&#34;detail&#34;:&#34;The regular pipeline is part of the inventory state.&#34;,&#34;weight&#34;:0.95,&#34;curve&#34;:38},{&#34;source&#34;:&#34;expedite&#34;,&#34;target&#34;:&#34;stock&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;fast expensive flow&#34;,&#34;detail&#34;:&#34;Expedited orders bypass most of the delay and stabilize the same service buffer.&#34;,&#34;weight&#34;:0.82,&#34;curve&#34;:-40},{&#34;source&#34;:&#34;stock&#34;,&#34;target&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;served demand&#34;,&#34;detail&#34;:&#34;Both replenishment arcs ultimately feed one demand-facing buffer.&#34;,&#34;weight&#34;:1.3,&#34;curve&#34;:-26},{&#34;source&#34;:&#34;demand&#34;,&#34;target&#34;:&#34;backlog&#34;,&#34;kind&#34;:&#34;loss&#34;,&#34;label&#34;:&#34;penalty flow&#34;,&#34;detail&#34;:&#34;The shortage sink prices service failures and determines when the expensive arc is worth using.&#34;,&#34;weight&#34;:0.65,&#34;curve&#34;:0}]},{&#34;id&#34;:&#34;multi-echelon&#34;,&#34;label&#34;:&#34;Multi-echelon&#34;,&#34;eyebrow&#34;:&#34;stock across levels&#34;,&#34;title&#34;:&#34;A warehouse buffer fans out to retailer buffers&#34;,&#34;thesis&#34;:&#34;The action is not a raw grid cell. It is a set of reachable stock targets on arcs from upstream stock to downstream demand.&#34;,&#34;conservation&#34;:&#34;echelon stock = local stock + downstream stock + pipeline&#34;,&#34;policy&#34;:&#34;state: echelon positions; action: warehouse and retailer order-up-to levels&#34;,&#34;baseDemand&#34;:88,&#34;buffer&#34;:&#34;warehouse plus retailers&#34;,&#34;verdict&#34;:&#34;about 14.4% better&#34;,&#34;nodes&#34;:[{&#34;id&#34;:&#34;supplier&#34;,&#34;label&#34;:&#34;supplier&#34;,&#34;kind&#34;:&#34;source&#34;,&#34;x&#34;:92,&#34;y&#34;:218},{&#34;id&#34;:&#34;warehouse&#34;,&#34;label&#34;:&#34;warehouse&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:276,&#34;y&#34;:218},{&#34;id&#34;:&#34;retailA&#34;,&#34;label&#34;:&#34;retailer A&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:514,&#34;y&#34;:116},{&#34;id&#34;:&#34;retailB&#34;,&#34;label&#34;:&#34;retailer B&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:514,&#34;y&#34;:218},{&#34;id&#34;:&#34;retailC&#34;,&#34;label&#34;:&#34;retailer C&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:514,&#34;y&#34;:320},{&#34;id&#34;:&#34;market&#34;,&#34;label&#34;:&#34;markets&#34;,&#34;kind&#34;:&#34;demand&#34;,&#34;x&#34;:756,&#34;y&#34;:218},{&#34;id&#34;:&#34;special&#34;,&#34;label&#34;:&#34;special delivery&#34;,&#34;kind&#34;:&#34;source&#34;,&#34;x&#34;:276,&#34;y&#34;:382},{&#34;id&#34;:&#34;policy&#34;,&#34;label&#34;:&#34;level decoder&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;x&#34;:276,&#34;y&#34;:70}],&#34;edges&#34;:[{&#34;source&#34;:&#34;policy&#34;,&#34;target&#34;:&#34;warehouse&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;label&#34;:&#34;warehouse level&#34;,&#34;detail&#34;:&#34;Direct-level leaves keep the action space large enough to reach the operating region.&#34;,&#34;weight&#34;:1,&#34;curve&#34;:0},{&#34;source&#34;:&#34;supplier&#34;,&#34;target&#34;:&#34;warehouse&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;upstream supply&#34;,&#34;detail&#34;:&#34;The upstream replenishment arc fills the warehouse buffer.&#34;,&#34;weight&#34;:1.12,&#34;curve&#34;:0},{&#34;source&#34;:&#34;warehouse&#34;,&#34;target&#34;:&#34;retailA&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;allocation&#34;,&#34;detail&#34;:&#34;Allocation is a controlled split of warehouse stock into retailer buffers.&#34;,&#34;weight&#34;:0.82,&#34;curve&#34;:-30},{&#34;source&#34;:&#34;warehouse&#34;,&#34;target&#34;:&#34;retailB&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;allocation&#34;,&#34;detail&#34;:&#34;The same echelon target language covers each retailer arc.&#34;,&#34;weight&#34;:1.12,&#34;curve&#34;:0},{&#34;source&#34;:&#34;warehouse&#34;,&#34;target&#34;:&#34;retailC&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;allocation&#34;,&#34;detail&#34;:&#34;A grid that clips these levels can make the best region unreachable.&#34;,&#34;weight&#34;:0.78,&#34;curve&#34;:30},{&#34;source&#34;:&#34;special&#34;,&#34;target&#34;:&#34;retailC&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;emergency flow&#34;,&#34;detail&#34;:&#34;Special delivery is another supply arc, used when downstream service pressure is high.&#34;,&#34;weight&#34;:0.62,&#34;curve&#34;:-18},{&#34;source&#34;:&#34;retailA&#34;,&#34;target&#34;:&#34;market&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;served&#34;,&#34;detail&#34;:&#34;Local demand consumes the retailer buffer.&#34;,&#34;weight&#34;:0.78,&#34;curve&#34;:28},{&#34;source&#34;:&#34;retailB&#34;,&#34;target&#34;:&#34;market&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;served&#34;,&#34;detail&#34;:&#34;All retailers connect to the same market pressure in the abstract graph.&#34;,&#34;weight&#34;:1.08,&#34;curve&#34;:0},{&#34;source&#34;:&#34;retailC&#34;,&#34;target&#34;:&#34;market&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;served&#34;,&#34;detail&#34;:&#34;The policy allocates stock across these downstream demand arcs.&#34;,&#34;weight&#34;:0.72,&#34;curve&#34;:-28}]},{&#34;id&#34;:&#34;age-structured&#34;,&#34;label&#34;:&#34;Age-structured&#34;,&#34;eyebrow&#34;:&#34;time inside stock&#34;,&#34;title&#34;:&#34;Inventory flows through age buckets before it exits&#34;,&#34;thesis&#34;:&#34;Perishable and ameliorating systems differ in the valuation of the age arc. The graph is the same: buy, age, issue, waste, or harvest value.&#34;,&#34;conservation&#34;:&#34;age bucket next = previous younger bucket - issued - expired&#34;,&#34;policy&#34;:&#34;state: stock by age and price; action: purchase or issue volume&#34;,&#34;baseDemand&#34;:46,&#34;buffer&#34;:&#34;age buckets&#34;,&#34;verdict&#34;:&#34;beats static gates&#34;,&#34;nodes&#34;:[{&#34;id&#34;:&#34;supplier&#34;,&#34;label&#34;:&#34;supplier&#34;,&#34;kind&#34;:&#34;source&#34;,&#34;x&#34;:96,&#34;y&#34;:214},{&#34;id&#34;:&#34;fresh&#34;,&#34;label&#34;:&#34;age 0 stock&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:278,&#34;y&#34;:154},{&#34;id&#34;:&#34;mature&#34;,&#34;label&#34;:&#34;age 1 stock&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:480,&#34;y&#34;:154},{&#34;id&#34;:&#34;aged&#34;,&#34;label&#34;:&#34;older stock&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:480,&#34;y&#34;:306},{&#34;id&#34;:&#34;demand&#34;,&#34;label&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;demand&#34;,&#34;x&#34;:746,&#34;y&#34;:156},{&#34;id&#34;:&#34;waste&#34;,&#34;label&#34;:&#34;waste / value&#34;,&#34;kind&#34;:&#34;sink&#34;,&#34;x&#34;:746,&#34;y&#34;:306},{&#34;id&#34;:&#34;policy&#34;,&#34;label&#34;:&#34;age-aware tree&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;x&#34;:278,&#34;y&#34;:340}],&#34;edges&#34;:[{&#34;source&#34;:&#34;policy&#34;,&#34;target&#34;:&#34;supplier&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;label&#34;:&#34;buy amount&#34;,&#34;detail&#34;:&#34;The policy can buy more when price is low or when old stock is insufficient.&#34;,&#34;weight&#34;:0.92,&#34;curve&#34;:40},{&#34;source&#34;:&#34;supplier&#34;,&#34;target&#34;:&#34;fresh&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;new stock&#34;,&#34;detail&#34;:&#34;Purchase flow enters the youngest bucket.&#34;,&#34;weight&#34;:1,&#34;curve&#34;:-18},{&#34;source&#34;:&#34;fresh&#34;,&#34;target&#34;:&#34;mature&#34;,&#34;kind&#34;:&#34;transform&#34;,&#34;label&#34;:&#34;age transition&#34;,&#34;detail&#34;:&#34;Time is an internal arc: stock moves between age buckets even without demand.&#34;,&#34;weight&#34;:0.86,&#34;curve&#34;:0},{&#34;source&#34;:&#34;mature&#34;,&#34;target&#34;:&#34;aged&#34;,&#34;kind&#34;:&#34;transform&#34;,&#34;label&#34;:&#34;age transition&#34;,&#34;detail&#34;:&#34;Perishability and amelioration are different costs on the same age-flow skeleton.&#34;,&#34;weight&#34;:0.74,&#34;curve&#34;:38},{&#34;source&#34;:&#34;fresh&#34;,&#34;target&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;issue FIFO / LIFO&#34;,&#34;detail&#34;:&#34;The issuing rule chooses which age bucket feeds demand first.&#34;,&#34;weight&#34;:0.88,&#34;curve&#34;:-44},{&#34;source&#34;:&#34;mature&#34;,&#34;target&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;issue&#34;,&#34;detail&#34;:&#34;An age-dependent policy can reduce orders when older stock is already available.&#34;,&#34;weight&#34;:1.1,&#34;curve&#34;:0},{&#34;source&#34;:&#34;aged&#34;,&#34;target&#34;:&#34;waste&#34;,&#34;kind&#34;:&#34;loss&#34;,&#34;label&#34;:&#34;expire or harvest&#34;,&#34;detail&#34;:&#34;The terminal age arc is a waste sink for perishables or a value sink for ameliorating stock.&#34;,&#34;weight&#34;:0.76,&#34;curve&#34;:0}]},{&#34;id&#34;:&#34;general-network&#34;,&#34;label&#34;:&#34;General network&#34;,&#34;eyebrow&#34;:&#34;many-to-many flow&#34;,&#34;title&#34;:&#34;Suppliers, warehouses, and retailers form one controllable graph&#34;,&#34;thesis&#34;:&#34;A general inventory network is still a flow net: routing, allocation, backlog, and service are just different edge families.&#34;,&#34;conservation&#34;:&#34;node inventory next = incoming shipments - outgoing shipments - local demand&#34;,&#34;policy&#34;:&#34;state: node stocks and backlog; action: node base-stock targets&#34;,&#34;baseDemand&#34;:104,&#34;buffer&#34;:&#34;many node buffers&#34;,&#34;verdict&#34;:&#34;over 20% better&#34;,&#34;nodes&#34;:[{&#34;id&#34;:&#34;suppliers&#34;,&#34;label&#34;:&#34;suppliers&#34;,&#34;kind&#34;:&#34;source&#34;,&#34;x&#34;:92,&#34;y&#34;:206},{&#34;id&#34;:&#34;wh1&#34;,&#34;label&#34;:&#34;warehouse 1&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:300,&#34;y&#34;:136},{&#34;id&#34;:&#34;wh2&#34;,&#34;label&#34;:&#34;warehouse 2&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:300,&#34;y&#34;:292},{&#34;id&#34;:&#34;ret1&#34;,&#34;label&#34;:&#34;retailer group&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:532,&#34;y&#34;:150},{&#34;id&#34;:&#34;ret2&#34;,&#34;label&#34;:&#34;retailer group&#34;,&#34;kind&#34;:&#34;buffer&#34;,&#34;x&#34;:532,&#34;y&#34;:286},{&#34;id&#34;:&#34;demand&#34;,&#34;label&#34;:&#34;demand field&#34;,&#34;kind&#34;:&#34;demand&#34;,&#34;x&#34;:758,&#34;y&#34;:218},{&#34;id&#34;:&#34;backlog&#34;,&#34;label&#34;:&#34;backlog&#34;,&#34;kind&#34;:&#34;sink&#34;,&#34;x&#34;:758,&#34;y&#34;:366},{&#34;id&#34;:&#34;policy&#34;,&#34;label&#34;:&#34;node targets&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;x&#34;:300,&#34;y&#34;:404}],&#34;edges&#34;:[{&#34;source&#34;:&#34;policy&#34;,&#34;target&#34;:&#34;suppliers&#34;,&#34;kind&#34;:&#34;control&#34;,&#34;label&#34;:&#34;target vector&#34;,&#34;detail&#34;:&#34;The action is a vector of node targets, not a single scalar order.&#34;,&#34;weight&#34;:0.9,&#34;curve&#34;:52},{&#34;source&#34;:&#34;suppliers&#34;,&#34;target&#34;:&#34;wh1&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;ship&#34;,&#34;detail&#34;:&#34;Upstream supply is allocated into warehouse buffers.&#34;,&#34;weight&#34;:1,&#34;curve&#34;:-28},{&#34;source&#34;:&#34;suppliers&#34;,&#34;target&#34;:&#34;wh2&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;ship&#34;,&#34;detail&#34;:&#34;The same target rule controls parallel replenishment arcs.&#34;,&#34;weight&#34;:0.95,&#34;curve&#34;:28},{&#34;source&#34;:&#34;wh1&#34;,&#34;target&#34;:&#34;ret1&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;route&#34;,&#34;detail&#34;:&#34;Routing edges turn upstream stock into downstream service capacity.&#34;,&#34;weight&#34;:0.9,&#34;curve&#34;:-16},{&#34;source&#34;:&#34;wh1&#34;,&#34;target&#34;:&#34;ret2&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;cross route&#34;,&#34;detail&#34;:&#34;Many-to-many networks are still node balances plus controlled arcs.&#34;,&#34;weight&#34;:0.65,&#34;curve&#34;:44},{&#34;source&#34;:&#34;wh2&#34;,&#34;target&#34;:&#34;ret1&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;cross route&#34;,&#34;detail&#34;:&#34;Cross-routing gives the policy another way to absorb local demand shocks.&#34;,&#34;weight&#34;:0.62,&#34;curve&#34;:-44},{&#34;source&#34;:&#34;wh2&#34;,&#34;target&#34;:&#34;ret2&#34;,&#34;kind&#34;:&#34;supply&#34;,&#34;label&#34;:&#34;route&#34;,&#34;detail&#34;:&#34;The graph view keeps the dimensionality visible without changing the learning loop.&#34;,&#34;weight&#34;:0.92,&#34;curve&#34;:16},{&#34;source&#34;:&#34;ret1&#34;,&#34;target&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;service&#34;,&#34;detail&#34;:&#34;Demand exits through retailer service arcs.&#34;,&#34;weight&#34;:0.95,&#34;curve&#34;:-24},{&#34;source&#34;:&#34;ret2&#34;,&#34;target&#34;:&#34;demand&#34;,&#34;kind&#34;:&#34;served&#34;,&#34;label&#34;:&#34;service&#34;,&#34;detail&#34;:&#34;The compact policy modulates node targets rather than memorizing every state.&#34;,&#34;weight&#34;:0.88,&#34;curve&#34;:24},{&#34;source&#34;:&#34;demand&#34;,&#34;target&#34;:&#34;backlog&#34;,&#34;kind&#34;:&#34;loss&#34;,&#34;label&#34;:&#34;unfilled requests&#34;,&#34;detail&#34;:&#34;Backlog is a sink with memory: unmet requests remain in the network until cleared.&#34;,&#34;weight&#34;:0.76,&#34;curve&#34;:0}]}]"> <div class="inventory-flow-net__header"> <div> <p class="inventory-flow-net__eyebrow">Interactive figure</p> <h2 id="inventory-flow-title">Inventory problems as flow nets</h2> <p>
+Requests, supply, lead-time pipelines, allocation, waste, and backlog can be drawn as one graph language.
+        The learning recipe changes the controlled arcs, not the abstraction.
+</p> </div> <div class="inventory-flow-net__meter" aria-label="Current flow-net readings"> <span><strong data-flow-demand>52</strong> request pressure</span> <span><strong data-flow-buffer>one stock point</strong> buffer shape</span> <span><strong data-flow-verdict>22 / 24 instance-best</strong> result claim</span> </div> </div> <div class="inventory-flow-net__tabs" role="tablist" aria-label="Inventory flow-net cases"> <button type="button" class="inventory-flow-net__tab is-active" data-flow-tab="lost-sales" aria-pressed="true"> <span>single buffer</span> Lost sales </button><button type="button" class="inventory-flow-net__tab" data-flow-tab="dual-sourcing" aria-pressed="false"> <span>two supply arcs</span> Dual sourcing </button><button type="button" class="inventory-flow-net__tab" data-flow-tab="multi-echelon" aria-pressed="false"> <span>stock across levels</span> Multi-echelon </button><button type="button" class="inventory-flow-net__tab" data-flow-tab="age-structured" aria-pressed="false"> <span>time inside stock</span> Age-structured </button><button type="button" class="inventory-flow-net__tab" data-flow-tab="general-network" aria-pressed="false"> <span>many-to-many flow</span> General network </button> </div> <div class="inventory-flow-net__workspace"> <div class="inventory-flow-net__canvas" data-flow-canvas> <svg viewBox="20 42 824 402" role="img" aria-labelledby="inventory-flow-title inventory-flow-caption"> <defs> <marker id="inventory-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"> <path d="M 0 0 L 10 5 L 0 10 z"></path> </marker> </defs> <g class="inventory-flow-net__grid" aria-hidden="true"> <path d="M 80 54 V 420"></path><path d="M 170 54 V 420"></path><path d="M 260 54 V 420"></path><path d="M 350 54 V 420"></path><path d="M 440 54 V 420"></path><path d="M 530 54 V 420"></path><path d="M 620 54 V 420"></path><path d="M 710 54 V 420"></path><path d="M 800 54 V 420"></path> <path d="M 54 78 H 826"></path><path d="M 54 156 H 826"></path><path d="M 54 234 H 826"></path><path d="M 54 312 H 826"></path><path d="M 54 390 H 826"></path> </g> <g data-flow-edges> <g class="inventory-flow-net__edge is-control"> <path class="inventory-flow-net__edge-base" d="M 292 342 Q 198.5 185 105 132"></path> <path class="inventory-flow-net__edge-stream" d="M 292 342 Q 198.5 185 105 132" style="--edge-width:5.04; --flow-speed:3.30s;" marker-end="url(#inventory-flow-arrow)"></path> <text x="198.5" y="205.6">order q_t</text> </g><g class="inventory-flow-net__edge is-supply"> <path class="inventory-flow-net__edge-base" d="M 105 132 Q 198.5 132 292 132"></path> <path class="inventory-flow-net__edge-stream" d="M 105 132 Q 198.5 132 292 132" style="--edge-width:4.20; --flow-speed:3.50s;" marker-end="url(#inventory-flow-arrow)"></path> <text x="198.5" y="124">supply</text> </g><g class="inventory-flow-net__edge is-supply"> <path class="inventory-flow-net__edge-base" d="M 292 132 Q 387 225 482 226"></path> <path class="inventory-flow-net__edge-stream" d="M 292 132 Q 387 225 482 226" style="--edge-width:4.41; --flow-speed:3.45s;" marker-end="url(#inventory-flow-arrow)"></path> <text x="387" y="191.7">arrivals after L</text> </g><g class="inventory-flow-net__edge is-served"> <path class="inventory-flow-net__edge-base" d="M 482 226 Q 615 154 748 154"></path> <path class="inventory-flow-net__edge-stream" d="M 482 226 Q 615 154 748 154" style="--edge-width:5.46; --flow-speed:3.20s;" marker-end="url(#inventory-flow-arrow)"></path> <text x="615" y="165.8">served</text> </g><g class="inventory-flow-net__edge is-loss"> <path class="inventory-flow-net__edge-base" d="M 748 154 Q 748 248 748 342"></path> <path class="inventory-flow-net__edge-stream" d="M 748 154 Q 748 248 748 342" style="--edge-width:3.44; --flow-speed:3.68s;" marker-end="url(#inventory-flow-arrow)"></path> <text x="748" y="240">unmet requests</text> </g><g class="inventory-flow-net__edge is-request"> <path class="inventory-flow-net__edge-base" d="M 748 154 Q 520 322 292 342"></path> <path class="inventory-flow-net__edge-stream" d="M 748 154 Q 520 322 292 342" style="--edge-width:3.02; --flow-speed:3.78s;" marker-end="url(#inventory-flow-arrow)"></path> <text x="520" y="273.3">observed pressure</text> </g> </g> <g data-flow-nodes> <g class="inventory-flow-net__node is-source" transform="translate(105 132)"> <rect x="-66" y="-24" width="132" height="48" rx="5"></rect> <text>supplier</text> </g><g class="inventory-flow-net__node is-buffer" transform="translate(292 132)"> <rect x="-66" y="-24" width="132" height="48" rx="5"></rect> <text>lead-time pipeline</text> </g><g class="inventory-flow-net__node is-buffer" transform="translate(482 226)"> <rect x="-66" y="-24" width="132" height="48" rx="5"></rect> <text>on-hand stock</text> </g><g class="inventory-flow-net__node is-demand" transform="translate(748 154)"> <rect x="-66" y="-24" width="132" height="48" rx="5"></rect> <text>customer requests</text> </g><g class="inventory-flow-net__node is-sink" transform="translate(748 342)"> <rect x="-66" y="-24" width="132" height="48" rx="5"></rect> <text>lost demand</text> </g><g class="inventory-flow-net__node is-control" transform="translate(292 342)"> <rect x="-66" y="-24" width="132" height="48" rx="5"></rect> <text>order policy</text> </g> </g> </svg> </div> <aside class="inventory-flow-net__panel" aria-live="polite"> <p class="inventory-flow-net__panel-kicker" data-flow-kicker>single buffer</p> <h3 data-flow-panel-title>A request stream hits one stock buffer</h3> <p data-flow-panel-copy>The manager controls the replenishment arc. Demand either exits as served flow or leaks into a lost-sales sink.</p> <dl> <div> <dt>Balance</dt> <dd data-flow-conservation>on hand next = on hand + arrivals - served demand</dd> </div> <div> <dt>Controlled action</dt> <dd data-flow-policy>state: on hand plus pipeline; action: integer order quantity</dd> </div> </dl> <label class="inventory-flow-net__range"> <span>Demand pressure</span> <input data-flow-pressure type="range" min="60" max="140" value="100"> </label> </aside> </div> <div class="inventory-flow-net__grammar" id="inventory-flow-caption"> <div> <strong>Buffers</strong> <span>on-hand stock, pipeline, warehouse, retailer, age bucket, backlog</span> </div> <div> <strong>Flows</strong> <span>supply, demand, allocation, aging, production, emergency delivery</span> </div> <div> <strong>Leaks</strong> <span>lost sales, waste, penalty, unmet request pressure</span> </div> <div> <strong>Policy arcs</strong> <span>the decoder chooses valid order, split, route, or target flows</span> </div> </div> </figure> <script type="module">const J=document.querySelectorAll("[data-inventory-flow]"),Q="http://www.w3.org/2000/svg";J.forEach(o=>{const u=JSON.parse(o.getAttribute("data-flow-scenarios")||"[]"),y=o.querySelector("[data-flow-edges]"),p=o.querySelector("[data-flow-nodes]"),x=Array.from(o.querySelectorAll("[data-flow-tab]")),h=o.querySelector("[data-flow-pressure]"),S=o.querySelector("[data-flow-demand]"),E=o.querySelector("[data-flow-buffer]"),m=o.querySelector("[data-flow-verdict]"),g=o.querySelector("[data-flow-kicker]"),$=o.querySelector("[data-flow-panel-title]"),k=o.querySelector("[data-flow-panel-copy]"),q=o.querySelector("[data-flow-conservation]"),C=o.querySelector("[data-flow-policy]");if(!u.length||!y||!p)return;let a=u[0],d=1;const s=(e,t={})=>{const n=document.createElementNS(Q,e);return Object.entries(t).forEach(([r,c])=>{n.setAttribute(r,String(c))}),n},F=e=>Object.fromEntries(e.nodes.map(t=>[t.id,t])),O=(e,t)=>{const n=t[e.source],r=t[e.target],c=e.curve||0,v=(n.x+r.x)/2,l=(n.y+r.y)/2+c;return`M ${n.x} ${n.y} Q ${v} ${l} ${r.x} ${r.y}`},j=(e,t)=>{const n=t[e.source],r=t[e.target];return{x:(n.x+r.x)/2,y:(n.y+r.y)/2+(e.curve||0)*.45-8}},D=e=>{const t=["served","loss","request"].includes(e.kind)?d:.86+d*.14;return Math.max(2.2,e.weight*4.2*t)},w=(e,t)=>{g&&(g.textContent=e.eyebrow),$&&($.textContent=t?t.label:e.title),k&&(k.textContent=t?t.detail:e.thesis),q&&(q.textContent=e.conservation),C&&(C.textContent=e.policy)},L=()=>{S&&(S.textContent=String(Math.round(a.baseDemand*d))),E&&(E.textContent=a.buffer),m&&(m.textContent=a.verdict)},N=()=>{const e=F(a);y.replaceChildren(),a.edges.forEach(t=>{const n=O(t,e),r=j(t,e),c=s("g",{class:`inventory-flow-net__edge is-${t.kind}`}),v=s("path",{class:"inventory-flow-net__edge-base",d:n}),l=s("path",{class:"inventory-flow-net__edge-stream",d:n,"marker-end":"url(#inventory-flow-arrow)",tabindex:"0",role:"button","aria-label":`${t.label}: ${t.detail}`}),A=s("path",{class:"inventory-flow-net__edge-hit",d:n,tabindex:"0",role:"button","aria-label":`${t.label}: ${t.detail}`}),M=s("text",{x:r.x,y:r.y});l.style.setProperty("--edge-width",D(t).toFixed(2)),l.style.setProperty("--flow-speed",`${Math.max(1.25,4.8-t.weight*d).toFixed(2)}s`),M.textContent=t.label;const f=()=>w(a,t),P=()=>w(a);[l,A].forEach(i=>{i.addEventListener("mouseenter",f),i.addEventListener("focus",f),i.addEventListener("mouseleave",P),i.addEventListener("blur",P),i.addEventListener("click",f),i.addEventListener("keydown",b=>{(b.key==="Enter"||b.key===" ")&&(b.preventDefault(),f())})}),c.append(v,l,A,M),y.append(c)})},I=()=>{p.replaceChildren(),a.nodes.forEach(e=>{const t=s("g",{class:`inventory-flow-net__node is-${e.kind}`,transform:`translate(${e.x} ${e.y})`}),n=s("rect",{x:-66,y:-24,width:132,height:48,rx:5}),r=s("text");r.textContent=e.label,t.append(n,r),p.append(t)})},_=e=>{a=u.find(t=>t.id===e)||u[0],x.forEach(t=>{const n=t.getAttribute("data-flow-tab")===a.id;t.classList.toggle("is-active",n),t.setAttribute("aria-pressed",String(n))}),L(),w(a),N(),I()};x.forEach(e=>{e.addEventListener("click",()=>_(e.getAttribute("data-flow-tab")))}),h?.addEventListener("input",()=>{d=Number(h.value)/100,L(),N()}),_(a.id)});</script> <style>
+  .inventory-article-page .article-layout__inner--inventory {
+    width: min(1120px, calc(100% - 2.5rem));
+  }
+
+  .inventory-article-page .article-prose--inventory {
+    max-width: none;
+  }
+
+  .inventory-article-page .article-prose--inventory > :not(.inventory-flow-net):not(center):not(table):not(pre):not(blockquote):not(figure):not(mjx-container) {
+    max-width: 66ch;
+  }
+
+  .inventory-article-page .article-prose--inventory > center,
+  .inventory-article-page .article-prose--inventory > table,
+  .inventory-article-page .article-prose--inventory > pre,
+  .inventory-article-page .article-prose--inventory > mjx-container {
+    max-width: 100%;
+  }
+
+  .inventory-article-page .article-prose--inventory > center {
+    margin: 1.9rem 0;
+  }
+
+  .inventory-flow-net {
+    margin: 0 0 2.4rem;
+    padding: clamp(1rem, 2.8vw, 1.45rem);
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(rgba(251, 246, 236, 0.92), rgba(251, 246, 236, 0.92)),
+      repeating-linear-gradient(0deg, rgba(22, 32, 43, 0.06) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgba(22, 32, 43, 0.05) 0 1px, transparent 1px 28px);
+    box-shadow: 0 18px 42px rgba(22, 32, 43, 0.1);
+  }
+
+  .inventory-flow-net__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.38fr);
+    gap: clamp(1rem, 2.6vw, 1.6rem);
+    align-items: start;
+    margin-bottom: 1rem;
+  }
+
+  .inventory-flow-net__eyebrow,
+  .inventory-flow-net__panel-kicker {
+    margin: 0 0 0.55rem;
+    color: var(--brass-ink);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3.4vw, 2.75rem);
+    line-height: 1.04;
+  }
+
+  .inventory-flow-net h2::before {
+    content: none;
+  }
+
+  .inventory-flow-net__header p:not(.inventory-flow-net__eyebrow) {
+    margin: 0.8rem 0 0;
+    max-width: 63ch;
+    color: var(--graphite);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .inventory-flow-net__meter {
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--hairline);
+    background: rgba(251, 246, 236, 0.74);
+  }
+
+  .inventory-flow-net__meter span {
+    display: grid;
+    gap: 0.22rem;
+    min-width: 0;
+    padding: 0.72rem 0.8rem;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .inventory-flow-net__meter span:last-child {
+    border-bottom: 0;
+  }
+
+  .inventory-flow-net__meter strong {
+    color: var(--navy-strong);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .inventory-flow-net__tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .inventory-flow-net__tab {
+    display: grid;
+    min-height: 3.65rem;
+    align-content: center;
+    gap: 0.18rem;
+    padding: 0.55rem 0.65rem;
+    color: var(--ink);
+    text-align: left;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    background: rgba(251, 246, 236, 0.72);
+    cursor: pointer;
+    transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
+  }
+
+  .inventory-flow-net__tab span {
+    min-width: 0;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__tab {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.08;
+  }
+
+  .inventory-flow-net__tab:hover,
+  .inventory-flow-net__tab:focus-visible,
+  .inventory-flow-net__tab.is-active {
+    border-color: var(--brass);
+    background: rgba(181, 97, 31, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .inventory-flow-net__tab:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+  }
+
+  .inventory-flow-net__workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 0.33fr);
+    gap: 0.8rem;
+    align-items: stretch;
+  }
+
+  .inventory-flow-net__canvas {
+    min-width: 0;
+    border: 1px solid var(--hairline);
+    background:
+      radial-gradient(circle at 42% 48%, rgba(62, 126, 115, 0.12), transparent 31%),
+      linear-gradient(135deg, #f8f2e6 0%, #f3ead8 100%);
+  }
+
+  .inventory-flow-net__canvas svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 824 / 402;
+  }
+
+  .inventory-flow-net__grid path {
+    fill: none;
+    stroke: rgba(22, 32, 43, 0.07);
+    stroke-width: 1;
+  }
+
+  .inventory-flow-net__edge-base,
+  .inventory-flow-net__edge-stream,
+  .inventory-flow-net__edge-hit {
+    fill: none;
+  }
+
+  .inventory-flow-net__edge-base {
+    stroke: rgba(22, 32, 43, 0.18);
+    stroke-width: 7;
+    stroke-linecap: round;
+  }
+
+  .inventory-flow-net__edge-stream {
+    stroke: var(--edge-color);
+    stroke-width: calc(var(--edge-width) * 1px);
+    stroke-linecap: round;
+    stroke-dasharray: 10 16;
+    filter: drop-shadow(0 0 7px color-mix(in srgb, var(--edge-color) 38%, transparent));
+    animation: inventory-flow-stream var(--flow-speed) linear infinite;
+  }
+
+  .inventory-flow-net__edge-hit {
+    stroke: transparent;
+    stroke-width: 18;
+    cursor: pointer;
+  }
+
+  .inventory-flow-net__edge-hit:focus-visible,
+  .inventory-flow-net__edge-stream:focus-visible {
+    outline: none;
+    stroke: var(--brass);
+  }
+
+  .inventory-flow-net__edge text {
+    fill: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-anchor: middle;
+    paint-order: stroke;
+    stroke: rgba(251, 246, 236, 0.9);
+    stroke-width: 5px;
+  }
+
+  .inventory-flow-net__edge.is-supply { --edge-color: var(--verdigris); }
+  .inventory-flow-net__edge.is-served { --edge-color: var(--navy); }
+  .inventory-flow-net__edge.is-demand,
+  .inventory-flow-net__edge.is-request { --edge-color: var(--brass); }
+  .inventory-flow-net__edge.is-loss { --edge-color: #9a4f38; }
+  .inventory-flow-net__edge.is-control { --edge-color: #1f5d78; }
+  .inventory-flow-net__edge.is-transform { --edge-color: #7a5195; }
+
+  .inventory-flow-net marker path {
+    fill: currentColor;
+  }
+
+  .inventory-flow-net__node rect {
+    fill: rgba(251, 246, 236, 0.94);
+    stroke: var(--node-color);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 8px 16px rgba(22, 32, 43, 0.12));
+  }
+
+  .inventory-flow-net__node text {
+    fill: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
+
+  .inventory-flow-net__node.is-source { --node-color: var(--verdigris); }
+  .inventory-flow-net__node.is-buffer { --node-color: var(--navy); }
+  .inventory-flow-net__node.is-demand { --node-color: var(--brass); }
+  .inventory-flow-net__node.is-sink { --node-color: #9a4f38; }
+  .inventory-flow-net__node.is-control { --node-color: #7a5195; }
+
+  .inventory-flow-net__panel {
+    display: grid;
+    align-content: start;
+    gap: 0.9rem;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--hairline);
+    background: var(--abyssal);
+    color: var(--cream);
+  }
+
+  .inventory-flow-net__panel h3 {
+    margin: 0;
+    color: var(--paper-high);
+    font-family: var(--font-display);
+    font-size: 1.38rem;
+    font-style: normal;
+    line-height: 1.08;
+  }
+
+  .inventory-flow-net__panel p:not(.inventory-flow-net__panel-kicker) {
+    margin: 0;
+    color: rgba(236, 227, 210, 0.84);
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .inventory-flow-net__panel dl {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+  }
+
+  .inventory-flow-net__panel dl div {
+    padding-top: 0.55rem;
+    border-top: 1px solid rgba(236, 227, 210, 0.18);
+  }
+
+  .inventory-flow-net__panel dt {
+    margin: 0 0 0.24rem;
+    color: var(--brass-on-dark);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__panel dd {
+    margin: 0;
+    color: rgba(236, 227, 210, 0.9);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+
+  .inventory-flow-net__range {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 0.1rem;
+    color: var(--brass-on-dark);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__range input {
+    width: 100%;
+    accent-color: var(--brass);
+  }
+
+  .inventory-flow-net__grammar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 0.8rem;
+    border: 1px solid var(--hairline);
+    background: rgba(251, 246, 236, 0.74);
+  }
+
+  .inventory-flow-net__grammar div {
+    min-width: 0;
+    padding: 0.82rem;
+    border-right: 1px solid var(--hairline);
+  }
+
+  .inventory-flow-net__grammar div:last-child {
+    border-right: 0;
+  }
+
+  .inventory-flow-net__grammar strong {
+    display: block;
+    margin-bottom: 0.22rem;
+    color: var(--navy-strong);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .inventory-flow-net__grammar span {
+    display: block;
+    color: var(--graphite);
+    font-size: 0.88rem;
+    line-height: 1.42;
+  }
+
+  @keyframes inventory-flow-stream {
+    to {
+      stroke-dashoffset: -52;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .inventory-flow-net__header,
+    .inventory-flow-net__workspace,
+    .inventory-flow-net__grammar {
+      grid-template-columns: 1fr;
+    }
+
+    .inventory-flow-net__tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .inventory-flow-net__grammar div {
+      border-right: 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .inventory-flow-net__grammar div:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .inventory-article-page .article-layout__inner--inventory {
+      width: min(calc(100% - 1rem), 1120px);
+      padding-inline: 1rem;
+    }
+
+    .inventory-flow-net {
+      padding: 0.75rem;
+    }
+
+    .inventory-flow-net__tabs {
+      grid-template-columns: 1fr;
+    }
+
+    .inventory-flow-net__canvas svg {
+      min-width: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .inventory-flow-net__edge-stream {
+      animation: none;
+    }
+  }
+</style><h1 id="summary">Summary</h1>
 <ul>
 <li>One generic recipe — <strong>Covariance Matrix Adaptation Evolution Strategies (CMA-ES)</strong> optimizing small, interpretable policies — learns competitive inventory-control policies across <strong>ten classical problems</strong>, with little tuning.</li>
 <li>The learned policies are tiny: <strong>tens to a few hundred parameters</strong>, orders of magnitude smaller than the deep networks usually reported, and small enough to read.</li>
@@ -19,7 +445,7 @@
 <p>Inventory management is a textbook sequential decision problem. Each period a controller decides how much to order, balancing the cost of holding stock against the cost of shortages. These problems are naturally Markov decision processes (MDPs), but exact dynamic programming is only tractable for small instances — the state space grows with the lead time and the number of stocking locations (the curse of dimensionality). So the field leans on two things:</p>
 <ul>
 <li><strong>Problem-specific heuristics</strong> — base-stock, $(s,S)$, $(s,nQ)$, dual-index, capped dual-index. These are strong, but each one takes specialized analysis and simplifying assumptions that limit where it applies.</li>
-<li><strong>Deep reinforcement learning (DRL)</strong> — represent the policy as a neural network and tune it from simulated experience. This is generic, but it demands a lot of compute and hyperparameter tuning, and the networks (thousands to millions of parameters) are hard to interpret.</li>
+<li><strong>Deep reinforcement learning (DRL)</strong> — represent the policy as a neural network and tune it from simulated experience (the line opened up for inventory by Boute et al.’s 2022 roadmap and Gijsbrechts et al.’s 2022 cross-problem study). This is generic, but it demands a lot of compute and hyperparameter tuning, and the networks (thousands to millions of parameters) are hard to interpret. <em>I come back to where this literature is heading <a href="#where-this-fits-and-where-the-field-is-going">below</a>.</em></li>
 </ul>
 <p>The question I want to ask here is different from “what is the best method for problem X”. It is: <em>can one lightweight, portable recipe stand in for bespoke heuristics across many different inventory problems, while staying small enough to interpret and cheap enough to retrain?</em></p>
 <p>The recipe is to optimize the parameters of a compact policy with <strong>CMA-ES</strong>, a gradient-free, population-based optimizer. Three things make it a good fit, and they hold across all ten problems:</p>
@@ -48,6 +474,9 @@
 <li><strong>capped-dual-index coordinates</strong> for dual sourcing,</li>
 <li><strong>direct echelon order-up-to levels</strong> for multi-echelon.</li>
 </ul>
+<center>
+<img class="special-img-class" style="width:100%" src="/static/images/es_inventory_action_geometry.png" label="action_geometry">
+</center>
 <p>The payoff is that the decoder, not the network width, drives several of the results. The clearest example is multi-echelon (below): with the same tree, optimizer and horizon, changing only the decoder’s reachable action set swings the policy from ~14% <em>better</em> than the best base-stock to more than 200% <em>worse</em>.</p>
 <h1 id="lost-sales-the-original-problem">Lost sales (the original problem)</h1>
 <p>The lost-sales problem is one of the fundamental problems in inventory theory. Single item, periodic review, integer demand and orders. Each period: an order placed $L$ periods ago arrives and joins on-hand stock; the controller places a new integer order $q_t$ that will arrive after lead time $L$; demand $D_t$ is realized and served from stock, and any <strong>unmet demand is lost</strong> rather than backordered. A holding cost $h$ is charged per leftover unit and a penalty $p$ per lost unit:</p>
@@ -58,9 +487,6 @@ $$</p>
 <p>The action here is a single integer order, so this is where the decoder family lives. We use three policy-owned decoders: a <strong>soft-gated direct quantity</strong> (a logistic gate decides <em>whether</em> to order, a softplus head decides <em>how much</em>), a <strong>soft-gated ordinal quantity</strong> (a sum of soft “one more unit” indicators), and <strong>soft decision trees</strong> with linear leaves.</p>
 <p>We benchmark on a surface, not a single instance: holding cost 1, mean demand 5, lead times $L\in{4,6,8,10}$, lost-sales penalties $p\in{4,19}$, and three mean-preserving demand families (Poisson, Geometric, and a positively-correlated Markov-modulated Poisson). That is <strong>24 vanilla instances</strong>. The comparators are the strong classical heuristics: Myopic-1, Myopic-2, and standard vector base-stock.</p>
 <p><strong>Result.</strong> Across the 24-instance vanilla surface, the learned policies are <strong>instance-best in 22 of 24 cases</strong>. The soft tree is the most frequent winner. The two cases still won by a classical baseline are the high-penalty, autocorrelated MMPP instances at the longest lead times ($L=8,10$) — a regime-switching, deep-pipeline combination that is the hardest setting for a single stationary compact policy.</p>
-<center>
-<img class="special-img-class" style="width:60%" src="/static/images/Lost_sales_p_4_l_4.jpg" label="lead_time_4">
-</center>
 <h2 id="fixed-cost-lost-sales">Fixed-cost lost sales</h2>
 <p>Add a fixed setup cost $K$ charged whenever a strictly positive order is placed, and the <em>order/no-order</em> decision becomes an explicit part of the problem — it is no longer optimal to order every period. The comparators become the $(s,S)$, $(s,nQ)$, and modified $(s,S,q)$ policies; the surface grows to <strong>48 instances</strong> with $K\in{5,25}$.</p>
 <p><strong>Result.</strong> Learned policies are <strong>instance-best in 47 of 48 instances</strong>. And the architecture story sharpens: once a setup charge makes the order/no-order boundary dominant, the <strong>gated</strong> decoders — which factor the decision into an explicit gate (<em>whether</em>) and a quantity head (<em>how much</em>) — win most instances, inverting the vanilla preference. There is an honest failure mode visible right in the table: at high setup cost a couple of the decoders collapse onto a degenerate “never order” policy; the gated ordinal decoder is the one that consistently escapes it. The decoder, not the optimizer, governs that boundary.</p>
@@ -72,6 +498,9 @@ $$</p>
 <h2 id="divergent-multi-echelon-with-special-delivery--144-over-the-best-base-stock">Divergent multi-echelon with special delivery — ~14.4% over the best base-stock</h2>
 <p>One warehouse, $R$ retailers, with a special-delivery option. The action is a warehouse order plus a shared retailer order-up-to level. This is the sharpest test of the action-geometry principle, because the wrong geometry is fatal: the cost-minimizing warehouse base-stock is roughly 300–525, while the reduced action grid used in prior work caps the warehouse level at 100 — so the grid <em>physically cannot reach the operating region</em>.</p>
 <p><strong>Result.</strong> A <strong>direct-level</strong> soft tree (leaves estimate the order-up-to levels directly, bounded only by physical caps) improves on the <strong>best in-environment constant base-stock by ≈14.4%</strong> on both reported settings. The grid-action policy — same tree, same optimizer, only the reachable level set changed — stays ~230% <em>above</em> the benchmark. That contrast is the whole point.</p>
+<center>
+<img class="special-img-class" style="width:78%" src="/static/images/es_inventory_action_space_trap.png" label="action_space_trap">
+</center>
 <p>One honesty caveat I keep explicit: the ~14.4% figure is measured against the <strong>best in-environment constant base-stock</strong> under one cost convention, whereas the published A3C improvements (8.95%, 12.09%) are against a different baseline under a different cost convention. So the A3C comparison is <strong>indicative of the direct design’s strength, not a strictly like-for-like ranking</strong>.</p>
 <h2 id="perishable-inventory--beats-the-best-base-stock-gate">Perishable inventory — beats the best base-stock gate</h2>
 <p>Stock ages and expires; a waste cost is charged on outdated units. The benchmark instances issue either FIFO or LIFO. A 21-parameter age-dependent soft tree <strong>beats the best base-stock gate</strong> under a shared common-random-number estimator: <strong>+1.16%</strong> under FIFO and <strong>+0.82%</strong> under LIFO, both several times their paired standard error. The tree exploits the age structure a single base-stock cannot — ordering less when older stock is already on hand. (Both learned returns happen to sit essentially <em>on</em> the analytic value-iteration optimum, but that comparison mixes two estimators, so I treat it as corroborating context, not a second win.)</p>
@@ -90,7 +519,11 @@ $$</p>
 <p>A 3-node serial production chain. The honesty status matters: this environment faithfully reproduces the one <em>published</em> single-node quantity (certifying its dynamics), but there is <strong>no published optimum for the multi-node MDP</strong>, so the comparator is the <strong>environment’s own best heuristic</strong> (a grid-searched pairwise base-stock), not a literature number. Against that gate, the learned linear-leaf soft tree improves per-period cost by <strong>~4–9%</strong> across two seeds and two depths, robustly outside the standard error.</p>
 <p>I frame this honestly as a <strong>research result on a faithful-but-not-literature-anchored environment</strong> — the policy beats the environment’s own best heuristic, not any published cost. It is evidence for the same thesis as everywhere else: action design (here, the leaf class) governs whether a black-box search recovers structured-control performance.</p>
 <h1 id="what-ties-it-together">What ties it together</h1>
-<p>The same gradient-free loop, run with one fixed configuration and no per-problem tuning, produces:</p>
+<p>The same gradient-free loop, run with one fixed configuration and no per-problem tuning, produces the picture below. The improvements span wildly different scales and three different <em>kinds</em> of comparator, so a single bar chart of ”% improvement” would be misleading. Instead each problem is read by its <strong>honest verdict</strong> — <em>match</em> a proven optimum, <em>beat</em> a heuristic, report a <em>gap</em> to an upper bound, or a <em>research result</em> on a faithful environment:</p>
+<center>
+<img class="special-img-class" style="width:100%" src="/static/images/es_inventory_results_overview.png" label="results_overview">
+</center>
+<p>The same data, with the comparator made fully explicit:</p>
 
 
 
@@ -154,6 +587,21 @@ $$</p>
 <table><thead><tr><th>Problem</th><th>Comparator</th><th>Honest verdict</th></tr></thead><tbody><tr><td>Lost sales</td><td>classical heuristics</td><td>instance-best in <strong>22/24</strong></td></tr><tr><td>Fixed-cost lost sales</td><td>$(s,S)$, $(s,nQ)$, $(s,S,q)$</td><td>instance-best in <strong>47/48</strong></td></tr><tr><td>Dual sourcing</td><td>capped dual-index (optimal proxy)</td><td><strong>matches</strong> the proven optimum</td></tr><tr><td>Divergent multi-echelon</td><td>best in-env. base-stock</td><td><strong>≈14.4%</strong> better (A3C comparison indicative)</td></tr><tr><td>Perishable</td><td>best base-stock gate</td><td><strong>beats</strong> the gate (+1.16% / +0.82%)</td></tr><tr><td>General-network backorder</td><td>published constant base-stock</td><td><strong>beats</strong> by >20% (below PPO, not a PPO beat)</td></tr><tr><td>Serial (Clark–Scarf)</td><td>proven optimum</td><td><strong>matches</strong> the proven optimum</td></tr><tr><td>One-warehouse multi-retailer</td><td>tuned base-stock gate</td><td><strong>beats</strong> the gate on 2/3 (below PPO)</td></tr><tr><td>Ameliorating</td><td>order-up-to gate; LP bound</td><td><strong>beats</strong> the gate; LP value is an upper bound</td></tr><tr><td>Production network</td><td>env.’s own best heuristic</td><td><strong>beats</strong> it by ~4–9% (research result)</td></tr></tbody></table>
 <p>The policies that produce this carry <strong>tens to a few hundred parameters</strong> — orders of magnitude fewer than published DRL networks — and the reported single-state actions are validated against an independent rollout, so they are not just compact but checkable.</p>
 <p>Two limitations are worth stating plainly. The high-penalty, autocorrelated MMPP lost-sales instances at the longest lead times stay won by classical heuristics — a real gap for stationary compact policies under regime-switching demand. And CMA-ES, while far more sample-efficient than A3C here, is still data-hungry relative to limited-data settings, and its population evaluation cost grows with the covariance dimension, so very large parameterizations would need restricted or separable covariance structures.</p>
+<h1 id="where-this-fits-and-where-the-field-is-going">Where this fits, and where the field is going</h1>
+<p>It helps to place this work on the map of how inventory control has been learned over the last few years, because the throughline of that map is exactly the lever this post leans on.</p>
+<p><strong>Two starting points.</strong> Classical inventory theory gives us <em>structured heuristics</em> — base-stock, $(s,S)$, dual-index, capped dual-index — each derived from a structural property of the optimal policy, each strong but narrow. The deep-RL line, opened up for inventory by the roadmap of Boute et al. (2022) and the cross-problem A3C study of Gijsbrechts et al. (2022), went the other way: hand a large neural network the raw problem and let it discover structure from simulated experience. That generality is real, and later work pushed it onto harder systems — PPO for one-warehouse multi-retailer (Kaynov et al., 2024) and multi-echelon (Geevers et al., 2024). But it came at a price the roadmap itself names: heavy tuning, large and opaque networks, and results that are hard to reproduce and compare across papers.</p>
+<p><strong>The turn the field is taking: structure goes back <em>into</em> the policy.</strong> The most striking thing in the recent literature is that the strongest learners have stopped trying to <em>free</em> a big network to discover structure and have started <em>injecting</em> structure into the learner. Maggiar et al. (2025) build <strong>structure-informed policy networks</strong> that bake monotonicity and other analytically known properties of optimal policies directly into the architecture. Temizoz et al. (2025) report that their model-based <strong>deep controlled learning</strong> scheme reaches optimality gaps of at most <strong>0.2%</strong> on lost-sales and perishable problems — far inside the gaps earlier A3C reached — using a single fixed hyperparameter set. And a growing set of agents simply make <em>the parameters of a classical control the action space itself</em>. These are independent groups, with different machinery, all converging on the same idea: <strong>structure in the policy beats capacity in the network.</strong></p>
+<p>That is precisely the lever in this post, reached from the gradient-free side. The “action parameterization <em>is</em> the policy” idea — putting the search directly in the heuristic’s coordinate system and letting a tiny model modulate it — is the same principle expressed as a <em>design choice</em> rather than a regularizer baked into a network. The multi-echelon action-space trap is the cleanest evidence I have for why it matters: hold the learner fixed and only the coordinate system the decoder lives in decides whether you land 14% better than the best base-stock or 200% worse. Seen this way, evolution strategies are not a competitor to the structure-informed DRL line so much as a different point on the cost–complexity frontier that reaches the same conclusion — and the black-box-search tradition it comes from (Salimans et al., 2017; Mania et al.’s 2018 finding that even <em>linear</em> policies from simple random search are competitive on hard control benchmarks) suggests the conclusion is robust to how you do the optimizing.</p>
+<p><strong>The field’s second worry: reproducibility and comparability.</strong> A recurring complaint in this literature is that DRL inventory “wins” are hard to trust because cost conventions, demand processes, and baselines differ from paper to paper, and there is no ImageNet-style standard benchmark (Boute et al., 2022; Alvo et al., 2023). Alvo et al.’s HDPO work makes the constructive point that inventory is actually <em>unusually</em> well-suited to reliable evaluation, because in several problem classes you can compare a learned policy <strong>to the optimum itself</strong>, not merely to another learner. The discipline in this post is a small contribution in that spirit: every environment is anchored to a published number before it carries any learned claim, and every result is reported under one of three honest verdicts — <em>match</em> a proven optimum (dual sourcing, serial Clark–Scarf; never “beat”), <em>beat</em> a heuristic (where the margin clears the held-out standard error under common random numbers), or report a <em>gap to an upper bound</em> without ever calling it beaten (ameliorating inventory’s perfect-information LP). Where the comparator is published deep RL we sit <em>below</em> it (one-warehouse multi-retailer, the general-backorder cross-protocol figure) and say so. The aim is not to top a leaderboard but to state exactly what kind of claim each number supports.</p>
+<p><strong>There is also a theory reason to prefer small.</strong> Xie et al. (2024) bring VC theory to inventory policies and show that structured classes <em>generalize from limited data</em>: the generalization error of a base-stock class is essentially independent of the horizon, and only logarithmic for $(s,S)$ — “learning less is more.” A policy with a few hundred parameters living in a heuristic’s coordinate system is squarely the kind of low-complexity class those guarantees cover, which is reassuring when your training signal is a finite simulation rather than an asymptotic average.</p>
+<p><strong>Where it’s heading, and the open directions.</strong> Three currents seem to me to define the near future, and they suggest the natural next steps for this line of work:</p>
+<ul>
+<li><strong>Reproducible, optimum-anchored benchmarks.</strong> The field wants open environments compared to known or bounded optima rather than to other learners (Alvo et al., 2023; Temizoz et al., 2025). Contributing a suite of literature-validated environments with the three-verdict accounting baked in is the obvious next move.</li>
+<li><strong>Interpretable, compact policies as a first-class goal.</strong> Auditability and deployability are now stated objectives, not afterthoughts — and the VC-theory result says compactness is a statistical asset, not just an engineering convenience.</li>
+<li><strong>Hybridizing action geometry with sample-efficient learners.</strong> The cleanest synthesis is to hand a gradient-based learner the <em>same</em> policy-owned decoders, using a heuristic warm-start (as done here for dual sourcing, serial multi-echelon, and general-network backorder) or CMA-ES to seed, and a sample-efficient learner to refine. That directly targets the two places this recipe still loses: the long-lead autocorrelated MMPP lost-sales instances, and the below-PPO gap on one-warehouse multi-retailer.</li>
+<li><strong>Generalist and limited-data settings.</strong> The frontier is turning toward generally-capable agents trained for <strong>zero-shot transfer</strong> across instances and then paired with estimate-then-decide adaptation at deployment (Temizoz et al., 2024). The favorable sample complexity of structured policy classes suggests these compact decoders are exactly the right hypothesis class for the data-scarce regime — amortize one decoder across an instance family rather than retraining per instance.</li>
+</ul>
+<p>The through-line, in one sentence: <strong>in inventory control the representation of the <em>action</em> is at least as consequential as the choice of <em>learner</em></strong> — and a compact, honest, reproducible policy is often enough.</p>
 <h1 id="takeaways">Takeaways</h1>
 <ul>
 <li>A single, generic recipe — <strong>CMA-ES over small, interpretable policies</strong> — is competitive across ten classical inventory problems, with little tuning.</li>
