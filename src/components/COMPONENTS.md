@@ -3,10 +3,10 @@
 Reusable Astro partials shared across pages.
 
 ## `SiteNav.astro`
-The sticky running head. Props: `activePage: "home" | "posts" | "value_chains"`.
+The sticky running head. Props: `activePage: "home" | "posts"`.
 - **Wordmark** `Nima Manaf` + a mono `Gazetteer` sub-label (the atlas framing).
-- **Nav** rendered as a mono coordinate strip (`Home · Articles · Value Chains ·
-  Contact`), active item underlined in brass.
+- **Nav** rendered as a mono coordinate strip (`Home · Articles · Contact`),
+  active item underlined in brass.
 - **Plate folio:** on the home page it renders `<span data-plate>Plate 01</span>`
   which `home.js` updates live as the journey scrolls; on other pages it shows a
   static `52.09° N` colophon instead.

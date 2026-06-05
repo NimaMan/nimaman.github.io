@@ -22,15 +22,17 @@ Sections, in order:
    *Present position*; social links as a mono index.
 
 ## `posts/index.astro` — `/posts`
-"Index of entries": Fraunces editorial headline + standfirst, then all
-non-draft posts as ruled log-entry plates (`getPublicPosts()`).
+"Index of entries": Fraunces editorial headline + standfirst, an **Article
+Series** subsection for Value Chains, then all non-draft posts as ruled
+log-entry plates (`getPublicPosts()`).
 
 ## `value_chains/index.astro` — `/value_chains`
 Landing page for the **Value Chains** essay series. Lists every post whose
 frontmatter sets `series: value_chains`, ordered by `series_order` via
 `getSeriesPosts()`, each labelled by `series_label` (Part I · Companion · Part
-II). Same ruled-plate listing styling as `/posts`. Linked from the primary nav,
-from each series article's breadcrumb eyebrow, and from its `SeriesNav` footer.
+II). Same ruled-plate listing styling as `/posts`. Linked from the articles
+index subsection, from each series article's breadcrumb eyebrow, and from its
+`SeriesNav` footer.
 
 ## `posts/[slug].astro` — `/posts/<slug>`
 The reading view. Static-generated per post. Map chrome retreats to the

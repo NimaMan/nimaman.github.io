@@ -3,10 +3,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import siteData from "../../data/site-data.json";
-import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../../lib/posts";
+import { formatPostDate, getPublicPosts, getSeriesPosts, postExcerpt, postSlug } from "../../lib/posts";
 
 const { homePage } = siteData;
 const posts = await getPublicPosts();
+const valueChainPosts = await getSeriesPosts("value_chains");
 ---
 
 <BaseLayout title={`Articles | ${homePage.short_name}`} description={`Research articles and notes by ${homePage.name}.`} bodyClass="public-page">
@@ -24,17 +25,46 @@ const posts = await getPublicPosts();
     </section>
 
     <section class="section-block">
-      <div class="site-shell article-grid article-grid--full">
-        {
-          posts.map((post) => (
-            <article class="article-card article-card--full">
-              <p class="article-card__date">{formatPostDate(post.data.date)}</p>
-              <h2><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h2>
-              {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
-              <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
-            </article>
-          ))
-        }
+      <div class="site-shell">
+        <div class="section-heading">
+          <p class="eyebrow">Article Series</p>
+          <p class="section-intro section-intro--tight">
+            Multi-part arguments collected under the articles index.
+          </p>
+        </div>
+        <div class="article-grid article-grid--full">
+          <article class="article-card article-card--full">
+            <p class="article-card__date">{valueChainPosts.length} essays · series</p>
+            <h2><a href="/value_chains">Value Chains</a></h2>
+            <p>
+              How value moves through the financial system: who controls the rails, where the cost hides, and what changes as moving value gets cheaper.
+            </p>
+            <a href="/value_chains" class="text-link">Open series</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="site-shell">
+        <div class="section-heading">
+          <p class="eyebrow">All Articles</p>
+          <p class="section-intro section-intro--tight">
+            Essays, research notes, and visual experiments ordered by publication date.
+          </p>
+        </div>
+        <div class="article-grid article-grid--full">
+          {
+            posts.map((post) => (
+              <article class="article-card article-card--full">
+                <p class="article-card__date">{formatPostDate(post.data.date)}</p>
+                <h2><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h2>
+                {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
+                <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
+              </article>
+            ))
+          }
+        </div>
       </div>
     </section>
   </main>
