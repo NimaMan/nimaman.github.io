@@ -50,7 +50,11 @@ const description = post.data.description || postExcerpt(post);
     <div class="site-shell article-layout__inner">
       <a href="/posts" class="text-link article-back">Back to all articles</a>
       <header class="article-header">
-        <p class="eyebrow">Article</p>
+        {post.data.series === "value_chains" ? (
+          <p class="eyebrow"><a href="/value_chains">Value Chains{post.data.series_label ? ` · ${post.data.series_label}` : ""}</a></p>
+        ) : (
+          <p class="eyebrow">Article</p>
+        )}
         <h1>{post.data.title}</h1>
         <div class="article-meta">
           <span>{formatPostDate(post.data.date)}</span>

@@ -3,7 +3,10 @@ author: Nima Manaf, PhD
 title: "The Spendable Form: What Happens to Money When Turning Wealth Into It Is Nearly Free"
 date: 2026-06-05
 description: "For all of history we held money because turning what we own into what we can spend was slow and costly. Tokenization and on-chain settlement are making that conversion nearly free — and machines are starting to do it for us. This essay does not predict where that ends. It asks what changes when the act that defined money stops costing anything."
-draft: true
+draft: false
+series: value_chains
+series_order: 3
+series_label: "Part II"
 ---
 
 On June 3, 2026, Ray Dalio went on television to explain how the AI bubble ends. Not with a technological failure, he said, but with a conversion. A bubble bursts [**when holders of paper wealth are forced to turn it into spendable money**](https://www.bloomberg.com/news/articles/2026-06-03/dalio-sees-ai-bubble-bursting-as-wealth-is-converted-into-money) — when the tax bill, the margin call, or the redemption arrives, and a billion-dollar valuation has to become dollars that can actually be spent. Investors, he warned, [confuse wealth with money](https://fortune.com/2026/06/04/ray-dalio-stock-market-1929-2000-bubble-debt-crisis-point-of-no-return/). They are not the same thing. Wealth is what you own. Money is what you can spend right now.
@@ -28,7 +31,7 @@ So here is the first question, and it is not rhetorical: when any asset can be t
 
 It helps to remember that the access we already had was never actually free.
 
-The companion to this essay traces the hidden price in detail — the yield a bank keeps on your deposit, the float earned during the days a payment clears. The same was true the last time finance "democratized." Retail trading went commission-free a decade ago, and the bill did not vanish; it was moved out of sight. Brokers sold their customers' orders to market makers, who paid for the right to be on the other side — an arrangement that earned the industry [**$4.8 billion**](https://www.globaltrading.net/citadel-securities-paid-us943m-for-retail-us-equity-options-order-flow-in-nine-months/) in 2025 while the trades read as free. The cost was real. It was simply unpriced, paid in worse execution and in the value of letting someone see what you were about to do.
+The [companion to this essay](/posts/the_price_you_cannot_see) traces the hidden price in detail — the yield a bank keeps on your deposit, the float earned during the days a payment clears. The same was true the last time finance "democratized." Retail trading went commission-free a decade ago, and the bill did not vanish; it was moved out of sight. Brokers sold their customers' orders to market makers, who paid for the right to be on the other side — an arrangement that earned the industry [**$4.8 billion**](https://www.globaltrading.net/citadel-securities-paid-us943m-for-retail-us-equity-options-order-flow-in-nine-months/) in 2025 while the trades read as free. The cost was real. It was simply unpriced, paid in worse execution and in the value of letting someone see what you were about to do.
 
 That is the before-picture. The thing on-chain settlement does is not invent cheap exchange; it makes the *price* of exchange a quoted, visible number — and a price that can be seen can be competed toward zero. The question that opens is what remains once it is.
 

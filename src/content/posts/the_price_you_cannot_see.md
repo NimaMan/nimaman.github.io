@@ -3,7 +3,10 @@ author: Nima Manaf, PhD
 title: "The Price You Cannot See: The Hidden Cost of Money, and the Fight to Keep It Hidden"
 date: 2026-06-05
 description: "The transaction cost of money never disappeared — banks hid it in the yield you forgo on a zero-rate deposit, brokers in the order flow they sell, payments in the float. How on-chain rails are dragging that hidden rent into the open, and why the incumbents are fighting to keep it buried."
-draft: true
+draft: false
+series: value_chains
+series_order: 2
+series_label: "Companion"
 ---
 
 On May 29, 2026, the most powerful banker in America went on television and called the chief executive of the largest American crypto exchange [**full of shit**](https://www.coindesk.com/policy/2026/05/29/the-banks-will-not-accept-it-dimon-escalates-battle-over-stablecoin-rewards-in-clarity-act-debate). Jamie Dimon was not performing for the camera. He was defending a number.

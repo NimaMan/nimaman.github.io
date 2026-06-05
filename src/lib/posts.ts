@@ -38,3 +38,15 @@ export async function getPublicPosts(): Promise<PostEntry[]> {
   const posts = await getCollection("posts", ({ data }) => data.draft !== true);
   return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
+
+// Posts belonging to a named series (e.g. "value_chains"), ordered by their
+// explicit series_order so the collection reads as a sequence rather than by date.
+export async function getSeriesPosts(series: string): Promise<PostEntry[]> {
+  const posts = await getCollection(
+    "posts",
+    ({ data }) => data.draft !== true && data.series === series,
+  );
+  return posts.sort(
+    (a, b) => (a.data.series_order ?? 0) - (b.data.series_order ?? 0),
+  );
+}

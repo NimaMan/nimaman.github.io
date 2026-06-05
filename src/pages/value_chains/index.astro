@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import siteData from "../../data/site-data.json";
+import { formatPostDate, getSeriesPosts, postExcerpt, postSlug } from "../../lib/posts";
+
+const { homePage } = siteData;
+const posts = await getSeriesPosts("value_chains");
+---
+
+<BaseLayout
+  title={`Value Chains | ${homePage.short_name}`}
+  description="A series on how value moves through the financial system — who controls the rails, where the cost hides, and what changes as the price of moving value falls toward zero."
+  bodyClass="public-page"
+>
+  <SiteNav activePage="value_chains" />
+
+  <main class="listing-page">
+    <section class="page-hero">
+      <div class="site-shell">
+        <p class="eyebrow">Series</p>
+        <h1>Value Chains</h1>
+        <p class="page-intro">
+          A running series on how value moves through the financial system — who controls the rails, where the cost hides, and what changes as the price of moving value falls toward zero. From the dollar's grip on global settlement, to the hidden toll inside everyday money, to the future of money itself.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="site-shell article-grid article-grid--full">
+        {
+          posts.map((post) => (
+            <article class="article-card article-card--full">
+              <p class="article-card__date">
+                {post.data.series_label ? `${post.data.series_label} · ` : ""}{formatPostDate(post.data.date)}
+              </p>
+              <h2><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h2>
+              {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
+              <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

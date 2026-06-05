@@ -4,6 +4,9 @@ title: "The Battle for Dollar Supremacy: The Beginning of the End of Financial T
 date: 2026-06-04
 description: "How reserve currencies evolve, why dollar power has really been payment power, how dollar-pegged stablecoins quietly became the rails that value moves on, and why Bitcoin's price collapse is beside the point."
 draft: false
+series: value_chains
+series_order: 1
+series_label: "Part I"
 ---
 
 The battle for dollar supremacy is no longer only about which currency the world stores in reserve. It is about whether any superpower can continue to monopolize the infrastructure of payment itself.
