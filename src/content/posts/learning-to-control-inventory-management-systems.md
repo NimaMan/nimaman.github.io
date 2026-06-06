@@ -1,8 +1,8 @@
 ---
 author: Nima Manaf, PhD
-title: "One Recipe for Ten Inventory Problems: Evolution Strategies for Inventory Control"
+title: "Learning to Control Inventory Management Systems"
 date: 2026-06-05
-description: "A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns competitive inventory-control policies across ten classical problems."
+description: "A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns to control inventory systems across ten classical problem families."
 math: true
 ---
 
@@ -205,6 +205,6 @@ If you find this work useful, please cite it as:
   author  = "Manaf, Nima",
   journal = "nimamanaf.com",
   year    = "2026",
-  url     = "https://nimamanaf.com/posts/evolution-strategies-for-inventory-control"
+  url     = "https://nimamanaf.com/posts/learning-to-control-inventory-management-systems"
 }
 ```

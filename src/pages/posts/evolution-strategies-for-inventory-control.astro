@@ -1,17 +1,10 @@
 ---
-// Redirect/alias for the old post URL.
+// Redirect/alias for the former inventory article URL.
 //
-// The lost-sales-only post was renamed and rewritten as the broadened
-// "Learning to Control Inventory Management Systems" article (ten problems). The
-// post slug is derived from the Markdown filename, so renaming the source file
-// changed the URL from /posts/lost_sales_rl to
-// /posts/learning-to-control-inventory-management-systems.
-//
-// This page preserves the OLD URL on any static host (GitHub Pages / Cloudflare
-// Pages / Netlify / a plain web server) without depending on a host-specific
-// redirect rule: with `output: "static"` it builds to
-// dist/posts/lost_sales_rl/index.html, an HTML page that meta-refreshes to the
-// new URL and declares the new URL as canonical for search engines.
+// The article was renamed from
+// /posts/evolution-strategies-for-inventory-control to
+// /posts/learning-to-control-inventory-management-systems. This static page
+// keeps old links working on GitHub Pages without host-specific redirects.
 const target = "/posts/learning-to-control-inventory-management-systems";
 const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://nimamanaf.com";
 const canonical = `${site}${target}`;

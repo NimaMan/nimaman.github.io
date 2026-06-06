@@ -24,7 +24,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const slug = postSlug(post);
 const isPiPost = slug === "pi";
-const isInventoryPost = slug === "evolution-strategies-for-inventory-control";
+const isInventoryPost = slug === "learning-to-control-inventory-management-systems";
 const PiVisual = isPiPost ? (await import("../../components/PiVisual.astro")).default : undefined;
 const InventoryFlowNet = isInventoryPost ? (await import("../../components/InventoryFlowNet.astro")).default : undefined;
 const description = post.data.description || postExcerpt(post);

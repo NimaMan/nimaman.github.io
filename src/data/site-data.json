@@ -421,10 +421,10 @@
       "title": "Value Chain Finance Analytics"
     },
     {
-      "href": "/posts/evolution-strategies-for-inventory-control",
+      "href": "/posts/learning-to-control-inventory-management-systems",
       "meta": "Research thread",
       "summary": "One gradient-free recipe — CMA-ES over small, interpretable policies — learns competitive policies across ten classical inventory-control problems.",
-      "title": "Evolution Strategies for Inventory Control"
+      "title": "Learning to Control Inventory Management Systems"
     },
     {
       "href": "/posts/phd_thesis",
