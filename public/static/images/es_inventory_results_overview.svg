@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="818.320403pt" height="494.7552pt" viewBox="0 0 818.320403 494.7552" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="905.334434pt" height="494.7552pt" viewBox="0 0 905.334434 494.7552" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-06-05T22:03:03.659631</dc:date>
+    <dc:date>2026-06-07T18:05:28.627414</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -22,103 +22,103 @@
  <g id="figure_1">
   <g id="patch_1">
    <path d="M 0 494.7552 
-L 818.320403 494.7552 
-L 818.320403 0 
+L 905.334434 494.7552 
+L 905.334434 0 
 L 0 0 
 z
-" style="fill: #ffffff"/>
+" style="fill: #fbf6ec"/>
   </g>
   <g id="axes_1">
    <g id="line2d_1">
     <path d="M 198.178864 89.028679 
 L 378.455787 89.028679 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_2">
     <path d="M 198.178864 125.164528 
 L 378.455787 125.164528 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_3">
     <path d="M 198.178864 161.300377 
 L 378.455787 161.300377 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_4">
     <path d="M 198.178864 197.436226 
 L 378.455787 197.436226 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_5">
     <path d="M 198.178864 233.572075 
 L 378.455787 233.572075 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_6">
     <path d="M 198.178864 269.707925 
 L 378.455787 269.707925 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_7">
     <path d="M 198.178864 305.843774 
 L 378.455787 305.843774 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_8">
     <path d="M 198.178864 341.979623 
 L 378.455787 341.979623 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_9">
     <path d="M 198.178864 378.115472 
 L 378.455787 378.115472 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="line2d_10">
     <path d="M 198.178864 414.251321 
 L 378.455787 414.251321 
-" clip-path="url(#pad5166db93)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
+" clip-path="url(#p831bd37a5f)" style="fill: none; stroke: #d8d8d8; stroke-linecap: square"/>
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="mc6167d8435" d="M -6.892024 6.892024 
+     <path id="ma9157b4068" d="M -6.892024 6.892024 
 L 6.892024 6.892024 
 L 6.892024 -6.892024 
 L -6.892024 -6.892024 
 z
 " style="stroke: #ffffff; stroke-width: 1.4"/>
     </defs>
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc6167d8435" x="378.455787" y="89.028679" style="fill: #2c7a4b; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#ma9157b4068" x="378.455787" y="89.028679" style="fill: #3e7e73; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_1">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="92.233757" transform="rotate(-0 180.151172 92.233757)">Dual sourcing</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="92.233757" transform="rotate(-0 180.151172 92.233757)">Dual sourcing</text>
    </g>
    <g id="text_2">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #2c7a4b" x="414.511172" y="85.98871" transform="rotate(-0 414.511172 85.98871)">matches optimum  (≤0.11% band)</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #3e7e73" x="414.511172" y="85.98871" transform="rotate(-0 414.511172 85.98871)">matches optimum  (≤0.11% band)</text>
    </g>
    <g id="text_3">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="98.841787" transform="rotate(-0 414.511172 98.841787)">vs. capped dual-index (optimal proxy)</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="98.841787" transform="rotate(-0 414.511172 98.841787)">vs. capped dual-index (heuristic-near-optimal anchor)</text>
    </g>
    <g id="PathCollection_2">
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc6167d8435" x="378.455787" y="125.164528" style="fill: #2c7a4b; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#ma9157b4068" x="378.455787" y="125.164528" style="fill: #3e7e73; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_4">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #1a1a1a" transform="translate(61.377734 121.664919)">Serial multi-echelon</text>
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #1a1a1a" transform="translate(102.340625 135.128981)">(Clark–Scarf)</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #16202b" transform="translate(61.377734 121.664919)">Serial multi-echelon</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #16202b" transform="translate(102.340625 135.128981)">(Clark–Scarf)</text>
    </g>
    <g id="text_5">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #2c7a4b" x="414.511172" y="122.124559" transform="rotate(-0 414.511172 122.124559)">matches optimum  (+0.011%)</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #3e7e73" x="414.511172" y="122.124559" transform="rotate(-0 414.511172 122.124559)">matches optimum  (+0.011%)</text>
    </g>
    <g id="text_6">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="134.977636" transform="rotate(-0 414.511172 134.977636)">vs. proven Clark–Scarf optimum</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="134.977636" transform="rotate(-0 414.511172 134.977636)">vs. proven Clark–Scarf optimum</text>
    </g>
    <g id="PathCollection_3">
     <defs>
-     <path id="mc8cccf4e96" d="M 0 6.892024 
+     <path id="m1fc9dfe44d" d="M 0 6.892024 
 C 1.827786 6.892024 3.580957 6.165837 4.873397 4.873397 
 C 6.165837 3.580957 6.892024 1.827786 6.892024 0 
 C 6.892024 -1.827786 6.165837 -3.580957 4.873397 -4.873397 
@@ -130,132 +130,132 @@ C -3.580957 6.165837 -1.827786 6.892024 0 6.892024
 z
 " style="stroke: #ffffff; stroke-width: 1.4"/>
     </defs>
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc8cccf4e96" x="378.455787" y="161.300377" style="fill: #1b6ca8; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m1fc9dfe44d" x="378.455787" y="161.300377" style="fill: #0b4f6c; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_7">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="164.532799" transform="rotate(-0 180.151172 164.532799)">Lost sales</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="164.532799" transform="rotate(-0 180.151172 164.532799)">Lost sales</text>
    </g>
    <g id="text_8">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1b6ca8" x="414.511172" y="158.260408" transform="rotate(-0 414.511172 158.260408)">instance-best 22 / 24</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #0b4f6c" x="414.511172" y="158.260408" transform="rotate(-0 414.511172 158.260408)">instance-best 22 / 24</text>
    </g>
    <g id="text_9">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="171.113485" transform="rotate(-0 414.511172 171.113485)">vs. classical heuristics</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="171.113485" transform="rotate(-0 414.511172 171.113485)">vs. classical heuristics</text>
    </g>
    <g id="PathCollection_4">
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc8cccf4e96" x="378.455787" y="197.436226" style="fill: #1b6ca8; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m1fc9dfe44d" x="378.455787" y="197.436226" style="fill: #0b4f6c; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_10">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="200.668648" transform="rotate(-0 180.151172 200.668648)">Fixed-cost lost sales</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="200.668648" transform="rotate(-0 180.151172 200.668648)">Fixed-cost lost sales</text>
    </g>
    <g id="text_11">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1b6ca8" x="414.511172" y="194.396257" transform="rotate(-0 414.511172 194.396257)">instance-best 47 / 48</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #0b4f6c" x="414.511172" y="194.396257" transform="rotate(-0 414.511172 194.396257)">instance-best 47 / 48</text>
    </g>
    <g id="text_12">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="207.249334" transform="rotate(-0 414.511172 207.249334)">vs. (s,S), (s,nQ), (s,S,q)</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="207.249334" transform="rotate(-0 414.511172 207.249334)">vs. (s,S), (s,nQ), (s,S,q)</text>
    </g>
    <g id="PathCollection_5">
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc8cccf4e96" x="378.455787" y="233.572075" style="fill: #1b6ca8; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m1fc9dfe44d" x="378.455787" y="233.572075" style="fill: #0b4f6c; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_13">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="236.777154" transform="rotate(-0 180.151172 236.777154)">Divergent multi-echelon</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="236.777154" transform="rotate(-0 180.151172 236.777154)">Divergent multi-echelon</text>
    </g>
    <g id="text_14">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1b6ca8" x="414.511172" y="230.532106" transform="rotate(-0 414.511172 230.532106)">≈14.4% better</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #0b4f6c" x="414.511172" y="230.532106" transform="rotate(-0 414.511172 230.532106)">+14.7% ± 1.6% / +12.0% ± 2.3%  (5 seeds)</text>
    </g>
    <g id="text_15">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="243.385183" transform="rotate(-0 414.511172 243.385183)">vs. best in-env. base-stock</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="243.385183" transform="rotate(-0 414.511172 243.385183)">vs. best in-env. base-stock</text>
    </g>
    <g id="PathCollection_6">
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc8cccf4e96" x="378.455787" y="269.707925" style="fill: #1b6ca8; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m1fc9dfe44d" x="378.455787" y="269.707925" style="fill: #0b4f6c; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_16">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="272.940346" transform="rotate(-0 180.151172 272.940346)">Perishable</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="272.940346" transform="rotate(-0 180.151172 272.940346)">Perishable</text>
    </g>
    <g id="text_17">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1b6ca8" x="414.511172" y="266.667955" transform="rotate(-0 414.511172 266.667955)">+1.16% / +0.82%</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #0b4f6c" x="414.511172" y="266.667955" transform="rotate(-0 414.511172 266.667955)">+1.17% / +0.84%  (5 seeds)</text>
    </g>
    <g id="text_18">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="279.521032" transform="rotate(-0 414.511172 279.521032)">vs. best base-stock gate</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="279.521032" transform="rotate(-0 414.511172 279.521032)">vs. best base-stock gate</text>
    </g>
    <g id="PathCollection_7">
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc8cccf4e96" x="378.455787" y="305.843774" style="fill: #1b6ca8; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m1fc9dfe44d" x="378.455787" y="305.843774" style="fill: #0b4f6c; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_19">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="309.076195" transform="rotate(-0 180.151172 309.076195)">General-network backorder</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="309.076195" transform="rotate(-0 180.151172 309.076195)">General-network backorder</text>
    </g>
    <g id="text_20">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1b6ca8" x="414.511172" y="302.803804" transform="rotate(-0 414.511172 302.803804)">+22.4%  (below PPO)</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #0b4f6c" x="414.511172" y="302.803804" transform="rotate(-0 414.511172 302.803804)">+24.3% ± 1.8%  (5 seeds, below PPO)</text>
    </g>
    <g id="text_21">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="315.656881" transform="rotate(-0 414.511172 315.656881)">vs. published constant base-stock</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="315.656881" transform="rotate(-0 414.511172 315.656881)">vs. published constant base-stock</text>
    </g>
    <g id="PathCollection_8">
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mc8cccf4e96" x="378.455787" y="341.979623" style="fill: #1b6ca8; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m1fc9dfe44d" x="378.455787" y="341.979623" style="fill: #0b4f6c; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_22">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="345.212045" transform="rotate(-0 180.151172 345.212045)">One-warehouse multi-retailer</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="345.212045" transform="rotate(-0 180.151172 345.212045)">One-warehouse multi-retailer</text>
    </g>
    <g id="text_23">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1b6ca8" x="414.511172" y="338.939653" transform="rotate(-0 414.511172 338.939653)">+1.33% / +6.44%  (below PPO)</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #0b4f6c" x="414.511172" y="338.939653" transform="rotate(-0 414.511172 338.939653)">+4.63% / +7.16% / +12.57%  (below PPO)</text>
    </g>
    <g id="text_24">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="351.79273" transform="rotate(-0 414.511172 351.79273)">vs. tuned base-stock gate</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="351.79273" transform="rotate(-0 414.511172 351.79273)">vs. tuned base-stock gate</text>
    </g>
    <g id="PathCollection_9">
     <defs>
-     <path id="m18dc07539d" d="M -0 9.746794 
+     <path id="m3d07cf78bc" d="M -0 9.746794 
 L 9.746794 0 
 L 0 -9.746794 
 L -9.746794 -0 
 z
 " style="stroke: #ffffff; stroke-width: 1.4"/>
     </defs>
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#m18dc07539d" x="378.455787" y="378.115472" style="fill: #b8860b; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m3d07cf78bc" x="378.455787" y="378.115472" style="fill: #b5611f; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_25">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #1a1a1a" x="180.151172" y="381.32055" transform="rotate(-0 180.151172 381.32055)">Ameliorating inventory</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: end; fill: #16202b" x="180.151172" y="381.32055" transform="rotate(-0 180.151172 381.32055)">Ameliorating inventory</text>
    </g>
    <g id="text_26">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #b8860b" x="414.511172" y="375.049252" transform="rotate(-0 414.511172 375.049252)">beats gate; LP is a bound</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #b5611f" x="414.511172" y="375.049252" transform="rotate(-0 414.511172 375.049252)">beats gate; LP is a bound</text>
    </g>
    <g id="text_27">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="387.928579" transform="rotate(-0 414.511172 387.928579)">vs. order-up-to gate;  LP upper bound</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="387.928579" transform="rotate(-0 414.511172 387.928579)">vs. order-up-to gate;  LP upper bound</text>
    </g>
    <g id="PathCollection_10">
     <defs>
-     <path id="mde0fef7d6e" d="M 0 -6.892024 
+     <path id="m6b42eab4fe" d="M 0 -6.892024 
 L -6.892024 6.892024 
 L 6.892024 6.892024 
 z
 " style="stroke: #ffffff; stroke-width: 1.4"/>
     </defs>
-    <g clip-path="url(#pad5166db93)">
-     <use xlink:href="#mde0fef7d6e" x="378.455787" y="414.251321" style="fill: #7a5195; stroke: #ffffff; stroke-width: 1.4"/>
+    <g clip-path="url(#p831bd37a5f)">
+     <use xlink:href="#m6b42eab4fe" x="378.455787" y="414.251321" style="fill: #7a5195; stroke: #ffffff; stroke-width: 1.4"/>
     </g>
    </g>
    <g id="text_28">
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #1a1a1a" transform="translate(46.791797 410.751711)">Production / assembly</text>
-    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #1a1a1a" transform="translate(132.229297 424.215774)">network</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #16202b" transform="translate(46.791797 410.751711)">Production / assembly</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'Liberation Sans'; fill: #16202b" transform="translate(132.229297 424.215774)">network</text>
    </g>
    <g id="text_29">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #7a5195" x="414.511172" y="411.211351" transform="rotate(-0 414.511172 411.211351)">+4–9%  (faithful env)</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Liberation Sans'; text-anchor: start; fill: #7a5195" x="414.511172" y="411.211351" transform="rotate(-0 414.511172 411.211351)">−2.20% to −8.77%  (faithful env)</text>
    </g>
    <g id="text_30">
-    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="414.511172" y="424.064428" transform="rotate(-0 414.511172 424.064428)">vs. env.'s own best heuristic</text>
+    <text style="font-style: italic; font-size: 10px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="414.511172" y="424.064428" transform="rotate(-0 414.511172 424.064428)">vs. env.'s own best heuristic</text>
    </g>
    <g id="legend_1">
     <g id="line2d_11">
@@ -264,7 +264,7 @@ L 265.702965 461.746575
 L 276.502965 461.746575 
 " style="fill: none; stroke: #ffffff; stroke-width: 1.5; stroke-linecap: square"/>
      <defs>
-      <path id="m5e59ffb76f" d="M -6 6 
+      <path id="mb76fbca3dc" d="M -6 6 
 L 6 6 
 L 6 -6 
 L -6 -6 
@@ -272,11 +272,11 @@ z
 " style="stroke: #ffffff; stroke-linejoin: miter"/>
      </defs>
      <g>
-      <use xlink:href="#m5e59ffb76f" x="265.702965" y="461.746575" style="fill: #2c7a4b; stroke: #ffffff; stroke-linejoin: miter"/>
+      <use xlink:href="#mb76fbca3dc" x="265.702965" y="461.746575" style="fill: #3e7e73; stroke: #ffffff; stroke-linejoin: miter"/>
      </g>
     </g>
     <g id="text_31">
-     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1a1a1a" x="281.902965" y="465.526575" transform="rotate(-0 281.902965 465.526575)">MATCH a proven optimum (never “beat”)</text>
+     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #16202b" x="281.902965" y="465.526575" transform="rotate(-0 281.902965 465.526575)">MATCH a proven optimum (never “beat”)</text>
     </g>
     <g id="line2d_12">
      <path d="M 254.902965 477.2142 
@@ -284,7 +284,7 @@ L 265.702965 477.2142
 L 276.502965 477.2142 
 " style="fill: none; stroke: #ffffff; stroke-width: 1.5; stroke-linecap: square"/>
      <defs>
-      <path id="m1342148bac" d="M 0 6 
+      <path id="md0a461c0ea" d="M 0 6 
 C 1.591219 6 3.117479 5.367802 4.242641 4.242641 
 C 5.367802 3.117479 6 1.591219 6 0 
 C 6 -1.591219 5.367802 -3.117479 4.242641 -4.242641 
@@ -297,11 +297,11 @@ z
 " style="stroke: #ffffff"/>
      </defs>
      <g>
-      <use xlink:href="#m1342148bac" x="265.702965" y="477.2142" style="fill: #1b6ca8; stroke: #ffffff"/>
+      <use xlink:href="#md0a461c0ea" x="265.702965" y="477.2142" style="fill: #0b4f6c; stroke: #ffffff"/>
      </g>
     </g>
     <g id="text_32">
-     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1a1a1a" x="281.902965" y="480.9942" transform="rotate(-0 281.902965 480.9942)">BEAT a heuristic comparator</text>
+     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #16202b" x="281.902965" y="480.9942" transform="rotate(-0 281.902965 480.9942)">BEAT a heuristic comparator</text>
     </g>
     <g id="line2d_13">
      <path d="M 494.634278 461.746575 
@@ -309,7 +309,7 @@ L 505.434278 461.746575
 L 516.234278 461.746575 
 " style="fill: none; stroke: #ffffff; stroke-width: 1.5; stroke-linecap: square"/>
      <defs>
-      <path id="m20cdeb0b3a" d="M -0 7.778175 
+      <path id="mc8332ca0a4" d="M -0 7.778175 
 L 7.778175 0 
 L 0 -7.778175 
 L -7.778175 -0 
@@ -317,11 +317,11 @@ z
 " style="stroke: #ffffff; stroke-linejoin: miter"/>
      </defs>
      <g>
-      <use xlink:href="#m20cdeb0b3a" x="505.434278" y="461.746575" style="fill: #b8860b; stroke: #ffffff; stroke-linejoin: miter"/>
+      <use xlink:href="#mc8332ca0a4" x="505.434278" y="461.746575" style="fill: #b5611f; stroke: #ffffff; stroke-linejoin: miter"/>
      </g>
     </g>
     <g id="text_33">
-     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1a1a1a" x="521.634278" y="465.526575" transform="rotate(-0 521.634278 465.526575)">GAP to an upper bound (reported, not beaten)</text>
+     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #16202b" x="521.634278" y="465.526575" transform="rotate(-0 521.634278 465.526575)">GAP to an upper bound (reported, not beaten)</text>
     </g>
     <g id="line2d_14">
      <path d="M 494.634278 477.2142 
@@ -329,30 +329,30 @@ L 505.434278 477.2142
 L 516.234278 477.2142 
 " style="fill: none; stroke: #ffffff; stroke-width: 1.5; stroke-linecap: square"/>
      <defs>
-      <path id="m9bfd27ca45" d="M 0 -6 
+      <path id="mce08c231d7" d="M 0 -6 
 L -6 6 
 L 6 6 
 z
 " style="stroke: #ffffff; stroke-linejoin: miter"/>
      </defs>
      <g>
-      <use xlink:href="#m9bfd27ca45" x="505.434278" y="477.2142" style="fill: #7a5195; stroke: #ffffff; stroke-linejoin: miter"/>
+      <use xlink:href="#mce08c231d7" x="505.434278" y="477.2142" style="fill: #7a5195; stroke: #ffffff; stroke-linejoin: miter"/>
      </g>
     </g>
     <g id="text_34">
-     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1a1a1a" x="521.634278" y="480.9942" transform="rotate(-0 521.634278 480.9942)">RESEARCH result on a faithful env</text>
+     <text style="font-size: 10.8px; font-family: 'Liberation Sans'; text-anchor: start; fill: #16202b" x="521.634278" y="480.9942" transform="rotate(-0 521.634278 480.9942)">RESEARCH result on a faithful env</text>
     </g>
    </g>
   </g>
   <g id="text_35">
-   <text style="font-weight: 700; font-size: 18px; font-family: 'Liberation Sans'; text-anchor: start; fill: #1a1a1a" x="69.232403" y="20.244375" transform="rotate(-0 69.232403 20.244375)">Ten inventory problems, one gradient-free recipe</text>
+   <text style="font-weight: 700; font-size: 18px; font-family: 'Liberation Sans'; text-anchor: start; fill: #16202b" x="69.232403" y="20.244375" transform="rotate(-0 69.232403 20.244375)">Ten inventory problems, one gradient-free recipe</text>
   </g>
   <g id="text_36">
-   <text style="font-size: 12.5px; font-family: 'Liberation Sans'; text-anchor: start; fill: #46505a" x="69.232403" y="41.458594" transform="rotate(-0 69.232403 41.458594)">CMA-ES over compact, interpretable policies — read by honest verdict, not a single % scale</text>
+   <text style="font-size: 11.5px; font-family: 'Liberation Sans'; text-anchor: start; fill: #52596a" x="69.232403" y="40.733906" transform="rotate(-0 69.232403 40.733906)">CMA-ES over compact, interpretable policies — read by honest verdict, not a single % scale; every learned number is a seed-robust mean over ≥5 optimizer seeds</text>
   </g>
  </g>
  <defs>
-  <clipPath id="pad5166db93">
+  <clipPath id="p831bd37a5f">
    <rect x="186.160403" y="60.12" width="624.96" height="383.04"/>
   </clipPath>
  </defs>

@@ -1,5 +1,33 @@
 ---
-const flowScenarios = [
+// -----------------------------------------------------------------------------
+// InventoryNetworkDiagram.astro
+//
+// OBJECTIVE
+//   An interactive, vector (SVG) schematic that draws each inventory-control
+//   problem as one "inventory network diagram": buffers (stock points),
+//   directed flows (supply / served demand / allocation / aging), leak sinks
+//   (lost sales, waste, penalty), and the controlled policy arc. The learning
+//   recipe changes the controlled arcs, not the abstraction — the figure makes
+//   that shared structure legible across the problem families in the post.
+//
+//   NOTE ON NAMING: these diagrams are called "inventory network diagrams"
+//   throughout the post (user-facing term). All CSS classes, data attributes,
+//   and copy use the "inventory-network-diagram" / "diagram" vocabulary.
+//
+// ALGORITHM
+//   1. `diagramScenarios` declares, per problem, the node set (id, label, kind,
+//      x, y in an 824x402 viewBox) and the directed edge set (source, target,
+//      kind, label, an interaction `detail`, a relative `weight` that drives
+//      stroke width, and a quadratic `curve` offset).
+//   2. The server render emits the first scenario statically (so the figure is
+//      meaningful with JS disabled); the inline <script> re-renders nodes/edges
+//      on tab switch and on the demand-pressure slider, and wires hover/focus
+//      so each edge can narrate itself into the side panel.
+//   3. Styling is token-driven (site palette: --brass / --navy / --verdigris /
+//      --ink), with a single restrained accent per edge/node KIND, consistent
+//      node plates, rounded directional arrows, and label halos for contrast.
+// -----------------------------------------------------------------------------
+const diagramScenarios = [
   {
     id: "lost-sales",
     label: "Lost sales",
@@ -83,7 +111,7 @@ const flowScenarios = [
     eyebrow: "two supply arcs",
     title: "The same buffer has a slow cheap arc and a fast expensive arc",
     thesis:
-      "Capped dual-index coordinates are a flow-net language: split replenishment across regular and expedite arcs while serving the same request stream.",
+      "Capped dual-index coordinates are the diagram's control language: split replenishment across regular and expedite arcs while serving the same request stream.",
     conservation: "inventory position = on hand + regular pipeline + expedite pipeline - backlog",
     policy: "state: two pipelines; action: regular and expedite orders",
     baseDemand: 64,
@@ -175,7 +203,7 @@ const flowScenarios = [
     policy: "state: echelon positions; action: warehouse and retailer order-up-to levels",
     baseDemand: 88,
     buffer: "warehouse plus retailers",
-    verdict: "about 14.4% better",
+    verdict: "14.7% / 12.0% better",
     nodes: [
       { id: "supplier", label: "supplier", kind: "source", x: 92, y: 218 },
       { id: "warehouse", label: "warehouse", kind: "buffer", x: 276, y: 218 },
@@ -363,7 +391,7 @@ const flowScenarios = [
     eyebrow: "many-to-many flow",
     title: "Suppliers, warehouses, and retailers form one controllable graph",
     thesis:
-      "A general inventory network is still a flow net: routing, allocation, backlog, and service are just different edge families.",
+      "A general inventory system is still one network diagram: routing, allocation, backlog, and service are just different edge families.",
     conservation: "node inventory next = incoming shipments - outgoing shipments - local demand",
     policy: "state: node stocks and backlog; action: node base-stock targets",
     baseDemand: 104,
@@ -474,7 +502,7 @@ const flowScenarios = [
   },
 ];
 
-const activeScenario = flowScenarios[0];
+const activeScenario = diagramScenarios[0];
 const nodesById = Object.fromEntries(activeScenario.nodes.map((node) => [node.id, node]));
 const edgePath = (edge, nodes) => {
   const source = nodes[edge.source];
@@ -494,30 +522,30 @@ const edgeLabelPoint = (edge, nodes) => {
 };
 ---
 
-<figure class="inventory-flow-net" data-inventory-flow data-flow-scenarios={JSON.stringify(flowScenarios)}>
-  <div class="inventory-flow-net__header">
+<figure class="inventory-network-diagram" data-inventory-network data-diagram-scenarios={JSON.stringify(diagramScenarios)}>
+  <div class="inventory-network-diagram__header">
     <div>
-      <p class="inventory-flow-net__eyebrow">Interactive figure</p>
-      <h2 id="inventory-flow-title">Inventory problems as flow nets</h2>
+      <p class="inventory-network-diagram__eyebrow">Interactive figure</p>
+      <h2 id="inventory-diagram-title">Inventory problems as network diagrams</h2>
       <p>
         Requests, supply, lead-time pipelines, allocation, waste, and backlog can be drawn as one graph language.
         The learning recipe changes the controlled arcs, not the abstraction.
       </p>
     </div>
-    <div class="inventory-flow-net__meter" aria-label="Current flow-net readings">
-      <span><strong data-flow-demand>{activeScenario.baseDemand}</strong> request pressure</span>
-      <span><strong data-flow-buffer>{activeScenario.buffer}</strong> buffer shape</span>
-      <span><strong data-flow-verdict>{activeScenario.verdict}</strong> result claim</span>
+    <div class="inventory-network-diagram__meter" aria-label="Current diagram readings">
+      <span><strong data-diagram-demand>{activeScenario.baseDemand}</strong> request pressure</span>
+      <span><strong data-diagram-buffer>{activeScenario.buffer}</strong> buffer shape</span>
+      <span><strong data-diagram-verdict>{activeScenario.verdict}</strong> result claim</span>
     </div>
   </div>
 
-  <div class="inventory-flow-net__tabs" role="tablist" aria-label="Inventory flow-net cases">
+  <div class="inventory-network-diagram__tabs" role="tablist" aria-label="Inventory network diagram cases">
     {
-      flowScenarios.map((scenario, index) => (
+      diagramScenarios.map((scenario, index) => (
         <button
           type="button"
-          class:list={["inventory-flow-net__tab", { "is-active": index === 0 }]}
-          data-flow-tab={scenario.id}
+          class:list={["inventory-network-diagram__tab", { "is-active": index === 0 }]}
+          data-diagram-tab={scenario.id}
           aria-pressed={index === 0 ? "true" : "false"}
         >
           <span>{scenario.eyebrow}</span>
@@ -527,31 +555,31 @@ const edgeLabelPoint = (edge, nodes) => {
     }
   </div>
 
-  <div class="inventory-flow-net__workspace">
-    <div class="inventory-flow-net__canvas" data-flow-canvas>
-      <svg viewBox="20 42 824 402" role="img" aria-labelledby="inventory-flow-title inventory-flow-caption">
+  <div class="inventory-network-diagram__workspace">
+    <div class="inventory-network-diagram__canvas" data-diagram-canvas>
+      <svg viewBox="20 42 824 402" role="img" aria-labelledby="inventory-diagram-title inventory-diagram-caption">
         <defs>
-          <marker id="inventory-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z"></path>
+          <marker id="inventory-diagram-arrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+            <path d="M 1 1 L 11 6 L 1 11 L 4 6 z"></path>
           </marker>
         </defs>
-        <g class="inventory-flow-net__grid" aria-hidden="true">
+        <g class="inventory-network-diagram__grid" aria-hidden="true">
           {Array.from({ length: 9 }, (_, index) => <path d={`M ${80 + index * 90} 54 V 420`}></path>)}
           {Array.from({ length: 5 }, (_, index) => <path d={`M 54 ${78 + index * 78} H 826`}></path>)}
         </g>
-        <g data-flow-edges>
+        <g data-diagram-edges>
           {
             activeScenario.edges.map((edge) => {
               const labelPoint = edgeLabelPoint(edge, nodesById);
               const d = edgePath(edge, nodesById);
               return (
-                <g class:list={["inventory-flow-net__edge", `is-${edge.kind}`]}>
-                  <path class="inventory-flow-net__edge-base" d={d}></path>
+                <g class:list={["inventory-network-diagram__edge", `is-${edge.kind}`]}>
+                  <path class="inventory-network-diagram__edge-base" d={d}></path>
                   <path
-                    class="inventory-flow-net__edge-stream"
+                    class="inventory-network-diagram__edge-stream"
                     d={d}
                     style={`--edge-width:${(edge.weight * 4.2).toFixed(2)}; --flow-speed:${(4.5 - Math.min(edge.weight, 1.5)).toFixed(2)}s;`}
-                    marker-end="url(#inventory-flow-arrow)"
+                    marker-end="url(#inventory-diagram-arrow)"
                   ></path>
                   <text x={labelPoint.x} y={labelPoint.y}>{edge.label}</text>
                 </g>
@@ -559,11 +587,11 @@ const edgeLabelPoint = (edge, nodes) => {
             })
           }
         </g>
-        <g data-flow-nodes>
+        <g data-diagram-nodes>
           {
             activeScenario.nodes.map((node) => (
-              <g class:list={["inventory-flow-net__node", `is-${node.kind}`]} transform={`translate(${node.x} ${node.y})`}>
-                <rect x="-66" y="-24" width="132" height="48" rx="5"></rect>
+              <g class:list={["inventory-network-diagram__node", `is-${node.kind}`]} transform={`translate(${node.x} ${node.y})`}>
+                <rect x="-66" y="-24" width="132" height="48" rx="7"></rect>
                 <text>{node.label}</text>
               </g>
             ))
@@ -572,28 +600,37 @@ const edgeLabelPoint = (edge, nodes) => {
       </svg>
     </div>
 
-    <aside class="inventory-flow-net__panel" aria-live="polite">
-      <p class="inventory-flow-net__panel-kicker" data-flow-kicker>{activeScenario.eyebrow}</p>
-      <h3 data-flow-panel-title>{activeScenario.title}</h3>
-      <p data-flow-panel-copy>{activeScenario.thesis}</p>
+    <aside class="inventory-network-diagram__panel" aria-live="polite">
+      <p class="inventory-network-diagram__panel-kicker" data-diagram-kicker>{activeScenario.eyebrow}</p>
+      <h3 data-diagram-panel-title>{activeScenario.title}</h3>
+      <p data-diagram-panel-copy>{activeScenario.thesis}</p>
       <dl>
         <div>
           <dt>Balance</dt>
-          <dd data-flow-conservation>{activeScenario.conservation}</dd>
+          <dd data-diagram-conservation>{activeScenario.conservation}</dd>
         </div>
         <div>
           <dt>Controlled action</dt>
-          <dd data-flow-policy>{activeScenario.policy}</dd>
+          <dd data-diagram-policy>{activeScenario.policy}</dd>
         </div>
       </dl>
-      <label class="inventory-flow-net__range">
+      <label class="inventory-network-diagram__range">
         <span>Demand pressure</span>
-        <input data-flow-pressure type="range" min="60" max="140" value="100" />
+        <input data-diagram-pressure type="range" min="60" max="140" value="100" />
       </label>
     </aside>
   </div>
 
-  <div class="inventory-flow-net__grammar" id="inventory-flow-caption">
+  <div class="inventory-network-diagram__legend" aria-label="Edge and node legend">
+    <span class="inventory-network-diagram__legend-item is-supply">supply</span>
+    <span class="inventory-network-diagram__legend-item is-served">served demand</span>
+    <span class="inventory-network-diagram__legend-item is-request">request pressure</span>
+    <span class="inventory-network-diagram__legend-item is-transform">aging</span>
+    <span class="inventory-network-diagram__legend-item is-control">policy arc</span>
+    <span class="inventory-network-diagram__legend-item is-loss">leak / penalty</span>
+  </div>
+
+  <div class="inventory-network-diagram__grammar" id="inventory-diagram-caption">
     <div>
       <strong>Buffers</strong>
       <span>on-hand stock, pipeline, warehouse, retailer, age bucket, backlog</span>
@@ -614,23 +651,23 @@ const edgeLabelPoint = (edge, nodes) => {
 </figure>
 
 <script>
-  const roots = document.querySelectorAll("[data-inventory-flow]");
+  const roots = document.querySelectorAll("[data-inventory-network]");
   const svgNS = "http://www.w3.org/2000/svg";
 
   roots.forEach((root) => {
-    const scenarios = JSON.parse(root.getAttribute("data-flow-scenarios") || "[]");
-    const edgeLayer = root.querySelector("[data-flow-edges]");
-    const nodeLayer = root.querySelector("[data-flow-nodes]");
-    const tabs = Array.from(root.querySelectorAll("[data-flow-tab]"));
-    const pressureInput = root.querySelector("[data-flow-pressure]");
-    const demandNode = root.querySelector("[data-flow-demand]");
-    const bufferNode = root.querySelector("[data-flow-buffer]");
-    const verdictNode = root.querySelector("[data-flow-verdict]");
-    const kickerNode = root.querySelector("[data-flow-kicker]");
-    const panelTitle = root.querySelector("[data-flow-panel-title]");
-    const panelCopy = root.querySelector("[data-flow-panel-copy]");
-    const conservationNode = root.querySelector("[data-flow-conservation]");
-    const policyNode = root.querySelector("[data-flow-policy]");
+    const scenarios = JSON.parse(root.getAttribute("data-diagram-scenarios") || "[]");
+    const edgeLayer = root.querySelector("[data-diagram-edges]");
+    const nodeLayer = root.querySelector("[data-diagram-nodes]");
+    const tabs = Array.from(root.querySelectorAll("[data-diagram-tab]"));
+    const pressureInput = root.querySelector("[data-diagram-pressure]");
+    const demandNode = root.querySelector("[data-diagram-demand]");
+    const bufferNode = root.querySelector("[data-diagram-buffer]");
+    const verdictNode = root.querySelector("[data-diagram-verdict]");
+    const kickerNode = root.querySelector("[data-diagram-kicker]");
+    const panelTitle = root.querySelector("[data-diagram-panel-title]");
+    const panelCopy = root.querySelector("[data-diagram-panel-copy]");
+    const conservationNode = root.querySelector("[data-diagram-conservation]");
+    const policyNode = root.querySelector("[data-diagram-policy]");
 
     if (!scenarios.length || !edgeLayer || !nodeLayer) return;
 
@@ -691,18 +728,18 @@ const edgeLabelPoint = (edge, nodes) => {
       active.edges.forEach((edge) => {
         const d = pathFor(edge, nodes);
         const labelPoint = labelPointFor(edge, nodes);
-        const group = make("g", { class: `inventory-flow-net__edge is-${edge.kind}` });
-        const base = make("path", { class: "inventory-flow-net__edge-base", d });
+        const group = make("g", { class: `inventory-network-diagram__edge is-${edge.kind}` });
+        const base = make("path", { class: "inventory-network-diagram__edge-base", d });
         const stream = make("path", {
-          class: "inventory-flow-net__edge-stream",
+          class: "inventory-network-diagram__edge-stream",
           d,
-          "marker-end": "url(#inventory-flow-arrow)",
+          "marker-end": "url(#inventory-diagram-arrow)",
           tabindex: "0",
           role: "button",
           "aria-label": `${edge.label}: ${edge.detail}`,
         });
         const hit = make("path", {
-          class: "inventory-flow-net__edge-hit",
+          class: "inventory-network-diagram__edge-hit",
           d,
           tabindex: "0",
           role: "button",
@@ -739,10 +776,10 @@ const edgeLabelPoint = (edge, nodes) => {
       nodeLayer.replaceChildren();
       active.nodes.forEach((node) => {
         const group = make("g", {
-          class: `inventory-flow-net__node is-${node.kind}`,
+          class: `inventory-network-diagram__node is-${node.kind}`,
           transform: `translate(${node.x} ${node.y})`,
         });
-        const rect = make("rect", { x: -66, y: -24, width: 132, height: 48, rx: 5 });
+        const rect = make("rect", { x: -66, y: -24, width: 132, height: 48, rx: 7 });
         const text = make("text");
         text.textContent = node.label;
         group.append(rect, text);
@@ -753,7 +790,7 @@ const edgeLabelPoint = (edge, nodes) => {
     const setScenario = (id) => {
       active = scenarios.find((scenario) => scenario.id === id) || scenarios[0];
       tabs.forEach((tab) => {
-        const isActive = tab.getAttribute("data-flow-tab") === active.id;
+        const isActive = tab.getAttribute("data-diagram-tab") === active.id;
         tab.classList.toggle("is-active", isActive);
         tab.setAttribute("aria-pressed", String(isActive));
       });
@@ -764,7 +801,7 @@ const edgeLabelPoint = (edge, nodes) => {
     };
 
     tabs.forEach((tab) => {
-      tab.addEventListener("click", () => setScenario(tab.getAttribute("data-flow-tab")));
+      tab.addEventListener("click", () => setScenario(tab.getAttribute("data-diagram-tab")));
     });
 
     pressureInput?.addEventListener("input", () => {
@@ -786,7 +823,7 @@ const edgeLabelPoint = (edge, nodes) => {
     max-width: none;
   }
 
-  .inventory-article-page .article-prose--inventory > :not(.inventory-flow-net):not(center):not(table):not(pre):not(blockquote):not(figure):not(mjx-container) {
+  .inventory-article-page .article-prose--inventory > :not(.inventory-network-diagram):not(center):not(table):not(pre):not(blockquote):not(figure):not(mjx-container) {
     max-width: 66ch;
   }
 
@@ -801,20 +838,29 @@ const edgeLabelPoint = (edge, nodes) => {
     margin: 1.9rem 0;
   }
 
-  .inventory-flow-net {
+  .inventory-network-diagram {
+    /* one consistent accent map for the whole figure, drawn from the site tokens */
+    --diagram-supply: var(--verdigris);
+    --diagram-served: var(--navy);
+    --diagram-request: var(--brass);
+    --diagram-loss: #9a4f38;
+    --diagram-control: #1f5d78;
+    --diagram-transform: #7a5195;
+    --diagram-plate: #fbf6ec;
+
     margin: 0 0 2.4rem;
-    padding: clamp(1rem, 2.8vw, 1.45rem);
+    padding: clamp(1rem, 2.8vw, 1.55rem);
     color: var(--ink);
     border: 1px solid var(--hairline-strong);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     background:
-      linear-gradient(rgba(251, 246, 236, 0.92), rgba(251, 246, 236, 0.92)),
-      repeating-linear-gradient(0deg, rgba(22, 32, 43, 0.06) 0 1px, transparent 1px 28px),
-      repeating-linear-gradient(90deg, rgba(22, 32, 43, 0.05) 0 1px, transparent 1px 28px);
-    box-shadow: 0 18px 42px rgba(22, 32, 43, 0.1);
+      linear-gradient(rgba(251, 246, 236, 0.94), rgba(251, 246, 236, 0.94)),
+      repeating-linear-gradient(0deg, rgba(22, 32, 43, 0.05) 0 1px, transparent 1px 30px),
+      repeating-linear-gradient(90deg, rgba(22, 32, 43, 0.045) 0 1px, transparent 1px 30px);
+    box-shadow: 0 16px 40px rgba(22, 32, 43, 0.1);
   }
 
-  .inventory-flow-net__header {
+  .inventory-network-diagram__header {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(220px, 0.38fr);
     gap: clamp(1rem, 2.6vw, 1.6rem);
@@ -822,8 +868,8 @@ const edgeLabelPoint = (edge, nodes) => {
     margin-bottom: 1rem;
   }
 
-  .inventory-flow-net__eyebrow,
-  .inventory-flow-net__panel-kicker {
+  .inventory-network-diagram__eyebrow,
+  .inventory-network-diagram__panel-kicker {
     margin: 0 0 0.55rem;
     color: var(--brass-ink);
     font-family: var(--font-mono);
@@ -833,7 +879,7 @@ const edgeLabelPoint = (edge, nodes) => {
     text-transform: uppercase;
   }
 
-  .inventory-flow-net h2 {
+  .inventory-network-diagram h2 {
     margin: 0;
     padding: 0;
     border: 0;
@@ -842,11 +888,11 @@ const edgeLabelPoint = (edge, nodes) => {
     line-height: 1.04;
   }
 
-  .inventory-flow-net h2::before {
+  .inventory-network-diagram h2::before {
     content: none;
   }
 
-  .inventory-flow-net__header p:not(.inventory-flow-net__eyebrow) {
+  .inventory-network-diagram__header p:not(.inventory-network-diagram__eyebrow) {
     margin: 0.8rem 0 0;
     max-width: 63ch;
     color: var(--graphite);
@@ -854,14 +900,16 @@ const edgeLabelPoint = (edge, nodes) => {
     line-height: 1.55;
   }
 
-  .inventory-flow-net__meter {
+  .inventory-network-diagram__meter {
     display: grid;
     gap: 0;
     border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    overflow: hidden;
     background: rgba(251, 246, 236, 0.74);
   }
 
-  .inventory-flow-net__meter span {
+  .inventory-network-diagram__meter span {
     display: grid;
     gap: 0.22rem;
     min-width: 0;
@@ -874,11 +922,11 @@ const edgeLabelPoint = (edge, nodes) => {
     border-bottom: 1px solid var(--hairline);
   }
 
-  .inventory-flow-net__meter span:last-child {
+  .inventory-network-diagram__meter span:last-child {
     border-bottom: 0;
   }
 
-  .inventory-flow-net__meter strong {
+  .inventory-network-diagram__meter strong {
     color: var(--navy-strong);
     font-size: 0.82rem;
     font-weight: 500;
@@ -886,29 +934,32 @@ const edgeLabelPoint = (edge, nodes) => {
     text-transform: none;
   }
 
-  .inventory-flow-net__tabs {
+  .inventory-network-diagram__tabs {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0.45rem;
     margin-bottom: 0.8rem;
   }
 
-  .inventory-flow-net__tab {
+  .inventory-network-diagram__tab {
     display: grid;
     min-height: 3.65rem;
     align-content: center;
     gap: 0.18rem;
-    padding: 0.55rem 0.65rem;
+    padding: 0.55rem 0.7rem;
     color: var(--ink);
     text-align: left;
     border: 1px solid var(--hairline);
     border-radius: var(--radius);
     background: rgba(251, 246, 236, 0.72);
     cursor: pointer;
-    transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.08;
+    transition: border-color 180ms var(--ease), background 180ms var(--ease), transform 180ms var(--ease), box-shadow 180ms var(--ease);
   }
 
-  .inventory-flow-net__tab span {
+  .inventory-network-diagram__tab span {
     min-width: 0;
     color: var(--graphite);
     font-family: var(--font-mono);
@@ -917,117 +968,122 @@ const edgeLabelPoint = (edge, nodes) => {
     text-transform: uppercase;
   }
 
-  .inventory-flow-net__tab {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    line-height: 1.08;
-  }
-
-  .inventory-flow-net__tab:hover,
-  .inventory-flow-net__tab:focus-visible,
-  .inventory-flow-net__tab.is-active {
+  .inventory-network-diagram__tab:hover,
+  .inventory-network-diagram__tab:focus-visible,
+  .inventory-network-diagram__tab.is-active {
     border-color: var(--brass);
     background: rgba(181, 97, 31, 0.1);
     transform: translateY(-1px);
   }
 
-  .inventory-flow-net__tab:focus-visible {
+  .inventory-network-diagram__tab.is-active {
+    box-shadow: inset 0 -2.5px 0 var(--brass);
+  }
+
+  .inventory-network-diagram__tab:focus-visible {
     outline: 2px solid var(--brass);
     outline-offset: 2px;
   }
 
-  .inventory-flow-net__workspace {
+  .inventory-network-diagram__workspace {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(250px, 0.33fr);
     gap: 0.8rem;
     align-items: stretch;
   }
 
-  .inventory-flow-net__canvas {
+  .inventory-network-diagram__canvas {
     min-width: 0;
     border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    overflow: hidden;
     background:
-      radial-gradient(circle at 42% 48%, rgba(62, 126, 115, 0.12), transparent 31%),
-      linear-gradient(135deg, #f8f2e6 0%, #f3ead8 100%);
+      radial-gradient(circle at 42% 46%, rgba(62, 126, 115, 0.1), transparent 34%),
+      radial-gradient(circle at 82% 70%, rgba(181, 97, 31, 0.06), transparent 30%),
+      linear-gradient(135deg, #f8f2e6 0%, #f2e8d6 100%);
   }
 
-  .inventory-flow-net__canvas svg {
+  .inventory-network-diagram__canvas svg {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 824 / 402;
   }
 
-  .inventory-flow-net__grid path {
+  .inventory-network-diagram__grid path {
     fill: none;
-    stroke: rgba(22, 32, 43, 0.07);
+    stroke: rgba(22, 32, 43, 0.06);
     stroke-width: 1;
   }
 
-  .inventory-flow-net__edge-base,
-  .inventory-flow-net__edge-stream,
-  .inventory-flow-net__edge-hit {
+  .inventory-network-diagram__edge-base,
+  .inventory-network-diagram__edge-stream,
+  .inventory-network-diagram__edge-hit {
     fill: none;
   }
 
-  .inventory-flow-net__edge-base {
-    stroke: rgba(22, 32, 43, 0.18);
-    stroke-width: 7;
+  .inventory-network-diagram__edge-base {
+    stroke: rgba(22, 32, 43, 0.14);
+    stroke-width: 8;
     stroke-linecap: round;
   }
 
-  .inventory-flow-net__edge-stream {
+  .inventory-network-diagram__edge-stream {
     stroke: var(--edge-color);
     stroke-width: calc(var(--edge-width) * 1px);
     stroke-linecap: round;
-    stroke-dasharray: 10 16;
-    filter: drop-shadow(0 0 7px color-mix(in srgb, var(--edge-color) 38%, transparent));
-    animation: inventory-flow-stream var(--flow-speed) linear infinite;
+    stroke-dasharray: 11 15;
+    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--edge-color) 30%, transparent));
+    animation: inventory-diagram-stream var(--flow-speed) linear infinite;
   }
 
-  .inventory-flow-net__edge-hit {
+  .inventory-network-diagram__edge-hit {
     stroke: transparent;
     stroke-width: 18;
     cursor: pointer;
   }
 
-  .inventory-flow-net__edge-hit:focus-visible,
-  .inventory-flow-net__edge-stream:focus-visible {
+  .inventory-network-diagram__edge-hit:focus-visible,
+  .inventory-network-diagram__edge-stream:focus-visible {
     outline: none;
     stroke: var(--brass);
   }
 
-  .inventory-flow-net__edge text {
+  .inventory-network-diagram__edge:hover .inventory-network-diagram__edge-base {
+    stroke: color-mix(in srgb, var(--edge-color) 26%, transparent);
+  }
+
+  .inventory-network-diagram__edge text {
     fill: var(--graphite);
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     text-anchor: middle;
     paint-order: stroke;
-    stroke: rgba(251, 246, 236, 0.9);
+    stroke: rgba(248, 242, 230, 0.92);
     stroke-width: 5px;
   }
 
-  .inventory-flow-net__edge.is-supply { --edge-color: var(--verdigris); }
-  .inventory-flow-net__edge.is-served { --edge-color: var(--navy); }
-  .inventory-flow-net__edge.is-demand,
-  .inventory-flow-net__edge.is-request { --edge-color: var(--brass); }
-  .inventory-flow-net__edge.is-loss { --edge-color: #9a4f38; }
-  .inventory-flow-net__edge.is-control { --edge-color: #1f5d78; }
-  .inventory-flow-net__edge.is-transform { --edge-color: #7a5195; }
+  .inventory-network-diagram__edge.is-supply { --edge-color: var(--diagram-supply); }
+  .inventory-network-diagram__edge.is-served { --edge-color: var(--diagram-served); }
+  .inventory-network-diagram__edge.is-demand,
+  .inventory-network-diagram__edge.is-request { --edge-color: var(--diagram-request); }
+  .inventory-network-diagram__edge.is-loss { --edge-color: var(--diagram-loss); }
+  .inventory-network-diagram__edge.is-control { --edge-color: var(--diagram-control); }
+  .inventory-network-diagram__edge.is-transform { --edge-color: var(--diagram-transform); }
 
-  .inventory-flow-net marker path {
+  .inventory-network-diagram marker path {
     fill: currentColor;
   }
 
-  .inventory-flow-net__node rect {
-    fill: rgba(251, 246, 236, 0.94);
+  .inventory-network-diagram__node rect {
+    fill: var(--diagram-plate);
     stroke: var(--node-color);
-    stroke-width: 1.5;
-    filter: drop-shadow(0 8px 16px rgba(22, 32, 43, 0.12));
+    stroke-width: 1.6;
+    filter: drop-shadow(0 6px 14px rgba(22, 32, 43, 0.12));
   }
 
-  .inventory-flow-net__node text {
+  .inventory-network-diagram__node text {
     fill: var(--ink);
     font-family: var(--font-mono);
     font-size: 11px;
@@ -1037,24 +1093,25 @@ const edgeLabelPoint = (edge, nodes) => {
     dominant-baseline: middle;
   }
 
-  .inventory-flow-net__node.is-source { --node-color: var(--verdigris); }
-  .inventory-flow-net__node.is-buffer { --node-color: var(--navy); }
-  .inventory-flow-net__node.is-demand { --node-color: var(--brass); }
-  .inventory-flow-net__node.is-sink { --node-color: #9a4f38; }
-  .inventory-flow-net__node.is-control { --node-color: #7a5195; }
+  .inventory-network-diagram__node.is-source { --node-color: var(--diagram-supply); }
+  .inventory-network-diagram__node.is-buffer { --node-color: var(--diagram-served); }
+  .inventory-network-diagram__node.is-demand { --node-color: var(--diagram-request); }
+  .inventory-network-diagram__node.is-sink { --node-color: var(--diagram-loss); }
+  .inventory-network-diagram__node.is-control { --node-color: var(--diagram-transform); }
 
-  .inventory-flow-net__panel {
+  .inventory-network-diagram__panel {
     display: grid;
     align-content: start;
     gap: 0.9rem;
     min-width: 0;
-    padding: 1rem;
+    padding: 1.05rem;
     border: 1px solid var(--hairline);
+    border-radius: var(--radius);
     background: var(--abyssal);
     color: var(--cream);
   }
 
-  .inventory-flow-net__panel h3 {
+  .inventory-network-diagram__panel h3 {
     margin: 0;
     color: var(--paper-high);
     font-family: var(--font-display);
@@ -1063,25 +1120,25 @@ const edgeLabelPoint = (edge, nodes) => {
     line-height: 1.08;
   }
 
-  .inventory-flow-net__panel p:not(.inventory-flow-net__panel-kicker) {
+  .inventory-network-diagram__panel p:not(.inventory-network-diagram__panel-kicker) {
     margin: 0;
     color: rgba(236, 227, 210, 0.84);
     font-size: 0.96rem;
     line-height: 1.5;
   }
 
-  .inventory-flow-net__panel dl {
+  .inventory-network-diagram__panel dl {
     display: grid;
     gap: 0.55rem;
     margin: 0;
   }
 
-  .inventory-flow-net__panel dl div {
+  .inventory-network-diagram__panel dl div {
     padding-top: 0.55rem;
     border-top: 1px solid rgba(236, 227, 210, 0.18);
   }
 
-  .inventory-flow-net__panel dt {
+  .inventory-network-diagram__panel dt {
     margin: 0 0 0.24rem;
     color: var(--brass-on-dark);
     font-family: var(--font-mono);
@@ -1090,7 +1147,7 @@ const edgeLabelPoint = (edge, nodes) => {
     text-transform: uppercase;
   }
 
-  .inventory-flow-net__panel dd {
+  .inventory-network-diagram__panel dd {
     margin: 0;
     color: rgba(236, 227, 210, 0.9);
     font-family: var(--font-mono);
@@ -1098,7 +1155,7 @@ const edgeLabelPoint = (edge, nodes) => {
     line-height: 1.45;
   }
 
-  .inventory-flow-net__range {
+  .inventory-network-diagram__range {
     display: grid;
     gap: 0.55rem;
     margin-top: 0.1rem;
@@ -1109,30 +1166,69 @@ const edgeLabelPoint = (edge, nodes) => {
     text-transform: uppercase;
   }
 
-  .inventory-flow-net__range input {
+  .inventory-network-diagram__range input {
     width: 100%;
     accent-color: var(--brass);
   }
 
-  .inventory-flow-net__grammar {
+  .inventory-network-diagram__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    margin-top: 0.8rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    background: rgba(251, 246, 236, 0.74);
+  }
+
+  .inventory-network-diagram__legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .inventory-network-diagram__legend-item::before {
+    content: "";
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--legend-color, var(--graphite));
+  }
+
+  .inventory-network-diagram__legend-item.is-supply { --legend-color: var(--diagram-supply); }
+  .inventory-network-diagram__legend-item.is-served { --legend-color: var(--diagram-served); }
+  .inventory-network-diagram__legend-item.is-request { --legend-color: var(--diagram-request); }
+  .inventory-network-diagram__legend-item.is-transform { --legend-color: var(--diagram-transform); }
+  .inventory-network-diagram__legend-item.is-control { --legend-color: var(--diagram-control); }
+  .inventory-network-diagram__legend-item.is-loss { --legend-color: var(--diagram-loss); }
+
+  .inventory-network-diagram__grammar {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     margin-top: 0.8rem;
     border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    overflow: hidden;
     background: rgba(251, 246, 236, 0.74);
   }
 
-  .inventory-flow-net__grammar div {
+  .inventory-network-diagram__grammar div {
     min-width: 0;
     padding: 0.82rem;
     border-right: 1px solid var(--hairline);
   }
 
-  .inventory-flow-net__grammar div:last-child {
+  .inventory-network-diagram__grammar div:last-child {
     border-right: 0;
   }
 
-  .inventory-flow-net__grammar strong {
+  .inventory-network-diagram__grammar strong {
     display: block;
     margin-bottom: 0.22rem;
     color: var(--navy-strong);
@@ -1142,36 +1238,36 @@ const edgeLabelPoint = (edge, nodes) => {
     text-transform: uppercase;
   }
 
-  .inventory-flow-net__grammar span {
+  .inventory-network-diagram__grammar span {
     display: block;
     color: var(--graphite);
     font-size: 0.88rem;
     line-height: 1.42;
   }
 
-  @keyframes inventory-flow-stream {
+  @keyframes inventory-diagram-stream {
     to {
       stroke-dashoffset: -52;
     }
   }
 
   @media (max-width: 900px) {
-    .inventory-flow-net__header,
-    .inventory-flow-net__workspace,
-    .inventory-flow-net__grammar {
+    .inventory-network-diagram__header,
+    .inventory-network-diagram__workspace,
+    .inventory-network-diagram__grammar {
       grid-template-columns: 1fr;
     }
 
-    .inventory-flow-net__tabs {
+    .inventory-network-diagram__tabs {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .inventory-flow-net__grammar div {
+    .inventory-network-diagram__grammar div {
       border-right: 0;
       border-bottom: 1px solid var(--hairline);
     }
 
-    .inventory-flow-net__grammar div:last-child {
+    .inventory-network-diagram__grammar div:last-child {
       border-bottom: 0;
     }
   }
@@ -1182,21 +1278,21 @@ const edgeLabelPoint = (edge, nodes) => {
       padding-inline: 1rem;
     }
 
-    .inventory-flow-net {
+    .inventory-network-diagram {
       padding: 0.75rem;
     }
 
-    .inventory-flow-net__tabs {
+    .inventory-network-diagram__tabs {
       grid-template-columns: 1fr;
     }
 
-    .inventory-flow-net__canvas svg {
+    .inventory-network-diagram__canvas svg {
       min-width: 0;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .inventory-flow-net__edge-stream {
+    .inventory-network-diagram__edge-stream {
       animation: none;
     }
   }

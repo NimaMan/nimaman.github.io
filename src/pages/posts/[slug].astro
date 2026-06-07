@@ -26,7 +26,7 @@ const slug = postSlug(post);
 const isPiPost = slug === "pi";
 const isInventoryPost = slug === "learning-to-control-inventory-management-systems";
 const PiVisual = isPiPost ? (await import("../../components/PiVisual.astro")).default : undefined;
-const InventoryFlowNet = isInventoryPost ? (await import("../../components/InventoryFlowNet.astro")).default : undefined;
+const InventoryNetworkDiagram = isInventoryPost ? (await import("../../components/InventoryNetworkDiagram.astro")).default : undefined;
 const description = post.data.description || postExcerpt(post);
 const seriesSiblings = post.data.series ? await getSeriesPosts(post.data.series) : [];
 ---
@@ -71,7 +71,7 @@ const seriesSiblings = post.data.series ? await getSeriesPosts(post.data.series)
       </header>
 
       <article class:list={["article-prose", { "article-prose--pi": isPiPost, "article-prose--inventory": isInventoryPost }]}>
-        {isPiPost && <PiVisual />}{isInventoryPost && <InventoryFlowNet />}<Content />
+        {isPiPost && <PiVisual />}{isInventoryPost && <InventoryNetworkDiagram />}<Content />
       </article>
 
       {post.data.series && <SeriesNav current={post} siblings={seriesSiblings} />}
