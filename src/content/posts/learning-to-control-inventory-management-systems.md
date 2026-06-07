@@ -1,7 +1,7 @@
 ---
 author: Nima Manaf, PhD
 title: "Learning to Control Inventory Management Systems"
-date: 2026-06-05
+date: 2026-06-07
 description: "A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns to control inventory systems across ten classical problem families."
 math: true
 ---
@@ -123,7 +123,7 @@ A 3-stage serial system whose optimal policy is known exactly (Clark–Scarf ech
 
 ## One-warehouse multi-retailer — beats the tuned gate, but below published PPO
 
-Asymmetric, high-variability OWMR instances from Kaynov et al. (2024). The like-for-like comparator is a strong in-repo tuned base-stock-plus-allocation gate (itself already stronger than the published Kaynov base-stock). The learned per-retailer soft tree **beats the tuned gate beyond sampling error on two of the three instances** (+1.33% and +6.44%) and ties on the hardest one (a search-limited tie, not a representation limit).
+Asymmetric, high-variability OWMR instances from Kaynov et al. (2024). The like-for-like comparator is a strong in-repo tuned base-stock-plus-allocation gate (itself already stronger than the published Kaynov base-stock). The learned per-retailer soft tree **beats the tuned gate beyond sampling error on two of the three instances** (+1.33% and +6.44%) and ties on the hardest one (a search-limited tie, not a representation limit). *That hardest instance is exactly the one the automated structure search later cracks — a robust −12.57% gate-beat — once the geometry is searched rather than hand-picked ([below](#searching-for-the-action-geometry--and-a-new-one-that-cracks-the-last-network)).*
 
 To be clear about the ceiling: the learned policy does **not** beat the published PPO, which remains the strongest *learned* reference on every row (we sit 3.14–17.77% below it). The win is over the tuned heuristic gate, not over published deep RL.
 
@@ -158,13 +158,25 @@ The same data, with the comparator made fully explicit:
 | Perishable | best base-stock gate | **beats** the gate (+1.16% / +0.82%) |
 | General-network backorder | published constant base-stock | **beats** by >20% (below PPO, not a PPO beat) |
 | Serial (Clark–Scarf) | proven optimum | **matches** the proven optimum |
-| One-warehouse multi-retailer | tuned base-stock gate | **beats** the gate on 2/3 (below PPO) |
+| One-warehouse multi-retailer | tuned base-stock gate | **beats** the gate (now incl. the hard `instance_14`, robust **−12.57%** via agentic search; ~3% above PPO, not a PPO beat) |
 | Ameliorating | order-up-to gate; LP bound | **beats** the gate; LP value is an upper bound |
-| Production network | env.'s own best heuristic | **beats** it by ~4–9% (research result) |
+| Production network | env.'s own best heuristic | **beats** it by ~4–9% (serial); mixed net now robust **−2.20%** via the residual gate-backbone head (no published DRL; gate-beat only) |
 
 The policies that produce this carry **tens to a few hundred parameters** — orders of magnitude fewer than published DRL networks — and the reported single-state actions are validated against an independent rollout, so they are not just compact but checkable.
 
 Two limitations are worth stating plainly. The high-penalty, autocorrelated MMPP lost-sales instances at the longest lead times stay won by classical heuristics — a real gap for stationary compact policies under regime-switching demand. And CMA-ES, while far more sample-efficient than A3C here, is still data-hungry relative to limited-data settings, and its population evaluation cost grows with the covariance dimension, so very large parameterizations would need restricted or separable covariance structures.
+
+# Searching for the action geometry — and a new one that cracks the last network
+
+Everything above shares a quiet assumption: I *hand-designed* each decoder, reading the relevant heuristic and shaping the action geometry to match. If the action parameterization really is the policy, then the natural next move is to make the *choice of geometry itself* something you search — and to do it under the same honest gate. Two results came out of taking that seriously.
+
+**Automating the structure search.** I built an agentic loop in which an LLM agent (Codex, driven through a small framework) proposes policy *structures* — the action head, the per-dimension geometry, the split type, the leaf class, the feature basis — as short specs in a tiny DSL. Each proposed spec is compiled to an invman soft-tree policy, warm-started at a gate-invertible anchor (so generation zero reproduces the heuristic gate exactly), tuned by the same inner CMA-ES on the same Rust rollout oracle, and then scored seed-robustly against the gate. The outer loop is an evolutionary archive: keep a spec only if it is a **robust gate-beat** — every one of $\ge 5$ optimizer seeds below the gate *and* mean-plus-std below the gate. The agent proposes the structure; CMA-ES still owns the continuous parameters; the keep decision stays deterministic and honest. The one wrinkle worth noting is that a naive proposer *fixates*: once a structure is the archived best, it keeps re-proposing it. Adding novelty pressure — diverse elites (the best spec per structural niche) plus an anti-repeat rule that forces each proposal to differ from the incumbent on at least one structural axis — broke that plateau, and broke it productively.
+
+**A hard instance, now robustly beaten.** The spearhead was the one-warehouse multi-retailer instance the hand search could only *tie* (`instance_14`, the asymmetric high-variability case above). The fixated short run settled on a linear-leaf structure that beat the gate by a modest margin. The novelty-driven longer run surfaced a structure the short run never tried — a **constant** leaf, oblique split, per-retailer `echelon_targets` head — that the agent reached by mutating off its own incumbent. At full budget over **10 optimizer seeds** it lands at a seed-robust mean of **44105.01 versus the in-repo echelon-base-stock gate of 50445.20 — a −12.57% gate-beat**, with **10/10 seeds below the gate** and a std of 337.3 (about 0.76% of the mean). The same honesty caveat as before still binds, and it matters here: the published PPO scalar (Kaynov et al., 2024; ≈42835) is **cross-protocol context only**, and we sit about **3% *above* it**. This is a robust beat over the tuned heuristic gate on a previously-unsolved instance — **not** a PPO beat, and I do not claim one.
+
+**A new action geometry — the residual gate-backbone head.** The production network's mixed distribution-plus-assembly variant was the lab's genuinely open case: hand-search with the older `vector_quantity` head only ever *tied* its gate (seed-mean 306.10 ± 22.89, +2.8%, 4 of 8 seeds below — parity, not a beat). The diagnosis was structural: that head's scale-normalized leaf is not gate-invertible, so there is no clean gate-reproducing warm-start and the optimizer seeds scatter by ±22.9. The fix is a new decoder, the **residual gate-backbone head**: the order is $\text{clamp}(\text{gate\_order} + \text{round}(\delta),\,0,\,\text{max})$ with the learned residual $\delta = 0$ at zero parameters — so generation zero reproduces the gate byte-exact (proven by an in-crate test) and *every* optimizer seed is anchored at the gate by construction. With this head (linear leaf, oblique split, per-relation, warm-started at $\delta=0$), the agentic search produces a seed-robust mean of **291.136 versus the env's own pairwise base-stock gate of 297.688 — a −2.20% gate-beat**, with **5/5 seeds below the gate** (287.36, 294.42, 290.74, 293.22, 289.93) and a std of **2.49**. The headline is not just the margin but the variance: anchoring every seed at the gate collapsed the seed scatter from **±22.9 to 2.49**, turning a network that hand-search could only tie into a robust beat. The production network has **no published DRL or PPO baseline at all**, so this is a **gate-beat only** — a research result against the environment's own best heuristic, never any DRL claim.
+
+The point of this turn is the same as the one the next section describes the field taking. When the structure search itself becomes part of the system — and especially when the search *invents* a decoder, like the residual gate-backbone, that anchors the optimizer at the heuristic and learns only the deviation — the structure has gone all the way back *into* the policy. The action parameterization is still the policy; we have just stopped hand-picking it.
 
 # Where this fits, and where the field is going
 
