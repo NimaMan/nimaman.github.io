@@ -1527,44 +1527,9 @@ button, input, textarea, select { font: inherit; }
 .article-prose th, .article-prose td { padding: 0.55rem 0.7rem; border: 1px solid var(--hairline-strong); text-align: left; }
 .article-prose th { background: var(--paper); font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; }
 
-/* Fourteen-industry value-chain atlas. The old survey used fixed-width SVGs;
-   these native timelines preserve the same dated waves while turning into a
-   vertical route on narrow screens. */
-.chain-evolution-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem 1.1rem;
-    margin: 1.8rem 0 1rem;
-    padding: 0.75rem 0;
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-.chain-mode {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-}
-.chain-mode::before {
-    content: "";
-    width: 0.58rem;
-    height: 0.58rem;
-    flex: none;
-    border-radius: 50%;
-    background: currentColor;
-}
-.chain-mode--own { color: var(--graphite); }
-.chain-mode--retrieve { color: var(--navy); }
-.chain-mode--participate { color: var(--brass-ink); }
-.chain-mode--next { color: var(--verdigris); }
-.chain-mode--next::before {
-    background: transparent;
-    border: 1px dashed currentColor;
-}
+/* Fourteen-industry value-chain atlas. Each line uses its industry's own
+   chronology; colour distinguishes the observed history from the current
+   frontier rather than imposing a shared set of stages. */
 
 .chain-evolution-atlas {
     display: grid;
@@ -1607,10 +1572,7 @@ button, input, textarea, select { font: inherit; }
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
-.chain-verdict--arrived { color: var(--verdigris); }
-.chain-verdict--emerging { color: var(--navy); }
-.chain-verdict--contested { color: var(--brass-ink); }
-.chain-verdict--inverts { color: #8b3d32; }
+.chain-verdict--current { color: var(--verdigris); }
 
 .article-prose .chain-evolution-track {
     display: grid;
@@ -1654,14 +1616,12 @@ button, input, textarea, select { font: inherit; }
     background: var(--hairline-strong);
 }
 .article-prose .chain-stage:last-child::after { display: none; }
-.article-prose .chain-stage--own { color: var(--graphite); }
-.article-prose .chain-stage--retrieve { color: var(--navy); }
-.article-prose .chain-stage--participate { color: var(--brass-ink); }
-.article-prose .chain-stage--next { color: var(--verdigris); }
-.article-prose .chain-stage--next::before {
-    border: 1px dashed currentColor;
-    background: var(--paper-high);
-    box-shadow: none;
+.article-prose .chain-stage--history { color: var(--navy); }
+.article-prose .chain-stage--current { color: var(--verdigris); }
+.article-prose .chain-stage--current::before {
+    width: 0.7rem;
+    height: 0.7rem;
+    box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 22%, transparent);
 }
 .article-prose .chain-stage time {
     display: block;
@@ -1681,10 +1641,6 @@ button, input, textarea, select { font: inherit; }
     font-size: 0.72rem;
     line-height: 1.28;
 }
-.article-prose .chain-stage--up span::after { content: "  ↑"; color: var(--verdigris); }
-.article-prose .chain-stage--down span::after { content: "  ↓"; color: #8b3d32; }
-.article-prose .chain-stage--flat span::after { content: "  →"; color: var(--graphite); }
-
 @media (max-width: 640px) {
     .article-prose .chain-evolution-card figcaption {
         align-items: flex-start;

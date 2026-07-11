@@ -1,336 +1,313 @@
 ---
 author: Nima Manaf, PhD
-title: "The Same Journey, Everywhere: How Value Chains Evolve"
+title: "Fourteen Journeys: How Value Chains Actually Evolve"
 date: 2026-07-11
-description: "Knowledge went from the library to the search box to conversation. Music went from owning records to streaming, and is one step behind. Run the same test across fourteen industries and the same bend appears in every one — own, then retrieve, then participate. The first two steps are nearly universal. The third is decided by two questions: does using it make it, and do you steer or do you wish?"
+description: "Fourteen industries did not travel through the same three stages. This is an evolutionary atlas of the routes they actually took—from knowledge and music to food, money, transport, and virtual worlds—and where each stands in 2026."
 draft: false
 category: "Value Chains/Evolution of Value Chains"
 series: value_chains
 series_order: 1
-series_label: "The Pattern"
+series_label: "The Evolutions"
 ---
 
-<!--
-  the_same_journey_everywhere.md — THE PATTERN PIECE OF THE VALUE-CHAINS SERIES.
+Knowledge seems to have made a neat journey: from what a person remembered, to books and libraries, to search, to a machine that can answer back. Music can be made to look similar: live performance, records, radio, streaming, generation. Put the two beside each other and it is tempting to name three stages, give each one a colour, and send every other industry through them.
 
-  OBJECTIVE
-    Companion to "The Selection Pressure" (The Law). The Law says: the want is
-    constant, cost is the selector, and the rent relocates to whichever cost has
-    not yet fallen. This essay shows the law's OBSERVED SHAPE: fourteen industries
-    walking the same three modes — own (kills the cost of keeping), retrieve
-    (kills the cost of finding), participate (kills the cost of making) — and
-    splitting only at the third step. Two tests decide the split: does using it
-    make it (supply flips), and do you steer or do you wish (agency).
+That temptation produces a clean table and a false history.
 
-  ARGUMENT SPINE (the "algorithm" of the essay)
-    1. The opening rhyme — knowledge vs music, one step behind; is it a coincidence?
-       Promise: run the same test across fourteen chains.
-    2. What the chain is FOR — the want, stated as "is" not "ought": humans seek
-       effective influence over internal state and external world; they shed
-       unwanted effort but VALUE effort that yields agency, competence, identity,
-       connection, meaning (effort paradox). Instrumental vs expressive effort.
-       A want is rarely one want: music's bundle = move-with-it (groove,
-       entrainment), watch-it-done (performance spectatorship ~ sports), and
-       listen-alone (mood regulation) — distinct, maybe related, observably real.
-    3. Three modes, three costs — own/retrieve/participate as the death of
-       keeping/finding/making; the blade: NEW cost cheaper vs SAME cost cheaper.
-    4. Fourteen timelines — the table and the grouped stories: where the third
-       step arrived (maps, software, gaming), where it is contested (retail,
-       video, photography, encyclopedias, food, travel, money, virtual places),
-       and where it INVERTS (the robotaxi takes the wheel).
-    5. The middleman consolidates — record shops -> Spotify, bookstores -> Amazon,
-       ten links -> one box; Amazon as the cautionary twin; keeper = toll at the
-       narrowest remaining point (defer mechanism to The Law).
-    6. The making cost falls in layers — bits vs atoms; supply-flip and
-       re-enterability are one fact; music's residual layer is TASTE; the flood.
-    7. The two tests — does using it make it; do you steer or do you wish;
-       the 2x2; the ghosts: most industries' next wave is a wish-slot under a
-       bigger keeper (the model lab); the exceptions hand you a space.
-    8. The corner nobody has turned — every third step so far kept the seam
-       between making and receiving; the open corner is the seam vanishing (one
-       act = consume + produce + supply), and music is the clearest candidate
-       because its want was bodily-participatory all along. Honest close:
-       not "no middleman" — "no owner yet"; hand back to The Law for the ending
-       (the last costs are human ones).
--->
+A map is not a song. A meal cannot be copied like a photograph. A robotaxi changes who acts, not merely how a ride is found. Wikipedia changed the production of an encyclopedia years before answer engines changed its presentation. In film, the evolution of *watching* and the evolution of *making* have separated into different branches. The more industries we add, the less honest a universal sequence becomes.
 
-Knowledge made a three-step journey over the last hundred years. First you **owned** it: what you had memorized, the books on your shelf, the encyclopedia bought volume by volume. Then you **retrieved** it: the reference desk, and eventually Google's one box over everyone else's pages. Now, since 2023, something genuinely different: you **converse** — ask, get an answer, push back, refine — and the machine meets you mid-thought.
+So this essay has a narrower purpose: to show the evolution itself. Fourteen industries, fourteen routes. The dates mark broad transitions rather than birthdays. Old forms do not necessarily disappear when a new one arrives; often they survive because they serve a different part of the human want.
 
-Music is making the same journey one step behind. First you owned it: sheet music, then records, shelves of them. Then you retrieved it: radio picked the song for you, and streaming turned every recording ever made into one searchable catalog. The third step — entering the music and acting on it, playing rather than pressing play — is only now starting to bend into view.
+## The human starting point
 
-Set side by side like that, the pairing looks suspicious. Two industries, picked because they rhyme. So this essay does the honest thing and runs the same test across a dozen more: maps, software, games, retail, video, photography, encyclopedias, food, travel, money, virtual places, personal transport. The finding is that the shape is not a coincidence at all. Nearly everything we use has made the first two steps — the thing on your shelf became the thing you fetch from someone else's catalog — and the swing is so uniform you can draw fourteen industries with the same three colours.
+Before following the chains, we need one proposition about the creature using them:
 
-But the third step is where the industries split, and the split is the whole point. In some, the third step truly arrived. In some it flipped *who supplies* the catalog while leaving you doing exactly what you did before. In one, it took the act out of your hands entirely. Sorting them is how you find out what a real third step requires — and it takes exactly two questions to sort them.
+> Humans seek effective influence over their internal state and external world. They prefer paths that reduce unwanted effort, delay, and uncertainty—but they value effort that produces agency, competence, identity, connection, or meaning.
 
-This is the pattern half of an argument whose engine lives in [The Selection Pressure](/posts/the_selection_pressure): a value chain is a population of methods under selection, the selector is cost, and the want underneath is the constant the whole chain exists to serve. Here I want to watch that law operate in the wild — but first, because everything else leans on it, I have to be careful about what the want actually is.
+That is an observation, not a destination every industry must approach. It explains why a person may want a machine to plan a commute but spend ten years learning the piano. The [effort paradox](https://pubmed.ncbi.nlm.nih.gov/29477776/) is precisely that effort is both avoided as a cost and sought as a source of value. Effort can stand between us and what we want, or the effort can be part of what we want.
 
-## What the chain is for
+Music makes the distinction unusually visible because “listening to music” bundles together several human responses:
 
-The folk story of technological progress has one driver: *shrink the distance between wanting and having, and remove whoever stands in between.* Run it across fourteen industries and the second half turns out to be almost always false — the middleman is not removed, it consolidates, and we will get there. But the first half fails too, more quietly, and the failure is worth stating precisely, because it is a claim about human nature.
+- **Moving with it.** Rhythm, bass and syncopation can solicit bodily movement. Work on [groove](https://pubmed.ncbi.nlm.nih.gov/21767048/) and [syncopation](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0094446) suggests that the pleasure is partly in the invitation to act, not only in receiving a sound.
+- **Watching it be made.** The pianist’s hands, the orchestra coordinating, and the DJ reading a room can be compelling in something like the way skilled sport is compelling. [Action-observation research](https://pubmed.ncbi.nlm.nih.gov/15616133/) finds that watching skilled movement engages some of the observer’s own motor system, especially when the skill is familiar.
+- **Listening privately.** Music also regulates mood and arousal, helps construct identity, and creates a sense of social connection. These were the [three broad functions](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00511/full) that survived an empirical reduction of the many reasons people give for listening.
 
-If people simply minimized the distance between wanting and having, the perfect endpoint of every chain would be a button, and then not even a button — the thing arriving before you asked. Some chains really do point there. But people also pay to *lengthen* the distance: they climb mountains that a helicopter could summit, cook meals that a restaurant would cook better, assemble furniture and value it more for having assembled it, and spend ten years learning an instrument that a streaming service could play for them in three seconds. This is not a quirk of hobbyists. It is one of the sturdier findings in the science of motivation — the [effort paradox](https://pubmed.ncbi.nlm.nih.gov/29477776/): effort is genuinely costly and genuinely avoided, *and* it is genuinely valued, sought out, and used as a signal of what an outcome is worth. Both at once, in the same person, on the same afternoon.
+These wants may be related, or partly independent. We do not need to collapse them. The live performance could satisfy all three at once; the recording strongly served private listening; streaming made access to recorded music abundant; generative tools now alter making and editing. None is simply “the next version” of all the others.
 
-So the honest starting proposition — the *is* underneath every chain in this essay — has to carry both halves:
+That is how the atlas below should be read. A line records a succession of important forms. It does not claim that the newer form contains or replaces everything before it. The green final node is the frontier visible in July 2026, not a prediction of an inevitable destination.
 
-> Humans seek effective influence over their internal state and their external world. They prefer paths that reduce unwanted effort, delay, and uncertainty — but they value effort that produces agency, competence, identity, connection, or meaning.
-
-That single sentence hides a distinction that will do most of the work below. Call the two kinds of effort by name. **Instrumental effort** is the part that stands *between* you and the thing you want: the walk to the library, the wait for the delivery, the years of solfège before your hands can play what your ear already hears. **Expressive effort** is the part that *is* the thing you want: the choosing, the steering, the moving, the making it yours. A technology succeeds when it strips out instrumental effort. It hollows out when it strips out the expressive effort along with it — when it hands you the outcome while deleting the acting, and you are left holding a result you cannot feel you produced. [Self-Determination Theory](https://www.selfdeterminationtheory.org/SDT/documents/2000_RyanDeci_SDT.pdf) gives the reason: autonomy, competence, and relatedness are not decorations on top of wanting; they are wants in their own right, and a path that satisfies the surface want while starving all three feels worse than the longer path did.
-
-One more correction to the folk story, and then we can start the clock. A want is rarely *one* want. "Music" names at least three observable human responses, and it is worth keeping them separate, because different technologies serve different ones:
-
-- **Moving with it.** Something in us responds to certain rhythms — to a bass line, to a beat placed just off the grid — by moving. This is not a metaphor: sensorimotor coupling to music, the pull that [Petr Janata and colleagues measured as "the groove"](https://pubmed.ncbi.nlm.nih.gov/21767048/), shows up across cultures, and [Maria Witek's work](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0094446) finds the pleasure peaks at moderate syncopation — where the music leaves a gap your body wants to fill. The want here is bodily and participatory: the music is something you *do with yourself*, not something you receive.
-- **Watching it be made.** A second, possibly separate response: the excitement of watching someone play — the pianist's hands, the orchestra breathing together, the DJ reading a room. It behaves like watching sport: tension, skill on display, the crowd feeling one thing at one time. And it has the same neural signature spectator sport has — watching skilled movement [runs your own motor circuitry in simulation](https://pubmed.ncbi.nlm.nih.gov/15616133/), more strongly the more the skill is one you share. Watching mastery is a want of its own, maybe related to the others, maybe independent — the honest position is that we observe it and do not fully know.
-- **Listening alone.** The private use: the commute soundtrack, the sad song after the bad day. When [Schäfer and colleagues](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00511/full) boiled hundreds of proposed functions of music down empirically, three survived: regulating arousal and mood, working out who you are, and feeling connected to others. Influence over internal state, almost word for word.
-
-Three responses, one industry. The live performance — the oldest link in music's chain — served all three at once: you watched it made, you moved with the room, and it did something to your insides. Every technology since has served a *slice*. The record served the third want superbly and carried a thin echo of the other two. Streaming made that slice nearly free. Which is the thing to hold onto as we watch fourteen chains evolve: each new mode is not just a cheaper path to "the want" — it is a re-division of a bundle, and a step that is progress for one slice can quietly starve another.
-
-## Three modes, three costs
-
-Now the clock. Look at any of the fourteen industries over a century and the same three modes appear in the same order, because each mode is the death of a different cost.
-
-**Own** kills the cost of *keeping*. You stop needing the thing on hand at the moment of need — the full pantry, the shelf of records, the atlas in the glovebox — because the technology of storage (printing, pressing, canning) made private stockpiles possible at all. Owning is the first mode, not the zeroth: before it, there was only doing and attending — you sang, or you went to where the singers were.
-
-**Retrieve** kills the cost of *finding*. The catalog comes to you: the mail-order book, the radio dial, and finally the search box — one field over everyone else's inventory. You stop keeping because keeping is pointless when fetching is instant.
-
-**Participate** kills the cost of *making*. The third mode, where it exists, removes the training and machinery that stood between an ordinary person and bringing the thing into being — and the act moves back into your hands, the way it was before mode one, except now with the whole accumulated stack underneath it.
-
-[The Selection Pressure](/posts/the_selection_pressure) explains *why* the sequence runs this way — each mode is a cost falling, the want stays fixed, and the rent relocates to whatever cost still stands. What matters here is the blade it hands you for reading any shiny "revolution": **did it make a *new* cost cheap, or the *same* cost cheaper again?** A faster truck, a cheaper ride, a meal delivered instead of cooked — that is mode two on sale. A real third mode kills a cost of a different *kind*. Most of what is marketed as a third step fails this test, and the timelines below are where the failures show.
-
-## Fourteen chains, one bend
-
-Here is the whole survey at a glance. Dates are approximate; the pattern is the point.
-
-<div class="chain-evolution-legend" aria-label="Timeline legend">
-  <span class="chain-mode chain-mode--own">Own</span>
-  <span class="chain-mode chain-mode--retrieve">Retrieve</span>
-  <span class="chain-mode chain-mode--participate">Participate</span>
-  <span class="chain-mode chain-mode--next">Possible next step</span>
-</div>
+## The evolutionary atlas
 
 <div class="chain-evolution-atlas">
   <figure class="chain-evolution-card">
-    <figcaption><strong>Knowledge</strong><span class="chain-verdict chain-verdict--emerging">Mode 3 · emerging</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Memory and the expert</span></li>
-      <li class="chain-stage chain-stage--own"><time>1920s</time><span>The home shelf</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1950s</time><span>Reference desk</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1998</time><span>Google search</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2023</time><span>AI conversation</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>Shared knowledge workspace</span></li>
-    </ol>
-  </figure>
-
-  <figure class="chain-evolution-card">
-    <figcaption><strong>Music</strong><span class="chain-verdict chain-verdict--emerging">Mode 3 · emerging</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1900</time><span>Sheet music and live performance</span></li>
-      <li class="chain-stage chain-stage--own"><time>1920s</time><span>Records you own</span></li>
-      <li class="chain-stage chain-stage--own"><time>1930s</time><span>Radio</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2008</time><span>Spotify</span></li>
-      <li class="chain-stage chain-stage--participate"><time>Today</time><span>Enter and continue</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>You play, it follows</span></li>
-    </ol>
-  </figure>
-
-  <figure class="chain-evolution-card">
-    <figcaption><strong>Maps and navigation</strong><span class="chain-verdict chain-verdict--arrived">Mode 3 · arrived</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1910s</time><span>Road atlas</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1996</time><span>MapQuest printout</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2005</time><span>Google Maps lookup</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2009</time><span>Free turn-by-turn</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2013</time><span>Live traffic and rerouting</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>Conversational trip co-pilot</span></li>
-    </ol>
-  </figure>
-
-  <figure class="chain-evolution-card">
-    <figcaption><strong>Software and code</strong><span class="chain-verdict chain-verdict--arrived">Mode 3 · arrived</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1970s</time><span>Write it yourself</span></li>
-      <li class="chain-stage chain-stage--own"><time>1980s</time><span>Shareware and boxed code</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1991</time><span>Free and open source</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2008</time><span>Stack Overflow and GitHub</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2021</time><span>AI code helpers</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2027</time><span>Autonomous coding agents</span></li>
-    </ol>
-  </figure>
-
-  <figure class="chain-evolution-card">
-    <figcaption><strong>Gaming</strong><span class="chain-verdict chain-verdict--arrived">Mode 3 · arrived</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1972</time><span>Arcade cabinets</span></li>
-      <li class="chain-stage chain-stage--own"><time>1983</time><span>Home cartridges</span></li>
-      <li class="chain-stage chain-stage--own"><time>1995</time><span>CD consoles</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2004</time><span>Steam store</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2006</time><span>Roblox and Minecraft</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>Generative game worlds</span></li>
-    </ol>
-  </figure>
-
-  <figure class="chain-evolution-card">
-    <figcaption><strong>Retail</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1880s</time><span>General store</span></li>
-      <li class="chain-stage chain-stage--own"><time>1890s</time><span>Sears mail-order</span></li>
-      <li class="chain-stage chain-stage--own"><time>1960s</time><span>Big-box chains</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1995</time><span>Amazon's everything box</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2006</time><span>Etsy and Shopify</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>Agent-mediated commerce</span></li>
-    </ol>
-  </figure>
-
-  <figure class="chain-evolution-card">
-    <figcaption><strong>Video and film</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1910s</time><span>Movie theaters</span></li>
-      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Broadcast television</span></li>
-      <li class="chain-stage chain-stage--own"><time>1980s</time><span>VHS and DVD rental</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2007</time><span>Netflix streaming</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2010s</time><span>YouTube and TikTok</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--flat"><time>~2030</time><span>Generative video feeds</span></li>
-    </ol>
-  </figure>
-
-  <figure class="chain-evolution-card">
-    <figcaption><strong>Photography</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <figcaption><strong>Knowledge</strong><span class="chain-verdict chain-verdict--current">Research agents</span></figcaption>
     <ol class="chain-evolution-track chain-evolution-track--seven">
-      <li class="chain-stage chain-stage--own"><time>1888</time><span>Roll-film camera</span></li>
-      <li class="chain-stage chain-stage--own"><time>1948</time><span>Instant camera</span></li>
-      <li class="chain-stage chain-stage--own"><time>1982</time><span>One-hour photo</span></li>
-      <li class="chain-stage chain-stage--own"><time>2000</time><span>Digital cameras</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2008</time><span>Stock-photo search</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2022</time><span>AI image makers</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2028</time><span>Steerable image studios</span></li>
+      <li class="chain-stage chain-stage--history"><time>Ancient</time><span>Memory, oral teaching, the expert</span></li>
+      <li class="chain-stage chain-stage--history"><time>Institutions</time><span>Archives and libraries</span></li>
+      <li class="chain-stage chain-stage--history"><time>Print</time><span>Books and home references</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>The searchable web</span></li>
+      <li class="chain-stage chain-stage--history"><time>2022</time><span>Conversational answers</span></li>
+      <li class="chain-stage chain-stage--history"><time>2025</time><span>Source-grounded synthesis</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Agents that research and act</span></li>
     </ol>
   </figure>
 
   <figure class="chain-evolution-card">
-    <figcaption><strong>Personal transport</strong><span class="chain-verdict chain-verdict--inverts">Mode 3 · inverts ↓</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Own a horse</span></li>
-      <li class="chain-stage chain-stage--own"><time>1910s</time><span>Own a car</span></li>
-      <li class="chain-stage chain-stage--own"><time>1940s</time><span>Phone the taxi</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2010</time><span>Summon on demand</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2020s</time><span>Robotaxi</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>The standing fleet</span></li>
+    <figcaption><strong>Music</strong><span class="chain-verdict chain-verdict--current">Parallel forms</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>Before recording</time><span>Live, communal performance</span></li>
+      <li class="chain-stage chain-stage--history"><time>1800s</time><span>Notation and instruments</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Recorded ownership</span></li>
+      <li class="chain-stage chain-stage--history"><time>1920s</time><span>Broadcast listening</span></li>
+      <li class="chain-stage chain-stage--history"><time>2008</time><span>On-demand streaming</span></li>
+      <li class="chain-stage chain-stage--history"><time>2022–25</time><span>Prompt-to-song generation</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Editable generative studios</span></li>
     </ol>
   </figure>
 
   <figure class="chain-evolution-card">
-    <figcaption><strong>Encyclopedias</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1768</time><span>Britannica volumes</span></li>
-      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Door-to-door sets</span></li>
-      <li class="chain-stage chain-stage--own"><time>1993</time><span>Encarta CD-ROM</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1998</time><span>Web reference sites</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2001</time><span>Wikipedia</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>The answer engine</span></li>
+    <figcaption><strong>Maps and navigation</strong><span class="chain-verdict chain-verdict--current">Context-aware guidance</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>Local</time><span>Memory, landmarks, human guides</span></li>
+      <li class="chain-stage chain-stage--history"><time>Print</time><span>Surveyed maps and road atlases</span></li>
+      <li class="chain-stage chain-stage--history"><time>1996</time><span>MapQuest routes</span></li>
+      <li class="chain-stage chain-stage--history"><time>2005</time><span>Interactive web maps</span></li>
+      <li class="chain-stage chain-stage--history"><time>2009</time><span>Turn-by-turn navigation</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Live traffic and rerouting</span></li>
+      <li class="chain-stage chain-stage--current"><time>2025–26</time><span>Conversational navigation</span></li>
     </ol>
   </figure>
 
   <figure class="chain-evolution-card">
-    <figcaption><strong>Food</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Cook from scratch</span></li>
-      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Restaurants and diners</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1990s</time><span>Supermarkets and takeout</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2013</time><span>Delivery apps</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2018</time><span>Meal kits and recipe sharing</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>AI personal kitchen</span></li>
+    <figcaption><strong>Software and code</strong><span class="chain-verdict chain-verdict--current">Repository agents</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>1950s</time><span>Bespoke programs</span></li>
+      <li class="chain-stage chain-stage--history"><time>1980s</time><span>Packaged software</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>Open source and packages</span></li>
+      <li class="chain-stage chain-stage--history"><time>2000s</time><span>Software as a service</span></li>
+      <li class="chain-stage chain-stage--history"><time>2008</time><span>Hosted collaboration</span></li>
+      <li class="chain-stage chain-stage--history"><time>2021</time><span>In-editor code assistance</span></li>
+      <li class="chain-stage chain-stage--current"><time>2025–26</time><span>Delegated repository work</span></li>
     </ol>
   </figure>
 
   <figure class="chain-evolution-card">
-    <figcaption><strong>Money and payments</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <figcaption><strong>Gaming</strong><span class="chain-verdict chain-verdict--current">UGC plus AI tools</span></figcaption>
     <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Cash and the bank branch</span></li>
-      <li class="chain-stage chain-stage--own"><time>1970s</time><span>Cards and the ATM</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2000s</time><span>Online banking</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2010s</time><span>The bank in your pocket</span></li>
-      <li class="chain-stage chain-stage--participate"><time>Today</time><span>Crypto and DeFi</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>Agent-driven programmable money</span></li>
+      <li class="chain-stage chain-stage--history"><time>1970s</time><span>Arcades</span></li>
+      <li class="chain-stage chain-stage--history"><time>1980s</time><span>Home consoles and cartridges</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>Networked multiplayer</span></li>
+      <li class="chain-stage chain-stage--history"><time>2000s</time><span>Digital stores and live games</span></li>
+      <li class="chain-stage chain-stage--history"><time>2006–</time><span>Creator and UGC platforms</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>AI-assisted game creation</span></li>
     </ol>
   </figure>
 
   <figure class="chain-evolution-card">
-    <figcaption><strong>Travel and lodging</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
-    <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1890s</time><span>Grand hotels and owning a home</span></li>
-      <li class="chain-stage chain-stage--own"><time>1900s</time><span>The travel agent</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>1990s</time><span>Online booking sites</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2000s</time><span>Booking.com aggregator</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2008</time><span>Airbnb</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>AI trip-planner agent</span></li>
+    <figcaption><strong>Retail</strong><span class="chain-verdict chain-verdict--current">Shopping agents</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>Local</time><span>Markets and specialist shops</span></li>
+      <li class="chain-stage chain-stage--history"><time>1800s</time><span>Department and mail-order stores</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Chain and big-box retail</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>E-commerce</span></li>
+      <li class="chain-stage chain-stage--history"><time>2000s</time><span>Marketplaces</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Personalized discovery</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Agent-mediated carts and buying</span></li>
     </ol>
   </figure>
 
   <figure class="chain-evolution-card">
-    <figcaption><strong>Virtual places</strong><span class="chain-verdict chain-verdict--emerging">Mode 3 · emerging</span></figcaption>
+    <figcaption><strong>Video and film</strong><span class="chain-verdict chain-verdict--current">Generative production</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Cinema</span></li>
+      <li class="chain-stage chain-stage--history"><time>1950s</time><span>Broadcast television</span></li>
+      <li class="chain-stage chain-stage--history"><time>1980s</time><span>Home video</span></li>
+      <li class="chain-stage chain-stage--history"><time>2007</time><span>Streaming libraries</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Creator and recommendation feeds</span></li>
+      <li class="chain-stage chain-stage--history"><time>2024–25</time><span>Generated clips</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Agentic, editable video workflows</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Photography</strong><span class="chain-verdict chain-verdict--current">Controllable transformation</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>1800s</time><span>Studio and plate photography</span></li>
+      <li class="chain-stage chain-stage--history"><time>1888</time><span>Consumer roll-film cameras</span></li>
+      <li class="chain-stage chain-stage--history"><time>1948</time><span>Instant photography</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>Digital capture</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Phone and computational cameras</span></li>
+      <li class="chain-stage chain-stage--history"><time>2022</time><span>Synthetic images</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Precise generative editing</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Personal transport</strong><span class="chain-verdict chain-verdict--current">Geo-fenced autonomy</span></figcaption>
     <ol class="chain-evolution-track">
-      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Globes and atlases</span></li>
-      <li class="chain-stage chain-stage--own"><time>1980s</time><span>Road atlas and GPS</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2005</time><span>Google Earth</span></li>
-      <li class="chain-stage chain-stage--retrieve"><time>2010</time><span>Street View and Maps</span></li>
-      <li class="chain-stage chain-stage--participate"><time>2021</time><span>VR and metaverse worlds</span></li>
-      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>Generated walkable worlds</span></li>
+      <li class="chain-stage chain-stage--history"><time>Before cars</time><span>Walking, animals and public transit</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Private car ownership</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Taxi fleets</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>App-based ride-hailing</span></li>
+      <li class="chain-stage chain-stage--history"><time>2020s</time><span>Commercial robotaxis</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Multi-city autonomous fleets</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Encyclopedias</strong><span class="chain-verdict chain-verdict--current">Human source, AI layer</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--history"><time>1700s</time><span>Expert-edited volumes</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Mass-market home sets</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>CD-ROM encyclopedias</span></li>
+      <li class="chain-stage chain-stage--history"><time>2001</time><span>Collaborative Wikipedia</span></li>
+      <li class="chain-stage chain-stage--history"><time>2020s</time><span>AI answer interfaces</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>AI-assisted human maintenance</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Food</strong><span class="chain-verdict chain-verdict--current">Planning-to-cart agents</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>Household</time><span>Grow, preserve and cook</span></li>
+      <li class="chain-stage chain-stage--history"><time>Urban</time><span>Restaurants and prepared food</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Industrial food and supermarkets</span></li>
+      <li class="chain-stage chain-stage--history"><time>Late 1900s</time><span>Takeout and grocery delivery</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Delivery platforms</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Meal kits and recipe platforms</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Intent to meal plan to cart</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Money and payments</strong><span class="chain-verdict chain-verdict--current">Competing digital rails</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>Physical</time><span>Cash and bank branches</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Cheques, cards and ATMs</span></li>
+      <li class="chain-stage chain-stage--history"><time>Late 1900s</time><span>Electronic settlement</span></li>
+      <li class="chain-stage chain-stage--history"><time>2000s</time><span>Online and mobile banking</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Wallets and instant payments</span></li>
+      <li class="chain-stage chain-stage--history"><time>2020s</time><span>Stablecoins and DeFi</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>Tokenized and agent-ready rails</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Travel and lodging</strong><span class="chain-verdict chain-verdict--current">AI planning, trusted booking</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--history"><time>Local</time><span>Inns, guidebooks and human advice</span></li>
+      <li class="chain-stage chain-stage--history"><time>1900s</time><span>Travel agencies and reservation systems</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>Online booking</span></li>
+      <li class="chain-stage chain-stage--history"><time>2000s</time><span>OTAs and comparison</span></li>
+      <li class="chain-stage chain-stage--history"><time>2008</time><span>Peer lodging marketplaces</span></li>
+      <li class="chain-stage chain-stage--history"><time>2020s</time><span>Conversational trip planning</span></li>
+      <li class="chain-stage chain-stage--current"><time>2026</time><span>AI support around platform booking</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Virtual places</strong><span class="chain-verdict chain-verdict--current">Early world models</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--history"><time>1970s</time><span>Text adventures and MUDs</span></li>
+      <li class="chain-stage chain-stage--history"><time>1990s</time><span>Graphical online worlds</span></li>
+      <li class="chain-stage chain-stage--history"><time>2000s</time><span>Persistent social worlds</span></li>
+      <li class="chain-stage chain-stage--history"><time>2010s</time><span>Creator worlds and sandboxes</span></li>
+      <li class="chain-stage chain-stage--history"><time>2020s</time><span>Social VR</span></li>
+      <li class="chain-stage chain-stage--current"><time>2025–26</time><span>Generated interactive environments</span></li>
     </ol>
   </figure>
 </div>
 
-Fourteen chains, one bend — and the first two columns are nearly interchangeable across industries. That uniformity is the strongest evidence that own-then-retrieve is a law and not a story I am telling about my favourite examples. The third column scatters. Group the outcomes and each group teaches one thing.
+## How each chain reached its present frontier
 
-**Where the third step truly arrived** — maps, software, gaming — each industry owns one piece of what a full third mode needs. Maps got the cleanest *space*: in turn-by-turn navigation, moving through the world is the act itself, continuously, with the machine responding to what you do rather than to what you asked for. But supply never flips — your driving feeds traffic data without paving a single road. Gaming got the cleanest *flywheel*: on Roblox and Minecraft servers, what players build is what other players play; the catalog grows from use. Software got the *gesture*: since 2021, say what you want and watch it written — a real mode-three act, with the honest footnote that a new and bigger keeper, the model lab, immediately re-formed above it. The space, the flywheel, the gesture: three thirds of one thing, and no industry holds all three.
+### Knowledge: from answers to delegated inquiry
 
-**Where it is contested** — the middle of the table is where the analogy earns its keep by breaking. Video flipped its supply completely: anyone can fill the feed, and YouTube democratized authorship as thoroughly as anything in this survey — while leaving the *watcher* exactly as passive as a DVD left them. Supply flipped; the gesture froze. Retail flipped only its sellers: anyone can open a shop on the everything store, but a buyer's buying builds nothing, because at the end of every retail want sits an atom that must be manufactured and driven to a door. Travel is retail's twin with beds. Photography's third step arrived as a vending machine: describe a picture, receive a picture — an act, technically, but a thin one; you act by wishing, and if the result is wrong your only move is to wish again. Encyclopedias are the strange early bird: Wikipedia fused reading and writing into one room two decades ago, a genuine supply flip whose lesson everyone else ignored. Food never had a chance: a meal is eaten once and gone; only the recipe is re-enterable, which is exactly why recipes — not dinners — are what the internet actually transformed. And money — the domain [this series traces link by link](/posts/battle_for_dollar_supremacy) — has a third step that is real in the plumbing and contested in the hand: most people who "stepped inside" their money found a scarier search box run by a newer keeper.
+The important breaks in knowledge were changes in *where authority lived* and *what work the seeker still performed*. Oral knowledge lived in people. Libraries gathered external memory. Print multiplied it. Search indexed other people’s pages but left the reader to compare them and build an answer. Conversational systems began returning the answer itself.
 
-**And one inversion.** Personal transport ran the same hundred-year play — own the horse, own the car, phone the cab, summon the Uber — and then its third step arrived and *removed the last act you had*. The robotaxi does not put your hands on anything; it takes the wheel away. By the logic of instrumental effort this is pure progress: driving-as-chore deleted, door to door. And for the commute it genuinely is. But notice what it is in the terms of this essay: a third step that strips the expressive effort out along with the instrumental — and the market already knows, because the same decade that produced the robotaxi produced waiting lists for manual gearboxes. When the act is a chore, removal is a gift. When the act was the point, removal is the end of the chain as a place you do anything at all. The robotaxi is what a third mode looks like when nobody asks the second question.
+The 2026 frontier is a further change: a research agent can search, choose sources, synthesize them, use connected tools and revise its path while working. OpenAI’s [Deep Research](https://openai.com/index/introducing-deep-research/) now supports connected sources, trusted-site restrictions and mid-course refinement. This is not simply conversation made faster. It moves part of inquiry from the user to the system. The unresolved history now concerns provenance: who checks the synthesis, whose knowledge was admitted, and what source deserves trust?
 
-## The middleman does not disappear
+### Music: the branches never collapsed
 
-Before the two questions, the correction the whole survey forces. The folk driver promised that shrinking the distance between wanting and having *removes whoever stands in between*. Here is what actually happened, in every chain with a search box: a thousand record shops became one Spotify. A thousand bookstores became one Amazon. Ten blue links became one box that decides which links exist for you. The middleman was not removed. It **consolidated** — into the most concentrated gatekeepers these industries have ever had.
+Recording separated sound from the body producing it. Radio separated access from possession. Streaming made an enormous recorded catalogue available on demand. Yet live performance, private listening, dancing and learning an instrument continued because they were not interchangeable uses of music.
 
-Amazon is the cleanest specimen, because it is Spotify for objects — the same machine, not a metaphor: a search box over a fixed catalog someone else supplies, a user whose browsing and buying grows that catalog by nothing. Amazon's corporate religion is friction removal — one-click, Prime, buy-now — which is "shrink the distance between wanting and having" stated as a business plan. And at the end of the shrinking: search rank as the new shelf, the Buy Box as the new distributor, the advertising slot you must now purchase to be found in the category you built, and, at the limit, a private-label copy of your own bestseller. Mode two does not remove whoever stands between wanting and having. It promotes one player to stand there alone — and a single strong keeper can extract more than the village of weak ones it replaced ever could.
+Generation introduced another branch: first a finished song produced from a wish, then an increasingly editable production environment. By 2026 Suno’s tools include song editing, multitrack work, stem extraction and finer control rather than only rerolling a prompt; its [release history](https://suno.com/release-notes) makes that shift visible. At the same time, licensing and artist consent are becoming part of the technical form, as in the [Warner Music Group–Suno agreement](https://www.wmg.com/news/warner-music-group-and-suno-forge-groundbreaking-partnership). Music therefore does not stand at one “stage.” Streaming, performance, instrumental mastery, generative composition and editable production coexist.
 
-The mechanism — why the keeper always re-forms, and why it lands on whichever cost has not yet fallen — is [The Selection Pressure](/posts/the_selection_pressure)'s subject, so I will state only the reading rule here: a new mode is a shorter path to the same old want, and every path has a narrowest point. The keeper is whoever stands at it. Reroute the want and you do not delete the keeper; you relocate it. Which means the interesting question about any third step is never "does this finally remove the middleman?" — it is "where is the narrowest point *now*, and who is standing on it?"
+### Maps: from representation to continuous guidance
 
-## The making cost falls in layers
+A paper map represented a territory and left interpretation to the traveler. Route websites calculated a journey but still produced something like a printable map. Smartphone navigation moved the representation into the trip: location, traffic and missed turns could continuously change the instruction.
 
-Why can music and software reach a third mode that dinner and hotel rooms structurally cannot? The whole answer is one question: **what does it cost to make one more?** Not to copy one that exists — to bring one new, desirable unit into being. For anything made of atoms, that cost has a hard floor: a second mug is a second lump of clay and a second van trip, and the mug is used up by its one owner. For anything made of information — a song, a program, a fact, a picture — that cost falls toward nothing. Every wall in the table above is this one fact wearing a costume. "Supply flips" and "re-enterable" are not two separate properties: when making one more is free, the act of using can quietly *be* the act of making, and what you leave behind costs the next person nothing to enter. When making one more costs atoms, every use burns a unit, use can never be supply, and there is nothing left standing to re-enter.
+The latest extension is conversational and contextual. Google’s [Ask Maps and Immersive Navigation](https://blog.google/products-and-platforms/products/maps/ask-maps-immersive-navigation/) combine map data with complex questions and real-time conditions. The chain has evolved from an object, to a query, to a service accompanying movement. The roads, businesses, public data and sensor networks beneath it remain a separately governed supply system; moving through a route is not the same as producing the world being mapped.
 
-But the making cost falls in *layers*, and confusing the layers is the commonest mistake in every "AI eats X" argument. Software shows the layers cleanly: copies were always free — that is why its supply flipped a generation early, with open source — but underneath sat a second, slower cost, the cost of *authoring* the thing at all, and that one is collapsing only now, as models write more of the code. Two layers, falling decades apart.
+### Software: from reusable code to delegated changes
 
-Music has the same two layers. The cost of making *a sound* — any sound — fell decades ago: the synthesizer, the sampler, the laptop studio, and now models that conjure a finished track from one sentence. Solved; not the problem anymore. The residual layer is the cost of landing on a sound *you actually like* — one that is right, and right for the energy you happen to be carrying at this hour. That is not a making problem. It is a taste problem, a steering problem — and it is precisely the layer a prompt box does not touch: type a wish, receive a finished thing, and if it is not quite right, your only move is to re-roll and hope. When making floods — and it always floods; near-zero cost never produces silence, it produces **slop** — the scarce thing does not vanish. It climbs. Out of the world and into the person: from *can it be made* to *is it the one you meant*. Value migrates up to taste, which is why the keeper's next address, in chain after chain, is wherever your taste gets learned.
+Software evolved along several linked paths: programs became products; reusable libraries reduced repeated work; open source distributed authorship; software-as-a-service changed delivery; GitHub made the repository a shared operational place. Coding assistance initially suggested the next line inside an editor.
 
-## The two tests
+Repository agents now accept a task, inspect a larger codebase, plan changes, modify files, run checks and prepare work for review. [GitHub Copilot CLI](https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available/) describes modes ranging from approval of individual actions to more autonomous execution. The frontier is therefore delegated engineering under tests and governance—not merely “say what you want and software appears.” Specification and verification have become more central as typing becomes less central.
 
-Everything above compresses into two questions, and the two questions are all you need to score any industry's third step — including the ones being announced this quarter.
+### Gaming: participation arrived before generation
 
-**Test one: does using it make it?** Not "can users contribute" — every platform claims that. The sharp version: *does enjoying the thing leave behind something the next person can use?* A commit is using GitHub and is also stocking it. Playing on Roblox builds the world being played. An upload is what the next person watches. Those flip. But listening produces no recording, buying builds no product, a ride leaves no road, and a meal is gone by the time it could be shared. Where the act of using and the act of supplying are one motion, the catalog grows from use and no finished shelf needs guarding. Where they are two motions performed by two people, someone still stocks the shelf — and someone still stands in front of it.
+Gaming’s most important transition was not from physical ownership to a digital store. It was from a finished authored game to a maintained social system. Online multiplayer, live-service updates, modding, Minecraft and Roblox all weakened the boundary between a game’s producer and its community, though in different ways. Some players only play; others build, host, modify or trade.
 
-**Test two: do you steer, or do you wish?** The third step can arrive as a **space** — you act, it responds, you act on the response, and your hands stay on the material the whole time — or as a **slot** — you type a wish and receive a sealed, finished result. The two are economically near-identical and psychologically opposite. The space removes instrumental effort and preserves the expressive kind: turn-by-turn removed the map-folding and left you the driving; a good instrument removes the physics and leaves you the phrasing. The slot removes both at once, which is why its results feel weightless even when they are technically what you asked for: no autonomy exercised, no competence built — wishing harder is not a skill — nothing of you in the outcome. The robotaxi, the prompt-image, the just-answer-me chatbot are all the slot. They are not a third mode. They are mode two with a nicer order form: you are still fetching; you have merely stopped saying *fetch* out loud.
+In 2026, AI mainly lowers the cost of work inside the production environment. Unity’s [AI tools](https://unity.com/blog/unity-ai-how-to-get-started) expose ask, plan and agent workflows in the editor, while its [2026 industry report](https://unity.com/blog/2026-unity-game-development-report-trends) describes cautious adoption concentrated in coding and other production work. Fully generated, persistent and coherent worlds are not the ordinary product. Moderation, discovery, interactive consistency and platform economics still shape what can survive.
 
-Cross the two tests and the fourteen chains sort themselves:
+### Retail: intelligence moves ahead of the warehouse
 
-| | **Using it makes it** | **Using it leaves only a result** |
-| --- | --- | --- |
-| **You steer** | GitHub · Roblox · the corner music is reaching for — what you make is what the next person enters | an instrument nobody records — hands on the material, but the act evaporates behind you |
-| **You wish** | rare and unstable — you order it, yet it somehow stocks a catalog | robotaxi · prompt-to-image · "just answer" — fetching, with a nicer order form |
+Mail order enlarged the shop without moving it. E-commerce moved the catalogue and transaction online. Marketplaces gathered many sellers, while merchant platforms let more sellers operate their own storefronts. Recommendation systems then reorganized discovery around predicted preference.
 
-The top-left cell is the only one where a third mode is fully real — supply flips *and* agency rises — and it is nearly empty, because both tests demand the same underlying property: **the act must leave a durable, re-enterable trace.** A wish leaves nothing behind. A path does.
+The 2026 frontier is an agent acting across discovery, comparison, cart and checkout. Google’s [Universal Commerce Protocol](https://blog.google/products/ads-commerce/agentic-commerce-ai-tools-protocol-retailers-platforms/) is an attempt to standardize those actions across agents and merchants; Amazon’s [Alexa for Shopping](https://www.aboutamazon.com/news/retail/amazon-rufus-ai-assistant-personalized-shopping-features) can monitor prices, add items and automate some purchases. But this evolution is concentrated above the physical chain. Manufacturing, inventory, picking, delivery, returns and support remain, and the struggle is increasingly over which merchant or agent controls the buyer’s intent.
 
-One more reading of the table, and it is the sobering one. Ask where each of the fourteen chains goes *next* — the wave after the current one — and nearly every honest answer is some flavour of generative AI: the trip that plans itself, the store that assembles itself, the answer engine that has eaten the encyclopedia, the video feed that renders itself as you scroll. Line those futures up against the two tests and most point the wrong way on both: the wish-slot widens, your hands come off the material, and the keeper consolidates one more floor up — into the handful of labs that own the generators, eat your activity as training data, and hand back nothing re-enterable. The exceptions — the futures that hand you a space — exist in every chain, and they are consistently the less-defaulted path: agents you direct rather than answers you receive, image studios you steer region by region rather than re-roll, game worlds that persist for the next player, music you play rather than prompt. The fork is the same in all fourteen: a slot under a bigger keeper, or a space that grows from use. Almost everything currently shipping picks the slot.
+### Video and film: watching and making split apart
 
-## The corner nobody has turned
+The audience path ran from cinema to broadcast, home video, streaming libraries and recommendation feeds. The production path ran from expensive cameras and studios to digital editing, cheap distribution and creator platforms. YouTube and TikTok transformed who could publish without making the viewer’s activity equivalent to production.
 
-There is one more thing the survey shows, and it is only visible with all fourteen chains on the table at once.
+Generative video is now changing the production branch again. Runway’s [Agent](https://runwayml.com/news/introducing-runway-agent) moves from a conversational direction to multi-shot video while retaining a timeline for intervention; Adobe’s [2026 Firefly and Premiere updates](https://blog.adobe.com/en/publish/2026/04/15/adobe-extends-leadership-video-unleashing-new-ai-powered-creation-firefly-reinventing-color-editors-in-premiere) combine generation with editing workflows. Meanwhile audiences still mostly select or receive completed sequences. Any history that gives video one line obscures this split.
 
-In every industry whose supply flipped, the third step let *some* people make the thing while everyone else went on fetching finished copies. YouTube handed authorship to anyone — and left the watcher precisely as passive as before. Roblox lets a maker build a world — and a *different person* enters it: two people, two acts, a publish button between them. Even GitHub, the cleanest flywheel in the survey, separates writing the code from running it. The supply moved; the **seam** between making and receiving stayed. On one side of the seam, an author finishes a sealed artifact; on the other, a consumer fetches it. Every chain in the table kept that seam. It is the last piece of mode-two furniture, carried into every mode-three house.
+### Photography: capture and synthesis now coexist
 
-The genuinely open corner — the one no chain has occupied — is where the seam itself disappears: where one act is consumption, production, and supply *at the same time*, so there is no finished copy to fetch and no second person needed to fetch it. Two preconditions have to hold at once, and the survey shows why each alone is not enough. The good must be information, so that the next unit is free and the trace of your act is re-enterable — food fails here, and retail, and every chain that ends in an atom. And the want underneath must have been *participatory all along* — a be-in-it want, not a have-it want — because no one wants to inhabit their shopping, however cheap inhabiting becomes. Retail's want terminates on delivery; the chain correctly tops out at a faster truck.
+Roll film lowered the expertise needed to capture a photograph. Instant film shortened the wait. Digital cameras removed film and chemical development. Phones joined capture to computation, editing and distribution. Stock-photo search evolved alongside this route but was never the successor to taking a photograph; it served a different need.
 
-Music is the clearest candidate on both counts, and now the careful work on the want pays off. The first of music's three responses — the bodily one, the pull to move with a rhythm, the gap in the syncopation your body volunteers to fill — is a want where *acting and enjoying were never two things*. Dancing is not consumption of the music plus some movement on the side; the moving is the having. A chain whose want works like that does not top out at a faster truck, because what it is delivering was never a parcel — it was a state you enter. For a century the recording could only approximate that want from the outside, the way a postcard approximates a place. If the making cost's last layer keeps falling — not the cost of *a* sound but the cost of steering to *your* sound, in the moment, with your hands on it — then the seam has somewhere to vanish: the act of moving through a space of sound would be the listening, and the making, and the supply for whoever enters after you, one act, no publish button, nothing sealed. The other two responses do not disappear, either: a space people move through is a place mastery can be *watched* again — the performance want, the sports want, finding a new stage after a century of recordings with nobody visibly playing.
+Synthetic images created another branch, initially dominated by prompting. The 2026 movement is toward exact, reversible control: marking regions, preserving chosen elements, refining and transforming rather than accepting a sealed result. Adobe’s [Precision Flow and AI Markup](https://blog.adobe.com/en/publish/2026/04/09/new-image-editing-features-adobe-firefly-get-you-from-almost-there-to-exactly-right) illustrate that direction. Photography now includes evidence-producing capture, computational interpretation, synthetic construction and hybrid editing, making authenticity and provenance part of the chain itself.
 
-Whether music actually turns this corner is not settled — the same generative wave that makes it possible is mostly shipping slots, which point the other way. And the law this series keeps returning to insists on one last honesty: if the corner is turned, the keeper will come back. Software's third step grew the model lab; gaming's grew Roblox Corporation; lodging's grew Airbnb. A third mode of music will have an owner too, eventually — the true sentence is never "this one has no middleman," only "this one has no owner *yet*." You cannot put a toll booth in front of a song that exists only because you walked in — but someone will try to own the door, because someone always does. Where that leaves every chain — with the outer costs fallen and the binding ones migrated inside the person, to taste, attention, and agency — is the contest [The Selection Pressure](/posts/the_selection_pressure) ends on, and it is the right place for the pattern to hand back to the law.
+### Personal transport: availability and operation diverged
 
-The journey, though, is the same everywhere, and now you can read any industry's press release with two questions and a table. Own killed keeping. Retrieve killed finding. Whatever calls itself the third step: ask whether using it makes it, and whether you steer or you wish. If it fails both, it is the second mode again, on sale, under a newer keeper — the same journey, one more time, sold as the destination.
+Private car ownership joined access to a vehicle with responsibility for driving, storing and maintaining it. Taxis separated ownership from the journey. Ride-hailing improved dispatch and availability without changing the basic operating model: a human still drove each trip.
+
+Robotaxis change operation. Waymo reported more than 20 million fully autonomous trips and service expansion across more than eleven cities in its [May 2026 update](https://waymo.com/blog/2026/05/welcoming-riders-in-the-ojai/). Yet this is not the replacement of all transport by one new form. Private cars, public transport, cycling, taxis, ride-hailing and geographically bounded autonomous fleets coexist. The frontier is a capital-intensive, regulated fleet service whose expansion depends on safety evidence and local operational coverage.
+
+### Encyclopedias: a human source beneath machine answers
+
+Printed encyclopedias concentrated expert editing into a durable household reference. CD-ROM reduced the physical bulk and made search easier. Wikipedia then made a deeper production change: a continuously revised commons written and governed by volunteers. Search engines often presented fragments of that commons without changing how the source was made.
+
+AI answer systems now add another presentation layer above it. Wikipedia’s own evolution is different: Wikimedia’s [AI strategy](https://wikimediafoundation.org/news/2025/04/30/our-new-ai-strategy-puts-wikipedias-humans-first/) uses AI to assist translation, moderation and routine work while preserving human editorial judgment. The present chain therefore has a human-curated source, automated maintenance assistance, and machine-generated answer interfaces—three layers with different incentives and different standards of accountability.
+
+### Food: planning digitized; matter did not
+
+Food never followed a single line from cooking to delivery. Households, restaurants, industrial producers, supermarkets, takeout, meal kits and delivery platforms serve different combinations of nourishment, convenience, craft and social ritual. Recipes became searchable and shareable information, but a recipe is not a meal. Every meal still consumes ingredients, time, equipment and physical work somewhere in the chain.
+
+The latest change compresses planning and procurement. Instacart’s [2026 assistant](https://company.instacart.com/updates/instacarts-ai-assistant-powered-by-14-years-of-grocery-expertise) can turn preferences, photographs or ideas into a meal plan and ready-to-buy cart. It does not eliminate substitution, perishability, picking, delivery or cooking. The evolution has reached from intent into the grocery basket; it has not converted food into an informational good.
+
+### Money and payments: coexistence rather than succession
+
+Cash, deposits, cards, bank transfers, wallets and instant-payment systems did not simply replace one another. They altered different layers: the claim people hold, the interface they use, the message sent, and the mechanism by which institutions settle. Cryptoassets and stablecoins introduced additional issuers and rails rather than one universally accepted next form of money.
+
+In 2026, tokenized deposits, stablecoins, programmable settlement and agent-initiated payments are developing alongside conventional systems. The [BIS Annual Economic Report 2026](https://www.bis.org/press/p260623.htm) argues that stablecoins reveal some potential of programmable payments while failing important properties expected of money, and places tokenization within a trusted two-tier monetary system. The evolution here is institutional competition over trust, par value, interoperability and regulation—not a consumer journey from owning money to participating in it.
+
+### Travel and lodging: planning advances faster than accountability
+
+Travel agencies assembled fragmented information and booked through reservation networks. Online travel agencies exposed comparison and booking to the traveler. Peer marketplaces added new lodging supply, but also new platform governance. Search, booking, payment and help during disruption remained distributed across different actors.
+
+AI is changing inspiration, comparison and itinerary construction first. Expedia’s company-commissioned [2026 survey](https://ir.expediagroup.com/news-and-events/news/news-details/2026/Expedia-Group-Reveals-The-AI-Trust-Gap-Travelers-Embrace-AI-for-Planning-but-Rely-on-Trusted-Brands-to-Book/default.aspx) found far greater comfort using AI for planning than for booking. Airbnb’s [2026 release](https://news.airbnb.com/airbnb-2026-summer-release/) similarly expands services and AI-supported comparison around its marketplace. The present frontier is therefore an AI planning and support layer attached to platforms that remain accountable for inventory, payment, refunds and failures.
+
+### Virtual places: generation before persistence
+
+Virtual places began as text spaces whose worlds were maintained in language and social convention. Graphical multiplayer worlds added continuous visual space. Second Life, Minecraft and Roblox developed different forms of persistence and user construction; social VR added embodiment and presence. These were not merely better maps because the place was produced by software and social activity rather than surveyed from an external territory.
+
+World models now generate interactive environments in response to user action. DeepMind’s [Genie 3](https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/) can produce navigable environments in real time, but only for limited durations and action spaces. Persistent multi-user consistency, durable ownership, interoperability and creator rights remain unresolved. The 2026 frontier is an early generated simulation—not yet a stable world in which a society can continue living after the prompt ends.
+
+## A living atlas
+
+The point of setting these histories beside one another is not to make them end in the same place. It is to see each one accurately enough that its next change can be recognized without forcing it into somebody else’s vocabulary.
+
+Knowledge is moving from answer retrieval toward delegated inquiry. Maps are becoming continuous contextual guidance. Software is delegating repository work. Retail and food are automating parts of intent and procurement while their physical operations persist. Music, video and photography have acquired generative production branches. Gaming already had a participatory branch before those tools arrived. Transport is automating operation. Encyclopedias retain a human source beneath AI presentation. Money remains competing institutions and rails. Travel separates convenient planning from trusted booking. Virtual places can now be generated before they can reliably persist.
+
+Those are the evolutions as they stand in July 2026. The last node of each line should move when the industry moves; the lines do not owe us a shared destination.
