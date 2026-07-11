@@ -100,22 +100,183 @@ Now the clock. Look at any of the fourteen industries over a century and the sam
 
 Here is the whole survey at a glance. Dates are approximate; the pattern is the point.
 
-| Chain | Own — keeping | Retrieve — finding | The third step | Where it stands |
-| --- | --- | --- | --- | --- |
-| Knowledge | memory, the home shelf | reference desk; Google (1998) | conversation with an AI (2023) | emerging |
-| Music | sheet music; records (1920s) | radio; streaming (2008) | enter it and act — play, not press play | emerging |
-| Maps | the road atlas | MapQuest; Google Maps (2005) | turn-by-turn (2009): moving *is* the act | arrived — supply never flips |
-| Software | write it yourself (1970s) | boxed code; open source; GitHub (2008) | say what you want (2021) | arrived — new keeper above |
-| Gaming | cabinets, cartridges | Steam's shelf (2003) | Roblox, Minecraft: players build what players play | arrived |
-| Retail | the store trip, the catalog | Amazon's everything box | marketplace: sellers flipped, buyers never | contested |
-| Video & film | the theater | Netflix's catalog | YouTube, TikTok: anyone fills the feed | contested — the watcher still only presses play |
-| Photography | film and the darkroom | image search over everyone's uploads | prompt-to-image | contested — a vending machine |
-| Encyclopedias | the volumes | online lookup | Wikipedia: reading and writing share one room | fused early |
-| Food | cooking | delivery over every kitchen | summon or assemble a dish | walled — eaten once, gone |
-| Travel & lodging | your home; grand hotels | the agent; Booking's one box | Airbnb: hosts flipped, guests still fetch | half-flipped |
-| Money & payments | cash and the teller | online banking, web then phone | step inside the money, on-chain | contested — [a scarier search box](/posts/the_spendable_form) |
-| Virtual places | the publisher's globe | Google Earth (2005) | worlds you grow by being in them | emerging |
-| Personal transport | the horse; the car | phone the cab; summon it (Uber) | the robotaxi | **inverts** — it takes the wheel |
+<div class="chain-evolution-legend" aria-label="Timeline legend">
+  <span class="chain-mode chain-mode--own">Own</span>
+  <span class="chain-mode chain-mode--retrieve">Retrieve</span>
+  <span class="chain-mode chain-mode--participate">Participate</span>
+  <span class="chain-mode chain-mode--next">Possible next step</span>
+</div>
+
+<div class="chain-evolution-atlas">
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Knowledge</strong><span class="chain-verdict chain-verdict--emerging">Mode 3 · emerging</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Memory and the expert</span></li>
+      <li class="chain-stage chain-stage--own"><time>1920s</time><span>The home shelf</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1950s</time><span>Reference desk</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1998</time><span>Google search</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2023</time><span>AI conversation</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>Shared knowledge workspace</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Music</strong><span class="chain-verdict chain-verdict--emerging">Mode 3 · emerging</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1900</time><span>Sheet music and live performance</span></li>
+      <li class="chain-stage chain-stage--own"><time>1920s</time><span>Records you own</span></li>
+      <li class="chain-stage chain-stage--own"><time>1930s</time><span>Radio</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2008</time><span>Spotify</span></li>
+      <li class="chain-stage chain-stage--participate"><time>Today</time><span>Enter and continue</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>You play, it follows</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Maps and navigation</strong><span class="chain-verdict chain-verdict--arrived">Mode 3 · arrived</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1910s</time><span>Road atlas</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1996</time><span>MapQuest printout</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2005</time><span>Google Maps lookup</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2009</time><span>Free turn-by-turn</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2013</time><span>Live traffic and rerouting</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>Conversational trip co-pilot</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Software and code</strong><span class="chain-verdict chain-verdict--arrived">Mode 3 · arrived</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1970s</time><span>Write it yourself</span></li>
+      <li class="chain-stage chain-stage--own"><time>1980s</time><span>Shareware and boxed code</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1991</time><span>Free and open source</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2008</time><span>Stack Overflow and GitHub</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2021</time><span>AI code helpers</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2027</time><span>Autonomous coding agents</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Gaming</strong><span class="chain-verdict chain-verdict--arrived">Mode 3 · arrived</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1972</time><span>Arcade cabinets</span></li>
+      <li class="chain-stage chain-stage--own"><time>1983</time><span>Home cartridges</span></li>
+      <li class="chain-stage chain-stage--own"><time>1995</time><span>CD consoles</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2004</time><span>Steam store</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2006</time><span>Roblox and Minecraft</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>Generative game worlds</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Retail</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1880s</time><span>General store</span></li>
+      <li class="chain-stage chain-stage--own"><time>1890s</time><span>Sears mail-order</span></li>
+      <li class="chain-stage chain-stage--own"><time>1960s</time><span>Big-box chains</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1995</time><span>Amazon's everything box</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2006</time><span>Etsy and Shopify</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>Agent-mediated commerce</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Video and film</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1910s</time><span>Movie theaters</span></li>
+      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Broadcast television</span></li>
+      <li class="chain-stage chain-stage--own"><time>1980s</time><span>VHS and DVD rental</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2007</time><span>Netflix streaming</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2010s</time><span>YouTube and TikTok</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--flat"><time>~2030</time><span>Generative video feeds</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Photography</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <ol class="chain-evolution-track chain-evolution-track--seven">
+      <li class="chain-stage chain-stage--own"><time>1888</time><span>Roll-film camera</span></li>
+      <li class="chain-stage chain-stage--own"><time>1948</time><span>Instant camera</span></li>
+      <li class="chain-stage chain-stage--own"><time>1982</time><span>One-hour photo</span></li>
+      <li class="chain-stage chain-stage--own"><time>2000</time><span>Digital cameras</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2008</time><span>Stock-photo search</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2022</time><span>AI image makers</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2028</time><span>Steerable image studios</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Personal transport</strong><span class="chain-verdict chain-verdict--inverts">Mode 3 · inverts ↓</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Own a horse</span></li>
+      <li class="chain-stage chain-stage--own"><time>1910s</time><span>Own a car</span></li>
+      <li class="chain-stage chain-stage--own"><time>1940s</time><span>Phone the taxi</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2010</time><span>Summon on demand</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2020s</time><span>Robotaxi</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>The standing fleet</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Encyclopedias</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1768</time><span>Britannica volumes</span></li>
+      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Door-to-door sets</span></li>
+      <li class="chain-stage chain-stage--own"><time>1993</time><span>Encarta CD-ROM</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1998</time><span>Web reference sites</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2001</time><span>Wikipedia</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>The answer engine</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Food</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Cook from scratch</span></li>
+      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Restaurants and diners</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1990s</time><span>Supermarkets and takeout</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2013</time><span>Delivery apps</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2018</time><span>Meal kits and recipe sharing</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>AI personal kitchen</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Money and payments</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1950s</time><span>Cash and the bank branch</span></li>
+      <li class="chain-stage chain-stage--own"><time>1970s</time><span>Cards and the ATM</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2000s</time><span>Online banking</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2010s</time><span>The bank in your pocket</span></li>
+      <li class="chain-stage chain-stage--participate"><time>Today</time><span>Crypto and DeFi</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>Agent-driven programmable money</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Travel and lodging</strong><span class="chain-verdict chain-verdict--contested">Mode 3 · contested</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1890s</time><span>Grand hotels and owning a home</span></li>
+      <li class="chain-stage chain-stage--own"><time>1900s</time><span>The travel agent</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>1990s</time><span>Online booking sites</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2000s</time><span>Booking.com aggregator</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2008</time><span>Airbnb</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--down"><time>~2030</time><span>AI trip-planner agent</span></li>
+    </ol>
+  </figure>
+
+  <figure class="chain-evolution-card">
+    <figcaption><strong>Virtual places</strong><span class="chain-verdict chain-verdict--emerging">Mode 3 · emerging</span></figcaption>
+    <ol class="chain-evolution-track">
+      <li class="chain-stage chain-stage--own"><time>1900s</time><span>Globes and atlases</span></li>
+      <li class="chain-stage chain-stage--own"><time>1980s</time><span>Road atlas and GPS</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2005</time><span>Google Earth</span></li>
+      <li class="chain-stage chain-stage--retrieve"><time>2010</time><span>Street View and Maps</span></li>
+      <li class="chain-stage chain-stage--participate"><time>2021</time><span>VR and metaverse worlds</span></li>
+      <li class="chain-stage chain-stage--next chain-stage--up"><time>~2030</time><span>Generated walkable worlds</span></li>
+    </ol>
+  </figure>
+</div>
 
 Fourteen chains, one bend — and the first two columns are nearly interchangeable across industries. That uniformity is the strongest evidence that own-then-retrieve is a law and not a story I am telling about my favourite examples. The third column scatters. Group the outcomes and each group teaches one thing.
 
