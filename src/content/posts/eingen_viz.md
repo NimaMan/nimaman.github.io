@@ -5,6 +5,7 @@ date: 2023-10-06
 description: Visualizing Eigenvalue Distributions through Matrix Evolution
 math: true
 draft: false
+category: "Mathematical Curiosities"
 ---
 
 

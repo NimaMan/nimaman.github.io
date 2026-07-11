@@ -4,8 +4,9 @@ title: "The Spendable Form: What Happens to Money When Turning Wealth Into It Is
 date: 2026-06-05
 description: "For all of history we held money because turning what we own into what we can spend was slow and costly. Tokenization and on-chain settlement are making that conversion nearly free — and machines are starting to do it for us. What happens to money when the act that defined it stops costing anything?"
 draft: false
+category: "Value Chains/Money"
 series: value_chains
-series_order: 3
+series_order: 4
 series_label: "Part II"
 ---
 

@@ -1,17 +1,68 @@
 ---
+// /value_chains — hub page for the Value Chains series, organized by category.
+//
+// Algorithm:
+//   1. Fetch every non-draft post with `series: value_chains`, ordered by
+//      series_order (getSeriesPosts).
+//   2. Group them on the SECOND segment of their `category` path — posts carry
+//      "Value Chains/<group>" (e.g. "Value Chains/Money"); a post with no
+//      second segment falls into "More from the series".
+//   3. Render one section per group, in the editorial order defined in GROUPS
+//      (Evolution of Value Chains first — the framework — then Money, the
+//      worked example), each with a one-paragraph intro. Unknown groups are
+//      appended after the known ones so a future post never silently
+//      disappears from the hub.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import siteData from "../../data/site-data.json";
-import { formatPostDate, getSeriesPosts, postExcerpt, postSlug } from "../../lib/posts";
+import {
+  categorySegments,
+  formatPostDate,
+  getSeriesPosts,
+  postExcerpt,
+  postSlug,
+  type PostEntry,
+} from "../../lib/posts";
 
 const { homePage } = siteData;
 const posts = await getSeriesPosts("value_chains");
+
+const GROUPS: { name: string; intro: string }[] = [
+  {
+    name: "Evolution of Value Chains",
+    intro:
+      "The framework. The Law states the engine: the want is constant, cost is the selector, and when a cost falls the rent relocates to whichever cost is still standing. The Pattern then traces that engine across fourteen industries — own, then retrieve, then participate — and shows the two questions that decide where any industry's third step lands.",
+  },
+  {
+    name: "Money",
+    intro:
+      "The case study. The law worked out in depth in the one domain where it can be traced step by step: who controls the rails value moves on, where the cost of money hides, and what happens to money itself when moving and converting value becomes nearly free.",
+  },
+];
+
+const groupName = (post: PostEntry): string =>
+  categorySegments(post)[1] ?? "More from the series";
+
+const knownNames = new Set(GROUPS.map((group) => group.name));
+const extraNames = [
+  ...new Set(posts.map(groupName).filter((name) => !knownNames.has(name))),
+];
+
+const sections = [
+  ...GROUPS,
+  ...extraNames.map((name) => ({ name, intro: "" })),
+]
+  .map((group) => ({
+    ...group,
+    posts: posts.filter((post) => groupName(post) === group.name),
+  }))
+  .filter((group) => group.posts.length > 0);
 ---
 
 <BaseLayout
   title={`Value Chains | ${homePage.short_name}`}
-  description="A series on how value moves through the financial system — who controls the rails, where the cost hides, and what changes as the price of moving value falls toward zero."
+  description="A series on how value chains evolve, in two parts: the framework — the law of cost selection and the pattern it draws across fourteen industries — and the framework worked out in depth in one domain: money."
   bodyClass="public-page"
 >
   <SiteNav activePage="posts" />
@@ -22,27 +73,42 @@ const posts = await getSeriesPosts("value_chains");
         <p class="eyebrow">Article Series</p>
         <h1>Value Chains</h1>
         <p class="page-intro">
-          A running series on how value moves through the financial system — who controls the rails, where the cost hides, and what changes as the price of moving value falls toward zero. From the dollar's grip on global settlement, to the hidden toll inside everyday money, to the future of money itself.
+          A running series on how value chains evolve: the path a want takes from unmet to met, the costs that hide along the way, and who ends up owning whatever cost has not yet fallen. It comes in two parts. <strong>Evolution of Value Chains</strong> is the framework — the law by which chains evolve, and the pattern that law draws across fourteen industries. <strong>Money</strong> works the framework out in depth in the one domain where it can be traced step by step — the dollar's grip on settlement, the hidden toll inside everyday money, and the future of money itself.
         </p>
       </div>
     </section>
 
-    <section class="section-block">
-      <div class="site-shell article-grid article-grid--full">
-        {
-          posts.map((post) => (
-            <article class="article-card article-card--full">
-              <p class="article-card__date">
-                {post.data.series_label ? `${post.data.series_label} · ` : ""}{formatPostDate(post.data.date)}
-              </p>
-              <h2><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h2>
-              {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
-              <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
-            </article>
-          ))
-        }
-      </div>
-    </section>
+    {
+      sections.map((group) => (
+        <section class="section-block">
+          <div class="site-shell">
+            <div class="section-heading">
+              <p class="eyebrow">{group.name}</p>
+              {group.intro && (
+                <p class="section-intro section-intro--tight">{group.intro}</p>
+              )}
+            </div>
+            <div class="article-grid article-grid--full">
+              {group.posts.map((post) => (
+                <article class="article-card article-card--full">
+                  <p class="article-card__date">
+                    {post.data.series_label ? `${post.data.series_label} · ` : ""}
+                    {formatPostDate(post.data.date)}
+                  </p>
+                  <h2>
+                    <a href={`/posts/${postSlug(post)}`}>{post.data.title}</a>
+                  </h2>
+                  {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
+                  <a href={`/posts/${postSlug(post)}`} class="text-link">
+                    Read article
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))
+    }
   </main>
 
   <SiteFooter />

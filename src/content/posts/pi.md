@@ -5,6 +5,7 @@ date: 2023-10-06
 description: A pi-generated visual field of orbits, pulses, and digit rhythms.
 math: false
 draft: false
+category: "Mathematical Curiosities"
 ---
 
 π does not resolve into a final motif. It keeps returning close to symmetry, then slips away by a small irrational angle.

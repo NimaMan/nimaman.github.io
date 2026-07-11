@@ -4,8 +4,9 @@ title: "The Price You Cannot See: The Hidden Cost of Money, and the Fight to Kee
 date: 2026-06-05
 description: "The transaction cost of money never disappeared — banks hid it in the yield you forgo on a zero-rate deposit, brokers in the order flow they sell, payments in the float. How on-chain rails are dragging that hidden rent into the open, and why the incumbents are fighting to keep it buried."
 draft: false
+category: "Value Chains/Money"
 series: value_chains
-series_order: 2
+series_order: 3
 series_label: "Companion"
 ---
 

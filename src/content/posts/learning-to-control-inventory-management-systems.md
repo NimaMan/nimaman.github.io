@@ -3,6 +3,7 @@ author: Nima Manaf, PhD
 title: "Learning to Control Inventory Management Systems"
 date: 2026-06-07
 description: "A single gradient-free recipe — CMA-ES optimizing small, interpretable policies — learns to control inventory systems across ten classical problem families."
+category: "Optimization & Learning"
 math: true
 ---
 

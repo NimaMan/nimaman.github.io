@@ -22,17 +22,30 @@ Sections, in order:
    *Present position*; social links as a mono index.
 
 ## `posts/index.astro` — `/posts`
-"Index of entries": Fraunces editorial headline + standfirst, an **Article
-Series** subsection for Value Chains, then all non-draft posts as ruled
-log-entry plates (`getPublicPosts()`).
+The articles index, rendered as a **category tree**. Buckets all non-draft
+posts (`getPublicPosts()`) by the top-level segment of their `category`
+frontmatter path (`categorySegments()[0]`) and renders one section per
+category in a fixed editorial order — Value Chains, Optimization & Learning,
+Mathematical Curiosities, Research & Teaching — then unexpected categories
+alphabetically, then an "Uncategorized" bucket only if some post lacks a
+category. The **Value Chains** section is special: it links out to the
+`/value_chains` hub and nests one level deeper by `categorySegments()[1]`
+(Evolution of Value Chains · Money), ordering those posts by `series_order`
+so the series reads as a sequence; other categories list date-descending.
+New posts join the tree through frontmatter alone — nothing is hardcoded.
 
 ## `value_chains/index.astro` — `/value_chains`
-Landing page for the **Value Chains** essay series. Lists every post whose
-frontmatter sets `series: value_chains`, ordered by `series_order` via
-`getSeriesPosts()`, each labelled by `series_label` (Part I · Companion · Part
-II). Same ruled-plate listing styling as `/posts`. Linked from the articles
-index subsection, from each series article's breadcrumb eyebrow, and from its
-`SeriesNav` footer.
+Landing page for the **Value Chains** essay series, organized by category.
+Fetches every post with `series: value_chains` (ordered by `series_order` via
+`getSeriesPosts()`) and groups them on the second segment of their `category`
+path (`"Value Chains/<group>"` → `categorySegments(post)[1]`). Renders one
+section per group in editorial order — **Evolution of Value Chains** (the
+framework: The Law · The Pattern) then **Money** (the worked example: Part I ·
+Companion · Part II) — each with a one-paragraph intro; unknown groups are
+appended so future posts never silently disappear. Cards carry the
+`series_label` chip and date. Same ruled-plate listing styling as `/posts`.
+Linked from the articles index, from each series article's breadcrumb
+eyebrow, and from its `SeriesNav` footer.
 
 ## `posts/[slug].astro` — `/posts/<slug>`
 The reading view. Static-generated per post. Map chrome retreats to the

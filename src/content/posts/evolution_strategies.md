@@ -5,6 +5,7 @@ date: 2021-11-20
 description: A brief guide to using evolution strategy for solving reinforcement learning problems
 math: true
 draft: true
+category: "Optimization & Learning"
 ---
 
 # Evolution Strategies (ES)

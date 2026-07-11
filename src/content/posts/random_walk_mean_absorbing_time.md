@@ -5,6 +5,7 @@ date: 2022-09-03
 description: Mean Absorbing Time of a Two dimensional Random Walk
 math: true
 draft: false
+category: "Mathematical Curiosities"
 ---
 
 # Question

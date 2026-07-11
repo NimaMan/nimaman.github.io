@@ -39,6 +39,17 @@ export async function getPublicPosts(): Promise<PostEntry[]> {
   return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
+// A post's `category` frontmatter is a "/"-separated path of display names,
+// root first (e.g. "Value Chains/Money"). Returns the trimmed segments, or []
+// for an uncategorized post. Listing pages group on a segment of this path:
+// /posts groups on segments[0], the value-chains hub on segments[1].
+export function categorySegments(post: PostEntry): string[] {
+  return (post.data.category || "")
+    .split("/")
+    .map((segment) => segment.trim())
+    .filter(Boolean);
+}
+
 // Posts belonging to a named series (e.g. "value_chains"), ordered by their
 // explicit series_order so the collection reads as a sequence rather than by date.
 export async function getSeriesPosts(series: string): Promise<PostEntry[]> {

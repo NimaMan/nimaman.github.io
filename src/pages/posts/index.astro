@@ -1,13 +1,109 @@
 ---
+// /posts — the articles index, rendered as a category tree.
+//
+// Algorithm:
+// 1. Load every public (non-draft) post, already sorted date-descending
+//    (getPublicPosts).
+// 2. Bucket posts by the top-level segment of their `category` frontmatter
+//    path (categorySegments()[0]); posts without a category fall into a
+//    trailing "Uncategorized" bucket.
+// 3. Render one section-block per bucket: CATEGORY_ORDER first, then any
+//    unexpected category names alphabetically, then "Uncategorized" (which
+//    only exists — and only renders — when some post lacks a category).
+//    Buckets keep the date-descending order posts arrived in.
+// 4. "Value Chains" is special: it is an article series with its own hub
+//    page (/value_chains), so its section links out to the hub and groups
+//    one level deeper by categorySegments()[1] — SUBGROUP_ORDER first,
+//    extras alphabetically, an unnamed group (missing second segment) last
+//    without a heading. Inside a sub-group posts follow series_order
+//    ascending so the series reads as a sequence.
+// Nothing is hardcoded to particular posts: new posts join the tree through
+// their frontmatter alone.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import siteData from "../../data/site-data.json";
-import { formatPostDate, getPublicPosts, getSeriesPosts, postExcerpt, postSlug } from "../../lib/posts";
+import {
+  categorySegments,
+  formatPostDate,
+  getPublicPosts,
+  postExcerpt,
+  postSlug,
+  type PostEntry,
+} from "../../lib/posts";
 
 const { homePage } = siteData;
 const posts = await getPublicPosts();
-const valueChainPosts = await getSeriesPosts("value_chains");
+
+const UNCATEGORIZED = "Uncategorized";
+const SERIES_CATEGORY = "Value Chains";
+const SERIES_HUB = "/value_chains";
+
+// Display order of the known top-level categories; anything not listed here
+// renders after them, alphabetically.
+const CATEGORY_ORDER = [
+  "Value Chains",
+  "Optimization & Learning",
+  "Mathematical Curiosities",
+  "Research & Teaching",
+];
+
+// Display order of the known Value Chains sub-groups.
+const SUBGROUP_ORDER = ["Evolution of Value Chains", "Money"];
+
+// One-sentence standfirst per known category; unknown ones get the fallback.
+const CATEGORY_INTROS: Record<string, string> = {
+  "Value Chains":
+    "How value chains evolve: where the cost hides, who ends up owning the bottleneck, and what changes when the cost of a thing falls toward zero — money is the worked example.",
+  "Optimization & Learning":
+    "Algorithms that learn to decide — stochastic optimization, evolution strategies, and reinforcement learning applied to real operational systems.",
+  "Mathematical Curiosities":
+    "Short mathematical side paths and visual experiments, followed for the joy of the detour.",
+  "Research & Teaching":
+    "The academic record — where my research has been, where it is heading, and how I think about teaching.",
+  [UNCATEGORIZED]: "Notes that have not been filed under a category yet.",
+};
+const FALLBACK_INTRO = "Essays and notes collected under this heading.";
+
+// Steps 1-2: bucket public posts (date-descending) by top-level segment.
+const byCategory = new Map<string, PostEntry[]>();
+for (const post of posts) {
+  const name = categorySegments(post)[0] ?? UNCATEGORIZED;
+  const bucket = byCategory.get(name);
+  if (bucket) bucket.push(post);
+  else byCategory.set(name, [post]);
+}
+
+// Step 3: known categories first, unexpected ones alphabetically,
+// "Uncategorized" last and only when non-empty.
+const unexpectedCategories = [...byCategory.keys()]
+  .filter((name) => name !== UNCATEGORIZED && !CATEGORY_ORDER.includes(name))
+  .sort((a, b) => a.localeCompare(b));
+const orderedCategories = [
+  ...CATEGORY_ORDER.filter((name) => byCategory.has(name)),
+  ...unexpectedCategories,
+  ...(byCategory.has(UNCATEGORIZED) ? [UNCATEGORIZED] : []),
+];
+
+// Step 4: split the Value Chains bucket into ordered sub-groups.
+const bySubGroup = new Map<string, PostEntry[]>();
+for (const post of byCategory.get(SERIES_CATEGORY) ?? []) {
+  const name = categorySegments(post)[1] ?? "";
+  const bucket = bySubGroup.get(name);
+  if (bucket) bucket.push(post);
+  else bySubGroup.set(name, [post]);
+}
+for (const bucket of bySubGroup.values()) {
+  bucket.sort((a, b) => (a.data.series_order ?? 0) - (b.data.series_order ?? 0));
+}
+const extraSubGroups = [...bySubGroup.keys()]
+  .filter((name) => name && !SUBGROUP_ORDER.includes(name))
+  .sort((a, b) => a.localeCompare(b));
+const seriesGroups = [
+  ...SUBGROUP_ORDER.filter((name) => bySubGroup.has(name)),
+  ...extraSubGroups,
+  ...(bySubGroup.has("") ? [""] : []),
+].map((name) => ({ name, posts: bySubGroup.get(name)! }));
 ---
 
 <BaseLayout title={`Articles | ${homePage.short_name}`} description={`Research articles and notes by ${homePage.name}.`} bodyClass="public-page">
@@ -19,55 +115,76 @@ const valueChainPosts = await getSeriesPosts("value_chains");
         <p class="eyebrow">Articles</p>
         <h1>Notes on optimization, machine learning, finance, and mathematical curiosities.</h1>
         <p class="page-intro">
-          Essays, research notes, and visual experiments collected over the years, from inventory control to mathematical side paths.
+          Essays, research notes, and visual experiments collected over the years, filed by category — from inventory control to mathematical side paths.
         </p>
       </div>
     </section>
 
-    <section class="section-block">
-      <div class="site-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Article Series</p>
-          <p class="section-intro section-intro--tight">
-            Multi-part arguments collected under the articles index.
-          </p>
-        </div>
-        <div class="article-grid article-grid--full">
-          <article class="article-card article-card--full">
-            <p class="article-card__date">{valueChainPosts.length} essays · series</p>
-            <h2><a href="/value_chains">Value Chains</a></h2>
-            <p>
-              How value moves through the financial system: who controls the rails, where the cost hides, and what changes as moving value gets cheaper.
-            </p>
-            <a href="/value_chains" class="text-link">Open series</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block">
-      <div class="site-shell">
-        <div class="section-heading">
-          <p class="eyebrow">All Articles</p>
-          <p class="section-intro section-intro--tight">
-            Essays, research notes, and visual experiments ordered by publication date.
-          </p>
-        </div>
-        <div class="article-grid article-grid--full">
-          {
-            posts.map((post) => (
-              <article class="article-card article-card--full">
-                <p class="article-card__date">{formatPostDate(post.data.date)}</p>
-                <h2><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h2>
-                {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
-                <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    {
+      orderedCategories.map((name) =>
+        name === SERIES_CATEGORY ? (
+          <section class="section-block">
+            <div class="site-shell">
+              <div class="section-heading section-heading--tight">
+                <div>
+                  <p class="eyebrow">Article Series</p>
+                  <h2 class="section-title">{name}</h2>
+                  <p class="section-intro section-intro--tight">{CATEGORY_INTROS[name] ?? FALLBACK_INTRO}</p>
+                </div>
+                <a href={SERIES_HUB} class="text-link">Open the series</a>
+              </div>
+              {seriesGroups.map((group) => (
+                <div class="subgroup">
+                  {group.name && <h3 class="eyebrow">{group.name}</h3>}
+                  <div class="article-grid article-grid--full">
+                    {group.posts.map((post) => (
+                      <article class="article-card article-card--full">
+                        <p class="article-card__date">
+                          {post.data.series_label ? `${post.data.series_label} · ` : ""}{formatPostDate(post.data.date)}
+                        </p>
+                        <h3><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h3>
+                        {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
+                        <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section class="section-block">
+            <div class="site-shell">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Category</p>
+                  <h2 class="section-title">{name}</h2>
+                  <p class="section-intro section-intro--tight">{CATEGORY_INTROS[name] ?? FALLBACK_INTRO}</p>
+                </div>
+              </div>
+              <div class="article-grid article-grid--full">
+                {(byCategory.get(name) ?? []).map((post) => (
+                  <article class="article-card article-card--full">
+                    <p class="article-card__date">{formatPostDate(post.data.date)}</p>
+                    <h3><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h3>
+                    {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
+                    <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ),
+      )
+    }
   </main>
 
   <SiteFooter />
 </BaseLayout>
+
+<style>
+  /* Breathing room between stacked Value Chains sub-groups. */
+  .subgroup + .subgroup {
+    margin-top: 2.6rem;
+  }
+</style>

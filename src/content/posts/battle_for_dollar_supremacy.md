@@ -4,8 +4,9 @@ title: "The Battle for Dollar Supremacy: The Beginning of the End of Financial T
 date: 2026-06-04
 description: "How reserve currencies evolve, why dollar power has really been payment power, how dollar-pegged stablecoins quietly became the rails that value moves on, and why Bitcoin's price collapse is beside the point."
 draft: false
+category: "Value Chains/Money"
 series: value_chains
-series_order: 1
+series_order: 2
 series_label: "Part I"
 ---
 

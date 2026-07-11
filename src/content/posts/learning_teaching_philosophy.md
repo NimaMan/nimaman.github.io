@@ -4,6 +4,7 @@ author: Nima Manaf, PhD
 title: My Teaching Philosophy 
 date: 2021-12-12
 description: Learning and Teaching Philosophy 
+category: "Research & Teaching"
 ---
 
 Addressing the problems posed to modern operations research requires adapting our teaching style into the realities of the digital era. It is only through adapting our teaching methods that a new generation of students will recognize the existing challenges and learn how to apply the knowledge acquired in their university courses to real world problems, and discover new and innovative solutions of their own. Through teaching, I hope to inspire the new generation to observe, ask why, and sketch solutions.

@@ -4,6 +4,7 @@ author: Nima Manaf, PhD
 title: Overview of My Ph.D. Thesis
 date: 2021-11-21
 description: Overview of My Ph.D. Thesis 
+category: "Research & Teaching"
 ---
 ### Title: [Modelling and Control of Production Systems based on Observed Inter-event Times: An Analytical and Empirical Investigation](https://arxiv.org/abs/2204.01079)
 
