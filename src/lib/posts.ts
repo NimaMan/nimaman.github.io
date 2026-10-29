@@ -44,8 +44,8 @@ export async function getPublicPosts(): Promise<PostEntry[]> {
 
 // A post's `category` frontmatter is a "/"-separated path of display names,
 // root first (e.g. "Value Chains/Money"). Returns the trimmed segments, or []
-// for an uncategorized post. Listing pages group on a segment of this path:
-// /posts groups on segments[0], the value-chains hub on segments[1].
+// for an uncategorized post. The /posts archive filters on segments[0] and
+// displays the full path; the value-chains hub groups on segments[1].
 export function categorySegments(post: PostEntry): string[] {
   return (post.data.category || "")
     .split("/")

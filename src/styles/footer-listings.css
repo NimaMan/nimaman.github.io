@@ -1,5 +1,8 @@
 /* Footer and article listings.
-   Steps: Close the atlas, then style listing heroes and category navigation; make writing easy to find.
+   Steps: style the footer and listing heroes, share the category strip with
+   home, then lay out archive years and dated rows with narrow-screen stacking.
+   Keep filtering states, quiet taxonomy and series chips within Meridian so
+   readers can find the latest writing and still follow a category or series.
    Loaded in original cascade order by site.css. */
 
 /* =============================================================================
@@ -53,7 +56,7 @@
 }
 .page-intro { max-width: 52ch; margin: 1.2rem 0 0; color: var(--graphite); font-size: 1.12rem; }
 
-/* Shared by the home writing section and /posts; counts use no category colours. */
+/* Shared by home category links and /posts filters; counts use no category colours. */
 .category-jumps {
     display: flex;
     flex-wrap: wrap;
@@ -78,5 +81,43 @@
 .category-jumps a:hover { color: var(--brass-ink); text-decoration: underline; text-underline-offset: 4px; }
 .category-jumps__count { color: var(--graphite); font-size: 0.66rem; font-variant-numeric: tabular-nums; }
 .listing-page .section-block[id] { scroll-margin-top: 6rem; }
-.subgroup + .subgroup { margin-top: 2.6rem; }
+
+/* Archive links remain native hash targets when JavaScript is unavailable. */
+.category-jumps--filters a { scroll-margin-top: 6rem; }
+.category-jumps--filters a[aria-current="true"] {
+    color: var(--brass-ink);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+}
+.archive-summary { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.7rem 1.5rem; }
+.archive-summary__count { margin: 0; color: var(--graphite); font-family: var(--font-mono); font-size: 0.72rem; }
+.archive-year { padding: 1.8rem 0 2rem; }
+.archive-year__title { margin-bottom: 1.2rem; font-variant-numeric: tabular-nums; }
+.archive-posts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.archive-card { grid-template-columns: 9rem minmax(0, 1fr); align-items: start; gap: 0.7rem 1.5rem; border-radius: 0; }
+/* Share a rule between visible entries, including after a filter hides siblings. */
+.archive-card:not([hidden]) ~ .archive-card:not([hidden]) { border-top: none; }
+.archive-card__content { display: grid; gap: 0.65rem; min-width: 0; }
+.archive-card .article-card__date { line-height: 1.6; white-space: nowrap; }
+.archive-card .archive-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+}
+.archive-card__series { padding: 0.1rem 0.45rem; border: 1px solid var(--hairline); border-radius: var(--radius); }
+.archive-card__content > p:not(.archive-card__meta) { max-width: 66ch; }
+.archive-card__content > .text-link { justify-self: start; }
+/* Author display rules must not override the native hidden state. */
+.article-archive [hidden] { display: none; }
+
+@media (max-width: 760px) {
+    .listing-page[data-post-listing] .page-hero { padding-top: 2.5rem; }
+    .category-jumps--filters a { scroll-margin-top: 10rem; }
+    .archive-card { grid-template-columns: minmax(0, 1fr); padding: 1.25rem; }
+}
 
