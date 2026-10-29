@@ -28,11 +28,19 @@ by the loader's `**/[^_]*.md` glob, mirroring the `src/pages` convention.
 - **Value Chains** (also `series: value_chains`; hub at `/value_chains`)
   - **Evolution of Value Chains** — the framework
     - `the_selection_pressure.md` — The Law (order 0)
-    - `the_same_journey_everywhere.md` — The Pattern (order 1)
-  - **Money** — the worked example
+    - `the_same_journey_everywhere.md` — The Evolutions (order 1): fourteen
+      industries read in the Book of Dombra's order (human nature → wants and
+      their obstacles → technology moving what is scarce → the chain that
+      reorganizes around the same want)
+  - **Money** — the first worked example
     - `battle_for_dollar_supremacy.md` — Part I (order 2)
     - `the_price_you_cannot_see.md` — Companion (order 3)
     - `the_spendable_form.md` — Part II (order 4)
+  - **Music** — the second worked example
+    - `the_daw_of_the_future.md` — Music (order 5): what the digital audio
+      workstation becomes when sound is abundant, distilled from the Book of
+      Dombra in its order (human wants → value chain → changing scarcity →
+      the instrument that answers what is left).
 - **Optimization & Learning**
   - `learning-to-control-inventory-management-systems.md`
   - `evolution_strategies.md` (draft)
