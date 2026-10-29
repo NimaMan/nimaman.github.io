@@ -1,3 +1,6 @@
+<!-- Meridian style guide. Steps: define the visual language and tokens, map
+the CSS modules, then record layout and interaction rules so changes preserve
+the atlas identity and readable desktop/mobile pages. -->
 # Styles — the "Meridian" design system
 
 This folder holds the ordered CSS modules that drive the entire public site.
@@ -98,7 +101,7 @@ meta, and code. (Space Grotesk was removed.)
 | `header-hero.css` | Running head, home hero, shared section scaffold |
 | `story-journey.css` | Sticky console, route rail, stop indicators, chapter rooms |
 | `home-sections.css` | Current work, selected work, writing cards, contact |
-| `footer-listings.css` | Footer, article index and hub heroes, category navigation |
+| `footer-listings.css` | Footer, archive and hub heroes, category navigation, dated archive rows and filter states |
 | `article-reading.css` | Reading plate, prose, article navigation, embedded atlas figures |
 | `motion-responsive.css` | Optional motion and viewport overrides |
 
@@ -129,6 +132,14 @@ order, removing only their newly added header comments, exactly reproduced
   wrapping verdict pill in a separate bounded column. Narrow atlas timelines
   wrap long chronology labels inside their date column. The home Writing heading
   supplies its category strip's upper rule; the archive strip keeps both rules.
+- **Chronological archive.** `/posts` uses a single column of ruled article cards
+  under year headings. Dates occupy a quiet left column on wide screens and
+  stack above content at ≤760px. Category paths stay graphite, optional series
+  labels use neutral outlined chips, and the active category link uses a brass
+  underline plus `aria-current`. Category controls wrap with 44px minimum targets.
+  Filtering must honor `hidden` for both entries and empty years, including their
+  layout space, while preserving the date order and shared borders between the
+  remaining entries. The series hub retains its own reading sequence.
 
 ## Responsive strategy
 

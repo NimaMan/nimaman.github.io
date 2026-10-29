@@ -1,3 +1,6 @@
+<!-- Public route guide. Steps: describe each route's data, rendering and optional
+enhancements, then record shared navigation contracts so future edits preserve
+the chronological archive, category links and series reading sequence. -->
 # Pages
 
 Public routes (static output).
@@ -31,21 +34,24 @@ Sections, in order:
    *Present position*; social links as a mono index.
 
 ## `posts/index.astro` — `/posts`
-The articles index, rendered as a **category tree**. Buckets all non-draft
-posts (`getPublicPosts()`) by the top-level segment of their `category`
-frontmatter path (`categorySegments()[0]`) and renders one section per
-category in a fixed editorial order — Value Chains, Optimization & Learning,
-Mathematical Curiosities, Research & Teaching — then unexpected categories
-alphabetically, then an "Uncategorized" bucket only if some post lacks a
-category. The **Value Chains** section is special: it links out to the
-`/value_chains` hub and nests one level deeper by `categorySegments()[1]`
-(Evolution of Value Chains · Money · Music), ordering those posts by `series_order`
-so the series reads as a sequence; other categories list date-descending.
-New posts join the tree through frontmatter alone. A category/count jump strip
-near the top and stable section IDs (slugified display names) support links from
-the home page and article trails. Money and music are the worked examples.
-The hero reads **Essays on value chains, music, learning, and mathematical
-curiosities.** Its introduction and page metadata cover the same subjects.
+The articles archive: **Essays, newest first.** Renders every public post exactly
+once in `getPublicPosts()` date-descending order, grouped under UTC year headings.
+Rows show a semantic date, the full quiet category path (e.g. Value Chains · Music),
+an optional `series_label` chip, linked title, `postExcerpt()` dek and read link.
+Dates sit beside the content on wide screens and above it on phones.
+
+The category/count strip keeps `postCategories()` editorial ordering and adds
+**All**. Each category link has the stable `categoryAnchor()` ID and hash used
+by the home page and article breadcrumbs. `public/static/js/posts-filter.js`
+applies a matching hash on load and on native hash changes, hiding unmatched
+posts and empty years without reordering anything. It marks the current link
+with `aria-current` and updates a polite live article count. All, empty, unknown
+or malformed hashes show the full archive; native hash history supports Back
+and Forward. Without JavaScript, every post remains listed and category links
+land on their controls. A visible **Read Value Chains in sequence** link opens
+`/value_chains`, whose reading order is independent of this dated archive.
+The introduction and page metadata still cover value chains, money and music,
+optimization and learning, and mathematical curiosities.
 
 ## `value_chains/index.astro` — `/value_chains`
 Landing page for the **Value Chains** essay series, organized by category.

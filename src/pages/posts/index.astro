@@ -1,26 +1,14 @@
 ---
-// /posts — the articles index, rendered as a category tree.
-//
-// Algorithm:
-// 1. Load every public (non-draft) post, already sorted date-descending
-//    (getPublicPosts).
-// 2. Bucket posts by the top-level segment of their `category` frontmatter
-//    path (categorySegments()[0]); posts without a category fall into a
-//    trailing "Uncategorized" bucket.
-// 3. Render one section-block per bucket: CATEGORY_ORDER first, then any
-//    unexpected category names alphabetically, then "Uncategorized" (which
-//    only exists — and only renders — when some post lacks a category).
-//    Buckets keep the date-descending order posts arrived in.
-// 4. "Value Chains" is special: it is an article series with its own hub
-//    page (/value_chains), so its section links out to the hub and groups
-//    one level deeper by categorySegments()[1] — SUBGROUP_ORDER first,
-//    extras alphabetically, an unnamed group (missing second segment) last
-//    without a heading. Inside a sub-group posts follow series_order
-//    ascending so the series reads as a sequence.
-// Nothing is hardcoded to particular posts: new posts join the tree through
-// their frontmatter alone. Shared taxonomy helpers supply the jump strip and
-// stable section IDs so home links and article trails land in the right place.
-// The archive title, description, and introduction include music as a worked example.
+// /posts — a reverse-chronological archive with optional category filters.
+// Steps:
+// 1. Load every public post in date-descending order via getPublicPosts().
+// 2. Group that sequence by UTC year, preserving its order within each year.
+// 3. Render each post once, with its date, category path, series label and dek.
+// 4. Give category links their shared categoryAnchor() IDs; posts-filter.js
+//    reads the hash, hides unmatched posts/empty years and announces the count.
+// Everything remains listed without JavaScript. Existing category links still
+// land on the filter strip, and the separate Value Chains hub keeps its reading
+// sequence so the archive can put the latest writing first.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteNav from "../../components/SiteNav.astro";
@@ -37,143 +25,80 @@ import {
 } from "../../lib/posts";
 
 const { homePage } = siteData;
-const archiveHeading = "Essays on value chains, music, learning, and mathematical curiosities.";
-const archiveIntro = "Long-form essays and research notes, filed by category: how value chains evolve, with money and music as worked examples; optimization and learning; mathematical side paths; and the academic record.";
+const archiveHeading = "Essays, newest first.";
+const archiveIntro = "Long-form essays and research notes on value chains, money and music, optimization and learning, and mathematical curiosities.";
 const posts = await getPublicPosts();
 const categories = postCategories(posts);
 
-const UNCATEGORIZED = "Uncategorized";
-const SERIES_CATEGORY = "Value Chains";
-const SERIES_HUB = "/value_chains";
-
-// Display order of the known Value Chains sub-groups.
-const SUBGROUP_ORDER = ["Evolution of Value Chains", "Money", "Music"];
-
-// One-sentence standfirst per known category; unknown ones get the fallback.
-const CATEGORY_INTROS: Record<string, string> = {
-  "Value Chains":
-    "How value chains evolve: where the cost hides, who ends up owning the bottleneck, and what changes when the cost of a thing falls toward zero — money and music are the worked examples.",
-  "Optimization & Learning":
-    "Algorithms that learn to decide — stochastic optimization, evolution strategies, and reinforcement learning applied to real operational systems.",
-  "Mathematical Curiosities":
-    "Short mathematical side paths and visual experiments, followed for the joy of the detour.",
-  "Research & Teaching":
-    "The academic record — where my research has been, where it is heading, and how I think about teaching.",
-  [UNCATEGORIZED]: "Notes that have not been filed under a category yet.",
-};
-const FALLBACK_INTRO = "Essays and notes collected under this heading.";
-
-// Steps 1-2: bucket public posts (date-descending) by top-level segment.
-const byCategory = new Map<string, PostEntry[]>();
+const byYear = new Map<number, PostEntry[]>();
 for (const post of posts) {
-  const name = categorySegments(post)[0] ?? UNCATEGORIZED;
-  const bucket = byCategory.get(name);
-  if (bucket) bucket.push(post);
-  else byCategory.set(name, [post]);
+  const year = post.data.date.getUTCFullYear();
+  const entries = byYear.get(year);
+  if (entries) entries.push(post);
+  else byYear.set(year, [post]);
 }
-
-// Step 3: known categories first, unexpected ones alphabetically,
-// "Uncategorized" last and only when non-empty.
-const orderedCategories = categories.map((category) => category.name);
-
-// Step 4: split the Value Chains bucket into ordered sub-groups.
-const bySubGroup = new Map<string, PostEntry[]>();
-for (const post of byCategory.get(SERIES_CATEGORY) ?? []) {
-  const name = categorySegments(post)[1] ?? "";
-  const bucket = bySubGroup.get(name);
-  if (bucket) bucket.push(post);
-  else bySubGroup.set(name, [post]);
-}
-for (const bucket of bySubGroup.values()) {
-  bucket.sort((a, b) => (a.data.series_order ?? 0) - (b.data.series_order ?? 0));
-}
-const extraSubGroups = [...bySubGroup.keys()]
-  .filter((name) => name && !SUBGROUP_ORDER.includes(name))
-  .sort((a, b) => a.localeCompare(b));
-const seriesGroups = [
-  ...SUBGROUP_ORDER.filter((name) => bySubGroup.has(name)),
-  ...extraSubGroups,
-  ...(bySubGroup.has("") ? [""] : []),
-].map((name) => ({ name, posts: bySubGroup.get(name)! }));
+const years = Array.from(byYear, ([year, entries]) => ({ year, posts: entries }));
 ---
 
 <BaseLayout title={`Articles on value chains, music, learning & mathematics | ${homePage.short_name}`} description={archiveIntro} bodyClass="public-page">
   <SiteNav activePage="posts" />
 
-  <main class="listing-page">
+  <main class="listing-page" data-post-listing>
     <section class="page-hero">
       <div class="site-shell">
         <p class="eyebrow">Articles</p>
         <h1>{archiveHeading}</h1>
         <p class="page-intro">{archiveIntro}</p>
-        <nav class="category-jumps" aria-label="Article categories">
+        <nav class="category-jumps category-jumps--filters" aria-label="Filter articles by category">
+          <a href="#all" id="all" data-post-filter="" data-category-name="All" aria-current="true">
+            All<span class="category-jumps__count">{posts.length}<span class="visually-hidden"> articles</span></span>
+          </a>
           {categories.map((category) => (
-            <a href={`#${category.id}`}>
-              {category.name}<span class="category-jumps__count">{category.count}<span class="visually-hidden"> articles</span></span>
+            <a href={`#${category.id}`} id={category.id} data-post-filter={category.id} data-category-name={category.name}>
+              {category.name}<span class="category-jumps__count">{category.count}<span class="visually-hidden"> {category.count === 1 ? "article" : "articles"}</span></span>
             </a>
           ))}
         </nav>
+        <div class="archive-summary">
+          <p class="archive-summary__count" role="status" aria-live="polite" aria-atomic="true" data-post-count>
+            {posts.length} {posts.length === 1 ? "article" : "articles"} · Newest first
+          </p>
+          <a href="/value_chains" class="text-link">Read Value Chains in sequence</a>
+        </div>
       </div>
     </section>
 
-    {
-      orderedCategories.map((name) =>
-        name === SERIES_CATEGORY ? (
-          <section class="section-block" id={categoryAnchor(name)} aria-labelledby={`${categoryAnchor(name)}-title`}>
-            <div class="site-shell">
-              <div class="section-heading section-heading--tight">
-                <div>
-                  <p class="eyebrow">Article Series</p>
-                  <h2 class="section-title" id={`${categoryAnchor(name)}-title`}>{name}</h2>
-                  <p class="section-intro section-intro--tight">{CATEGORY_INTROS[name] ?? FALLBACK_INTRO}</p>
-                </div>
-                <a href={SERIES_HUB} class="text-link">Open the series</a>
-              </div>
-              {seriesGroups.map((group) => (
-                <div class="subgroup">
-                  {group.name && <h3 class="eyebrow">{group.name}</h3>}
-                  <div class="article-grid article-grid--full">
-                    {group.posts.map((post) => (
-                      <article class="article-card article-card--full">
-                        <p class="article-card__date">
-                          {post.data.series_label ? `${post.data.series_label} · ` : ""}{formatPostDate(post.data.date)}
-                        </p>
-                        <h3><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h3>
-                        {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
-                        <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
-                      </article>
-                    ))}
+    <div class="site-shell article-archive">
+      {years.map(({ year, posts: entries }) => (
+        <section class="archive-year" aria-labelledby={`year-${year}`} data-post-year>
+          <h2 class="section-title archive-year__title" id={`year-${year}`}>{year}</h2>
+          <div class="article-grid archive-posts">
+            {entries.map((post) => {
+              const path = categorySegments(post);
+              const category = path[0] ?? "Uncategorized";
+              const excerpt = postExcerpt(post);
+              const href = `/posts/${postSlug(post)}`;
+              return (
+                <article class="article-card archive-card" data-post-category={categoryAnchor(category)}>
+                  <time class="article-card__date" datetime={post.data.date.toISOString()}>{formatPostDate(post.data.date)}</time>
+                  <div class="archive-card__content">
+                    <p class="archive-card__meta">
+                      <span>{path.length ? path.join(" · ") : category}</span>
+                      {post.data.series_label && <span class="archive-card__series">{post.data.series_label}</span>}
+                    </p>
+                    <h3><a href={href}>{post.data.title}</a></h3>
+                    {excerpt && <p>{excerpt}</p>}
+                    <a href={href} class="text-link" aria-label={`Read article: ${post.data.title}`}>Read article</a>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : (
-          <section class="section-block" id={categoryAnchor(name)} aria-labelledby={`${categoryAnchor(name)}-title`}>
-            <div class="site-shell">
-              <div class="section-heading">
-                <div>
-                  <p class="eyebrow">Category</p>
-                  <h2 class="section-title" id={`${categoryAnchor(name)}-title`}>{name}</h2>
-                  <p class="section-intro section-intro--tight">{CATEGORY_INTROS[name] ?? FALLBACK_INTRO}</p>
-                </div>
-              </div>
-              <div class="article-grid article-grid--full">
-                {(byCategory.get(name) ?? []).map((post) => (
-                  <article class="article-card article-card--full">
-                    <p class="article-card__date">{formatPostDate(post.data.date)}</p>
-                    <h3><a href={`/posts/${postSlug(post)}`}>{post.data.title}</a></h3>
-                    {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
-                    <a href={`/posts/${postSlug(post)}`} class="text-link">Read article</a>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        ),
-      )
-    }
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
   </main>
 
   <SiteFooter />
+  <script slot="scripts" is:inline defer src="/static/js/posts-filter.js"></script>
 </BaseLayout>

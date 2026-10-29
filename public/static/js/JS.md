@@ -1,4 +1,22 @@
+<!-- Page script guide. Steps: document each script's selectors, state changes
+and native fallbacks so optional enhancements stay accessible and routes keep
+working without JavaScript. -->
 # Page JavaScript
+
+## `posts-filter.js`
+Enhances `/posts` only; exits if `[data-post-listing]` is absent. Reads category
+links from `[data-post-filter]`, then filters `[data-post-category]` entries
+inside `[data-post-year]` sections using the existing category hash IDs.
+
+On load and `hashchange`, it hides unmatched posts and empty years with `hidden`,
+sets `aria-current="true"` on the selected link, and updates the polite live
+`[data-post-count]` (e.g. **6 articles in Value Chains · Newest first**). The
+**All** link uses `#all`; empty, unknown and malformed hashes also show everything.
+It keeps the server-rendered newest-first order and never duplicates entries.
+Native links supply URL updates, Back/Forward history, keyboard navigation and
+landing targets for incoming home/breadcrumb links. No click interception or
+custom scrolling is needed. With JavaScript off, all posts and years stay visible.
+`footer-listings.css` explicitly preserves `hidden` against card display rules.
 
 ## `home.js`
 Drives the home page **story journey** (and nothing else). Vanilla, no deps,
