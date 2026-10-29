@@ -367,29 +367,6 @@
 }
 .story-chapter__scene-photo img,
 .story-chapter__photo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-.story-chapter__scene-photo figcaption,
-.story-chapter__photo figcaption {
-    position: absolute;
-    inset: auto 0 0;
-    z-index: 3;
-    display: grid;
-    gap: 0.2rem;
-    margin: 0;
-    padding: 1.5rem 0.85rem 0.7rem;
-    color: rgba(236, 227, 210, 0.86);
-    background: linear-gradient(180deg, transparent, rgba(5, 14, 20, 0.82));
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.08em;
-    line-height: 1.4;
-    text-transform: uppercase;
-}
-.story-chapter__scene-photo figcaption small,
-.story-chapter__photo figcaption small {
-    color: rgba(236, 227, 210, 0.52);
-    font-size: 0.58rem;
-}
-
 .story-chapter__note {
     display: grid;
     gap: 0.4rem;
@@ -463,12 +440,6 @@
 .story-chapter--qaradag .story-chapter__path {
     background: repeating-linear-gradient(180deg, var(--band-strings-on-dark) 0 0.6rem, transparent 0.6rem 1.2rem);
 }
-.story-chapter--qaradag :is(.story-chapter__scene-photo, .story-chapter__photo) figcaption {
-    padding: 0.7rem 0.85rem;
-    color: var(--cream);
-    background: rgba(10, 26, 36, 0.94);
-}
-.story-chapter--qaradag :is(.story-chapter__scene-photo, .story-chapter__photo) figcaption small { color: var(--cream); }
 .story-chapter--tehran          { --room: #5a2f1c; --room-accent: #e9a06f; }
 .story-chapter--istanbul        { --room: #2c4438; --room-accent: #6fc4a0; }
 .story-chapter--stuttgart       { --room: #243440; --room-accent: #e7c45e; }

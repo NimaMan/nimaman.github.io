@@ -82,11 +82,6 @@ const firstRouteItem = routeItems[0];
           <div class="hero-portrait-frame">
             <img src={homePage.hero_portrait} alt={homePage.hero_portrait_alt} />
           </div>
-          <div class="hero-portrait-caption">
-            <span>{homePage.name}</span>
-            <span>{homePage.current_location}</span>
-            <span>52.09&deg; N, 5.12&deg; E</span>
-          </div>
         </div>
       </div>
     </section>
@@ -201,10 +196,6 @@ const firstRouteItem = routeItems[0];
                         item.image && (
                           <figure class="story-chapter__scene-photo">
                             <img src={item.image} alt={item.image_alt} />
-                            <figcaption>
-                              <span>Fig. {item.plate} · {item.image_label}</span>
-                              {item.image_credit && <small>{item.image_credit}</small>}
-                            </figcaption>
                           </figure>
                         )
                       }
@@ -224,7 +215,6 @@ const firstRouteItem = routeItems[0];
                             </div>
                             <figure class="story-chapter__photo">
                               <img src={homePage.hq_photo} alt={homePage.hq_photo_alt} />
-                              <figcaption>{homePage.hq_label} / {homePage.hq_address}, {homePage.hq_city}</figcaption>
                             </figure>
                           </div>
                         )
