@@ -244,6 +244,47 @@
     text-align: center;
 }
 
+/* Dombra lockup inside an essay: the official light-surface mark beside the
+   lowercase wordmark set in the display serif (Dombra's brand rule), with an
+   optional mono line under it. The mark keeps its own palette; no frame. */
+.article-prose .dombra-lockup {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin: 2.2rem 0;
+}
+.article-prose .dombra-lockup img {
+    flex: none;
+    width: 88px;
+    height: 88px;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+.article-prose .dombra-lockup figcaption {
+    margin: 0;
+    text-align: left;
+}
+.dombra-lockup__wordmark {
+    display: block;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 96;
+    font-size: 2.6rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+.dombra-lockup__line {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 .article-prose blockquote {
     margin: 1.8rem 0;
     padding: 0.3rem 0 0.3rem 1.3rem;
