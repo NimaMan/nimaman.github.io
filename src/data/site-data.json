@@ -274,7 +274,7 @@
     "hero_intro": "My work sits between machine learning, optimization, finance, and operations research. I care about models that survive contact with constraints, teams, and real decisions.",
     "hero_portrait": "/static/images/rabo-photo.jpg",
     "hero_portrait_alt": "Portrait of Nima Manaf",
-    "hero_statement": "I build decision systems for messy, high-stakes problems.",
+    "hero_statement": "Building a Future to Believe In",
     "hq_address": "Croeselaan 18",
     "hq_city": "3521 CB Utrecht, Netherlands",
     "hq_label": "Rabobank Headquarters",
@@ -292,21 +292,23 @@
   },
   "lifeTimeline": [
     {
-      "body": "The starting point: Qaradag, in the Azerbaijan region of Iran.",
-      "context": "Origin",
+      "body": "I was born in Qaradag, a region of Iranian Azerbaijan held on every side by mountains.",
+      "context": "Born among mountains",
       "image": "/static/images/qaradag-babak-castle.jpg",
-      "image_alt": "Babak Castle in the Qaradag mountains",
+      "image_alt": "Babak Castle on its mountaintop in the Qaradag mountains",
       "image_credit": "Image: Wikimedia Commons",
       "image_label": "Babak Castle, Qaradag",
       "details": [
-        "The origin point is not a credential; it is the place that gives the route its first texture.",
-        "It keeps the story grounded before universities, labs, and companies enter the picture."
+        "Look left and there are mountains. Look right, ahead or behind, and there are more, some bigger than the others. They make you wonder whether what is up there is the zirve, the summit.",
+        "A mountain leaves you two choices: surrender or fight. If you surrender, you know the end is close. So the mountains make two kinds of people: the savaşanlar, the ones who fight, and the ones who give up.",
+        "That Qaradag energy shows in some of the people of these mountains. Babak held them for twenty years against the invading Abbasid armies; his fortress still stands in Qaradag and is seen as a symbol of freedom.",
+        "Sattar Khan, the son of a Qaradag family, held Tabriz for Iran's constitution in 1908–09, against the Shah's armies and the Russian power behind them."
       ],
       "period": "Beginning",
       "place": "East Azerbaijan, Iran",
       "place_short": "Qaradag",
       "scene": "qaradag",
-      "summary": "Born in Qaradag, in northwestern Iran."
+      "summary": "Mountains make you either surrender or fight. Qaradag raises savaşanlar."
     },
     {
       "body": "Tehran meant a full-scholarship BSc in Industrial Engineering at Sharif University of Technology, often described as Iran's MIT.",
