@@ -1,0 +1,100 @@
+/* Meridian tokens.
+   Steps: Declare paper, ink, type, and geometry in order; share one vocabulary across the atlas.
+   Loaded in original cascade order by site.css. */
+
+/* =============================================================================
+   nimamanaf.com — "MERIDIAN" design system (Survey-Plate Edition)
+   -----------------------------------------------------------------------------
+   CONCEPT
+   The site is rendered as a precision survey atlas of one working life. The
+   defining fact — a route from Qaradag to Utrecht across five countries and
+   four disciplines into high-stakes decision systems — is the navigational
+   spine of the page. Cartography is the credibility metaphor: a person who
+   builds optimization / risk / decision systems is presented through the
+   visual language of measurement (graticules, benchmarks, coordinates,
+   plates, route lines).
+
+   ALGORITHM / STRUCTURE OF THIS STYLESHEET
+   1. Tokens (:root)            — palette, type, spacing, the survey grid.
+   2. Base + paper graticule    — body is warm "survey paper" with a faint
+                                  printed grid behind everything; opaque
+                                  "plate" surfaces (cards, prose) cover it so
+                                  the grid never sits under reading text.
+   3. Primitives                — eyebrow (benchmark glyph), buttons, links,
+                                  the reusable corner-registration "tick frame",
+                                  the benchmark/diamond place-mark.
+   4. Header / running head     — wordmark + "GAZETTEER" + live PLATE folio,
+                                  nav as a mono coordinate strip.
+   5. Hero                      — topographic field, survey-marker ledger,
+                                  corner-ticked portrait, compass CTA.
+   6. Story journey (CENTREPIECE, scroll interaction preserved) — left console
+                                  is a navigator's instrument; the ROUTE LINE
+                                  (solid brass = travelled, dashed navy = ahead)
+                                  is driven purely by the existing JS that sets
+                                  the line-fill height; the seven chapters are
+                                  desaturated full-colour "rooms".
+   7. Current Work / Selected Work / Writing — survey-station plates, plotted
+                                  destination rows, field-note log cards.
+   8. Contact                   — the dark "deep water" closing plate where the
+                                  route terminates at a PRESENT POSITION mark.
+   9. Footer, Articles index, Article reading view (map chrome retreats to the
+                                  margins; reading comfort is paramount).
+   10. Motion (gated behind prefers-reduced-motion) + Responsive (mobile turns
+                                  the journey rail into a horizontal route).
+
+   COLOUR DISCIPLINE
+   Brass (#B5611F) is rationed like a compass needle: active state, the one CTA,
+   and hover underlines only — never a card fill, never small body text.
+   Structure (hairlines + type), not colour, is what you remember.
+   ============================================================================ */
+
+:root {
+    /* Paper + ink */
+    --paper: #f1eadb;          /* page background — warm survey stock */
+    --paper-high: #fbf6ec;     /* raised plates: cards, prose column */
+    --paper-tint: #ece3d2;     /* alternate plate stock / soft section */
+    --ink: #16202b;            /* primary text + display + dark hairlines */
+    --graphite: #52596a;       /* secondary text, captions, coordinates */
+
+    /* Interactive + accents */
+    --navy: #0b4f6c;           /* brand / links / route-ahead / visited mark */
+    --navy-strong: #08394e;
+    --abyssal: #0a1a24;        /* dark bands: contact, code, console */
+    --brass: #b5611f;          /* THE rationed accent — fills/glyphs/route */
+    --brass-ink: #964a14;      /* brass TEXT on light paper (AA: ~5.3:1) */
+    --brass-on-dark: #d07a2e;  /* brass TEXT on the dark abyssal band (AA) */
+    --brass-soft: rgba(181, 97, 31, 0.16);
+    --verdigris: #3e7e73;      /* quiet secondary accent */
+    --cream: #ece3d2;          /* text inside dark bands */
+
+    /* Dombra set: High/Mid/Low in bars, Low → Mid → High in signature text.
+       Deep shades belong on paper; bright variants belong on dark surfaces. */
+    --band-low: #b43d30;
+    --band-mid: #257a43;
+    --band-high: #6941ad;
+    --band-low-on-dark: #ed6a5a;
+    --band-mid-on-dark: #72c787;
+    --band-high-on-dark: #a58ae6;
+    --band-strings: #18222e;
+    --band-strings-on-dark: #f1eddf;
+    --band-high-soft: #e7dde3; /* opaque violet-tinted paper, including selection on dark */
+
+    /* Lines */
+    --hairline: rgba(22, 32, 43, 0.16);
+    --hairline-strong: rgba(22, 32, 43, 0.32);
+    --hairline-light: rgba(236, 227, 210, 0.18); /* on dark */
+
+    /* Type */
+    --font-display: "Fraunces", "Source Serif 4", Georgia, serif;
+    --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+
+    /* Geometry */
+    --radius: 4px;
+    --radius-lg: 6px;
+    --shell: min(1180px, calc(100% - 2.5rem));
+    --grid: 30px;              /* graticule module */
+
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+

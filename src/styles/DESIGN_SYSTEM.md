@@ -1,8 +1,8 @@
 # Styles — the "Meridian" design system
 
-This folder holds the single stylesheet (`site.css`) that drives the entire
-public site. There is no CSS framework; everything is hand-authored vanilla CSS
-loaded once via `BaseLayout.astro`.
+This folder holds the ordered CSS modules that drive the entire public site.
+There is no CSS framework; hand-authored vanilla CSS is loaded once via
+`BaseLayout.astro`, through the `site.css` entry stylesheet.
 
 ## Objective
 
@@ -23,8 +23,9 @@ page: it drops out of the hero CTA, becomes the spine of the journey rail
 (solid brass = travelled, dashed navy = ahead), and terminates at the contact
 band in a brass benchmark labelled *Present position*. The same survey glyph —
 a small square rotated 45° (a benchmark/place-mark) — marks every kicker,
-journey stop, prose `h2`, and active state. Colour is rationed to one **brass**
-accent used like a compass needle, so **structure**, not colour, is the memory.
+journey stop, prose `h2`, and active state. **Brass** remains the single rationed
+interactive accent, used like a compass needle. Dombra's small spectrum signature
+adds provenance without changing the atlas identity.
 
 ## Tokens (`:root`)
 
@@ -42,6 +43,41 @@ accent used like a compass needle, so **structure**, not colour, is the memory.
 | Text on dark | `--cream` | `#ece3d2` |
 | Structural lines | `--hairline` / `--hairline-strong` | rgba ink |
 
+### Dombra signature palette
+
+| Band | Paper token / shade | Dark-surface token / shade |
+| --- | --- | --- |
+| Low | `--band-low` · `#b43d30` | `--band-low-on-dark` · `#ed6a5a` |
+| Mid | `--band-mid` · `#257a43` | `--band-mid-on-dark` · `#72c787` |
+| High | `--band-high` · `#6941ad` | `--band-high-on-dark` · `#a58ae6` |
+| Strings | `--band-strings` · `#18222e` | `--band-strings-on-dark` · `#f1eddf` |
+
+The bands are a set: **High violet above Mid green above Low red**, left-aligned
+and lengthening downward at **60:77:86**. Never use these colours for status,
+success/error, or categories. Use deep shades on paper, bright shades on dark
+surfaces, and keep brass for actions and active navigation. The reusable
+`SpectrumMark` uses 2px bars and 1px gaps (8px total) at the article end and
+footer. Optional `onDark` selects the dark-surface set. The hero carries the
+palette once, in **Building a Future to Believe In**: an italic Fraunces
+signature at optical size 72, with a smooth Low red → Mid green → High violet
+text gradient. Every gradient stop and transition clears 3:1 on paper at its
+display size. Solid ink is the default without text clipping support, in print,
+and in forced colours. The phrase balances into at most two lines at 390px.
+A soft violet
+`--band-high-soft` (`#e7dde3`, violet mixed into paper at roughly 14%) provides
+an opaque text-selection fill that also keeps ink readable on dark surfaces.
+Small brass text and hover states use `--brass-ink` on paper (5.33:1 or better)
+or `--brass-on-dark` on dark bands; `--brass` remains the glyph/line colour.
+
+The owner's explicit room treatment is the exception to the small signature:
+**Qaradag** uses a `#6941ad` → `#482773` violet gradient, `#a58ae6` decorative
+beacons, and ivory strings/lines. Small body/meta text uses full-opacity cream
+instead of the lower-contrast violet accent. The active mobile console and
+Qaradag chip use the same violet; route progress stays brass.
+Every room clips its decorative route and beacon into the outer right gutter,
+clear of the content even as copy grows. Room columns fit automatically, stacking
+when two 18rem columns no longer fit; periods remain in the readable cartouche.
+
 **Type:** `Fraunces` (variable `opsz`/`wght`/`ital`) for the name & all
 headlines — an engraved literary serif used only at large optical sizes;
 `Source Serif 4` for long-form reading; `IBM Plex Mono` (tracked, uppercase,
@@ -53,12 +89,22 @@ meta, and code. (Space Grotesk was removed.)
 
 ## How the stylesheet is organised
 
-`site.css` is ordered top-to-bottom as: tokens → base + paper graticule →
-primitives (eyebrow/benchmark glyph, buttons, links, corner-tick frame) →
-header/running-head → hero → **story journey (centrepiece)** → current work →
-selected work → writing/article cards → contact → footer → articles index →
-article reading view → motion → responsive. A long header comment in the file
-restates this algorithm.
+`site.css` imports these files in the original cascade order:
+
+| File | Responsibility |
+| --- | --- |
+| `tokens.css` | Palette, typography, geometry; original design rationale |
+| `base-primitives.css` | Document defaults, paper graticule, labels, buttons, registration frames |
+| `header-hero.css` | Running head, home hero, shared section scaffold |
+| `story-journey.css` | Sticky console, route rail, stop indicators, chapter rooms |
+| `home-sections.css` | Current work, selected work, writing cards, contact |
+| `footer-listings.css` | Footer, article index and hub heroes, category navigation |
+| `article-reading.css` | Reading plate, prose, article navigation, embedded atlas figures |
+| `motion-responsive.css` | Optional motion and viewport overrides |
+
+The initial split was verified byte-for-byte: concatenating the modules in this
+order, removing only their newly added header comments, exactly reproduced
+`git show HEAD:src/styles/site.css` (empty diff, before feature changes).
 
 ## Things that must not break
 
@@ -75,10 +121,21 @@ restates this algorithm.
 - **Reading comfort.** The article prose column is opaque `--paper-high` so the
   page graticule never shows under text; equations (`mjx-container`), `pre`, and
   tables are `overflow-x:auto` so they never break the column.
+  Long essays have a separate contents sidebar, preserving the 66ch prose
+  measure. Headings have scroll offsets and labelled hover/focus permalinks.
+  Pi and inventory retain their wider custom figure plates and compact contents.
+  Contents has no current item before the first heading reaches the header offset.
+  Atlas captions pair the industry and quiet italic serif want line with a
+  wrapping verdict pill in a separate bounded column. Narrow atlas timelines
+  wrap long chronology labels inside their date column. The home Writing heading
+  supplies its category strip's upper rule; the archive strip keeps both rules.
 
 ## Responsive strategy
 
-- **≤980px:** the two-column journey collapses; the sticky left console becomes
+- **≥1200px:** eligible essays use a sticky 220px contents column beside the
+  reading plate; below that, native `<details>` contents sits before the prose.
+- **≤980px:** the home hero places its copy and reading actions before the
+  portrait; the two-column journey collapses; the sticky left console becomes
   a slim **sticky top strip** (count · place · live coordinates · horizontal
   brass meter) above a horizontal-scroll row of benchmark stop-chips — the route
   identity "rotated 90°". Card triptychs/rows linearise.
@@ -92,5 +149,7 @@ restates this algorithm.
 ## Motion
 
 Instrument-grade and cheap: staggered `rise` entrance, route fill off the JS
-variable, hover underlines/arrows. All entrance motion is gated behind
+variable, hover underlines/arrows. Entrances and smooth document scrolling use
 `@media (prefers-reduced-motion: no-preference)` with visible static defaults.
+Reduced-motion overrides disable transitions/animations and hover movement;
+journey stop clicks also respect this preference in `home.js`.

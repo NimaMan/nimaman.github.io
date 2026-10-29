@@ -21,9 +21,25 @@ PostEntry[]` (every entry in the series, via `getSeriesPosts`), and optional
 dek, and a `Read →` cue — so a reader is handed straight to the next essay.
 
 ## `SiteFooter.astro`
-Wordmark + tagline (mono) on the left, social links as a mono index on the
+Spectrum signature, wordmark + tagline (mono) on the left, social links as a mono index on the
 right, separated by a hairline. Pure presentation, no props.
 
+## `SpectrumMark.astro`
+Decorative Dombra signature: three 2px bars, left-aligned, with High violet on
+top (60), Mid green (77), Low red at the bottom (86). Props: optional `onDark`
+selects the bright dark-surface tokens; the default uses deep paper shades.
+Used only in the article end mark and footer; the hero's signature text carries
+the palette there. It has `aria-hidden` because
+it conveys no navigation, category, or status information.
+
+## `ArticleContents.astro`
+Props: grouped `sections` from `articleContents()` and `variant` (`sidebar` or
+`compact`). Renders nested native anchors inside either an aside or `<details>`.
+CSS chooses the visible layout; `article.js` adds `aria-current="location"` to
+matching links in both versions. The page decides whether the essay qualifies.
+No link is current until the first section reaches the sticky header offset.
+
 `SiteNav` and `SiteFooter` read `src/data/site-data.json` (`homePage`,
-`socialLinks`); `SeriesNav` reads only its props. All visual styling lives in
+`socialLinks`); `SeriesNav`, `ArticleContents`, and `SpectrumMark` read only
+their props. Shared styling lives in the ordered modules imported by
 `../styles/site.css` (the "Meridian" system).

@@ -1,5 +1,9 @@
 ---
+// Close every public page with the owner, a restrained signature, and profile links.
+// Steps: read shared site copy, render the decorative spectrum, then list links;
+// keep footer navigation consistent with the rest of the atlas.
 import siteData from "../data/site-data.json";
+import SpectrumMark from "./SpectrumMark.astro";
 
 const { homePage, socialLinks } = siteData;
 ---
@@ -7,6 +11,7 @@ const { homePage, socialLinks } = siteData;
 <footer class="site-footer">
   <div class="site-shell site-footer__inner">
     <div>
+      <SpectrumMark />
       <p class="site-footer__title">{homePage.short_name}</p>
       <p class="site-footer__text">{homePage.tagline}</p>
     </div>

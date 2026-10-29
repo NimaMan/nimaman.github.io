@@ -1,12 +1,19 @@
 ---
+// Home atlas and first-screen entry to the writing.
+// Steps: query public posts once for latest/featured essays and category counts,
+// then render the Dombra-coloured signature, journey hooks, work, writing, and contact.
+// This keeps the reading routes current whenever an essay is published.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
 import siteData from "../data/site-data.json";
-import { formatPostDate, getPublicPosts, postExcerpt, postSlug } from "../lib/posts";
+import { formatPostDate, getPublicPosts, postCategories, postExcerpt, postSlug } from "../lib/posts";
 
 const { homePage, expertise, lifeTimeline, selectedWork, socialLinks } = siteData;
-const featuredPosts = (await getPublicPosts()).slice(0, 3);
+const posts = await getPublicPosts();
+const latestPost = posts[0];
+const featuredPosts = posts.slice(0, 3);
+const categories = postCategories(posts);
 
 // Real geographic coordinates per life-chapter scene, used as cartographic
 // placards across the journey (the site's "survey atlas" signature device).
@@ -41,8 +48,19 @@ const firstRouteItem = routeItems[0];
         <div class="hero-copy">
           <p class="eyebrow">Gazetteer · 38.70&deg; N → 52.09&deg; N</p>
           <h1>{homePage.short_name}<span class="hero-credential" aria-label="PhD">PhD</span></h1>
-          <p class="hero-identity">{homePage.hero_statement}</p>
+          <p class="hero-identity"><span>{homePage.hero_statement}</span></p>
           <p class="hero-description">{homePage.hero_intro}</p>
+          <div class="hero-actions">
+            <a href="/posts" class="button button-primary">Read the articles</a>
+            <a href="#journey" class="button button-ghost">See timeline</a>
+          </div>
+          {latestPost && (
+            <p class="hero-latest">
+              <span>Latest essay</span>
+              <a href={`/posts/${postSlug(latestPost)}`}>{latestPost.data.title}</a>
+              <time datetime={latestPost.data.date.toISOString()}>{formatPostDate(latestPost.data.date)}</time>
+            </p>
+          )}
           <div class="hero-context" aria-label="Current context">
             <div>
               <span>Current work</span>
@@ -56,9 +74,6 @@ const firstRouteItem = routeItems[0];
               <span>Current team</span>
               <strong>{homePage.current_org} / {homePage.current_team}</strong>
             </div>
-          </div>
-          <div class="hero-actions">
-            <a href="#journey" class="button button-primary">See timeline</a>
           </div>
           <p class="hero-note">{homePage.tagline}</p>
         </div>
@@ -150,8 +165,6 @@ const firstRouteItem = routeItems[0];
                   <div class="story-chapter__map" aria-hidden="true">
                     <span class="story-chapter__path"></span>
                     <span class="story-chapter__beacon"></span>
-                    <span class="story-chapter__watermark">{item.placeLabel}</span>
-                    <span class="story-chapter__year">{item.period}</span>
                   </div>
                   <div class="story-chapter__content">
                     <div class="story-chapter__main">
@@ -277,14 +290,21 @@ const firstRouteItem = routeItems[0];
 
     <section class="section-block">
       <div class="site-shell">
-        <div class="section-heading section-heading--tight">
+        <div class="section-heading section-heading--tight section-heading--writing">
           <div>
             <p class="eyebrow">Writing</p>
             <h2 class="section-title">{homePage.writing_heading}</h2>
             <p class="section-intro section-intro--tight">{homePage.writing_intro}</p>
           </div>
-          <a href="/posts" class="text-link">Browse archive</a>
+          <a href="/posts" class="button button-primary">All articles</a>
         </div>
+        <nav class="category-jumps" aria-label="Writing categories">
+          {categories.map((category) => (
+            <a href={`/posts#${category.id}`}>
+              {category.name}<span class="category-jumps__count">{category.count}<span class="visually-hidden"> articles</span></span>
+            </a>
+          ))}
+        </nav>
         <div class="article-grid">
           {
             featuredPosts.map((post) => (

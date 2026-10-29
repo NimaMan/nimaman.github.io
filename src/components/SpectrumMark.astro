@@ -1,0 +1,14 @@
+---
+// Quiet Dombra signature on Meridian surfaces.
+// Steps: emit three decorative bars, shortest High first, then Mid and Low;
+// the shared primitive chooses surface-appropriate tokens and the 60:77:86 geometry.
+interface Props {
+  onDark?: boolean;
+}
+const { onDark = false } = Astro.props;
+---
+<span class:list={["spectrum-mark", { "spectrum-mark--on-dark": onDark }]} aria-hidden="true">
+  <span class="spectrum-mark__high"></span>
+  <span class="spectrum-mark__mid"></span>
+  <span class="spectrum-mark__low"></span>
+</span>

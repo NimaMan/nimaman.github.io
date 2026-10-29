@@ -1,0 +1,32 @@
+---
+// Progressive contents navigation for long essays.
+// Steps: receive grouped Astro headings, choose a sticky aside or native details,
+// then render nested links; article.js adds current-section state without gating access.
+import type { ContentsSection } from "../lib/article-reading";
+
+interface Props {
+  sections: ContentsSection[];
+  variant: "sidebar" | "compact";
+}
+const { sections, variant } = Astro.props;
+const Container = variant === "compact" ? "details" : "aside";
+---
+
+<Container class:list={["article-contents", `article-contents--${variant}`]}>
+  {variant === "compact" && <summary>Contents</summary>}
+  <nav aria-label="Article contents" data-article-contents>
+    {variant === "sidebar" && <p class="article-contents__title">Contents</p>}
+    <ol>
+      {sections.map((section) => (
+        <li>
+          <a href={`#${section.slug}`}>{section.text}</a>
+          {section.children.length > 0 && (
+            <ol>
+              {section.children.map((child) => <li><a href={`#${child.slug}`}>{child.text}</a></li>)}
+            </ol>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+</Container>

@@ -1,3 +1,6 @@
+/* Home journey enhancement.
+   Steps: observe chapter rooms, synchronize the console/route/folio and stop
+   states, then navigate between rooms while respecting the reader's motion preference. */
 (() => {
   const journey = document.querySelector("[data-story-journey]");
   if (!journey) return;
@@ -86,7 +89,8 @@
       const targetIndex = Number(indicator.dataset.storyTarget || "0");
       const chapter = chapters[targetIndex];
       if (!chapter) return;
-      chapter.scrollIntoView({ behavior: "smooth", block: "start" });
+      const behavior = matchMedia("(prefers-reduced-motion: no-preference)").matches ? "smooth" : "auto";
+      chapter.scrollIntoView({ behavior, block: "start" });
       setActive(targetIndex);
     });
   });

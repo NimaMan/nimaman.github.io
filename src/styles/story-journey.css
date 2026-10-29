@@ -1,0 +1,478 @@
+/* Story journey.
+   Steps: Lay out the console, route, and rooms; keep decoration in the outer gutter and let room columns fit their copy.
+   Loaded in original cascade order by site.css. */
+
+/* =============================================================================
+   STORY JOURNEY — centrepiece (scroll behaviour preserved)
+   ============================================================================ */
+.story-journey {
+    padding: clamp(3rem, 5vw, 5rem) 0 clamp(3.5rem, 6vw, 6rem);
+    background:
+        linear-gradient(180deg, transparent, rgba(236, 227, 210, 0.5));
+}
+.story-journey__shell {
+    display: grid;
+    grid-template-columns: minmax(260px, 330px) minmax(0, 1fr);
+    gap: clamp(1.6rem, 3vw, 3rem);
+    align-items: start;
+}
+
+/* --- Navigator console (sticky) --- */
+.story-journey__rail { position: sticky; top: 5.6rem; display: grid; gap: 1rem; }
+.story-route-console {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    padding: 1.25rem 1.3rem 1.35rem;
+    color: var(--cream);
+    background: var(--abyssal);
+    border: 1px solid var(--hairline-light);
+}
+.story-route-console::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg, rgba(236,227,210,0.05) 0 1px, transparent 1px 1.4rem),
+        repeating-linear-gradient(90deg, rgba(236,227,210,0.05) 0 1px, transparent 1px 1.4rem);
+    -webkit-mask-image: linear-gradient(180deg, #000, transparent 88%);
+    mask-image: linear-gradient(180deg, #000, transparent 88%);
+}
+.story-route-console > * { position: relative; }
+.story-route-console__label {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    color: rgba(236, 227, 210, 0.6);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+.story-route-console__label::before {
+    content: "";
+    width: 7px; height: 7px;
+    background: var(--brass);
+    transform: rotate(45deg);
+}
+.story-route-console__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+    color: rgba(236, 227, 210, 0.72);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+.story-route-console h3 {
+    margin: 0.35rem 0 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 144;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 4vw, 2.9rem);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+}
+.story-route-console__country {
+    margin: 0.5rem 0 0;
+    color: rgba(236, 227, 210, 0.6);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+.story-route-console__coord {
+    margin: 0.55rem 0 0;
+    color: var(--brass-on-dark);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+}
+.story-route-console__context {
+    margin: 1.05rem 0 0;
+    color: color-mix(in srgb, var(--brass) 40%, var(--cream));
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 40;
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.story-route-console__body {
+    margin: 0.55rem 0 0;
+    color: rgba(236, 227, 210, 0.82);
+    font-size: 0.96rem;
+    line-height: 1.55;
+}
+.story-route-console__meter {
+    height: 3px;
+    margin-top: 1.2rem;
+    border-radius: 999px;
+    background:
+        repeating-linear-gradient(90deg, rgba(236,227,210,0.22) 0 4px, transparent 4px 9px);
+    overflow: hidden;
+}
+.story-route-console__meter span {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: var(--brass);
+    transition: width 280ms var(--ease);
+}
+
+/* --- Stop list with the vertical route line through the place-marks --- */
+.story-journey__rail-body { position: relative; }
+.story-journey__line {
+    position: absolute;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    left: 0.8rem;
+    width: 2px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(180deg, var(--navy) 0 5px, transparent 5px 11px);
+    opacity: 0.55;
+}
+.story-journey__line-fill {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 0%;
+    background: var(--brass);
+    transition: height 280ms var(--ease);
+}
+.story-journey__stops { display: grid; gap: 0.15rem; }
+.story-stop-indicator {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.9rem minmax(0, 1fr);
+    gap: 0.55rem;
+    align-items: center;
+    min-height: 3.1rem;
+    padding: 0.55rem 0.65rem 0.55rem 1.9rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--graphite);
+    opacity: 0.92;
+}
+.story-stop-indicator:hover { opacity: 1; color: var(--ink); background: var(--paper-high); }
+.story-stop-indicator.is-active {
+    opacity: 1;
+    color: var(--ink);
+    background: var(--paper-high);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.story-stop-indicator.is-passed { opacity: 0.92; }
+.story-stop-indicator__index {
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+}
+.story-stop-indicator.is-active .story-stop-indicator__index { color: var(--brass-ink); }
+.story-stop-indicator__dot {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    width: 0.72rem;
+    height: 0.72rem;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--paper);
+    border: 1.5px solid var(--hairline-strong);
+    z-index: 1;
+}
+.story-stop-indicator.is-passed .story-stop-indicator__dot { background: var(--navy); border-color: var(--navy); }
+.story-stop-indicator.is-active .story-stop-indicator__dot {
+    background: var(--brass);
+    border-color: var(--brass);
+    box-shadow: 0 0 0 4px var(--brass-soft);
+}
+.story-stop-indicator__text { display: grid; gap: 0.1rem; min-width: 0; }
+.story-stop-indicator__name {
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 40;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+.story-stop-indicator__period {
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- Chapters: desaturated full-colour "rooms" --- */
+.story-journey__chapters { display: grid; gap: clamp(1.4rem, 4vh, 3rem); }
+.story-chapter {
+    --room: #14323f;
+    --room-accent: #e0a05a;
+    position: relative;
+    min-height: min(74vh, 700px);
+    display: grid;
+    align-items: stretch;
+    overflow: hidden;
+    border-radius: var(--radius);
+    padding: clamp(1.4rem, 3vw, 2.4rem);
+    color: var(--cream);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 30%),
+        var(--room);
+    border: 1px solid rgba(236, 227, 210, 0.12);
+    isolation: isolate;
+}
+/* faint plate graticule inside each room */
+.story-chapter::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg, rgba(236,227,210,0.04) 0 1px, transparent 1px 2.6rem),
+        repeating-linear-gradient(90deg, rgba(236,227,210,0.035) 0 1px, transparent 1px 2.6rem);
+}
+/* Reserve the outer gutter for the route, regardless of room or copy length.
+   Clipping the whole map keeps its beacon and dashed line clear of all text. */
+.story-chapter__map {
+    position: absolute;
+    inset: 1.5rem 0.2rem 1.5rem auto;
+    width: 0.75rem;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+.story-chapter__path {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: repeating-linear-gradient(180deg, rgba(236,227,210,0.5) 0 0.6rem, transparent 0.6rem 1.2rem);
+    opacity: 0.22;
+}
+.story-chapter__beacon {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    width: 0.4rem; height: 0.4rem;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--room-accent);
+    box-shadow: 0 0 0 0.12rem color-mix(in srgb, var(--room-accent) 22%, transparent);
+}
+.story-chapter__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    column-gap: clamp(1.2rem, 3vw, 2.4rem);
+    row-gap: clamp(1.2rem, 2vw, 1.8rem);
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+}
+.story-chapter__main { max-width: 36rem; }
+
+/* cartouche header */
+.story-chapter__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(236, 227, 210, 0.2);
+}
+.story-chapter__meta span {
+    color: rgba(236, 227, 210, 0.78);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+.story-chapter__meta .story-chapter__plate {
+    color: var(--room-accent);
+    font-weight: 500;
+}
+.story-chapter__meta .story-chapter__coord { margin-left: auto; letter-spacing: 0.06em; }
+
+.story-chapter__context {
+    margin: 1.1rem 0 0;
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--paper-high);
+}
+.story-chapter__summary {
+    margin: 0.9rem 0 0;
+    max-width: 34rem;
+    color: rgba(236, 227, 210, 0.9);
+    font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+    line-height: 1.6;
+}
+.story-chapter__details { display: grid; gap: 0.5rem; margin: 1.15rem 0 0; padding: 0; list-style: none; }
+.story-chapter__details li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: rgba(236, 227, 210, 0.8);
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+.story-chapter__details li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--room-accent);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+.story-chapter__links { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.15rem; }
+.story-chapter__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    color: var(--room-accent);
+    background: rgba(236, 227, 210, 0.08);
+    border: 1px solid rgba(236, 227, 210, 0.18);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 200ms var(--ease);
+}
+.story-chapter__links a:hover { background: rgba(236, 227, 210, 0.16); }
+
+.story-chapter__aside { display: grid; gap: 0.85rem; width: 100%; max-width: 32rem; }
+.story-chapter__scene-photo,
+.story-chapter__photo {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid rgba(236, 227, 210, 0.18);
+}
+.story-chapter__scene-photo img,
+.story-chapter__photo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.story-chapter__scene-photo figcaption,
+.story-chapter__photo figcaption {
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 3;
+    display: grid;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 1.5rem 0.85rem 0.7rem;
+    color: rgba(236, 227, 210, 0.86);
+    background: linear-gradient(180deg, transparent, rgba(5, 14, 20, 0.82));
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+.story-chapter__scene-photo figcaption small,
+.story-chapter__photo figcaption small {
+    color: rgba(236, 227, 210, 0.52);
+    font-size: 0.58rem;
+}
+
+.story-chapter__note {
+    display: grid;
+    gap: 0.4rem;
+    padding: 0.95rem 1rem;
+    border-radius: var(--radius);
+    background: rgba(236, 227, 210, 0.07);
+    border: 1px solid rgba(236, 227, 210, 0.16);
+    border-left: 2px solid var(--verdigris);
+}
+.story-chapter__note p { margin: 0; font-size: 0.96rem; line-height: 1.55; color: rgba(236, 227, 210, 0.88); }
+.story-chapter__note-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    color: color-mix(in srgb, var(--verdigris) 55%, var(--cream));
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+.story-chapter__note-label::before { content: "⌖"; font-size: 0.9em; }
+
+.story-chapter__current { display: grid; gap: 0.85rem; }
+.story-chapter__current-copy {
+    display: grid;
+    gap: 0.4rem;
+    padding: 0.95rem 1rem;
+    border-radius: var(--radius);
+    background: rgba(236, 227, 210, 0.07);
+    border: 1px solid rgba(236, 227, 210, 0.16);
+}
+.story-chapter__current-copy h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--paper-high);
+}
+.story-chapter__current-copy p {
+    margin: 0;
+    color: rgba(236, 227, 210, 0.78);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.story-chapter__current-copy p.story-chapter__note-label {
+    color: color-mix(in srgb, var(--verdigris) 55%, var(--cream));
+}
+
+/* per-chapter desaturated room tints + bright in-room accent */
+.story-chapter--qaradag {
+    --room: var(--band-high);
+    --room-accent: var(--band-high-on-dark);
+    background: linear-gradient(155deg, var(--room), #482773);
+}
+/* Full-opacity text retains AA at the lightest point of the violet room.
+   Bright violet is reserved for decorative beacons; strings/lines are ivory. */
+.story-chapter--qaradag .story-chapter__summary,
+.story-chapter--qaradag .story-chapter__details li,
+.story-chapter--qaradag .story-chapter__meta span,
+.story-chapter--qaradag .story-chapter__note p,
+.story-chapter--qaradag .story-chapter__note-label { color: var(--cream); }
+.story-chapter--qaradag .story-chapter__links a { color: var(--band-strings-on-dark); }
+.story-chapter--qaradag .story-chapter__links a:focus-visible { outline-color: var(--band-strings-on-dark); }
+.story-chapter--qaradag .story-chapter__note { border-left-color: var(--room-accent); }
+.story-chapter--qaradag .story-chapter__meta { border-bottom-color: color-mix(in srgb, var(--band-strings-on-dark) 35%, transparent); }
+.story-chapter--qaradag .story-chapter__path {
+    background: repeating-linear-gradient(180deg, var(--band-strings-on-dark) 0 0.6rem, transparent 0.6rem 1.2rem);
+}
+.story-chapter--qaradag :is(.story-chapter__scene-photo, .story-chapter__photo) figcaption {
+    padding: 0.7rem 0.85rem;
+    color: var(--cream);
+    background: rgba(10, 26, 36, 0.94);
+}
+.story-chapter--qaradag :is(.story-chapter__scene-photo, .story-chapter__photo) figcaption small { color: var(--cream); }
+.story-chapter--tehran          { --room: #5a2f1c; --room-accent: #e9a06f; }
+.story-chapter--istanbul        { --room: #2c4438; --room-accent: #6fc4a0; }
+.story-chapter--stuttgart       { --room: #243440; --room-accent: #e7c45e; }
+.story-chapter--istanbul-return { --room: #243a52; --room-accent: #8aa5ff; }
+.story-chapter--eindhoven       { --room: #1a3c2c; --room-accent: #9bcf61; }
+.story-chapter--utrecht         { --room: #103345; --room-accent: #f0bd85; }
+

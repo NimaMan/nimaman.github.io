@@ -8,8 +8,8 @@
 //      "Value Chains/<group>" (e.g. "Value Chains/Money"); a post with no
 //      second segment falls into "More from the series".
 //   3. Render one section per group, in the editorial order defined in GROUPS
-//      (Evolution of Value Chains first — the framework — then Money, the
-//      worked example), each with a one-paragraph intro. Unknown groups are
+//      (Evolution of Value Chains first — the framework — then Money and Music,
+//      the worked examples), with intros and stable anchors for article trails. Unknown groups are
 //      appended after the known ones so a future post never silently
 //      disappears from the hub.
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -18,6 +18,7 @@ import SiteNav from "../../components/SiteNav.astro";
 import siteData from "../../data/site-data.json";
 import {
   categorySegments,
+  categoryAnchor,
   formatPostDate,
   getSeriesPosts,
   postExcerpt,
@@ -32,12 +33,17 @@ const GROUPS: { name: string; intro: string }[] = [
   {
     name: "Evolution of Value Chains",
     intro:
-      "The framework. The Law states the engine: the want is constant, cost is the selector, and when a cost falls the rent relocates to whichever cost is still standing. The Pattern then traces that engine across fourteen industries — own, then retrieve, then participate — and shows the two questions that decide where any industry's third step lands.",
+      "The framework. The Law states the engine: the want is constant, cost is the selector, and when a cost falls the rent relocates to whichever cost is still standing. The Evolutions then follows fourteen industries in the order that explains them: human nature, the wants it produces, the technologies that move what is scarce, and the value chains that reorganize around the same want.",
   },
   {
     name: "Money",
     intro:
-      "The case study. The law worked out in depth in the one domain where it can be traced step by step: who controls the rails value moves on, where the cost of money hides, and what happens to money itself when moving and converting value becomes nearly free.",
+      "The first worked example: who controls the rails value moves on, where the cost of money hides, and what happens to money itself when moving and converting value becomes nearly free.",
+  },
+  {
+    name: "Music",
+    intro:
+      "The second worked example: how making music is reorganizing as its costs fall, and what the digital audio workstation becomes when the scarce thing is no longer the operation but the intention.",
   },
 ];
 
@@ -62,7 +68,7 @@ const sections = [
 
 <BaseLayout
   title={`Value Chains | ${homePage.short_name}`}
-  description="A series on how value chains evolve, in two parts: the framework — the law of cost selection and the pattern it draws across fourteen industries — and the framework worked out in depth in one domain: money."
+  description="A series on how value chains evolve: the law of cost selection, the pattern it draws across industries, and two worked examples in money and music."
   bodyClass="public-page"
 >
   <SiteNav activePage="posts" />
@@ -73,17 +79,17 @@ const sections = [
         <p class="eyebrow">Article Series</p>
         <h1>Value Chains</h1>
         <p class="page-intro">
-          A running series on how value chains evolve: the path a want takes from unmet to met, the costs that hide along the way, and who ends up owning whatever cost has not yet fallen. It comes in two parts. <strong>Evolution of Value Chains</strong> is the framework — the law by which chains evolve, and the pattern that law draws across fourteen industries. <strong>Money</strong> works the framework out in depth in the one domain where it can be traced step by step — the dollar's grip on settlement, the hidden toll inside everyday money, and the future of money itself.
+          A running series on how value chains evolve: the path a want takes from unmet to met, the costs that hide along the way, and who ends up owning whatever cost has not yet fallen. <strong>Evolution of Value Chains</strong> is the framework — the law by which chains evolve, and the pattern that law draws across industries. <strong>Money</strong> and <strong>Music</strong> are the worked examples: from the dollar's grip on settlement and the hidden toll inside everyday money to the changing costs of making music and the future of the digital audio workstation.
         </p>
       </div>
     </section>
 
     {
       sections.map((group) => (
-        <section class="section-block">
+        <section class="section-block" id={categoryAnchor(group.name)} aria-labelledby={`${categoryAnchor(group.name)}-title`}>
           <div class="site-shell">
             <div class="section-heading">
-              <p class="eyebrow">{group.name}</p>
+              <h2 class="eyebrow" id={`${categoryAnchor(group.name)}-title`}>{group.name}</h2>
               {group.intro && (
                 <p class="section-intro section-intro--tight">{group.intro}</p>
               )}
@@ -95,9 +101,9 @@ const sections = [
                     {post.data.series_label ? `${post.data.series_label} · ` : ""}
                     {formatPostDate(post.data.date)}
                   </p>
-                  <h2>
+                  <h3>
                     <a href={`/posts/${postSlug(post)}`}>{post.data.title}</a>
-                  </h2>
+                  </h3>
                   {postExcerpt(post) && <p>{postExcerpt(post)}</p>}
                   <a href={`/posts/${postSlug(post)}`} class="text-link">
                     Read article

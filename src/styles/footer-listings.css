@@ -1,0 +1,82 @@
+/* Footer and article listings.
+   Steps: Close the atlas, then style listing heroes and category navigation; make writing easy to find.
+   Loaded in original cascade order by site.css. */
+
+/* =============================================================================
+   FOOTER
+   ============================================================================ */
+.site-footer { padding: 2.5rem 0 3rem; }
+.site-footer .spectrum-mark { margin-bottom: 0.8rem; }
+.site-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--hairline-strong);
+}
+.site-footer__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 40;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.site-footer__text { margin: 0.3rem 0 0; color: var(--graphite); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 1rem; }
+.site-footer__links a {
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.site-footer__links a:hover { color: var(--brass-ink); }
+
+/* =============================================================================
+   ARTICLES LISTING + PAGE HERO
+   ============================================================================ */
+.listing-page { padding-bottom: 2rem; }
+.page-hero { padding: 4rem 0 1rem; }
+.page-hero h1 {
+    margin: 0;
+    max-width: 16ch;
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+.page-intro { max-width: 52ch; margin: 1.2rem 0 0; color: var(--graphite); font-size: 1.12rem; }
+
+/* Shared by the home writing section and /posts; counts use no category colours. */
+.category-jumps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin: 1.7rem 0;
+    padding: 0.7rem 0;
+    border-block: 1px solid var(--hairline-strong);
+}
+/* Home's section heading supplies the strip's upper rule; /posts keeps its own. */
+.section-heading--writing { margin-bottom: 0; }
+.section-heading--writing + .category-jumps { margin-top: 0; border-top: none; }
+.category-jumps a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    color: var(--navy);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-decoration: none;
+}
+.category-jumps a:hover { color: var(--brass-ink); text-decoration: underline; text-underline-offset: 4px; }
+.category-jumps__count { color: var(--graphite); font-size: 0.66rem; font-variant-numeric: tabular-nums; }
+.listing-page .section-block[id] { scroll-margin-top: 6rem; }
+.subgroup + .subgroup { margin-top: 2.6rem; }
+

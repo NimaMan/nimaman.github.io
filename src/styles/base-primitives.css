@@ -1,0 +1,209 @@
+/* Base, graticule, and primitives.
+   Steps: Set document defaults, then reusable labels, actions, and registration frames; keep all pages consistent.
+   Loaded in original cascade order by site.css. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;          /* lets mobile rooms bleed full-width safely */
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    background-color: var(--paper);
+    /* Faint printed graticule behind everything; opaque "plate" surfaces
+       (cards, prose column, dark bands) cover it so it never sits under text. */
+    background-image:
+        repeating-linear-gradient(0deg, rgba(22, 32, 43, 0.05) 0 1px, transparent 1px var(--grid)),
+        repeating-linear-gradient(90deg, rgba(22, 32, 43, 0.05) 0 1px, transparent 1px var(--grid));
+}
+
+.public-page { position: relative; }
+
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+button, input, textarea, select { font: inherit; }
+
+::selection { background: var(--band-high-soft); color: var(--ink); }
+
+:focus-visible { outline: 2px solid var(--brass-ink); outline-offset: 4px; }
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* Dombra bars: High (shortest), Mid, Low (longest); 60:77:86 lengths. */
+.spectrum-mark {
+    --spectrum-low: var(--band-low);
+    --spectrum-mid: var(--band-mid);
+    --spectrum-high: var(--band-high);
+    display: grid;
+    gap: 1px;
+    width: 43px;
+}
+.spectrum-mark > span { display: block; height: 2px; }
+.spectrum-mark__high { width: calc(100% * 60 / 86); background: var(--spectrum-high); }
+.spectrum-mark__mid { width: calc(100% * 77 / 86); background: var(--spectrum-mid); }
+.spectrum-mark__low { width: 100%; background: var(--spectrum-low); }
+.spectrum-mark--on-dark {
+    --spectrum-low: var(--band-low-on-dark);
+    --spectrum-mid: var(--band-mid-on-dark);
+    --spectrum-high: var(--band-high-on-dark);
+}
+
+/* ---- Layout shell --------------------------------------------------------- */
+.site-shell { width: var(--shell); margin: 0 auto; }
+
+/* ---- Eyebrow + benchmark glyph (the survey place-mark) -------------------- */
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    margin: 0 0 1rem;
+    color: var(--brass-ink);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+.eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    flex: none;
+    background: var(--brass);
+    transform: rotate(45deg);
+    box-shadow: inset 0 0 0 1.5px var(--paper);
+}
+.eyebrow-inverse { color: var(--brass-on-dark); }
+.eyebrow-inverse::before { box-shadow: inset 0 0 0 1.5px var(--abyssal); }
+
+/* Section titles — engraved chart-plate titles */
+.section-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+.section-title-inverse { color: var(--paper-high); }
+
+/* ---- Buttons + links ------------------------------------------------------ */
+.button,
+.text-link,
+.site-nav a,
+.work-card,
+.contact-link,
+.info-card,
+.article-card,
+.story-stop-indicator {
+    transition: transform 200ms var(--ease), color 200ms var(--ease),
+        border-color 200ms var(--ease), background 200ms var(--ease),
+        box-shadow 200ms var(--ease);
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 3rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--brass);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.button-primary {
+    color: var(--brass-ink);
+    background: transparent;
+    position: relative;
+}
+.button-primary::after {
+    content: "→";
+    font-family: var(--font-body);
+    transition: transform 220ms var(--ease);
+}
+.button-primary:hover {
+    background: var(--brass-ink);
+    color: var(--paper-high);
+}
+.button-primary:hover::after { transform: translateX(3px); }
+
+.button-ghost { border-color: transparent; color: var(--graphite); background: transparent; }
+.button-ghost::after { content: "↓"; }
+.button-ghost:hover { border-color: var(--hairline-strong); color: var(--ink); }
+
+.button-secondary {
+    border-color: var(--hairline-strong);
+    color: var(--ink);
+    background: var(--paper-high);
+}
+.button-secondary:hover { border-color: var(--navy); color: var(--navy); }
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--navy);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.text-link::after { content: "→"; transition: transform 220ms var(--ease); }
+.text-link:hover { color: var(--brass-ink); }
+.text-link:hover::after { transform: translateX(4px); }
+
+/* ---- Corner registration "tick frame" (reusable) -------------------------- */
+.hero-portrait-frame,
+.story-chapter__scene-photo,
+.story-chapter__photo {
+    position: relative;
+}
+.hero-portrait-frame::after,
+.story-chapter__scene-photo::after,
+.story-chapter__photo::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    pointer-events: none;
+    z-index: 2;
+    --tick: rgba(236, 227, 210, 0.85);
+    background:
+        linear-gradient(var(--tick), var(--tick)) left top / 15px 1.5px no-repeat,
+        linear-gradient(var(--tick), var(--tick)) left top / 1.5px 15px no-repeat,
+        linear-gradient(var(--tick), var(--tick)) right top / 15px 1.5px no-repeat,
+        linear-gradient(var(--tick), var(--tick)) right top / 1.5px 15px no-repeat,
+        linear-gradient(var(--tick), var(--tick)) left bottom / 15px 1.5px no-repeat,
+        linear-gradient(var(--tick), var(--tick)) left bottom / 1.5px 15px no-repeat,
+        linear-gradient(var(--tick), var(--tick)) right bottom / 15px 1.5px no-repeat,
+        linear-gradient(var(--tick), var(--tick)) right bottom / 1.5px 15px no-repeat;
+    transition: opacity 220ms var(--ease);
+}
+

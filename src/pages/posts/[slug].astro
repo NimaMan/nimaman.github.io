@@ -1,11 +1,18 @@
 ---
+// Static reading route for essays and interactive research posts.
+// Steps: render public Markdown and its headings, derive the category trail,
+// minutes and contents, then offer series/category reading after a quiet end mark.
+// Keep native navigation usable without JS and preserve the wider custom figures.
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SeriesNav from "../../components/SeriesNav.astro";
+import ArticleContents from "../../components/ArticleContents.astro";
+import SpectrumMark from "../../components/SpectrumMark.astro";
 import siteData from "../../data/site-data.json";
-import { formatPostDate, getPublicPosts, getSeriesPosts, postExcerpt, postSlug, type PostEntry } from "../../lib/posts";
+import { categoryAnchor, categorySegments, formatPostDate, getPublicPosts, getSeriesPosts, postExcerpt, postSlug, type PostEntry } from "../../lib/posts";
+import { articleContents, readingMinutes } from "../../lib/article-reading";
 
 export async function getStaticPaths() {
   const posts = await getPublicPosts();
@@ -21,7 +28,7 @@ interface Props {
 
 const { homePage } = siteData;
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const slug = postSlug(post);
 const isPiPost = slug === "pi";
 const isInventoryPost = slug === "learning-to-control-inventory-management-systems";
@@ -29,6 +36,25 @@ const PiVisual = isPiPost ? (await import("../../components/PiVisual.astro")).de
 const InventoryNetworkDiagram = isInventoryPost ? (await import("../../components/InventoryNetworkDiagram.astro")).default : undefined;
 const description = post.data.description || postExcerpt(post);
 const seriesSiblings = post.data.series ? await getSeriesPosts(post.data.series) : [];
+const contents = articleContents(headings);
+const hasSideContents = contents.length > 0 && !isPiPost && !isInventoryPost;
+const minutes = readingMinutes(post.body ?? "");
+const categories = categorySegments(post);
+const topCategory = categories[0] ?? "Uncategorized";
+const relatedPosts = post.data.series ? [] : (await getPublicPosts())
+  .filter((other) => postSlug(other) !== slug && (categorySegments(other)[0] ?? "Uncategorized") === topCategory)
+  .slice(0, 3);
+const trail = [
+  { label: "Articles", href: "/posts" },
+  ...categories.map((label, index) => ({
+    label,
+    href: index === 0
+      ? `/posts#${categoryAnchor(label)}`
+      : post.data.series === "value_chains" && index === 1
+        ? `/value_chains#${categoryAnchor(label)}`
+        : undefined,
+  })),
+];
 ---
 
 <BaseLayout title={`${post.data.title} | ${homePage.short_name}`} description={description} bodyClass={`public-page article-page${isPiPost ? " pi-article-page" : ""}${isInventoryPost ? " inventory-article-page" : ""}`}>
@@ -54,29 +80,57 @@ const seriesSiblings = post.data.series ? await getSeriesPosts(post.data.series)
   <SiteNav activePage="posts" />
 
   <main class="article-layout">
+    <div class:list={["article-layout__grid", { "article-layout__grid--with-contents": hasSideContents }]}>
+    {hasSideContents && <ArticleContents sections={contents} variant="sidebar" />}
     <div class:list={["site-shell", "article-layout__inner", { "article-layout__inner--pi": isPiPost, "article-layout__inner--inventory": isInventoryPost }]}>
-      <a href="/posts" class="text-link article-back">Back to all articles</a>
+      <nav class="article-trail" aria-label="Breadcrumb">
+        <ol>
+          {trail.map((segment) => (
+            <li>{segment.href ? <a href={segment.href}>{segment.label}</a> : <span>{segment.label}</span>}</li>
+          ))}
+        </ol>
+      </nav>
       <header class="article-header">
-        {post.data.series === "value_chains" ? (
-          <p class="eyebrow"><a href="/value_chains">Value Chains{post.data.series_label ? ` · ${post.data.series_label}` : ""}</a></p>
-        ) : (
-          <p class="eyebrow">Article</p>
-        )}
+        <p class="eyebrow">{post.data.series_label ?? "Article"}</p>
         <h1>{post.data.title}</h1>
         <div class="article-meta">
-          <span>{formatPostDate(post.data.date)}</span>
+          <time datetime={post.data.date.toISOString()}>{formatPostDate(post.data.date)}</time>
           <span>{post.data.author || homePage.name}</span>
+          <span>{minutes} min read</span>
         </div>
         {postExcerpt(post) && <p class="article-dek">{postExcerpt(post)}</p>}
       </header>
+
+      {contents.length > 0 && <ArticleContents sections={contents} variant="compact" />}
 
       <article class:list={["article-prose", { "article-prose--pi": isPiPost, "article-prose--inventory": isInventoryPost }]}>
         {isPiPost && <PiVisual />}{isInventoryPost && <InventoryNetworkDiagram />}<Content />
       </article>
 
-      {post.data.series && <SeriesNav current={post} siblings={seriesSiblings} />}
+      <div class="article-end"><SpectrumMark /></div>
+      <section class="article-keep-reading" aria-labelledby="keep-reading-title">
+        <h2 id="keep-reading-title" class="section-title">Keep reading</h2>
+        {post.data.series ? (
+          <SeriesNav current={post} siblings={seriesSiblings} />
+        ) : relatedPosts.length > 0 ? (
+          <nav aria-label={`More in ${topCategory}`}>
+            <p class="article-related__lead">More in {topCategory}</p>
+            <ul class="article-related">
+              {relatedPosts.map((other) => (
+                <li>
+                  <a href={`/posts/${postSlug(other)}`}>{other.data.title}</a>
+                  <time datetime={other.data.date.toISOString()}>{formatPostDate(other.data.date)}</time>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
+        <a href="/posts" class="text-link article-all">All articles</a>
+      </section>
+    </div>
     </div>
   </main>
 
   <SiteFooter />
+  {contents.length > 0 && <script slot="scripts" src="/static/js/article.js"></script>}
 </BaseLayout>

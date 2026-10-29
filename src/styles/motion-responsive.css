@@ -1,0 +1,232 @@
+/* Motion and responsive layouts.
+   Steps: Apply optional entrance motion, then adapt each surface by viewport width; preserve desktop and phone usability.
+   Loaded in original cascade order by site.css. */
+
+/* =============================================================================
+   MOTION (gated behind prefers-reduced-motion)
+   ============================================================================ */
+@keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    .hero-copy > *,
+    .hero-portrait-panel,
+    .info-card,
+    .work-card,
+    .article-card,
+    .contact-link {
+        animation: rise 720ms var(--ease) both;
+    }
+    .hero-copy > :nth-child(2) { animation-delay: 60ms; }
+    .hero-copy > :nth-child(3) { animation-delay: 120ms; }
+    .hero-copy > :nth-child(4) { animation-delay: 180ms; }
+    .hero-copy > :nth-child(5) { animation-delay: 240ms; }
+    .hero-portrait-panel { animation-delay: 160ms; }
+    .info-card:nth-child(2), .work-card:nth-child(2), .article-card:nth-child(2) { animation-delay: 80ms; }
+    .info-card:nth-child(3), .work-card:nth-child(3), .article-card:nth-child(3) { animation-delay: 160ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .button-primary:hover::after,
+    .text-link:hover::after,
+    .series-nav__card:hover { transform: none; }
+}
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================ */
+@media (min-width: 1200px) {
+    .article-layout__grid--with-contents {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 840px);
+        justify-content: center;
+        align-items: start;
+        gap: 2.5rem;
+        width: var(--shell);
+        margin: 0 auto;
+    }
+    .article-layout__grid--with-contents .article-layout__inner { width: 100%; min-width: 0; }
+    .article-layout__grid--with-contents .article-contents--compact { display: none; }
+    .article-contents--sidebar {
+        display: block;
+        position: sticky;
+        top: 6rem;
+        max-height: calc(100svh - 8rem);
+        overflow-y: auto;
+        padding: 1rem 0.3rem 1rem 0;
+        scrollbar-width: thin;
+    }
+}
+
+@media (max-width: 980px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        min-height: auto;
+        padding-top: 0.5rem;
+    }
+    .hero-portrait-panel { justify-self: stretch; width: 100%; }
+    .hero-portrait-frame img { aspect-ratio: 16 / 11; }
+    .contact-panel { grid-template-columns: 1fr; gap: 1.6rem; }
+
+    /* Journey: rail becomes a horizontal route strip pinned to the top.
+       min-width:0 on the single grid track + rail lets it shrink to the
+       shell width instead of overflowing (which clipped the readout). */
+    .story-journey__shell { grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
+    .story-journey__rail {
+        position: sticky;
+        top: 4.8rem;
+        z-index: 10;
+        min-width: 0;
+        gap: 0.75rem;
+        background: var(--abyssal);
+        border-radius: var(--radius);
+        padding: 0.85rem 0.9rem;
+        box-shadow: 0 10px 24px rgba(10, 26, 36, 0.18);
+    }
+    .story-route-console { min-width: 0; border: none; padding: 0; background: transparent; }
+    .story-route-console::before { display: none; }
+    /* slim strip: just place + coordinate on one line, the meter, and the chips */
+    .story-route-console__label,
+    .story-route-console__meta,
+    .story-route-console__context,
+    .story-route-console__body,
+    .story-route-console__country { display: none; }
+    .story-route-console h3 { display: inline; margin: 0; font-size: 1.45rem; vertical-align: baseline; }
+    .story-route-console__coord { display: inline; margin: 0 0 0 0.55rem; vertical-align: baseline; }
+    .story-route-console__meter { margin-top: 0.7rem; }
+
+    .story-journey__line { display: none; }          /* meter is the route now */
+    .story-journey__rail-body { min-width: 0; }
+    .story-journey__stops {
+        display: flex;
+        min-width: 0;        /* allow the flex scroller to shrink to the rail width */
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+    }
+    .story-stop-indicator {
+        flex: 0 0 auto;
+        grid-template-columns: auto auto;
+        gap: 0.45rem;
+        min-height: 2.6rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid rgba(236, 227, 210, 0.18);
+        background: rgba(236, 227, 210, 0.05);
+        color: var(--cream);
+        opacity: 0.7;
+    }
+    .story-stop-indicator__dot { position: static; transform: rotate(45deg); }
+    .story-stop-indicator:hover,
+    .story-stop-indicator.is-active { background: rgba(236, 227, 210, 0.14); color: var(--paper-high); box-shadow: none; }
+    .story-stop-indicator.is-active .story-stop-indicator__index { color: var(--brass-on-dark); }
+    .story-stop-indicator__index { color: rgba(236, 227, 210, 0.6); }
+    .story-stop-indicator__period { display: none; }
+    .story-stop-indicator__name { color: var(--cream); font-size: 0.86rem; }
+
+    /* Qaradag's active room also colours the mobile console and its stop chip.
+       Brass continues to indicate progress; ivory keeps all small text readable. */
+    .story-journey[data-active-scene="qaradag"] .story-journey__rail {
+        background: linear-gradient(155deg, var(--band-high), #482773);
+    }
+    .story-journey[data-active-scene="qaradag"] .story-route-console__coord { color: var(--band-strings-on-dark); }
+    .story-journey[data-active-scene="qaradag"] .story-route-console__meter {
+        background: repeating-linear-gradient(90deg, var(--band-strings-on-dark) 0 4px, transparent 4px 9px);
+    }
+    .story-stop-indicator[data-story-scene="qaradag"].is-active {
+        background: var(--band-high);
+        border-color: var(--band-strings-on-dark);
+    }
+    .story-journey[data-active-scene="qaradag"] .story-stop-indicator,
+    .story-stop-indicator[data-story-scene="qaradag"].is-active { opacity: 1; }
+    .story-stop-indicator[data-story-scene="qaradag"].is-active .story-stop-indicator__index { color: var(--cream); }
+    .story-journey[data-active-scene="qaradag"] .story-stop-indicator__index { color: var(--cream); }
+    .story-journey[data-active-scene="qaradag"] .story-stop-indicator:focus-visible { outline-color: var(--band-strings-on-dark); }
+
+    .story-chapter { min-height: auto; }
+    .story-chapter__content { grid-template-columns: 1fr; align-items: start; }
+    .story-chapter__aside { max-width: 100%; }
+
+    .card-grid { grid-template-columns: 1fr; }
+    .info-card,
+    .info-card:first-child,
+    .info-card:last-child {
+        border-left-width: 1px;
+        border-radius: var(--radius);
+        border-bottom-width: 0;
+    }
+    .info-card:last-child { border-bottom-width: 1px; }
+
+    .article-grid { grid-template-columns: 1fr; }
+    .article-grid--full { grid-template-columns: 1fr; }
+    .article-grid--full .article-card,
+    .article-grid--full .article-card:nth-child(odd) {
+        border: 1px solid var(--hairline-strong);
+        border-radius: var(--radius);
+    }
+
+    .section-heading, .site-footer__inner { flex-direction: column; align-items: start; }
+}
+
+@media (max-width: 760px) {
+    .site-header__inner { min-height: auto; padding: 0.7rem 0; flex-wrap: wrap; }
+    .site-brand { order: 1; }
+    .site-header__end { order: 2; margin-left: auto; }
+    .site-nav { order: 3; width: 100%; justify-content: flex-start; gap: 0.1rem; padding-top: 0.2rem; border-top: 1px solid var(--hairline); margin-top: 0.4rem; }
+    /* >=44px tap targets without inflating the visible glyphs much */
+    .site-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.7rem; }
+    .site-meta-link { position: relative; width: 2.4rem; height: 2.4rem; }
+    .site-meta-link::before { content: ""; position: absolute; inset: -4px; } /* expands hit area to ~46px */
+    .site-header__end { gap: 0.5rem; }
+    .site-plate { display: none; }   /* drop the running-head folio on phones to keep the header to 2 rows */
+    .site-brand__sub { display: none; }
+    /* offset the sticky journey strip below the 2-row mobile header (~132px) */
+    .story-journey__rail { top: 8.5rem; }
+
+    .hero-section { padding-top: 2.5rem; }
+    .hero-context { grid-template-columns: 1fr; }
+    .hero-context div { border-left: none; border-top: 1px solid var(--hairline); }
+    .hero-context div:first-child { border-top: none; }
+
+    /* Full-bleed colour rooms on phone for drama */
+    .story-chapter {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        padding: 1.5rem clamp(1.1rem, 5vw, 1.6rem);
+    }
+    /* keep the cartouche coordinate in wrap-flow, not shoved off the bleed edge */
+    .story-chapter__content,
+    .story-chapter__main { min-width: 0; }
+    .story-chapter__meta .story-chapter__coord { margin-left: 0; }
+
+    .work-card { grid-template-columns: 1fr; gap: 0.3rem; padding: 1.25rem 0.5rem; }
+    .work-card .work-meta,
+    .work-card h3,
+    .work-card p,
+    .work-card .work-link { grid-column: 1; grid-row: auto; }
+    .work-link { margin-top: 0.5rem; }
+
+    .article-prose { font-size: 1.08rem; }
+    .article-prose :is(h2, h3)[id],
+    .listing-page .section-block[id] { scroll-margin-top: 10rem; }
+    .article-prose h2 { font-size: 1.55rem; }
+    .article-prose blockquote { font-size: 1.15rem; }
+    .contact-link { flex-direction: column; gap: 0.2rem; }
+    .contact-link small { text-align: left; }
+}
+
+@media (max-width: 520px) {
+    :root { --shell: calc(100% - 1.4rem); }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .button { width: 100%; }
+    .hero-copy h1 { font-size: clamp(2.3rem, 13vw, 3.4rem); }
+    .story-route-console h3 { font-size: 1.4rem; }
+}

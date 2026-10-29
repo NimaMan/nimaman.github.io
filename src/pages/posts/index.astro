@@ -18,43 +18,41 @@
 //    without a heading. Inside a sub-group posts follow series_order
 //    ascending so the series reads as a sequence.
 // Nothing is hardcoded to particular posts: new posts join the tree through
-// their frontmatter alone.
+// their frontmatter alone. Shared taxonomy helpers supply the jump strip and
+// stable section IDs so home links and article trails land in the right place.
+// The archive title, description, and introduction include music as a worked example.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import siteData from "../../data/site-data.json";
 import {
   categorySegments,
+  categoryAnchor,
   formatPostDate,
   getPublicPosts,
+  postCategories,
   postExcerpt,
   postSlug,
   type PostEntry,
 } from "../../lib/posts";
 
 const { homePage } = siteData;
+const archiveHeading = "Essays on value chains, music, learning, and mathematical curiosities.";
+const archiveIntro = "Long-form essays and research notes, filed by category: how value chains evolve, with money and music as worked examples; optimization and learning; mathematical side paths; and the academic record.";
 const posts = await getPublicPosts();
+const categories = postCategories(posts);
 
 const UNCATEGORIZED = "Uncategorized";
 const SERIES_CATEGORY = "Value Chains";
 const SERIES_HUB = "/value_chains";
 
-// Display order of the known top-level categories; anything not listed here
-// renders after them, alphabetically.
-const CATEGORY_ORDER = [
-  "Value Chains",
-  "Optimization & Learning",
-  "Mathematical Curiosities",
-  "Research & Teaching",
-];
-
 // Display order of the known Value Chains sub-groups.
-const SUBGROUP_ORDER = ["Evolution of Value Chains", "Money"];
+const SUBGROUP_ORDER = ["Evolution of Value Chains", "Money", "Music"];
 
 // One-sentence standfirst per known category; unknown ones get the fallback.
 const CATEGORY_INTROS: Record<string, string> = {
   "Value Chains":
-    "How value chains evolve: where the cost hides, who ends up owning the bottleneck, and what changes when the cost of a thing falls toward zero — money is the worked example.",
+    "How value chains evolve: where the cost hides, who ends up owning the bottleneck, and what changes when the cost of a thing falls toward zero — money and music are the worked examples.",
   "Optimization & Learning":
     "Algorithms that learn to decide — stochastic optimization, evolution strategies, and reinforcement learning applied to real operational systems.",
   "Mathematical Curiosities":
@@ -76,14 +74,7 @@ for (const post of posts) {
 
 // Step 3: known categories first, unexpected ones alphabetically,
 // "Uncategorized" last and only when non-empty.
-const unexpectedCategories = [...byCategory.keys()]
-  .filter((name) => name !== UNCATEGORIZED && !CATEGORY_ORDER.includes(name))
-  .sort((a, b) => a.localeCompare(b));
-const orderedCategories = [
-  ...CATEGORY_ORDER.filter((name) => byCategory.has(name)),
-  ...unexpectedCategories,
-  ...(byCategory.has(UNCATEGORIZED) ? [UNCATEGORIZED] : []),
-];
+const orderedCategories = categories.map((category) => category.name);
 
 // Step 4: split the Value Chains bucket into ordered sub-groups.
 const bySubGroup = new Map<string, PostEntry[]>();
@@ -106,29 +97,34 @@ const seriesGroups = [
 ].map((name) => ({ name, posts: bySubGroup.get(name)! }));
 ---
 
-<BaseLayout title={`Articles | ${homePage.short_name}`} description={`Research articles and notes by ${homePage.name}.`} bodyClass="public-page">
+<BaseLayout title={`Articles on value chains, music, learning & mathematics | ${homePage.short_name}`} description={archiveIntro} bodyClass="public-page">
   <SiteNav activePage="posts" />
 
   <main class="listing-page">
     <section class="page-hero">
       <div class="site-shell">
         <p class="eyebrow">Articles</p>
-        <h1>Notes on optimization, machine learning, finance, and mathematical curiosities.</h1>
-        <p class="page-intro">
-          Essays, research notes, and visual experiments collected over the years, filed by category — from inventory control to mathematical side paths.
-        </p>
+        <h1>{archiveHeading}</h1>
+        <p class="page-intro">{archiveIntro}</p>
+        <nav class="category-jumps" aria-label="Article categories">
+          {categories.map((category) => (
+            <a href={`#${category.id}`}>
+              {category.name}<span class="category-jumps__count">{category.count}<span class="visually-hidden"> articles</span></span>
+            </a>
+          ))}
+        </nav>
       </div>
     </section>
 
     {
       orderedCategories.map((name) =>
         name === SERIES_CATEGORY ? (
-          <section class="section-block">
+          <section class="section-block" id={categoryAnchor(name)} aria-labelledby={`${categoryAnchor(name)}-title`}>
             <div class="site-shell">
               <div class="section-heading section-heading--tight">
                 <div>
                   <p class="eyebrow">Article Series</p>
-                  <h2 class="section-title">{name}</h2>
+                  <h2 class="section-title" id={`${categoryAnchor(name)}-title`}>{name}</h2>
                   <p class="section-intro section-intro--tight">{CATEGORY_INTROS[name] ?? FALLBACK_INTRO}</p>
                 </div>
                 <a href={SERIES_HUB} class="text-link">Open the series</a>
@@ -153,12 +149,12 @@ const seriesGroups = [
             </div>
           </section>
         ) : (
-          <section class="section-block">
+          <section class="section-block" id={categoryAnchor(name)} aria-labelledby={`${categoryAnchor(name)}-title`}>
             <div class="site-shell">
               <div class="section-heading">
                 <div>
                   <p class="eyebrow">Category</p>
-                  <h2 class="section-title">{name}</h2>
+                  <h2 class="section-title" id={`${categoryAnchor(name)}-title`}>{name}</h2>
                   <p class="section-intro section-intro--tight">{CATEGORY_INTROS[name] ?? FALLBACK_INTRO}</p>
                 </div>
               </div>
@@ -181,10 +177,3 @@ const seriesGroups = [
 
   <SiteFooter />
 </BaseLayout>
-
-<style>
-  /* Breathing room between stacked Value Chains sub-groups. */
-  .subgroup + .subgroup {
-    margin-top: 2.6rem;
-  }
-</style>

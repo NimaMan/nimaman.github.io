@@ -1,0 +1,272 @@
+/* Home sections and article cards.
+   Steps: Style current work, selected work, writing cards, then contact; carry the atlas down the home page.
+   Loaded in original cascade order by site.css. */
+
+/* =============================================================================
+   CURRENT WORK — survey-station plates
+   ============================================================================ */
+.card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+.info-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 1.5rem;
+    background: var(--paper-high);
+    border: 1px solid var(--hairline-strong);
+    border-left-width: 0;
+}
+.info-card:first-child { border-left-width: 1px; border-radius: var(--radius) 0 0 var(--radius); }
+.info-card:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+.info-card h3 {
+    margin: 0.6rem 0 0.6rem;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 600;
+    font-size: 1.32rem;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+}
+.info-card > h3::before {
+    content: "Stn " counter(station, decimal-leading-zero);
+    display: block;
+    margin-bottom: 0.55rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--brass-ink);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+.card-grid { counter-reset: station; }
+.info-card { counter-increment: station; }
+.info-card p { margin: 0; color: var(--graphite); font-size: 1rem; line-height: 1.6; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: auto; padding-top: 1.1rem; }
+.tag-row span {
+    padding: 0.32rem 0.6rem 0.32rem 0.55rem;
+    border: 1px solid var(--hairline-strong);
+    border-left: 2px solid var(--navy);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--paper);
+    color: var(--navy-strong);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* =============================================================================
+   SELECTED WORK — plotted destination rows
+   ============================================================================ */
+.work-grid { display: grid; gap: 0; border-top: 1px solid var(--hairline-strong); }
+.work-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.3rem 1.4rem;
+    padding: 1.4rem 0.4rem 1.4rem 1.4rem;
+    border-bottom: 1px solid var(--hairline-strong);
+    text-decoration: none;
+    color: var(--ink);
+}
+.work-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--brass);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 240ms var(--ease);
+}
+.work-card:hover::before { transform: scaleY(1); }
+.work-card:hover { background: var(--paper-high); }
+.work-card:hover h3 { color: var(--brass-ink); }
+.work-meta {
+    grid-column: 1;
+    grid-row: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+.work-meta::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: none;
+    background: var(--brass);
+    transform: rotate(45deg);
+}
+.work-card h3 {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0.4rem 0 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 72;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    transition: color 200ms var(--ease);
+}
+.work-card p:not(.work-meta) {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0.35rem 0 0;
+    color: var(--graphite);
+    font-size: 1rem;
+    max-width: 52ch;
+}
+.work-link {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: baseline;
+    color: var(--brass-ink);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.work-link::after { content: " →"; }
+
+/* =============================================================================
+   WRITING / ARTICLE CARDS — field-note log entries
+   ============================================================================ */
+.article-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+.article-grid--full { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
+
+.article-card {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1.5rem 1.5rem 1.6rem;
+    background: var(--paper-high);
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius);
+}
+/* full index variant: ruled rows sharing borders */
+.article-grid--full .article-card {
+    border-radius: 0;
+    border-left: none;
+    border-top: none;
+}
+.article-grid--full .article-card:nth-child(odd) { border-left: 1px solid var(--hairline-strong); }
+.article-grid--full .article-card:nth-child(-n + 2) { border-top: 1px solid var(--hairline-strong); }
+
+.article-card:hover { border-color: var(--navy); }
+.article-card__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    color: var(--graphite);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+.article-card__date::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--verdigris);
+    transform: rotate(45deg);
+}
+.article-card h2,
+.article-card h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+}
+.article-card h2 a,
+.article-card h3 a {
+    text-decoration: none;
+    background-image: linear-gradient(var(--brass), var(--brass));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 260ms var(--ease);
+    padding-bottom: 2px;
+}
+.article-card h2 a:hover,
+.article-card h3 a:hover { background-size: 100% 1.5px; color: var(--brass-ink); }
+.article-card p { margin: 0; color: var(--graphite); font-size: 1rem; line-height: 1.55; }
+
+/* =============================================================================
+   CONTACT — the dark "deep water" closing plate
+   ============================================================================ */
+.contact-terminus {
+    display: grid;
+    justify-items: center;
+    gap: 0.7rem;
+    margin: 0 0 2.5rem;
+    text-align: center;
+}
+.contact-terminus__line {
+    width: 2px;
+    height: 3.2rem;
+    background: linear-gradient(180deg, transparent, var(--brass));
+}
+.contact-terminus__mark {
+    width: 0.85rem;
+    height: 0.85rem;
+    transform: rotate(45deg);
+    background: var(--brass);
+    box-shadow: 0 0 0 5px var(--brass-soft), 0 0 0 1px rgba(236, 227, 210, 0.5);
+}
+.contact-terminus__label {
+    color: var(--brass-on-dark);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+.contact-panel {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+.contact-copy { margin: 1rem 0 0; color: rgba(236, 227, 210, 0.74); font-size: 1.1rem; max-width: 40ch; }
+.contact-links { display: grid; gap: 0; border-top: 1px solid var(--hairline-light); }
+.contact-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 0.4rem;
+    border-bottom: 1px solid var(--hairline-light);
+    color: var(--cream);
+    text-decoration: none;
+    transition: padding 220ms var(--ease), color 220ms var(--ease);
+}
+.contact-link:hover { padding-left: 1.1rem; color: var(--brass-on-dark); }
+.contact-link span {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 40;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+}
+.contact-link small {
+    color: rgba(236, 227, 210, 0.55);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: right;
+}
+
