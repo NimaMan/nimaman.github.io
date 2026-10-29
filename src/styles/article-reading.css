@@ -151,16 +151,17 @@
     font-variant-numeric: tabular-nums;
 }
 .article-meta > * + *::before { content: "·"; margin-right: 0.6rem; }
+/* Dek (the post's description under the title): upright reading serif, a step
+   above body size, so it reads as a calm summary rather than display type. */
 .article-dek {
     max-width: 60ch;
     margin: 1.2rem 0 0;
     color: var(--graphite);
-    font-family: var(--font-display);
-    font-variation-settings: "opsz" 40;
+    font-family: var(--font-body);
     font-weight: 400;
-    font-style: italic;
-    font-size: 1.25rem;
-    line-height: 1.45;
+    font-style: normal;
+    font-size: 1.15rem;
+    line-height: 1.6;
 }
 
 .article-prose {
