@@ -292,30 +292,6 @@
     object-fit: cover;
     filter: saturate(0.92) contrast(1.02);
 }
-.hero-portrait-caption {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
-    margin-top: 0.85rem;
-    padding-top: 0.65rem;
-    border-top: 1px solid var(--hairline-strong);
-}
-.hero-portrait-caption span {
-    color: var(--graphite);
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-variant-numeric: tabular-nums;
-}
-.hero-portrait-caption span + span { position: relative; padding-left: 1.1rem; }
-.hero-portrait-caption span + span::before {
-    content: "·";
-    position: absolute;
-    left: 0.35rem;
-    color: var(--hairline-strong);
-}
-
 /* =============================================================================
    SECTION SCAFFOLD
    ============================================================================ */

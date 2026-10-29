@@ -15,12 +15,13 @@ Sections, in order:
    (solid ink for print, forced colours, and browsers without text clipping),
    primary **Read the articles** action, secondary
    **See timeline**, automatic latest-essay title/date, survey-marker ledger
-   (current work / base / team), and a corner-ticked portrait with coordinates.
+   (current work / base / team), and a corner-ticked portrait without a caption.
    On phones, the reading actions precede the ledger and portrait.
 2. **Story journey** (`#journey`) — the centrepiece. `lifeTimeline` is reversed
    to most-recent-first; each scene is given a real lat/long coordinate
    (`sceneCoords`) and a `plate` number. Renders the sticky navigator console +
-   route rail and the seven full-colour chapter "rooms". Scroll behaviour is
+   route rail and the seven full-colour chapter "rooms". Chapter photos have no
+   visible figure captions or image-credit lines. Scroll behaviour is
    driven by `public/static/js/home.js`; markup exposes `data-story-*`
    attributes (incl. `data-story-coord`) the script reads.
    Decorative paths and beacons are clipped to the right gutter. Room content
