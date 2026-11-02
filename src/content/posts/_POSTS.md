@@ -32,6 +32,12 @@ by the loader's `**/[^_]*.md` glob, mirroring the `src/pages` convention.
       industries read in the Book of Dombra's order (human nature → wants and
       their obstacles → technology moving what is scarce → the chain that
       reorganizes around the same want)
+    - `clash_of_the_old_and_the_new.md` — The Clash (order 6): a dated
+      history of the clashes in programming and music when a tool shortened
+      the road from intention to result, and the cause-and-effect pattern
+      across them (trigger, resistance, decider, the old's leverage); why the
+      DAW's next rival is general agents making music through an instrument,
+      not prompt-to-song (no language for sound)
   - **Money** — the first worked example
     - `battle_for_dollar_supremacy.md` — Part I (order 2)
     - `the_price_you_cannot_see.md` — Companion (order 3)
