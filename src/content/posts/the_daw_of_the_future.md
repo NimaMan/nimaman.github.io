@@ -2,7 +2,7 @@
 author: Nima Manaf, PhD
 title: "De DAW of the Future"
 date: 2026-10-29
-description: "For more than thirty years the digital audio workstation has carried the classical studio idea: learn the tool, then make the music. Music is now following programming a few years behind, as general agents learn to make it, and the scarce thing is no longer the operation but the intention. The next DAW is an instrument you play interactively with an agent: you ask, hear, adjust and continue, and your ear keeps the verdict."
+description: "For more than thirty years the digital audio workstation has carried the classical studio idea: learn the tool, then make the music. Music shares much of what made coding agents work, and adds a dimension code lacks: sound and the ear. As the general agents that mastered code turn to music, the scarce thing is no longer the operation but the intention. The next DAW is an instrument you play interactively with an agent: you ask, hear, adjust and continue, and your ear keeps the verdict."
 draft: false
 category: "Value Chains/Music"
 series: value_chains
@@ -17,9 +17,11 @@ stops being scarce and general agents can operate it, and why. The argument foll
 series' order: what people want from music, how its value chain
 is organized, how technology moved the bottleneck, and the instrument that answers what is
 left. The essay aims at music for you (music that fits you and carries your choices), not at
-winning strangers' attention. It bets that music follows programming a few years behind, that
-the general models now writing code will also make music, and that making music becomes
-interactive: ask, hear, adjust, continue. Four distinctions carry the argument: the classical
+winning strangers' attention. It bets that the general agents that mastered code will also be
+the producers, with code and neural sound generators as their tools; that music shares
+structure, pattern and logic with code and adds a new dimension (sound and the ear), so the
+gap is structural, not a number of years; that a hub of fully editable shared songs will come;
+and that making music becomes interactive: ask, hear, adjust, continue. Four distinctions carry the argument: the classical
 studio idea vs the player, operation vs intention, recording vs project, evidence vs verdict.
 Owner's rules: no individual people are named anywhere (institutions, studios, companies,
 unions, products and sources may be); "DAW" and "instrument" are used interchangeably, the DAW
@@ -68,17 +70,20 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    editable target (recording vs project).
 7. Programming went first: shared object, same commands, senses, memory; learn-then-build gave
    way to ask, look, correct, continue; SWE-bench from 1.96% (2023) to most of a verified set;
-   music is near the start of that curve (on the owner's eleven-level ladder agents reach
-   level 3 or 4, not yet held); the bet that general models will make music, on
-   condition that music gets a medium, senses and memory. The analogy breaks at taste.
+   music shares structure, pattern and logic with code and adds a new dimension, sound and the
+   ear, so the gap is structural, not years (on the owner's eleven-level ladder agents reach
+   level 3 or 4, not yet held); the bet that the general agents that mastered code become the
+   producers, using code and neural sound generators and building their own tools to judge
+   what works. The analogy breaks at taste.
 8. Five properties of the next DAW: start from the intention, played interactively; people and
    agents edit the same song; hear for the agent until agents hear well, and keep the evidence
    after; every sound finished and editable (a sound with its settings is like code to an
-   agent); remember the work (a hub of songs published as projects).
+   agent); remember the work (the bet on a hub of songs shared in full editable form).
 9. The verdict stays with the ear: directing an agent is expression; evidence vs verdict; the
    verdict is yours because the music is for you, not because machines are deaf.
-10. What could prove this wrong: listening; the player piano; music may not follow programming
-    (no public projects, no tests for taste); absorption; listening cost; recorded character;
+10. What could prove this wrong: listening; the player piano; the new dimension may not yield
+    (no public projects, no tests for taste, taste keeps moving); absorption; listening cost;
+    recorded character;
     consent and displacement.
 11. The order of change: agents inside existing work first (Logic Pro's session players), the
     editable project second, a new instrument last, if at all; the classical studio idea
@@ -94,7 +99,7 @@ That last detail is where this essay begins. The want is the constant and the me
 
 Imagine hearing a song and wishing the bass would wait a little longer before it returns. The intention takes a second to form. Realizing it can take an evening: find the source, separate the parts, learn an editor, rebuild the passage, render it, compare it with the original, and hope you can find the file next week. The DAW is the most capable musical instrument ever built, and it still charges that evening as the price of the second. The reason is the idea it was built on. The classical studio idea organizes music around jobs: recording, editing, mixing, each with its own machine and its own specialist. The oldest instruments are organized around the person holding them: a gesture goes in, a sound comes out, and the ear decides. The DAW took the jobs, and with them the rule that you learn the operation before you are allowed the intention. So the contest that matters is not between applications. It is over how far a person must travel between a musical intention and its realization, and what carries them across.
 
-My thesis is simple. **The DAW of the future will not be a better copy of the classical studio. It will be an instrument built around the player, and played interactively**: you ask, hear, adjust and continue, while an agent works on the same editable music through the same commands, the instrument supplies the senses, the work keeps its memory, and your ear keeps the verdict. I am also betting on who that agent will be: not a special music program, but the same kind of general model that now writes software. Music is following programming, a few years behind. Four distinctions carry the argument: the classical studio idea and the player, operation and intention, recording and project, evidence and verdict.
+My thesis is simple. **The DAW of the future will not be a better copy of the classical studio. It will be an instrument built around the player, and played interactively**: you ask, hear, adjust and continue, while an agent works on the same editable music through the same commands, the instrument supplies the senses, the work keeps its memory, and your ear keeps the verdict. I am also betting on who that agent will be: not a special music program, but the same kind of general model that now writes software, with sound generators, written in code or built as neural models, as its tools. Music shares a good part of what made coding agents work, and adds a dimension code does not have. Four distinctions carry the argument: the classical studio idea and the player, operation and intention, recording and project, evidence and verdict.
 
 The reported numbers show what abundance looks like, though they are industry estimates rather than audited facts. By one count, about [**106,000**](https://musically.com/2026/01/15/5-1tn-annual-music-streams-but-120-5m-tracks-had-10-or-fewer/) new tracks were delivered to streaming services every day in 2025, up from 99,000 the year before, and by late 2026 industry estimates were [**close to 150,000**](https://musically.com/2026/09/17/150000-new-tracks-are-uploaded-to-music-services-every-day/). One large streaming service reported that fully AI-generated tracks made up [**more than half**](https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/) of its daily uploads by mid-2026, while drawing only **1–3%** of its streams. Of the roughly 253 million tracks on streaming services at the end of 2025, about [**88%**](https://musically.com/2026/01/15/5-1tn-annual-music-streams-but-120-5m-tracks-had-10-or-fewer/) were reportedly played fewer than a thousand times that year.
 
@@ -182,7 +187,9 @@ Software development has already been through the transition music is entering. 
 
 What made this work was not the chat window. It was four quieter things: **a shared editable object** (the repository), **the same commands** for the person and the agent (the agent edits files like any other editor), **senses** (compilers, tests and logs that tell the agent what actually happened), and **memory** (version control, so nothing is lost and every change has a name). "Cursor for music", after the AI code editor, is shorthand for the same four things in a song. *Bring the bass back four bars later and leave the vocal alone*: the agent makes that change in the song itself, and the person hears it in context and keeps or reverts it.
 
-It did not work at once. In October 2023, the best model tested [resolved 1.96%](https://arxiv.org/abs/2310.06770) of a set of real software issues; within about two years, leading agents were resolving [most of a verified set](https://www.swebench.com/) of them. Music is now near the start of that curve. In my own work, agents already build whole tracks and remixes through an instrument's commands, and the results are where code was in 2023: the songs are complete and they play, and a person still has to hear what is wrong and say so. On an eleven-level ladder I use to judge agent-made tracks, from a track's basic shape up to one I would pick over the best out there, the best agents so far reach the third or fourth level, and not yet reliably. I am betting the curve repeats, and that the agents making music will be the same general models that write software, writing a sound, arranging it and revising it the way they write, run and fix a program. The lag closes only if music gets what made code work: an editable medium, senses and memory.
+It did not work at once. In October 2023, the best model tested [resolved 1.96%](https://arxiv.org/abs/2310.06770) of a set of real software issues; within about two years, leading agents were resolving [most of a verified set](https://www.swebench.com/) of them. Music shares a good part of what made that possible: structure, pattern and logic, held in an editable project. It also has a dimension code does not have: sound, and an ear to judge it. The shared part is already within reach. In my own work, agents build whole tracks and remixes through an instrument's commands; the songs are complete and they play, and a person still has to hear what is wrong and say so. On an eleven-level ladder I use to judge agent-made tracks, from a track's basic shape up to one I would pick over the best out there, the best agents so far reach the third or fourth level, and not yet reliably. What separates music from code is not a number of years. It is the new dimension, and it opens as music gets what code had: an editable medium, senses and memory.
+
+My bet is that the general agents that mastered code will also be the producers. Anything with pattern and logic in it is open to them. They will reach sound through generators, synthesis written as code and neural sound models alike, and they will build their own tools to hear what works and what does not, find the patterns and use those tools in production, the way they already write tests for their own code.
 
 The analogy breaks at one point, and it is the most important point in this essay. **Tests can check code. Nothing can check taste.** A measurement can say whether a kick lands on the beat, whether a mix clips, or whether a tail decays. It cannot say whether a phrase says what you meant. In music, the last test is the ear of the person the music is for. Everything the next DAW must do follows from that.
 
@@ -216,7 +223,7 @@ A producer who wants an industrial bass for a hard techno track wants that bass,
 
 Programmers take version control for granted; musicians mostly do without it. The next DAW should record every change with its maker, person, collaborator or agent, and let anyone allowed to edit keep a version, the way a commit keeps code. Any version can be heard, compared with any other and returned to; nothing kept is lost by going back.
 
-Memory makes experimentation safe, because the ending you had is never at risk while an agent tries three others, and it makes music continuable. Imagine a hub where songs are published as projects, with their arrangement and their sounds, not only as recordings. Someone hears one, enters the drum part, tries a different rhythm and keeps a descendant. The original stays intact, and its maker can hear the answer and continue from it in turn. **A work becomes an invitation to a musical answer, and a good answer becomes another beginning.** Such a hub would also give music what public code gave programming: a body of editable work that people, and agents, can learn from. Whether people want that often enough to sustain it is a hypothesis, and sharing stays an act the person chooses. So does the last word.
+Memory makes experimentation safe, because the ending you had is never at risk while an agent tries three others, and it makes music continuable. I am betting on a hub, music's version of shared code: songs published in full editable form, every part of the production and every sound open to change, so that people continue and improve each other's music the way programmers continue each other's code. Someone hears a song, enters the drum part, tries a different rhythm and keeps a descendant. The original stays intact, and its maker can hear the answer and continue from it in turn. **A work becomes an invitation to a musical answer, and a good answer becomes another beginning.** Such a hub would also give music what public code gave programming: a body of editable work that people, and agents, can learn from. It is a bet, and sharing stays an act the person chooses. So does the last word.
 
 ## The verdict stays with the ear
 
@@ -234,7 +241,7 @@ It is a thesis, not a prophecy, and each objection to it can be tested.
 
 **Participation can be attractive and still lose.** Player-piano sales in America [peaked in 1924](https://en.wikipedia.org/wiki/Player_piano); within a few years the electrical phonograph and radio had swept them aside, and the crash of 1929 ended their prominence. Many buyers seem to have valued the outcome more than the act of steering. The question for any new instrument is whether people return for the act itself, or only because it is, for now, the easiest way to a result.
 
-**Music may not follow programming.** Coding agents learned from millions of public repositories and check their own work with tests. Music has neither at that scale: people publish recordings, not projects, and no test checks taste. If the lag is structural, waiting will not close it; someone has to build music's repositories, senses and memory first.
+**The new dimension may not yield.** Coding agents learned from millions of public repositories and check their own work with tests. Music's new dimension has neither at that scale: people publish recordings, not projects, and no test checks taste, which also keeps moving. If sound and taste do not yield to pattern and logic the way code did, general agents will remain skilled assistants rather than producers.
 
 **The incumbents can absorb it.** Free, integrated studios already reach enormous numbers of people, and the established DAWs are already bringing assistants inside. A new instrument must be clearly better at something people do often.
 

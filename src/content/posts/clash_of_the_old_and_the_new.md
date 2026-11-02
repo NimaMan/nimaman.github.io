@@ -52,8 +52,11 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    picks a region; Suno Studio moved toward the editable project while its chat still routes
    intention through words; agents can write the exact languages (music as code) and are
    gaining ears.
-6. When the successor arrives: the bet (music follows programming; SWE-bench from 1.96% in
-   2023 to 52.6% and 79.2% by December 2025); general agents making music through an
+6. When the successor arrives: the bet (the general agents that mastered code become the
+   producers; SWE-bench from 1.96% in 2023 to 52.6% and 79.2% by December 2025; music shares
+   structure, pattern and logic with code and adds a new dimension, sound and the ear, so the
+   gap is structural, not years; code and neural sound generators as their tools; agents
+   build their own tools to judge what works); general agents making music through an
    instrument; ask, hear, adjust, continue (the dombra kuy's master and apprentice); the
    predicted response and the control test. What could prove this wrong. Close.
 -->
@@ -145,7 +148,7 @@ The exact languages are where agents are strong. Music can already be written as
 
 ## When the successor arrives
 
-My bet is that music follows programming a few years behind, and that it now stands about where coding agents stood in 2023. In October 2023, a [public benchmark](https://arxiv.org/abs/2310.06770) tested language models on 2,294 real GitHub issues from 12 Python projects; the best model resolved 1.96%. By December 2025 the [leaderboard's](https://www.swebench.com/) top agents resolved 52.6% of the full set and 79.2% of its Verified subset of 500 issues. I expect the general models that now write code to make music and synthesize sounds the same way, working through an instrument as they work through a code editor. That, rather than prompt-to-song, is the new that the masters of the classical studio idea will face.
+My bet is that the general agents that mastered code will also be the producers. In October 2023, a [public benchmark](https://arxiv.org/abs/2310.06770) tested language models on 2,294 real GitHub issues from 12 Python projects; the best model resolved 1.96%. By December 2025 the [leaderboard's](https://www.swebench.com/) top agents resolved 52.6% of the full set and 79.2% of its Verified subset of 500 issues. Music shares a good part of what made that possible, structure, pattern and logic in an editable project, and adds a dimension code does not have: sound, and an ear to judge it. What separates music from code is that dimension, not a number of years. The general models that now write code will make music and synthesize sounds through an instrument, with sound generators written as code and neural sound models as their tools, and they will build their own tools to hear what works and what does not, as they now write tests for their own code. That, rather than prompt-to-song, is the new that the masters of the classical studio idea will face.
 
 It changes the order of learning. The DAW asks you to learn first and build later; an instrument with an agent in it lets you ask, hear, adjust and continue, learning while you build. That loop is older than any studio. In the art of the dombra kuy, which UNESCO [inscribed in 2014](https://ich.unesco.org/en/RL/kazakh-traditional-art-of-dombra-kuy-00996), "aspiring and talented musicians are apprenticed to masters from the moment a child demonstrates an interest".
 
