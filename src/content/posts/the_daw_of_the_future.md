@@ -74,7 +74,10 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    ear, so the gap is structural, not years (on the owner's eleven-level ladder agents reach
    level 3 or 4, not yet held); the bet that the general agents that mastered code become the
    producers, using code and neural sound generators and building their own tools to judge
-   what works. The analogy breaks at taste.
+   what works. The analogy bends at taste: much of taste is craft, shared by listeners within
+   a style and partly measurable (liking's inverted U with complexity; unpleasant energy at
+   about 2-5 kHz unless harshness is the point), so agents can learn it; taste in the narrow
+   sense is which well-made thing is yours, and it moves with what you have heard.
 8. Five properties of the next DAW: start from the intention, played interactively; people and
    agents edit the same song; hear for the agent until agents hear well, and keep the evidence
    after; every sound finished and editable (a sound with its settings is like code to an
@@ -82,7 +85,7 @@ ARGUMENT SPINE (the "algorithm" of the essay)
 9. The verdict stays with the ear: directing an agent is expression; evidence vs verdict; the
    verdict is yours because the music is for you, not because machines are deaf.
 10. What could prove this wrong: listening; the player piano; the new dimension may not yield
-    (no public projects, no tests for taste, taste keeps moving); absorption; listening cost;
+    (no public projects, tests for craft still to be built); absorption; listening cost;
     recorded character;
     consent and displacement.
 11. The order of change: agents inside existing work first (Logic Pro's session players), the
@@ -191,7 +194,7 @@ It did not work at once. In October 2023, the best model tested [resolved 1.96%]
 
 My bet is that the general agents that mastered code will also be the producers. Anything with pattern and logic in it is open to them. They will reach sound through generators, synthesis written as code and neural sound models alike, and they will build their own tools to hear what works and what does not, find the patterns and use those tools in production, the way they already write tests for their own code.
 
-The analogy breaks at one point, and it is the most important point in this essay. **Tests can check code. Nothing can check taste.** A measurement can say whether a kick lands on the beat, whether a mix clips, or whether a tail decays. It cannot say whether a phrase says what you meant. In music, the last test is the ear of the person the music is for. Everything the next DAW must do follows from that.
+The analogy bends at one point, and it is the most important point in this essay. Much of what passes for taste is craft. Some ways of building a song or a sound make it work, others make it dull or irritating, and listeners agree on a good part of that. You may dislike a style and still hear that a track in it is well made, while the people who love that style would turn away from the same track badly produced. Craft has patterns, and some of them can be measured: across [more than a century of studies](https://journals.sagepub.com/doi/full/10.1177/0305735617697507), liking tends to rise with complexity up to a point and then fall, so that too simple is dull and too much is irritating, and much of what makes a sound unpleasant lies [between about 2,000 and 5,000 hertz](https://www.jneurosci.org/content/jneuro/32/41/14184.full.pdf), unless, as in hard techno, harshness is the point. That part agents can learn, the way they learned code, and the tools they build will check it. What remains is taste in the narrow sense: which of many well-made things is yours, and it [moves](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0281057) with everything you have heard. **Tests can check much of the craft. Only you can check your taste.** In music, the last test is the ear of the person the music is for. Everything the next DAW must do follows from that.
 
 ## What the next DAW must do
 
@@ -241,7 +244,7 @@ It is a thesis, not a prophecy, and each objection to it can be tested.
 
 **Participation can be attractive and still lose.** Player-piano sales in America [peaked in 1924](https://en.wikipedia.org/wiki/Player_piano); within a few years the electrical phonograph and radio had swept them aside, and the crash of 1929 ended their prominence. Many buyers seem to have valued the outcome more than the act of steering. The question for any new instrument is whether people return for the act itself, or only because it is, for now, the easiest way to a result.
 
-**The new dimension may not yield.** Coding agents learned from millions of public repositories and check their own work with tests. Music's new dimension has neither at that scale: people publish recordings, not projects, and no test checks taste, which also keeps moving. If sound and taste do not yield to pattern and logic the way code did, general agents will remain skilled assistants rather than producers.
+**The new dimension may not yield.** Coding agents learned from millions of public repositories and check their own work with tests. Music's new dimension has neither at that scale: people publish recordings, not projects, and the tests for craft are still to be built. If sound and craft do not yield to pattern and logic the way code did, general agents will remain skilled assistants rather than producers.
 
 **The incumbents can absorb it.** Free, integrated studios already reach enormous numbers of people, and the established DAWs are already bringing assistants inside. A new instrument must be clearly better at something people do often.
 
