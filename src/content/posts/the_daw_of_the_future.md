@@ -87,8 +87,9 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    moment (intent and mood: arousing music while exercising, calm while relaxing; hard techno
    lifts a room at 3 a.m. and irritates on a quiet afternoon).
 8. Five properties of the next DAW: start from the intention, played interactively; people and
-   agents edit the same song; hear for the agent until agents hear well, and keep the evidence
-   after; every sound finished and editable (a sound with its settings is like code to an
+   agents edit the same song; measure for the agent (until agents hear well, the person
+   listens and the instrument measures and does the sound engineering measurement can settle:
+   levels, balance, low end, clipping, loudness), and keep the evidence after; every sound finished and editable (a sound with its settings is like code to an
    agent); remember the work (the bet on a hub of songs shared in full editable form).
 9. The verdict stays with the ear: directing an agent is expression; evidence vs verdict; the
    verdict is yours because the music is for you, not because machines are deaf.
@@ -222,9 +223,9 @@ In the next DAW, an agent is not a separate app that sends back a file. It edits
 
 There is no private project that only the agent can see, and no change that exists in the conversation but not in the music. Close the conversation, and every change, every version and every control stays where it was.
 
-### Hear for the agent
+### Measure for the agent
 
-An assistant that cannot perceive the music will invent it: a confident description that says nothing true, a key guessed from a filename, a layer that fights the kick. Agents will hear one day. Models that listen to music are improving quickly, though their makers still [describe music](https://arxiv.org/abs/2511.10289) as one of the hardest things for them to understand. Until agents hear well, the instrument must hear for them.
+An assistant that cannot perceive the music will invent it: a confident description that says nothing true, a key guessed from a filename, a layer that fights the kick. Agents will hear one day. Models that listen to music are improving quickly, though their makers still [describe music](https://arxiv.org/abs/2511.10289) as one of the hardest things for them to understand. Until agents hear well, the work divides: the person listens, and the instrument measures and does the sound engineering that measurement can settle, such as levels, the balance between parts, the low end, clipping and loudness.
 
 That means musical evidence measured by the instrument itself, not imagined by a model: the key as a ranked list of candidates rather than one guessed label, the beat grid with its confidence, energy and brightness over time, and whether a new part would fill a gap or clash with what is there. When the evidence is ambiguous, the agent should receive the ambiguity. The evidence keeps its value after agents can hear, just as producers with good ears still use meters: two assistants on two different days should read the same facts about the same audio. **The agent's judgment may vary; the evidence must not.**
 
