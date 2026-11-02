@@ -72,7 +72,10 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    sound; in the generators the sound is still asked for in words; generation needs an
    editable target (recording vs project).
 7. Programming went first: shared object, same commands, senses, memory; learn-then-build gave
-   way to ask, look, correct, continue; SWE-bench from 1.96% (2023) to most of a verified set;
+   way to ask, look, correct, continue; coding has entered a new era, not the last (agents write
+   much of the code: one large company reports ~75% of new code; 2025: an AI outscored all but
+   5 of 330 at the IOI, and one solved 12 of 12 at the ICPC finals, best human team 11);
+   SWE-bench from 1.96% (2023) to most of a verified set;
    music shares structure, pattern and logic with code and adds a new dimension, sound and the
    ear, so the gap is structural, not years (on the owner's eleven-level ladder agents reach
    level 3 or 4, not yet held); the bet that the general agents that mastered code become the
@@ -193,7 +196,7 @@ None of them has closed the gap. In the generators, the sound itself is still as
 
 ## Programming went first
 
-Software development has already been through the transition music is entering. For decades, code was written in an editor, built by a compiler and explained by a manual, three tools learned separately before anything worked. Now a developer states an objective; an assistant changes the files directly and runs the tests; version control records every change with its author; the developer keeps or reverts, and asks again. Learning first and building after has given way to a loop: ask, look, correct, continue. In Stack Overflow's [2025 survey](https://survey.stackoverflow.co/2025/ai), 84% of developers were using or planning to use AI tools, and about half of professional developers used them every day.
+Software development has already been through the transition music is entering. For decades, code was written in an editor, built by a compiler and explained by a manual, three tools learned separately before anything worked. Now a developer states an objective; an assistant changes the files directly and runs the tests; version control records every change with its author; the developer keeps or reverts, and asks again. Learning first and building after has given way to a loop: ask, look, correct, continue. Coding has entered a new era. It will not be the last, but it has arrived: agents now write much of the code, and on the hardest problems they beat almost every human. One of the largest software companies reportedly says AI now generates [about three-quarters of its new code](https://www.techspot.com/news/112152-google-ai-now-generates-75-new-code-up.html), up from a quarter in 2024. In 2025 an AI system [outscored all but five](https://the-decoder.com/openais-ai-system-wins-a-gold-medal-level-score-at-the-international-olympiad-in-informatics-2025/) of the 330 students at the International Olympiad in Informatics, and at the world finals of the main university programming contest another [solved all twelve problems](https://the-decoder.com/openai-outperforms-humans-and-google-at-the-worlds-top-collegiate-programming-contest/); the best human team solved eleven.
 
 What made this work was not the chat window. It was four quieter things: **a shared editable object** (the repository), **the same commands** for the person and the agent (the agent edits files like any other editor), **senses** (compilers, tests and logs that tell the agent what actually happened), and **memory** (version control, so nothing is lost and every change has a name). "Cursor for music", after the AI code editor, is shorthand for the same four things in a song. *Bring the bass back four bars later and leave the vocal alone*: the agent makes that change in the song itself, and the person hears it in context and keeps or reverts it.
 
