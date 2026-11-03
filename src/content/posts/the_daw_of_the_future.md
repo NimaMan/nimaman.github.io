@@ -44,7 +44,9 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    attention is scarce; the instrument's aim is music for you.
 2. Human nature first: what people want from music changes slowest; three needs (fits me,
    my choices in it, someone answers me); listening is complete; chosen effort is protected;
-   people learn by asking, trying and hearing an answer (young children ask about 76
+   people learn by asking, trying and hearing an answer (most human learning came from
+   interacting with the world, survival skills learned by doing, not from teaching; schools
+   are recent in a species ~300,000 years old; young children ask about 76
    information questions an hour and ask again when no answer comes), so an interactive tool
    fits human nature;
    with agents learning becomes easier and more fun on the single principle of interactivity,
@@ -124,7 +126,7 @@ From those wants come three needs an instrument can serve: music that fits me no
 
 Two cautions keep this honest. Listening is a complete destination, not a failed attempt to create. And effort is not always a cost: people avoid the effort that stands between them and the music, and seek the effort that is the music, such as practising a rhythm or finding a sound by ear. A good instrument removes the first kind and protects the second.
 
-People also learn the way they always have: by asking, trying and hearing an answer. Young children are the clearest case. In recordings of everyday family conversation, children between one and five asked [about 76 questions an hour](https://eric.ed.gov/?id=EJ835244) that sought information, and when an answer did not come, they asked again. A tool that demands the manual before the first sound works against that grain; a tool you can ask, try, hear and continue with works with it.
+People also learn the way they always have: by asking, trying and hearing an answer. Most of what humans have ever learned came from interacting with the world, not from being taught: finding food, reading the weather, making tools and staying alive were learned by doing, and schools are a recent invention in a species [about 300,000 years old](https://humanorigins.si.edu/evidence/human-fossils/species/homo-sapiens). Young children are the clearest case. In recordings of everyday family conversation, children between one and five asked [about 76 questions an hour](https://eric.ed.gov/?id=EJ835244) that sought information, and when an answer did not come, they asked again. A tool that demands the manual before the first sound works against that grain; a tool you can ask, try, hear and continue with works with it.
 
 With agents, learning music becomes easier and more fun, on a single principle: it becomes interactive. You ask, hear the answer in the music itself, and ask again. The fear that help will stop people learning is old. In April 1986, mathematics teachers from across the United States [picketed](https://www.csmonitor.com/1986/0509/dcalc-f.html) a meeting of the National Council of Teachers of Mathematics, which had called for calculators at every grade. The calculator did not end the want to understand numbers; it changed how people reach it. The hows change, and the wants stay.
 
