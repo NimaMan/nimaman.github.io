@@ -45,8 +45,8 @@ ARGUMENT SPINE (the "algorithm" of the essay)
 2. Human nature first: what people want from music changes slowest; three needs (fits me,
    my choices in it, someone answers me); listening is complete; chosen effort is protected;
    people learn by asking, trying and hearing an answer (young children ask about 76
-   information questions an hour; one-to-one tutoring +0.37 SD across 96 randomized trials;
-   the dombra's kuy pass from master to student), so an interactive tool fits human nature;
+   information questions an hour and ask again when no answer comes), so an interactive tool
+   fits human nature;
    with agents learning becomes easier and more fun on the single principle of interactivity,
    stated, not argued (owner, 11-03); the 1986 calculator picket shows the fear is old: the
    hows change, the wants stay. Concrete examples replace aphorisms throughout (owner, 11-02).
@@ -124,7 +124,7 @@ From those wants come three needs an instrument can serve: music that fits me no
 
 Two cautions keep this honest. Listening is a complete destination, not a failed attempt to create. And effort is not always a cost: people avoid the effort that stands between them and the music, and seek the effort that is the music, such as practising a rhythm or finding a sound by ear. A good instrument removes the first kind and protects the second.
 
-People also learn the way they always have: by asking, trying and hearing an answer. Young children are the clearest case. In recordings of everyday family conversation, children between one and five asked [about 76 questions an hour](https://eric.ed.gov/?id=EJ835244) that sought information, and when an answer did not come, they asked again. Teaching built on that loop works: a 2020 review of [96 randomized trials](https://www.nber.org/papers/w27476) found that one-to-one tutoring raised results by 0.37 standard deviations on average, about 14 percentile points, a large effect by the standards of education research. The dombra's instrumental pieces, the kuy, have been passed [from master to student](https://ich.unesco.org/en/RL/kazakh-traditional-art-of-dombra-kuy-00996) for generations in the same way. A tool that demands the manual before the first sound works against that grain; a tool you can ask, try, hear and continue with works with it.
+People also learn the way they always have: by asking, trying and hearing an answer. Young children are the clearest case. In recordings of everyday family conversation, children between one and five asked [about 76 questions an hour](https://eric.ed.gov/?id=EJ835244) that sought information, and when an answer did not come, they asked again. A tool that demands the manual before the first sound works against that grain; a tool you can ask, try, hear and continue with works with it.
 
 With agents, learning music becomes easier and more fun, on a single principle: it becomes interactive. You ask, hear the answer in the music itself, and ask again. The fear that help will stop people learning is old. In April 1986, mathematics teachers from across the United States [picketed](https://www.csmonitor.com/1986/0509/dcalc-f.html) a meeting of the National Council of Teachers of Mathematics, which had called for calculators at every grade. The calculator did not end the want to understand numbers; it changed how people reach it. The hows change, and the wants stay.
 
