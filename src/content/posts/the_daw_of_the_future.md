@@ -13,16 +13,24 @@ series_label: "Music"
 <!--
 OBJECTIVE
 Explain, for a general reader, what the digital audio workstation becomes once making sound
-stops being scarce and general agents can operate it, and why. The argument follows the
-series' order: what people want from music, how its value chain
-is organized, how technology moved the bottleneck, and the instrument that answers what is
-left. The essay aims at music for you (music that fits you and carries your choices), not at
+stops being scarce and general agents can operate it, and why. It starts from what music is,
+stated at the very top (owner, 11-03): a tool for emotional regulation, felt with the ear and
+the whole body. Models can learn from data what works on people, but they do not feel: a kick
+on your body at a festival is not the same kick played quietly at home, and the body falling
+into time with the music matters. So the human part stays however good the models become.
+The argument follows the series' order: what people want from music, how its value chain is
+organized, how technology moved the bottleneck, and the instrument that answers what is left.
+The essay aims at music for you (music that fits you and carries your choices), not at
 winning strangers' attention. It bets that the general agents that mastered code will also be
 the producers, with code and neural sound generators as their tools; that music shares
 structure, pattern and logic with code and adds a new dimension (sound and the ear), so the
-gap is structural, not a number of years; that a hub of fully editable shared songs will come;
-and that making music becomes interactive: ask, hear, adjust, continue. Four distinctions carry the argument: the classical
-studio idea vs the player, operation vs intention, recording vs project, evidence vs verdict.
+gap is structural, not a number of years; that the range of sounds keeps widening, new sounds
+designed first in sound generators and then in neural sound engines, with coding agents
+mastering sound design first and their work supplying the data (settings paired with sounds,
+and the verdicts on them) for neural engines to open new dimensions (owner, 11-03); that a
+hub of fully editable shared songs will come; and that making music becomes interactive:
+ask, hear, adjust, continue. Four distinctions carry the argument: the classical studio idea
+vs the player, operation vs intention, recording vs project, evidence vs verdict.
 Owner's rules: no individual people are named anywhere (institutions, studios, companies,
 unions, products and sources may be); "DAW" and "instrument" are used interchangeably, the DAW
 being the latest instrument in a lineage of sound generators; "the classical studio idea"
@@ -31,7 +39,10 @@ stays general and leaves product design bets out; the title is "De DAW of the Fu
 the slug stays the_daw_of_the_future.
 
 ARGUMENT SPINE (the "algorithm" of the essay)
-0. Opening story, in the manner of The Selection Pressure's whaling story: the great
+0. Definition first (owner, 11-03): music is a tool for emotional regulation, felt with the
+   ear and the whole body; the means of making it change (players, studios, software,
+   agents), but only the person listening feels what it does. Then the opening story, in the manner of The Selection Pressure's
+   whaling story: the great
    recording studios were bypassed, not defeated (Hit Factory 2005, Olympic 2009, Abbey Road
    for sale 2010, a bedroom Album of the Year 2020). They sold the finished record, not
    rooms; software served the same want more cheaply and redrew the console inside itself.
@@ -42,7 +53,8 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    instrument built around the player and played interactively with an agent, and that agent
    will be a general model. The abundance numbers show that finished tracks are cheap and
    attention is scarce; the instrument's aim is music for you.
-2. Human nature first: what people want from music changes slowest; three needs (fits me,
+2. Human nature first: what people want from music changes slowest, above all to feel and to
+   change how they feel (the definition at the top); three needs (fits me,
    my choices in it, someone answers me); listening is complete; chosen effort is protected;
    people learn by asking, trying and hearing an answer (most human learning came from
    interacting with the world, survival skills learned by doing, not from teaching; schools
@@ -89,18 +101,33 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    lifts a room at 3 a.m. and irritates on a quiet afternoon).
 8. New actions for old wants: the wants were always there; new tools open actions that reach
    them cheaper and faster, which is what anyone wants from a tool (from an Amazon parcel to
-   hearing a sound now). Five: ask for what you mean at any depth, played interactively; work
-   on one song with an agent; the instrument measures and does the sound engineering
-   measurement can settle (levels, balance, low end, clipping, loudness) while you listen, and
-   the evidence keeps its value after agents hear; sounds that arrive finished and stay
-   editable (a sound with its settings is like code to an agent); every version kept (the bet
-   on a hub of songs shared in full editable form).
+   hearing a sound now). Six: ask for what you mean at any depth, played interactively; work
+   on one song with an agent; the instrument measures, you listen: models will hear, but
+   hearing is not feeling (owner, 11-03): they can collect data and learn what works on
+   people, yet music is felt with the body (a kick on your chest at a festival vs the same
+   kick quietly at home; the body falling into time with the beat), a model takes in the
+   waveform as numbers, and the regulation happens in the listener's body, so that part stays
+   human however good the models become; until agents hear well the instrument measures and
+   does the sound engineering measurement can settle (levels, balance, low end, clipping,
+   loudness) while you listen, and the evidence keeps its value after agents hear; sounds
+   that arrive finished and stay editable (a sound with its settings is like code to an
+   agent); sounds no one has heard yet (owner's bet, 11-03): every new generator widened the
+   range and styles grew around the new sounds (the 808 bass drum stretched into bass lines,
+   the JP-8000 supersaw of 1996, dubstep's wobble bass, today's techno kick doing the bass
+   line's work; very low frequencies listeners could not detect made a concert audience move
+   11.8% more); new sounds are designed first in generators, then in neural engines; coding
+   agents master sound design first, and what they design, sounds paired with their settings
+   and the verdicts on them, is the data neural engines need (random pairs are already cheap:
+   a billion in 2021; NSynth blended instruments in 2017) to open dimensions no generator's
+   controls reach; every version kept (the bet on a hub of songs shared in full editable
+   form).
 9. The verdict stays with the ear: directing an agent is expression; evidence vs verdict; the
-   verdict is yours because the music is for you, not because machines are deaf.
+   verdict is yours because the music is for you and only you feel what it does, not because
+   machines are deaf.
 10. What could prove this wrong: listening; the player piano; the new dimension may not yield
-    (no public projects, tests for craft still to be built); absorption; listening cost;
-    recorded character;
-    consent and displacement.
+    (no public projects, tests for craft still to be built); the new sounds may not come from
+    search (styles often grew from misuse, as with the TB-303; neural engines may only blend
+    known sounds); absorption; listening cost; recorded character; consent and displacement.
 11. The order of change, read from programming (owner, 11-03): chat and copy (ChatGPT, 2022),
     chat in the tool (Cursor, 2023), the agent does the work (Claude Code and Codex, 2025),
     you judge the result (2026: code written without being read line by line; the developer
@@ -116,6 +143,8 @@ ARGUMENT SPINE (the "algorithm" of the essay)
     played interactively; the classical studio idea still stands, and its successors are on
     the workbench.
 -->
+
+Music is a tool for emotional regulation: people use it to feel, and to change how they feel, with the ear and with the whole body. The means of making it keep changing, from players in a room to studios, software and now agents, but only the person listening feels what it does.
 
 In the 1970s and 1980s, the great recording studios were among the most expensive rooms in the world. A console the size of a car, a wall of tape machines, an echo chamber, a staff of engineers and assistants, session players on call: if you wanted a record that sounded like a record, you rented the room. Careers were made in those rooms, and the Hit Factory in New York was among the most famous of them. And then, within a generation, the business was in retreat, and nobody attacked it. The Hit Factory [closed in 2005](https://www.abc.net.au/news/2005-02-04/new-yorks-hit-factory-studio-to-close/630954), and the report of its closing named the cause in so many words: "the rise of inexpensive digital audio workstation equipment has allowed high-quality recording to be accomplished in virtually any environment by non-professional recordists." EMI [closed Olympic Studios](https://en.wikipedia.org/wiki/Olympic_Studios) in London in 2009 because it no longer made money, and in 2010 it was reported to have put even [Abbey Road](https://en.wikipedia.org/wiki/Abbey_Road_Studios) up for sale; after a public campaign it kept the studio, and the British government listed the building to protect it from major alteration. In 2020, the Grammy for Album of the Year went to a record produced in a [small bedroom studio](https://en.wikipedia.org/wiki/When_We_All_Fall_Asleep,_Where_Do_We_Go%3F) in Los Angeles, in an off-the-shelf DAW.
 
@@ -133,7 +162,7 @@ Making a finished-sounding track has never been cheaper, and getting strangers t
 
 ## What people want from music does not change
 
-Someone plays a familiar song after a difficult day. Someone else chooses it for a friend's wedding. A third person hears a phrase and begins answering it on an instrument. The recording may be identical; the intentions differ. People use music to feel and to change how they feel, to express what they cannot easily say, to remember, to belong, to exercise taste, and sometimes to build a skill over years. **Human wants change slowest.** People danced to a beat long before anyone could record one, and the want has outlived every way of making the beat: the drum, the dance band, the record, the DJ and the drum machine each changed only how it was made.
+Someone plays a familiar song after a difficult day. Someone else chooses it for a friend's wedding. A third person hears a phrase and begins answering it on an instrument. The recording may be identical; the intentions differ. People use music above all to feel and to change how they feel, and also to express what they cannot easily say, to remember, to belong, to exercise taste, and sometimes to build a skill over years. **Human wants change slowest.** People danced to a beat long before anyone could record one, and the want has outlived every way of making the beat: the drum, the dance band, the record, the DJ and the drum machine each changed only how it was made.
 
 From those wants come three needs an instrument can serve: music that fits me now; music in which I recognize my own choices; and music through which another person answers me. Only the third needs another person, and only when someone actually wants to respond.
 
@@ -223,7 +252,7 @@ The analogy bends at one point, and it is the most important point in this essay
 
 ## New actions for old wants
 
-The wants have always been there. What new technology changes is the actions available for reaching them, and every new action faces the same test: does it get you to what you want cheaper and faster? That is what anyone wants from a tool, from a customer waiting for an Amazon parcel to a producer who wants to hear a sound the moment it is imagined. Agents, and instruments that measure, open five new actions.
+The wants have always been there. What new technology changes is the actions available for reaching them, and every new action faces the same test: does it get you to what you want cheaper and faster? That is what anyone wants from a tool, from a customer waiting for an Amazon parcel to a producer who wants to hear a sound the moment it is imagined. Agents, and instruments that measure, open six new actions.
 
 ### Ask for what you mean, at any depth
 
@@ -239,13 +268,23 @@ There is no private project that only the agent can see, and no change that exis
 
 ### The instrument measures, you listen
 
-An assistant that cannot perceive the music will invent it: a confident description that says nothing true, a key guessed from a filename, a layer that fights the kick. Agents will hear one day. Models that listen to music are improving quickly, though their makers still [describe music](https://arxiv.org/abs/2511.10289) as one of the hardest things for them to understand. Until agents hear well, the work divides: the person listens, and the instrument measures and does the sound engineering that measurement can settle, such as levels, the balance between parts, the low end, clipping and loudness. Engineering that once took a specialist hours can be done in seconds, and the listening stays with you.
+An assistant that cannot perceive the music will invent it: a confident description that says nothing true, a key guessed from a filename, a layer that fights the kick. Agents will hear one day. Models that listen to music are improving quickly, though their makers still [describe music](https://arxiv.org/abs/2511.10289) as one of the hardest things for them to understand. But hearing is not feeling. A model can collect data on how people respond to music and learn a good deal about what works on them, yet music is felt with the body as well as the ear. A kick that hits your chest at a festival does not feel like the same kick played quietly at home: the sound pressing on your body, and your body falling into time with the beat, are part of what the music does. A model takes in the waveform as numbers. Music is a tool for emotional regulation, and that regulation happens in the body of the person listening, so however good the models become, that part stays human.
+
+Until agents hear well, the work divides: the person listens, and the instrument measures and does the sound engineering that measurement can settle, such as levels, the balance between parts, the low end, clipping and loudness. Engineering that once took a specialist hours can be done in seconds, and the listening stays with you.
 
 That means musical evidence measured by the instrument itself, not imagined by a model: the key as a ranked list of candidates rather than one guessed label, the beat grid with its confidence, energy and brightness over time, and whether a new part would fill a gap or clash with what is there. When the evidence is ambiguous, the agent should receive the ambiguity. The evidence keeps its value after agents can hear, just as producers with good ears still use meters: two assistants on two different days should read the same facts about the same audio. **The agent's judgment may vary; the evidence must not.**
 
 ### Sounds that arrive finished and stay editable
 
 A producer who wants an industrial bass for a hard techno track wants that bass, finished. Samples will keep that role. What changes is what stands behind the sample: when a sound carries its editable source, it can be re-keyed, re-timed or re-shaped when the song's needs change, instead of being searched for again. **The sample, the preset and the lesson become one object**: a finished sound, the settings that make it, and an explanation an agent can give. A sound that carries its settings is, to an agent, much like code: something it can read, change and explain.
+
+### Sounds no one has heard yet
+
+Every new generator has widened the range of sounds, and new styles grew around the new sounds. The [TR-808](https://en.wikipedia.org/wiki/Roland_TR-808), sold from 1980, had a bass drum with a long decay that producers stretched and tuned into the bass lines of hip hop and later trap. The supersaw of Roland's [JP-8000](https://en.wikipedia.org/wiki/Roland_JP-8000), from 1996, sounded like seven sawtooth waves detuned against each other; it defined trance and then spread through dance music into the pop charts. By the late 2000s dubstep had made the [wobble bass](https://en.wikipedia.org/wiki/Dubstep), a synthesizer's filter swept by a slow oscillator, its signature. In much of today's techno the kick [does the work of the bass line](https://www.attackmagazine.com/technique/tutorials/processing-berghain-kicks-with-multiband-distortion/) as well as the beat, and its weight is felt as much as heard. In a study published in 2022, researchers at a live electronic music concert switched on and off speakers that played only frequencies between 8 and 37 hertz, which listeners in a separate test could not detect; the audience [moved 11.8% more](https://doi.org/10.1016/j.cub.2022.09.035) while they were on. The want is old: a sound that moves you more than the last one did.
+
+The range will keep widening. My bet is that the next new sounds will be designed first in sound generators and then in neural sound engines, and that coding agents will master sound design first, in the generators, because there a sound is a set of settings: an agent can change them, render the sound, measure it and try again far faster than anyone can turn knobs, and bring back only the results worth hearing.
+
+That work will leave behind the data neural sound engines need: sounds designed for music, each paired with the settings that make it and with the verdict of the person who kept it or threw it away. Pairs alone are cheap. In 2021 researchers released [a billion synthesizer sounds](https://arxiv.org/abs/2104.12922), each paired with the settings that made it, rendered on a single graphics card 16,200 times faster than real time; but the settings were drawn at random, for no song and no ear. Neural engines can already reach past any one generator: in 2017 Google's [NSynth](https://magenta.tensorflow.org/nsynth), trained on about 300,000 notes from more than 1,000 instruments, blended a flute and an organ into sounds that would be hard or impossible to make with a synthesizer tuned by hand. Trained on what agents design and people keep, the next engines can open dimensions in the space of sounds that no generator's controls reach. **The generators teach the agents; what the agents make teaches the neural engines.** Which of the new sounds become music is decided, as always, by the people who feel them.
 
 ### Every version kept
 
@@ -257,7 +296,7 @@ Memory makes experimentation safe, because the ending you had is never at risk w
 
 Who is the author of a song made with an agent? The person who directs the work, who writes the brief, guides each pass and decides what stays. The record keeps what an agent or a generator contributed distinguishable, so the history tells the truth about how the music was made. **Directing an agent is a form of expression, not the absence of one.** Music is music, whether made by hand, with an agent or in any tool; what matters is access to its building blocks, so that it can be heard, changed and built on.
 
-What must never move is the verdict. Evidence is what the instrument measures; the verdict is what the ear decides, and no reading can stand in for it. A loudness, a pitch and a brightness describe a sound; whether it is a kick you would use is your answer, given after listening. This does not rest on machines being deaf. When agents can hear, they will judge their own attempts better and set more of them aside. The verdict stays with you because the music is for you: only you can say whether it is what you meant. An agent may advise; it may not put its choice in place of yours.
+What must never move is the verdict. Evidence is what the instrument measures; the verdict is what the ear decides, and no reading can stand in for it. A loudness, a pitch and a brightness describe a sound; whether it is a kick you would use is your answer, given after listening. This does not rest on machines being deaf. When agents can hear, they will judge their own attempts better and set more of them aside. The verdict stays with you because the music is for you: only you feel what it does, and only you can say whether it is what you meant. An agent may advise; it may not put its choice in place of yours.
 
 That is the whole thesis. Here is what would break it.
 
@@ -270,6 +309,8 @@ It is a thesis, not a prophecy, and each objection to it can be tested.
 **Participation can be attractive and still lose.** Player-piano sales in America [peaked in 1924](https://en.wikipedia.org/wiki/Player_piano); within a few years the electrical phonograph and radio had swept them aside, and the crash of 1929 ended their prominence. Many buyers seem to have valued the outcome more than the act of steering. The question for any new instrument is whether people return for the act itself, or only because it is, for now, the easiest way to a result.
 
 **The new dimension may not yield.** Coding agents learned from millions of public repositories and check their own work with tests. Music's new dimension has neither at that scale: people publish recordings, not projects, and the tests for craft are still to be built. If sound and craft do not yield to pattern and logic the way code did, general agents will remain skilled assistants rather than producers.
+
+**The new sounds may not come from search.** Sounds that started styles have often come from people using a tool against its design: the TB-303 found its sound three years after it was discontinued. Neural engines trained on what generators make may learn to blend the sounds we know without finding ones anyone wants. Then agents will refine the range of sounds rather than widen it.
 
 **The incumbents can absorb it.** Free, integrated studios already reach enormous numbers of people, and the established DAWs are already bringing assistants inside. A new instrument must be clearly better at something people do often.
 
