@@ -101,9 +101,14 @@ ARGUMENT SPINE (the "algorithm" of the essay)
     (no public projects, tests for craft still to be built); absorption; listening cost;
     recorded character;
     consent and displacement.
-11. The order of change: agents inside existing work first (Logic Pro's session players), the
-    editable project second, a new instrument last, if at all; the classical studio idea
-    starts to die when something is better at changing a song and coming back to it.
+11. The order of change, read from programming (owner, 11-03): chat and copy (ChatGPT, 2022),
+    chat in the tool (Cursor, 2023), the agent does the work (Claude Code and Codex, 2025),
+    you judge the result (2026: code written without being read line by line; the developer
+    checks what it does and guides it). Music takes the same steps (chatbot advice copied by
+    hand; Logic Pro's session players; the agent working on the song itself; you listen and
+    give feedback while the agent produces). Most music is between the first two steps; the
+    owner's work has begun the third. The classical studio idea starts to die when something is
+    better at changing a song and coming back to it.
 12. Close: the DAW of the past and the DAW of the future.
 -->
 
@@ -271,18 +276,16 @@ It is a thesis, not a prophecy, and each objection to it can be tested.
 
 ## The order of change
 
-Nor does the change arrive in the order one would design. The intuitive order is:
+Programming shows the order in which this happens, because it has just been through it:
 
-1. first, a new kind of DAW;
-2. then, new habits around it.
+| Step | Programming | Music |
+| --- | --- | --- |
+| Chat and copy | From late 2022, people asked [ChatGPT](https://openai.com/index/chatgpt/) for code and pasted the answers into their editors | People ask a chatbot about a sound or a mix and carry the answer into the DAW by hand |
+| Chat in the tool | From 2023, [Cursor](https://en.wikipedia.org/wiki/Cursor_(code_editor)), built on VS Code, brought the chat into the editor, where it could read the project and change the code | Assistants inside the workstation, such as Logic Pro's session players |
+| The agent does the work | In 2025, [Claude Code](https://www.anthropic.com/news/claude-3-7-sonnet) and [Codex](https://openai.com/index/introducing-codex/) began reading whole projects, editing the files, running the tests and fixing what failed | The agent works on the song itself through the instrument's actions, and the editable project becomes what people and agents share |
+| You judge the result | In 2026, more and more code is written without anyone reading it line by line; the developer checks what it does and guides the next change | You listen to what the music does and give your feedback, and the agent produces |
 
-The likelier order is the reverse:
-
-1. first, agents arrive inside the work people already have, including the workstations they already use (Logic Pro's session players are an early case), and bring better senses than those workstations have;
-2. then the editable project, not the finished recording, becomes the object people and agents share, keep and continue;
-3. and only later, if at all, a new instrument replaces the classical studio idea.
-
-Software followed the same sequence: assistants entered the editors developers already used well before anyone argued for a new kind of editor.
+Most music is still between the first two steps; in my own work, the third has begun. The last step is the one this essay is about: you will guide music the way developers now guide code, by judging what it does, while the agent does the writing.
 
 **The classical studio idea will not die the day an alternative becomes better at everything. It starts to die the day an alternative becomes better at the thing people do most: changing a song and coming back to it.**
 
