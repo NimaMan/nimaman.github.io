@@ -107,7 +107,10 @@ ARGUMENT SPINE (the "algorithm" of the essay)
     checks what it does and guides it). Music takes the same steps (chatbot advice copied by
     hand; Logic Pro's session players; the agent working on the song itself; you listen and
     give feedback while the agent produces). Most music is between the first two steps; the
-    owner's work has begun the third. The classical studio idea starts to die when something is
+    owner's work has begun the third. The change also arrives with a new generation: people who
+    start on an interactive instrument that guides them to what they want to hear will not go
+    back to learn-first tools (few laptop-born producers went looking for tape). The classical
+    studio idea starts to die when something is
     better at changing a song and coming back to it.
 12. Close: the DAW of the past and the DAW of the future.
 -->
@@ -286,6 +289,8 @@ Programming shows the order in which this happens, because it has just been thro
 | You judge the result | In 2026, more and more code is written without anyone reading it line by line; the developer checks what it does and guides the next change | You listen to how the music sounds and give your feedback, and the agent produces |
 
 Most music is still between the first two steps; in my own work, the third has begun. The last step is the one this essay is about: you will guide music by how it sounds, the way developers now guide code by what it does, while the agent does the writing.
+
+The change will also arrive with a new generation. People who start making music with an interactive instrument, one that guides them toward what they want to hear, will not want to work with tools that make them learn the operation first, just as few producers who started on a laptop ever went looking for a tape machine.
 
 **The classical studio idea will not die the day an alternative becomes better at everything. It starts to die the day an alternative becomes better at the thing people do most: changing a song and coming back to it.**
 
