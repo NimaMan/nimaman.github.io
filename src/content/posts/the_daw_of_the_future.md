@@ -283,9 +283,9 @@ Programming shows the order in which this happens, because it has just been thro
 | Chat and copy | From late 2022, people asked [ChatGPT](https://openai.com/index/chatgpt/) for code and pasted the answers into their editors | People ask a chatbot about a sound or a mix and carry the answer into the DAW by hand |
 | Chat in the tool | From 2023, [Cursor](https://en.wikipedia.org/wiki/Cursor_(code_editor)), built on VS Code, brought the chat into the editor, where it could read the project and change the code | Assistants inside the workstation, such as Logic Pro's session players |
 | The agent does the work | In 2025, [Claude Code](https://www.anthropic.com/news/claude-3-7-sonnet) and [Codex](https://openai.com/index/introducing-codex/) began reading whole projects, editing the files, running the tests and fixing what failed | The agent works on the song itself through the instrument's actions, and the editable project becomes what people and agents share |
-| You judge the result | In 2026, more and more code is written without anyone reading it line by line; the developer checks what it does and guides the next change | You listen to what the music does and give your feedback, and the agent produces |
+| You judge the result | In 2026, more and more code is written without anyone reading it line by line; the developer checks what it does and guides the next change | You listen to how the music sounds and give your feedback, and the agent produces |
 
-Most music is still between the first two steps; in my own work, the third has begun. The last step is the one this essay is about: you will guide music the way developers now guide code, by judging what it does, while the agent does the writing.
+Most music is still between the first two steps; in my own work, the third has begun. The last step is the one this essay is about: you will guide music by how it sounds, the way developers now guide code by what it does, while the agent does the writing.
 
 **The classical studio idea will not die the day an alternative becomes better at everything. It starts to die the day an alternative becomes better at the thing people do most: changing a song and coming back to it.**
 
