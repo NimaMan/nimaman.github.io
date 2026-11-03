@@ -112,7 +112,9 @@ ARGUMENT SPINE (the "algorithm" of the essay)
     back to learn-first tools (few laptop-born producers went looking for tape). The classical
     studio idea starts to die when something is
     better at changing a song and coming back to it.
-12. Close: the DAW of the past and the DAW of the future.
+12. Close: the DAW of the past carried the classical studio idea; the DAW of the future is
+    played interactively; the classical studio idea still stands, and its successors are on
+    the workbench.
 -->
 
 In the 1970s and 1980s, the great recording studios were among the most expensive rooms in the world. A console the size of a car, a wall of tape machines, an echo chamber, a staff of engineers and assistants, session players on call: if you wanted a record that sounded like a record, you rented the room. Careers were made in those rooms, and the Hit Factory in New York was among the most famous of them. And then, within a generation, the business was in retreat, and nobody attacked it. The Hit Factory [closed in 2005](https://www.abc.net.au/news/2005-02-04/new-yorks-hit-factory-studio-to-close/630954), and the report of its closing named the cause in so many words: "the rise of inexpensive digital audio workstation equipment has allowed high-quality recording to be accomplished in virtually any environment by non-professional recordists." EMI [closed Olympic Studios](https://en.wikipedia.org/wiki/Olympic_Studios) in London in 2009 because it no longer made money, and in 2010 it was reported to have put even [Abbey Road](https://en.wikipedia.org/wiki/Abbey_Road_Studios) up for sale; after a public campaign it kept the studio, and the British government listed the building to protect it from major alteration. In 2020, the Grammy for Album of the Year went to a record produced in a [small bedroom studio](https://en.wikipedia.org/wiki/When_We_All_Fall_Asleep,_Where_Do_We_Go%3F) in Los Angeles, in an off-the-shelf DAW.
