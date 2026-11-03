@@ -87,11 +87,14 @@ ARGUMENT SPINE (the "algorithm" of the essay)
    sense is which well-made thing is yours, and it moves with what you have heard and with the
    moment (intent and mood: arousing music while exercising, calm while relaxing; hard techno
    lifts a room at 3 a.m. and irritates on a quiet afternoon).
-8. Five properties of the next DAW: start from the intention, played interactively; people and
-   agents edit the same song; measure for the agent (until agents hear well, the person
-   listens and the instrument measures and does the sound engineering measurement can settle:
-   levels, balance, low end, clipping, loudness), and keep the evidence after; every sound finished and editable (a sound with its settings is like code to an
-   agent); remember the work (the bet on a hub of songs shared in full editable form).
+8. New actions for old wants: the wants were always there; new tools open actions that reach
+   them cheaper and faster, which is what anyone wants from a tool (from an Amazon parcel to
+   hearing a sound now). Five: ask for what you mean at any depth, played interactively; work
+   on one song with an agent; the instrument measures and does the sound engineering
+   measurement can settle (levels, balance, low end, clipping, loudness) while you listen, and
+   the evidence keeps its value after agents hear; sounds that arrive finished and stay
+   editable (a sound with its settings is like code to an agent); every version kept (the bet
+   on a hub of songs shared in full editable form).
 9. The verdict stays with the ear: directing an agent is expression; evidence vs verdict; the
    verdict is yours because the music is for you, not because machines are deaf.
 10. What could prove this wrong: listening; the player piano; the new dimension may not yield
@@ -206,37 +209,37 @@ It did not work at once. In October 2023, the best model tested [resolved 1.96%]
 
 My bet is that the general agents that mastered code will also be the producers. Anything with pattern and logic in it is open to them. They will reach sound through generators, synthesis written as code and neural sound models alike, and they will build their own tools to hear what works and what does not, find the patterns and use those tools in production, the way they already write tests for their own code.
 
-The analogy bends at one point, and it is the most important point in this essay. Much of what passes for taste is craft. Some ways of building a song or a sound make it work, others make it dull or irritating, and listeners agree on a good part of that. You may dislike a style and still hear that a track in it is well made, while the people who love that style would turn away from the same track badly produced. Craft has patterns, and some of them can be measured: across [more than a century of studies](https://journals.sagepub.com/doi/full/10.1177/0305735617697507), liking tends to rise with complexity up to a point and then fall, so that too simple is dull and too much is irritating, and much of what makes a sound unpleasant lies [between about 2,000 and 5,000 hertz](https://www.jneurosci.org/content/jneuro/32/41/14184.full.pdf), unless, as in hard techno, harshness is the point. That part agents can learn, the way they learned code, and the tools they build will check it. What remains is taste in the narrow sense: which of many well-made things is yours, and it [moves](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0281057) with everything you have heard and with the moment. Whether harshness is the point depends on intent and mood: people [prefer arousing music](https://www.researchgate.net/publication/12573161_Musical_Preferences_during_and_after_Relaxation_and_Exercise) while exercising and calmer music while relaxing, and the hard techno that lifts a room at three in the morning can be merely irritating on a quiet afternoon. A measurement can find the harshness; only the listener knows whether it is wanted now. **Tests can check much of the craft. Only you can check your taste.** In music, the last test is the ear of the person the music is for. Everything the next DAW must do follows from that.
+The analogy bends at one point, and it is the most important point in this essay. Much of what passes for taste is craft. Some ways of building a song or a sound make it work, others make it dull or irritating, and listeners agree on a good part of that. You may dislike a style and still hear that a track in it is well made, while the people who love that style would turn away from the same track badly produced. Craft has patterns, and some of them can be measured: across [more than a century of studies](https://journals.sagepub.com/doi/full/10.1177/0305735617697507), liking tends to rise with complexity up to a point and then fall, so that too simple is dull and too much is irritating, and much of what makes a sound unpleasant lies [between about 2,000 and 5,000 hertz](https://www.jneurosci.org/content/jneuro/32/41/14184.full.pdf), unless, as in hard techno, harshness is the point. That part agents can learn, the way they learned code, and the tools they build will check it. What remains is taste in the narrow sense: which of many well-made things is yours, and it [moves](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0281057) with everything you have heard and with the moment. Whether harshness is the point depends on intent and mood: people [prefer arousing music](https://www.researchgate.net/publication/12573161_Musical_Preferences_during_and_after_Relaxation_and_Exercise) while exercising and calmer music while relaxing, and the hard techno that lifts a room at three in the morning can be merely irritating on a quiet afternoon. A measurement can find the harshness; only the listener knows whether it is wanted now. **Tests can check much of the craft. Only you can check your taste.** In music, the last test is the ear of the person the music is for. The new actions below rest on that.
 
-## What the next DAW must do
+## New actions for old wants
 
-Five properties follow, each a relationship between a person, an agent and the music rather than a feature.
+The wants have always been there. What new technology changes is the actions available for reaching them, and every new action faces the same test: does it get you to what you want cheaper and faster? That is what anyone wants from a tool, from a customer waiting for an Amazon parcel to a producer who wants to hear a sound the moment it is imagined. Agents, and instruments that measure, open five new actions.
 
-### Start from the intention, at every depth
+### Ask for what you mean, at any depth
 
-People think about music in musical terms: hear the whole, attend to a part, change a sound, hear the result in context. The instrument should let them work at whatever depth the intention lives ("let the chorus arrive later" is arrangement; "a warmer bass" is sound) and at whatever depth the material honestly supports; a recording does not automatically yield clean parts, and the instrument should say so rather than pretend.
+People think about music in musical terms: hear the whole, attend to a part, change a sound, hear the result in context. Now they can ask at whatever depth the intention lives ("let the chorus arrive later" is arrangement; "a warmer bass" is sound), as far as the material honestly supports; a recording does not automatically yield clean parts, and a good instrument says so rather than pretending. The bass that should wait a little longer before it returns becomes one request and a few seconds of listening, not an evening.
 
-The instrument should be played the way people learn: ask, hear, adjust, continue. A first useful action should be reachable without learning the whole tool: a beginner may stop after one change, while an expert may need one note in one bar, and the same work serves both. **A low floor, never a low ceiling.**
+It is played the way people learn: ask, hear, adjust, continue. The first useful action needs no knowledge of the whole tool: a beginner may stop after one change, while an expert may need one note in one bar, and the same work serves both. **A low floor, never a low ceiling.**
 
-### Let people and agents edit the same song
+### Work on one song with an agent
 
-In the next DAW, an agent is not a separate app that sends back a file. It edits the song directly, like any other editor, within the access the person grants, whether that is one change or a whole task such as a kit for a fast, hard track. Every operation the agent performs is one the person could perform by hand, so the agent's work can also teach.
+In the next DAW, an agent is not a separate app that sends back a file. It edits the song directly, like any other editor, within the access the person grants, whether that is one change or a whole task such as a kit for a fast, hard track. Nothing has to be exported, imported or explained twice: the change is in the song the moment it is made. Every operation the agent performs is one the person could perform by hand, so the agent's work can also teach.
 
 There is no private project that only the agent can see, and no change that exists in the conversation but not in the music. Close the conversation, and every change, every version and every control stays where it was.
 
-### Measure for the agent
+### The instrument measures, you listen
 
-An assistant that cannot perceive the music will invent it: a confident description that says nothing true, a key guessed from a filename, a layer that fights the kick. Agents will hear one day. Models that listen to music are improving quickly, though their makers still [describe music](https://arxiv.org/abs/2511.10289) as one of the hardest things for them to understand. Until agents hear well, the work divides: the person listens, and the instrument measures and does the sound engineering that measurement can settle, such as levels, the balance between parts, the low end, clipping and loudness.
+An assistant that cannot perceive the music will invent it: a confident description that says nothing true, a key guessed from a filename, a layer that fights the kick. Agents will hear one day. Models that listen to music are improving quickly, though their makers still [describe music](https://arxiv.org/abs/2511.10289) as one of the hardest things for them to understand. Until agents hear well, the work divides: the person listens, and the instrument measures and does the sound engineering that measurement can settle, such as levels, the balance between parts, the low end, clipping and loudness. Engineering that once took a specialist hours can be done in seconds, and the listening stays with you.
 
 That means musical evidence measured by the instrument itself, not imagined by a model: the key as a ranked list of candidates rather than one guessed label, the beat grid with its confidence, energy and brightness over time, and whether a new part would fill a gap or clash with what is there. When the evidence is ambiguous, the agent should receive the ambiguity. The evidence keeps its value after agents can hear, just as producers with good ears still use meters: two assistants on two different days should read the same facts about the same audio. **The agent's judgment may vary; the evidence must not.**
 
-### Make every sound finished and editable
+### Sounds that arrive finished and stay editable
 
 A producer who wants an industrial bass for a hard techno track wants that bass, finished. Samples will keep that role. What changes is what stands behind the sample: when a sound carries its editable source, it can be re-keyed, re-timed or re-shaped when the song's needs change, instead of being searched for again. **The sample, the preset and the lesson become one object**: a finished sound, the settings that make it, and an explanation an agent can give. A sound that carries its settings is, to an agent, much like code: something it can read, change and explain.
 
-### Remember the work
+### Every version kept
 
-Programmers take version control for granted; musicians mostly do without it. The next DAW should record every change with its maker, person, collaborator or agent, and let anyone allowed to edit keep a version, the way a commit keeps code. Any version can be heard, compared with any other and returned to; nothing kept is lost by going back.
+Programmers take version control for granted; musicians mostly do without it. The next DAW records every change with its maker, person, collaborator or agent, and lets anyone allowed to edit keep a version, the way a commit keeps code. Any version can be heard, compared with any other and returned to; nothing kept is lost by going back.
 
 Memory makes experimentation safe, because the ending you had is never at risk while an agent tries three others, and it makes music continuable. I am betting on a hub, music's version of shared code: songs published in full editable form, every part of the production and every sound open to change, so that people continue and improve each other's music the way programmers continue each other's code. Someone hears a song, enters the drum part, tries a different rhythm and keeps a descendant. The original stays intact, and its maker can hear the answer and continue from it in turn. **A work becomes an invitation to a musical answer, and a good answer becomes another beginning.** Such a hub would also give music what public code gave programming: a body of editable work that people, and agents, can learn from. It is a bet, and sharing stays an act the person chooses. So does the last word.
 
