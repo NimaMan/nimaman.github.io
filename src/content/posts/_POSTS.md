@@ -32,12 +32,17 @@ by the loader's `**/[^_]*.md` glob, mirroring the `src/pages` convention.
       industries read in the Book of Dombra's order (human nature → wants and
       their obstacles → technology moving what is scarce → the chain that
       reorganizes around the same want)
-    - `clash_of_the_old_and_the_new.md` — The Clash (order 6): a dated
-      history of the clashes in programming and music when a tool shortened
-      the road from intention to result, and the cause-and-effect pattern
-      across them (trigger, resistance, decider, the old's leverage); why the
-      DAW's next rival is general agents making music through an instrument,
-      not prompt-to-song (no language for sound)
+    - `clash_of_the_old_and_the_new.md` — The Clash (order 6): the clash of
+      old and new begins in human nature (the adolescent turn toward
+      unfamiliar voices; the old holding on) and runs in one order from the
+      individual through knowledge (one funeral at a time; physics since the
+      Standard Model) and trades to the state: the young carry the better,
+      cheaper, faster; the powerful old resists; reality shifts the balance.
+      Each time a capability got cheaper, whoever held the expensive version
+      lost its power: the Ottomans rose on the cannon and fell in the age of
+      the factory as the Russian Empire advanced; Qing China; Japan's own
+      young took its old order apart; after 1945 costly platforms, then
+      drones costing hundreds of dollars
   - **Money** — the first worked example
     - `battle_for_dollar_supremacy.md` — Part I (order 2)
     - `the_price_you_cannot_see.md` — Companion (order 3)

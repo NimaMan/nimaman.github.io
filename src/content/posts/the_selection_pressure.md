@@ -43,7 +43,13 @@ series_label: "The Law"
     5. Why the scarcest cost is also power: fixed/marginal -> natural monopoly; network
        effects; ownership of demand; appropriability (not every scarce cost is ownable);
        the contingency counterweight (two-sided markets; labels vs Spotify); rent vs
-       return (Khan).
+       return (Khan); the same law between states, power in its oldest sense: each time a
+       military capability got cheaper or faster, whoever held the expensive version lost
+       its power (the walls of Constantinople and the guns of 1453; Sinop 1853 and the
+       Ottoman losses to 1922; costly platforms after 1945 against drones in the last
+       decade); three equations (cost per effect, cost to stop it, how many can be made);
+       the leverage relocates to production, jamming, chips and operators; the full account
+       in The Clash (owner, 2026-11-04).
     6. The last costs are human: the outside-in hypothesis; wanting vs liking (Berridge)
        explains slop and why taste resists one-size generation; the want's structure
        predicts how far a chain can evolve; slot vs space, and agency as a terminal want
@@ -128,6 +134,8 @@ The fourth decides whether any of the others bite: **appropriability**. Not ever
 The counterweight keeps it honest from the other side: consolidation is contingent, not guaranteed. The theory of [two-sided markets](https://doi.org/10.1162/154247603322493212) says tipping depends on whether users multi-home, and relative concentration across the chain decides where the rent sits. Where the suppliers are more concentrated than the aggregator, the rent stays upstream. In music, three major labels out-concentrate any streaming service, which is why Spotify, unlike Netflix, cannot dictate to its catalog, and earns thin margins while the labels do well. The keeper lands wherever concentration is highest, and that is not always the shiny new layer.
 
 And the cost lens forces one moral distinction that the reflexive "middlemen are bad" story misses: the difference between **rent** and **return**. The whaler displaced by kerosene is a story of efficient substitution. Light got cheaper for everyone, surplus flowed to the public, and the new keeper earned a return on real investment. A fee for the Buy Box, or a self-preferenced clone of your own bestseller, is extraction: rent on a chokepoint with no matching gain to the buyer. Lina Khan's [*Amazon's Antitrust Paradox*](https://www.yalelawjournal.org/note/amazons-antitrust-paradox) (2017) is the canonical argument that our tools quietly lost the ability to tell the two apart. Both are "the keeper relocating." They are not the same event, and a theory that scores them identically is missing the part that matters.
+
+Power in its oldest sense obeys the same law. Between states the scarce cost is force, and each time a military capability got cheaper or faster, whoever held the expensive version lost its power. In 1453 Ottoman guns broke the [land walls of Constantinople](https://en.wikipedia.org/wiki/Fall_of_Constantinople), which had stood for a thousand years; the Byzantine state had not been able to pay the founder who cast the largest of them. In 1853 a Russian squadron firing explosive shells destroyed an Ottoman squadron at [Sinop](https://en.wikipedia.org/wiki/Battle_of_Sinop) in an afternoon, and the empire that had risen on artillery went on losing provinces, treaty by treaty, until 1922. After 1945 the largest militaries came to rest on the most expensive machines ever built, an aircraft carrier at about $13 billion and a defending missile at $2 million to $4 million a shot. In the last decade drones costing a few hundred dollars have destroyed tanks costing millions, and American warships have fired [missiles of nearly $2 million at drones of as little as $2,000](https://costsofwar.watson.brown.edu/sites/default/files/2025-10/Wider-Middle-East-Costs_Costs-of-War_Bilmes_10.7.25.pdf). The balance moves with three equations: what a capability costs for its effect, what it costs to stop it, and how many of it can be made. And the leverage relocates, as the first conservation law says it must, to the costs that have not yet fallen: production at scale, jamming, chips and trained operators. [Clash of the Old and the New](/posts/clash_of_the_old_and_the_new) follows that sequence from the individual to the state.
 
 ## The last costs are human
 
