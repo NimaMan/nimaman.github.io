@@ -14,10 +14,10 @@ series_label: "Music"
 OBJECTIVE
 Explain, for a general reader, what the digital audio workstation becomes once making sound
 stops being scarce and general agents can operate it, and why. The essay starts from what
-music is for (to feel, and to change how you feel, with the ear and the whole body), follows
+music is for (emotional regulation and social connection, felt with the whole body), follows
 how the chain of making music was organized and where its bottleneck sat at each stage, and
 ends at the instrument that answers what is still costly. Its aim is music for you: music
-that fits you, carries your choices and absorbs you enough to play again.
+that fits you, carries your choices and absorbs you enough to play again: albeni music.
 Rules: no individual people are named (institutions, companies, unions, products and sources
 may be); reported industry figures are given as reported, with the source linked and the
 source company unnamed in the text; "DAW" and "instrument" are used interchangeably; "the
@@ -26,7 +26,7 @@ the essay stays general and names no product of the author's. The title is "De D
 Future" and the slug stays the_daw_of_the_future.
 
 ARGUMENT SPINE (the "algorithm" of the essay)
-0. Music is a tool for emotional regulation; the means of making it change, the listener's
+0. Music is a tool for emotional regulation and social connection; the means of making it change, the listener's
    feeling does not. Opening story: the great studios were bypassed, not defeated.
 1. Thesis: the contest is over the distance between a musical intention and its realization.
    The next DAW is an instrument built around the player and played interactively with a
@@ -52,7 +52,7 @@ ARGUMENT SPINE (the "algorithm" of the essay)
 12. Close: the DAW of the future is played interactively.
 -->
 
-Music is a tool for emotional regulation: people use it to feel, and to change how they feel, with the ear and with the whole body. The means of making it keep changing, from players in a room to studios, software and now agents, but only the person listening feels what it does.
+Music is a tool for emotional regulation and social connection. People use it to feel, and to change how they feel, with the ear and with the whole body, alone and together. The means of making it keep changing, from players in a room to studios, software and now agents, but only the person listening feels what it does.
 
 In the 1970s and 1980s, the great recording studios were among the most expensive rooms in the world. A console the size of a car, a wall of tape machines, an echo chamber, a staff of engineers and assistants, session players on call: if you wanted a record that sounded like a record, you rented the room. Careers were made in those rooms, and the Hit Factory in New York was among the most famous of them. And then, within a generation, the business was in retreat, and nobody attacked it. The Hit Factory [closed in 2005](https://www.abc.net.au/news/2005-02-04/new-yorks-hit-factory-studio-to-close/630954), and the report of its closing named the cause in so many words: "the rise of inexpensive digital audio workstation equipment has allowed high-quality recording to be accomplished in virtually any environment by non-professional recordists." EMI [closed Olympic Studios](https://en.wikipedia.org/wiki/Olympic_Studios) in London in 2009, and in 2010 it was reported to have put even [Abbey Road](https://en.wikipedia.org/wiki/Abbey_Road_Studios) up for sale; after a public campaign it kept the studio, and the British government listed the building to protect it from major alteration. In 2020, the Grammy for Album of the Year went to a record produced in a [small bedroom studio](https://en.wikipedia.org/wiki/When_We_All_Fall_Asleep,_Where_Do_We_Go%3F) in Los Angeles, in an off-the-shelf DAW.
 
@@ -66,7 +66,7 @@ My thesis is simple. **The DAW of the future will not be a better copy of the cl
 
 The reported numbers show what abundance looks like. By one industry count, about [**106,000**](https://musically.com/2026/01/15/5-1tn-annual-music-streams-but-120-5m-tracks-had-10-or-fewer/) new tracks were delivered to streaming services every day in 2025, up from 99,000 the year before, and by September 2026 the same count was [**close to 150,000**](https://musically.com/2026/09/17/150000-new-tracks-are-uploaded-to-music-services-every-day/). One large streaming service reported that fully AI-generated tracks made up [**more than half**](https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/) of its daily uploads by mid-2026, while drawing only **1–3%** of its streams. Of the roughly 253 million tracks on streaming services at the end of 2025, about [**88%**](https://musically.com/2026/01/15/5-1tn-annual-music-streams-but-120-5m-tracks-had-10-or-fewer/) were reportedly played fewer than a thousand times that year.
 
-Making a finished-sounding track has never been cheaper, and getting strangers to hear one has never been harder. This essay is not about winning that contest. It is about the other end: music for you, music that fits you now, carries your own choices and absorbs you enough that you come back and play it again. When generic tracks cost nothing, what keeps its value is the specific, the thing you meant, and only control over the sound delivers it. The next instrument will be built there. To see its shape, start with the person, not the software.
+Making a finished-sounding track has never been cheaper, and getting strangers to hear one has never been harder. This essay is not about winning that contest. It is about the other end: music for you, music that fits you now, carries your own choices and absorbs you. Music that absorbs you enough that you come back and play it again is albeni music, and it asks for more than being catchy. When generic tracks cost nothing, what keeps its value is the specific, the thing you meant, and only control over the sound delivers it. The next instrument will be built there. To see its shape, start with the person, not the software.
 
 ## What people want from music does not change
 
@@ -158,9 +158,9 @@ My bet is that the general agents that mastered code will also be the producers.
 
 The analogy bends at one point, and it is the most important point in this essay. Much of what passes for taste is craft. Some ways of building a song or a sound make it work, others make it dull or irritating, and listeners agree on a good part of that. You may dislike a style and still hear that a track in it is well made, while the people who love that style would turn away from the same track badly produced.
 
-Craft has patterns, and some of them can be measured: in [most studies that have tested it](https://journals.sagepub.com/doi/full/10.1177/0305735617697507), liking tends to rise with complexity up to a point and then fall, so that too simple is dull and too much is irritating, and much of what makes a sound unpleasant lies [between about 2,000 and 5,000 hertz](https://www.jneurosci.org/content/jneuro/32/41/14184.full.pdf), unless, as in hard techno, harshness is the point. That part agents can learn, the way they learned code, and the tools they build will check it.
+Craft has patterns, and some of them can be measured: in [most studies that have tested it](https://journals.sagepub.com/doi/full/10.1177/0305735617697507), liking tends to rise with complexity up to a point and then fall, so that too simple is dull and too much is irritating, and in one brain-imaging study the sounds people rated most unpleasant lay [between about 2,000 and 5,000 hertz](https://www.jneurosci.org/content/jneuro/32/41/14184.full.pdf), unless, as in hard techno, harshness is the point. That part agents can learn, the way they learned code, and the tools they build will check it.
 
-What remains is taste in the narrow sense: which of many well-made things is yours, and it [moves](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0281057) with everything you have heard and with the moment. Whether harshness is the point depends on intent and mood: people [prefer arousing music](https://www.researchgate.net/publication/12573161_Musical_Preferences_during_and_after_Relaxation_and_Exercise) while exercising and calmer music while relaxing, and the hard techno that lifts a room at three in the morning can be merely irritating on a quiet afternoon. A measurement can find the harshness; only the listener knows whether it is wanted now. **Tests can check much of the craft. Only you can check your taste.** In music, the last test is the ear of the person the music is for. The new actions below rest on that.
+What remains is taste in the narrow sense: which of many well-made things is yours, and it [moves](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0281057) with everything you have heard and with the moment. Whether harshness is the point depends on intent and mood: the hard techno that lifts a room at three in the morning can be merely irritating on a quiet afternoon. A measurement can find the harshness; only the listener knows whether it is wanted now. **Tests can check much of the craft. Only you can check your taste.** In music, the last test is the ear of the person the music is for. The new actions below rest on that.
 
 ## New actions for old wants
 

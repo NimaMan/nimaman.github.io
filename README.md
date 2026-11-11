@@ -56,18 +56,47 @@ Preview the built output locally:
 npm run preview
 ```
 
-## Hosting
+## Hosting and deploy
 
-Host `dist/` on a static host such as Cloudflare Pages, Netlify, Vercel, GitHub Pages, or a simple web server.
+GitHub Pages serves the `gh-pages` branch of `origin` directly at `nimamanaf.com` (custom
+domain through the `CNAME` file). There is no build workflow: deploying is manual. The source
+lives on the `aesthetic-redesign` branch; `gh-pages` holds only the built `dist/` output.
 
-For Cloudflare Pages, use:
+1. Commit the source change on `aesthetic-redesign` and push it.
+2. Build with Node 22 or newer (Astro 6 refuses older versions):
 
-```text
-Build command: npm run build
-Output directory: dist
-```
+   ```bash
+   export PATH="$HOME/.nvm/versions/node/v22.22.0/bin:$PATH"
+   npm run build
+   ```
 
-Then point DNS for `nimamanaf.com` and `www.nimamanaf.com` at the chosen host.
+3. Check out the published branch in a temporary worktree outside the repository and copy
+   the build over it:
+
+   ```bash
+   git fetch origin
+   git worktree add --detach <temporary-folder>/gh-pages-deploy origin/gh-pages
+   rsync -a --delete --exclude=.git dist/ <temporary-folder>/gh-pages-deploy/
+   ```
+
+4. In that worktree, run `git status --short` and confirm that only the pages you meant to
+   change are listed and that `CNAME` and `.nojekyll` are still present (both come from
+   `public/`). Then:
+
+   ```bash
+   git add -A
+   git commit -m "Deploy: site"
+   git push origin HEAD:gh-pages
+   ```
+
+5. Remove the worktree (`git worktree remove <temporary-folder>/gh-pages-deploy`) and update
+   the local branch (`git fetch origin gh-pages:gh-pages`).
+6. GitHub Pages takes up to a few minutes to serve a push. Fetch the live page and check for
+   a sentence that only the new version contains.
+
+Pushes over SSH to GitHub sometimes fail with "Permission denied (publickey)"; retry.
+HTML comments in a post's Markdown are shipped in the page source, so keep private notes out
+of them.
 
 ## Private Services
 
